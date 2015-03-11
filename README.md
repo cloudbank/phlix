@@ -1,0 +1,2 @@
+# myfriendflickr
+android flickr client
