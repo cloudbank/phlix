@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/sabine/Downloads/android-sdk-macosx-3/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/pre-dexed/debug/support-v4-19.1.0-57b50612fae7b8956f540c1e6570bc64140c2ca6.jar" />
+    </item>
+    <item
+        jar="/Users/sabine/android_studio/flickr/loginActivity/libs/codepath-android-view-helpers-0.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="16aa5e01429bcf160ca6ce85c9a3bdcda9ff3382">
+        <dex dex="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/pre-dexed/debug/codepath-android-view-helpers-0.1.0-8256eef136931a97324840eef544c6f4258da0d6.jar" />
+    </item>
+    <item
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08">
+        <dex dex="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/pre-dexed/debug/activeandroid-3.1.0-SNAPSHOT-18fc837903e60d2ca77eaa12bd5d71f2d659fbe6.jar" />
+    </item>
+    <item
+        jar="/Users/sabine/android_studio/flickr/loginActivity/libs/androidjhlabs.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f79a376d78a96ffd7339ff14836d892eb09385cd">
+        <dex dex="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/pre-dexed/debug/androidjhlabs-6e7f978139a9f54df99ccef50a02c2fb2cad2dc1.jar" />
+    </item>
+    <item
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.nostra13.universalimageloader/universal-image-loader/1.8.4/eee81e43531ce82db1781c5a8b27781ca384eede/universal-image-loader-1.8.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="eee81e43531ce82db1781c5a8b27781ca384eede">
+        <dex dex="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/pre-dexed/debug/universal-image-loader-1.8.4-72b576093c1b65444114f17588be0936589fa731.jar" />
+    </item>
+    <item
+        jar="/Users/sabine/android_studio/flickr/loginActivity/libs/codepath-utils.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="10901a5ef726eacf1b2443b7f38dc4cc9cd3f7d4">
+        <dex dex="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/pre-dexed/debug/codepath-utils-2b845b413e0ef90b9dc94e102a14974b50850d80.jar" />
+    </item>
+    <item
+        jar="/Users/sabine/android_studio/flickr/loginActivity/libs/codepath-oauth-0.3.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b90f1c3541987f690e2fb854775914cc23266250">
+        <dex dex="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/pre-dexed/debug/codepath-oauth-0.3.0-445351a8f17bd2632e5cb83c3251e718b070f068.jar" />
+    </item>
+    <item
+        jar="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/exploded-aar/flickr/simplecropimagelib/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="23acc642337327ed119005a48332df348fc33821">
+        <dex dex="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/pre-dexed/debug/classes-37a2e3f0115769682fd92dcaa205e7d74da0b09a.jar" />
+    </item>
+    <item
+        jar="/Users/sabine/android_studio/flickr/loginActivity/libs/scribe-codepath.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6e0748acc9e7be0695de0d38016d260df52d9167">
+        <dex dex="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/pre-dexed/debug/scribe-codepath-e952c9a5ef881b7c3343da189f25a5b868854ffd.jar" />
+    </item>
+    <item
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.3/a490cc97b84d41e6fa51678ad2c21fddb93dcf8d/android-async-http-1.4.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a490cc97b84d41e6fa51678ad2c21fddb93dcf8d">
+        <dex dex="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/pre-dexed/debug/android-async-http-1.4.3-d54e51ca09df9462ea8c876e095066dae52a4367.jar" />
+    </item>
+    <item
+        jar="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/exploded-aar/flickr/pullToRefreshListView/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e06a9335f612a041a1753970dac1fee3e6a8f67c">
+        <dex dex="/Users/sabine/android_studio/flickr/loginActivity/build/intermediates/pre-dexed/debug/classes-3ff7535d2a1635c5433b24523df9e3140c3c8082.jar" />
+    </item>
+
+</items>

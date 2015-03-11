@@ -1,0 +1,49 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+
+
+    <!--   
+    Application theme.  
+     -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowBackground">@color/WhiteSmoke</item>
+        <item name="android:editTextStyle">@style/EditTextStyle</item>
+        <item name="android:textColor">#2B2351</item>
+        <item name="android:progressBarStyleHorizontal">@style/ProgressBarFlickr</item>
+    </style>
+
+    <style name="ProgressBarFlickr" parent="android:Widget.Holo.Light.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/flickr_progress_horizontal_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/flickr_progress_indeterminate_horizontal_holo_light</item>
+    </style>
+
+    <style name="EditTextStyle" parent="android:Widget.EditText">
+        <item name="android:background">@drawable/flickr_edit_text_holo_light</item>
+        <item name="android:textColor">#2B2351</item>
+    </style>
+
+    <style name="CustomProgessBarStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:alertDialogStyle">@style/CustomAlertDialogStyle</item>
+        <item name="android:background">@color/Snow</item>
+        <item name="android:textColorPrimary">#2B2351</item>
+    </style>
+
+    <style name="CustomAlertDialogStyle">
+        <item name="android:bottomDark">#2B2351</item>
+        <item name="android:bottomMedium">@color/WhiteSmoke</item>
+        <item name="android:centerBright">@color/WhiteSmoke</item>
+        <item name="android:centerDark">@color/WhiteSmoke</item>
+        <item name="android:centerMedium">@color/WhiteSmoke</item>
+        <item name="android:fullBright">@color/WhiteSmoke</item>
+        <item name="android:fullDark">@color/WhiteSmoke</item>
+        <item name="android:topBright">@color/WhiteSmoke</item>
+        <item name="android:topDark">#2B2351</item>
+    </style>
+
+</resources>

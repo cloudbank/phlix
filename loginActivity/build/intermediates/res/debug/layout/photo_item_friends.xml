@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/friends_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ivPhoto"
+        android:layout_alignParentTop="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/friends_timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/ivPhoto"
+        android:layout_alignTop="@+id/friends_username"
+        android:text="timestamp"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/ivPhoto"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/friends_username"
+        android:scaleType="centerCrop"
+        android:background="#2B2351"
+        android:padding="1dp"/>
+
+    <TextView
+        android:id="@+id/friends_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivPhoto"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout><!-- From: file:/Users/sabine/android_studio/flickr/loginActivity/src/main/res/layout/photo_item_friends.xml -->

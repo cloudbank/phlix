@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.anubis.flickr"
+        minSdkVersion 11
+        targetSdkVersion 19
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile project(':simplecropimagelib')
+    compile project(':pullToRefreshListView')
+    compile 'com.android.support:support-v4:19.1.0'
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    compile 'com.loopj.android:android-async-http:1.4.3'
+    compile files('libs/androidjhlabs.jar')
+    compile files('libs/codepath-android-view-helpers-0.1.0.jar')
+    compile files('libs/codepath-oauth-0.3.0.jar')
+    compile files('libs/codepath-utils.jar')
+    compile files('libs/scribe-codepath.jar')
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.8.4'
+}
