@@ -35,7 +35,7 @@
     </style>
 
     <style name="CustomAlertDialogStyle">
-        <item name="android:bottomDark">#2B2351</item>
+        <item name="android:bottomDark">@color/WhiteSmoke</item>
         <item name="android:bottomMedium">@color/WhiteSmoke</item>
         <item name="android:centerBright">@color/WhiteSmoke</item>
         <item name="android:centerDark">@color/WhiteSmoke</item>
@@ -43,7 +43,7 @@
         <item name="android:fullBright">@color/WhiteSmoke</item>
         <item name="android:fullDark">@color/WhiteSmoke</item>
         <item name="android:topBright">@color/WhiteSmoke</item>
-        <item name="android:topDark">#2B2351</item>
+        <item name="android:topDark">@color/WhiteSmoke</item>
     </style>
 
 </resources>
