@@ -7,7 +7,7 @@ An android client for logging in to Flickr which allows you to view photos from:
 * Custom search result. Search includes OR, AND, and TEXT options
 
 
-<img src="http://i.imgur.com/SOcYXDU.png"/>
+<img src="http://i.imgur.com/44yj4AE.png"/>
 
 In addition you can:
 
@@ -18,9 +18,8 @@ In addition you can:
 
 Built myfriendflickr as a part of the [Android CodePath Bootcamp](http://thecodepath.com/androidbootcamp). Released on the [Google Play Store]
 
-<img src="" height="545" />
-&nbsp;&nbsp;
-<img src="" height="545" />
+<img src="http://i.imgur.com/Eeyx8Ds.png" height="545" />
+
 
 ## License
 
