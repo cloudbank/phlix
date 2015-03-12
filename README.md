@@ -5,8 +5,9 @@ An android client for logging in to Flickr which allows you to view photos from:
 * Your own and your friends' photostreams
 * The 'interestingness for today' collection
 * Custom search result. Search includes OR, AND, and TEXT options
-* 
-![flickr](/../screenshots/screenshots/flickr_app.png?raw=true "")
+
+
+<img src="http://i.imgur.com/Hv1tHKY.png"/>
 
 In addition you can:
 
