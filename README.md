@@ -10,6 +10,8 @@ An android client for logging in to Flickr which allows you to view photos from:
 <img src="http://i.imgur.com/44yj4AE.png" height="545"/>
 &nbsp;&nbsp;
 <img src="http://i.imgur.com/Eeyx8Ds.png" height="545" />
+&nbsp;&nbsp;
+<img src="http://i.imgur.com/FeW5ryx.png" height="545" />
 
 In addition you can:
 
