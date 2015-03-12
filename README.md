@@ -7,7 +7,7 @@ An android client for logging in to Flickr which allows you to view photos from:
 * Custom search result. Search includes OR, AND, and TEXT options
 
 
-<img src="http://i.imgur.com/44yj4AE.png"/>
+<img src="http://i.imgur.com/44yj4AE.png" height="545"/>
 
 In addition you can:
 
