@@ -15,7 +15,7 @@ In addition you can:
 
 
 
-Built tumblrsnap as a part of the [Android CodePath Bootcamp](http://thecodepath.com/androidbootcamp). Released on the [Google Play Store]
+Built myfriendflickr as a part of the [Android CodePath Bootcamp](http://thecodepath.com/androidbootcamp). Released on the [Google Play Store]
 
 <img src="" height="545" />
 &nbsp;&nbsp;
@@ -27,19 +27,7 @@ Built tumblrsnap as a part of the [Android CodePath Bootcamp](http://thecodepath
 
 ## Building
 
-The build requires [Gradle](http://www.gradleware.com/)
-v1.6 and the [Android SDK](http://developer.android.com/sdk/index.html)
-to be installed in your development environment. In addition you'll need to set
-the `ANDROID_HOME` environment variable to the location of your SDK:
-
-    export ANDROID_HOME=/opt/tools/android-sdk
-
-After satisfying those requirements, the build is pretty simple:
-
-* Run `gradle assemble` from the root directory to build the APK only
-* Run `gradle build` from the root directory to build the app and also run
-  the integration tests, this requires a connected Android device or running
-  emulator.
+This app was built with Android Studio which uses the gradle build system.  
 
 ## Acknowledgements
 
