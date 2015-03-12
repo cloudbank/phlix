@@ -17,9 +17,9 @@ In addition you can:
 
 Built tumblrsnap as a part of the [Android CodePath Bootcamp](http://thecodepath.com/androidbootcamp). Released on the [Google Play Store]
 
-<img src="http://i.imgur.com/zeFmmYm.png" height="545" />
+<img src="" height="545" />
 &nbsp;&nbsp;
-<img src="http://i.imgur.com/GlXlQ57.png" height="545" />
+<img src="" height="545" />
 
 ## License
 
