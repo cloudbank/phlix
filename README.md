@@ -12,6 +12,8 @@ An android client for logging in to Flickr which allows you to view photos from:
 <img src="http://i.imgur.com/Eeyx8Ds.png" height="545" />
 &nbsp;&nbsp;
 <img src="http://i.imgur.com/FeW5ryx.png" height="545" />
+&nbsp;&nbsp;
+<img src="http://i.imgur.com/Mi8Zcre.png" height="545" />
 
 In addition you can:
 
@@ -35,7 +37,7 @@ This app was built with Android Studio which uses the gradle build system.
 
 ## Acknowledgements
 
-This project uses the [Flickr API] [https://www.flickr.com/services/api/]
+This project uses the [Flickr API] ( https://www.flickr.com/services/api/)
 
 It also uses many other open source libraries such as:
 
