@@ -29,12 +29,12 @@
         android:layout_margin="20dp"
         android:background="@drawable/buttonshape"
         android:onClick="loginToRest"
-        android:shadowColor="#4F4F4F"
-        android:shadowDx="0"
-        android:shadowDy="0"
-        android:shadowRadius="6"
+        android:shadowColor="#2B2351"
+        android:shadowDx="2"
+        android:shadowDy="3"
+        android:shadowRadius="5"
         android:text="Sign in to Flickr"
         android:textColor="#FFFFFF"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
 
 </RelativeLayout>

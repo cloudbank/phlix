@@ -23,6 +23,7 @@
         android:layout_centerHorizontal="true"
         android:textColor="#FFFFFF"
         android:ems="10"
-        android:hint="(&lt;name.png&gt;)" />
+        android:singleLine="true"
+        android:hint="(&lt;name&gt;)" />
 
 </RelativeLayout>
