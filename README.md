@@ -24,7 +24,7 @@ In addition you can:
 
 
 
-I built MyFriendFlickr as a part of the [Android CodePath Bootcamp](http://thecodepath.com/androidbootcamp).  I released it on the [Google Play Store](https://play.google.com/apps/publish/?dev_acc=16235011570174320988#PricingPlace:p=com.anubis.flickr")
+I built MyFriendFlickr as a part of the [Android CodePath Bootcamp](http://thecodepath.com/androidbootcamp).  I released it on the [Google Play Store](https://play.google.com/apps/publish/?dev_acc=16235011570174320988#PricingPlace:p=com.anubis.flickr)
 
 
 
