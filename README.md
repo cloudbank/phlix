@@ -24,7 +24,7 @@ In addition you can:
 
 
 
-Built myfriendflickr as a part of the [Android CodePath Bootcamp](http://thecodepath.com/androidbootcamp). Released on the [Google Play Store]
+I built MyFriendFlickr as a part of the [Android CodePath Bootcamp](http://thecodepath.com/androidbootcamp).  I released it on the [Google Play Store](https://play.google.com/apps/publish/?dev_acc=16235011570174320988#PricingPlace:p=com.anubis.flickr")
 
 
 
@@ -49,7 +49,7 @@ It also uses many other open source libraries such as:
  * [codepath-oauth](https://github.com/thecodepath/android-oauth-handler)
  * [UniversalImageLoader](https://github.com/nostra13/Android-Universal-Image-Loader)
  * [ActiveAndroid](https://github.com/pardom/ActiveAndroid)
- * [simple-crop-image]
+ * [simple-crop-image] (https://github.com/biokys/cropimage)
  
 
 
