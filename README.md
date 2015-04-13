@@ -50,7 +50,7 @@ It also uses many other open source libraries such as:
  * [UniversalImageLoader](https://github.com/nostra13/Android-Universal-Image-Loader)
  * [ActiveAndroid](https://github.com/pardom/ActiveAndroid)
  * [simple-crop-image]
- * [Gradle](https://github.com/gradle/gradle)
+ 
 
 
 
