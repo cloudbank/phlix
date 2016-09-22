@@ -47,12 +47,12 @@ It also uses many other open source libraries such as:
  
  * [Retrofit]()
  * [RxJava]()
- * []()
+ 
  * [Picasso]()
- * 
+ * [Jackson]()  Streaming treemap for fastest JSON parsing available
  * [ActiveAndroid](https://github.com/pardom/ActiveAndroid)
  * [simple-crop-image] (https://github.com/biokys/cropimage)
- 
+ * [GCM]()  w content provider and sync adapter impl
 
 
 
