@@ -1,4 +1,4 @@
-# My Friend Flickr v 1.0
+# My Friend Flickr v 2.0
 
 An android client for logging in to Flickr which allows you to view photos from:
 
@@ -43,11 +43,13 @@ This project uses the [Flickr API] ( https://www.flickr.com/services/api/)
 
 It also uses many other open source libraries such as:
 
- * [CodePath Rest-Client-Template](https://github.com/thecodepath/android-rest-client-template)
- * [scribe-java](https://github.com/fernandezpablo85/scribe-java)
- * [Android Async HTTP](https://github.com/loopj/android-async-http)
- * [codepath-oauth](https://github.com/thecodepath/android-oauth-handler)
- * [UniversalImageLoader](https://github.com/nostra13/Android-Universal-Image-Loader)
+ * [OAuthKit]()-- a helper lib for OAuth1.0a with signpost to easily hook into retrofit
+ 
+ * [Retrofit]()
+ * [RxJava]()
+ * []()
+ * [Picasso]()
+ * 
  * [ActiveAndroid](https://github.com/pardom/ActiveAndroid)
  * [simple-crop-image] (https://github.com/biokys/cropimage)
  
