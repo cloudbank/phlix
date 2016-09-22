@@ -19,8 +19,6 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
-import com.anubis.flickr.FlickrClient;
-import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.activity.LoginActivity;
@@ -48,7 +46,6 @@ public abstract class FlickrBaseFragment extends Fragment {
     private static final int POST_PHOTO_CODE = 4;
     public final String APP_TAG = "FlickrApp";
     public String photoFileName = "photo.jpg";
-    protected FlickrClient client;
     File mediaStorageDir;
     ArrayList<FlickrPhoto> mPhotoItems;
     PhotoArrayAdapter mAdapter;
@@ -99,7 +96,6 @@ public abstract class FlickrBaseFragment extends Fragment {
 
         page = getArguments().getInt(PAGE, 0);
         title = getArguments().getString(TITLE);
-        client = FlickrClientApp.getRestClient();
         mPhotoItems = new ArrayList<FlickrPhoto>();
         mAdapter = new PhotoArrayAdapter(getActivity(), mPhotoItems);
 
@@ -200,7 +196,10 @@ public abstract class FlickrBaseFragment extends Fragment {
     }
 
     public void signOut() {
-        FlickrClientApp.getRestClient().clearAccessToken();
+
+       // FlickrClientApp.getRestClient().clearAccessToken();
+
+
         Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.bye), Toast.LENGTH_LONG).show();
         Intent bye = new Intent(getActivity(), LoginActivity.class);
         startActivity(bye);

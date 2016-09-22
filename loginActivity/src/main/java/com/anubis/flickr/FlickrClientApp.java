@@ -2,17 +2,33 @@ package com.anubis.flickr;
 
 import android.content.Context;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.anubis.flickr.service.FlickrService;
+import com.anubis.flickr.service.ServiceGenerator;
+
+import retrofit2.converter.jackson.JacksonConverterFactory;
+import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
 
 public class FlickrClientApp extends com.activeandroid.app.Application {
-    private static Context context;
 
-    public static FlickrClient getRestClient() {
-        return (FlickrClient) FlickrClient.getInstance(FlickrClient.class,
-                FlickrClientApp.context);
+
+    private static Context context;
+    private static FlickrService service;
+    private static FlickrClientApp instance;
+
+    public static FlickrClientApp getInstance() {
+        return instance;
+    }
+
+    public static FlickrService getService() {
+        return (FlickrService) service;
+    }
+
+    public static void setService(OkHttpOAuthConsumer consumer, String baseUrl) {
+        service = ServiceGenerator.createRetrofitRxService(consumer, FlickrService.class,baseUrl, JacksonConverterFactory.create());
+    }
+
+    public static Context getContext() {
+        return context;
     }
 
     @Override
@@ -22,7 +38,7 @@ public class FlickrClientApp extends com.activeandroid.app.Application {
 
         // Create global configuration and initialize ImageLoader with this
         // configuration
-        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+       /* DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory()
                 .imageScaleType(ImageScaleType.EXACTLY)
                 .cacheOnDisc()
@@ -34,8 +50,10 @@ public class FlickrClientApp extends com.activeandroid.app.Application {
                 // .threadPriority(Thread.NORM_PRIORITY-2)
                 .build();
 
-        ImageLoader.getInstance().init(config);
+        ImageLoader.getInstance().init(config); */
 
 
     }
+
+
 }

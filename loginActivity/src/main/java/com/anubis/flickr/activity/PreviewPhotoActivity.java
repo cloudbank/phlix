@@ -1,22 +1,17 @@
 package com.anubis.flickr.activity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.anubis.flickr.FlickrClient;
-import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FlickrBaseFragment;
 import com.anubis.flickr.util.ImageFilterProcessor;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 
 public class PreviewPhotoActivity extends FragmentActivity {
     public static final String IMAGE_PNG = "image.png";
@@ -26,7 +21,6 @@ public class PreviewPhotoActivity extends FragmentActivity {
     public static final String PHOTOID_ENDTAG = "</photoid>";
     String filename;
     ProgressDialog dialog;
-    FlickrClient client;
     private Bitmap photoBitmap;
     private Bitmap processedBitmap;
     private EditText etFilename;
@@ -41,7 +35,6 @@ public class PreviewPhotoActivity extends FragmentActivity {
         etFilename = (EditText) findViewById(R.id.etPhotoName);
         photoBitmap = getIntent().getParcelableExtra(FlickrBaseFragment.PHOTO_BITMAP);
         filterProcessor = new ImageFilterProcessor(photoBitmap);
-        client = FlickrClientApp.getRestClient();
         redisplayPreview(ImageFilterProcessor.NONE);
     }
 
@@ -95,6 +88,7 @@ public class PreviewPhotoActivity extends FragmentActivity {
         if (filename.length() == 0) {
             filename = IMAGE_PNG;
         }
+        /*
         client.createPhotoPost(processedBitmap, filename, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int arg0, String id) {
@@ -121,5 +115,7 @@ public class PreviewPhotoActivity extends FragmentActivity {
                 ringProgressDialog.dismiss();
             }
         });
+    }
+    */
     }
 }

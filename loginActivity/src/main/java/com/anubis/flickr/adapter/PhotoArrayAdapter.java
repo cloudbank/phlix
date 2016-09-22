@@ -13,7 +13,7 @@ import com.anubis.flickr.R;
 import com.anubis.flickr.models.FlickrPhoto;
 import com.anubis.flickr.models.FriendsFlickrPhoto;
 import com.anubis.flickr.util.DateUtility;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class PhotoArrayAdapter extends ArrayAdapter<FlickrPhoto> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         FlickrPhoto photo = this.getItem(position);
-        ImageLoader imageLoader = ImageLoader.getInstance();
+        //ImageLoader imageLoader = ImageLoader.getInstance();
         ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
@@ -74,7 +74,11 @@ public class PhotoArrayAdapter extends ArrayAdapter<FlickrPhoto> {
             lp.width = 200; // photo.getPhoto//set the title, name, comments
             viewHolder.ivImage.setLayoutParams(lp);
         }
-        imageLoader.displayImage(photo.getUrl(), viewHolder.ivImage);
+        //imageLoader.displayImage(photo.getUrl(), viewHolder.ivImage);
+        Picasso.with(this.getContext()).load(photo.getUrl()).fit().centerCrop()
+                .placeholder(android.R.drawable.btn_star)
+                .error(android.R.drawable.btn_star)
+                .into(viewHolder.ivImage);
         return convertView;
     }
 

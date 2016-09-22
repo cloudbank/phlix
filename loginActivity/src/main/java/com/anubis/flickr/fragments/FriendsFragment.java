@@ -2,7 +2,6 @@ package com.anubis.flickr.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +9,7 @@ import android.widget.ListView;
 
 import com.anubis.flickr.R;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
-import com.anubis.flickr.models.FlickrPhoto;
 import com.anubis.flickr.models.FriendsFlickrPhoto;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +47,7 @@ public class FriendsFragment extends FlickrBaseFragment {
 
     protected void loadPhotos() {
         clearAdapter();
-        client.getFriendsList(new JsonHttpResponseHandler() {
+      /*  client.getFriendsList(new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(JSONObject json) {
@@ -84,7 +77,7 @@ public class FriendsFragment extends FlickrBaseFragment {
             }
 
         });
-
+*/
     }
 
     @Override

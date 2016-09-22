@@ -11,15 +11,17 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
-import com.anubis.flickr.FlickrClient;
+import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
-import com.codepath.oauth.OAuthLoginActivity;
+import com.anubis.flickr.network.OAuthBaseClient;
 
-public class LoginActivity extends OAuthLoginActivity<FlickrClient> {
+import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
+
+public class LoginActivity extends OAuthLoginActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -41,7 +43,8 @@ public class LoginActivity extends OAuthLoginActivity<FlickrClient> {
     }
 
     @Override
-    public void onLoginSuccess() {
+    public void onLoginSuccess(OkHttpOAuthConsumer consumer, String baseUrl) {
+        FlickrClientApp.setService(consumer, baseUrl);
         Intent i = new Intent(this, PhotosActivity.class);
         startActivity(i);
     }
@@ -67,7 +70,8 @@ public class LoginActivity extends OAuthLoginActivity<FlickrClient> {
             Toast.makeText(this, " You have no network/internet connection",
                     Toast.LENGTH_SHORT).show();
         } else {
-            getClient().connect();
+            OAuthBaseClient client = OAuthBaseClient.getInstance(this, this);
+            client.connect();
         }
         ringProgressDialog.dismiss();
     }

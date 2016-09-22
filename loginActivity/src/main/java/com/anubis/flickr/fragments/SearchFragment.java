@@ -2,8 +2,6 @@ package com.anubis.flickr.fragments;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +17,6 @@ import android.widget.Toast;
 import com.anubis.flickr.R;
 import com.anubis.flickr.models.TagsFlickrPhoto;
 import com.anubis.flickr.util.FlickrUtility;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class SearchFragment extends FlickrBaseFragment {
 
@@ -117,7 +110,7 @@ public class SearchFragment extends FlickrBaseFragment {
     public void loadPhotos(int page, boolean clear) {
         if (clear) {
             clearAdapter();
-        }
+        }/*
         client.search(new JsonHttpResponseHandler() {
 
             @Override
@@ -156,5 +149,7 @@ public class SearchFragment extends FlickrBaseFragment {
             }
 
         }, searchString, page);
+        */
     }
+
 }

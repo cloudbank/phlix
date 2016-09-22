@@ -8,35 +8,35 @@ package eu.janmuller.android.simplecropimage;
 
 public final class R {
 	public static final class drawable {
-		public static final int btn_crop_operator = 0x7f02000a;
-		public static final int btn_crop_pressed = 0x7f02000b;
-		public static final int camera_crop_height = 0x7f02000f;
-		public static final int camera_crop_width = 0x7f020010;
-		public static final int ic_rotate_left = 0x7f020029;
-		public static final int ic_rotate_right = 0x7f02002a;
-		public static final int indicator_autocrop = 0x7f02002b;
-		public static final int selector_crop_button = 0x7f020032;
+		public static final int btn_crop_operator = 0x7f02005d;
+		public static final int btn_crop_pressed = 0x7f02005e;
+		public static final int camera_crop_height = 0x7f020062;
+		public static final int camera_crop_width = 0x7f020063;
+		public static final int ic_rotate_left = 0x7f02007c;
+		public static final int ic_rotate_right = 0x7f02007d;
+		public static final int indicator_autocrop = 0x7f02007e;
+		public static final int selector_crop_button = 0x7f020085;
 	}
 	public static final class id {
-		public static final int discard = 0x7f09000f;
-		public static final int image = 0x7f09000e;
-		public static final int rotateLeft = 0x7f090010;
-		public static final int rotateRight = 0x7f090011;
-		public static final int save = 0x7f090012;
+		public static final int discard = 0x7f0a0061;
+		public static final int image = 0x7f0a0029;
+		public static final int rotateLeft = 0x7f0a0062;
+		public static final int rotateRight = 0x7f0a0063;
+		public static final int save = 0x7f0a0064;
 	}
 	public static final class layout {
-		public static final int cropimage = 0x7f030004;
-		public static final int main = 0x7f030008;
+		public static final int cropimage = 0x7f03001e;
+		public static final int main = 0x7f030022;
 	}
 	public static final class string {
-		public static final int cancel = 0x7f060004;
-		public static final int no_storage_card = 0x7f060009;
-		public static final int not_enough_space = 0x7f06000a;
-		public static final int preparing_card = 0x7f06000c;
-		public static final int save = 0x7f060011;
-		public static final int saving_image = 0x7f060012;
+		public static final int cancel = 0x7f050015;
+		public static final int no_storage_card = 0x7f050016;
+		public static final int not_enough_space = 0x7f050017;
+		public static final int preparing_card = 0x7f050018;
+		public static final int save = 0x7f050019;
+		public static final int saving_image = 0x7f05001a;
 	}
 	public static final class style {
-		public static final int CropButton = 0x7f070005;
+		public static final int CropButton = 0x7f0700c4;
 	}
 }

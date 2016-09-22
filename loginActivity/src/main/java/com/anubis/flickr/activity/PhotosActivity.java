@@ -7,14 +7,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 
-import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FriendsFragment;
 import com.anubis.flickr.fragments.InterestingFragment;
 import com.anubis.flickr.fragments.SearchFragment;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import java.util.ArrayList;
 
@@ -51,7 +48,9 @@ public class PhotosActivity extends FragmentActivity {
     }
 
     private void getLogin() {
-        FlickrClientApp.getRestClient().testLogin(new AsyncHttpResponseHandler() {
+
+      // FlickrClientApp.getService().testLogin
+           /*
             @Override
             public void onFailure(Throwable arg0, String arg1) {
                 Log.e("ERROR", "onFailure getLogin  " + arg0.getMessage() + ": " + arg1);
@@ -63,11 +62,14 @@ public class PhotosActivity extends FragmentActivity {
                         response.indexOf("</username>"));
                        /*.setText("Logged in as : "
                         + response.substring((response.indexOf("<username>")) + 10,
-                                response.indexOf("</username>")));*/
-                ActionBar ab = getActionBar();
-                ab.setSubtitle(mLogin);
-            }
-        });
+                                response.indexOf("</username>")));
+
+
+
+        }); */
+        ActionBar ab = getActionBar();
+        ab.setSubtitle("mLogin");
+
     }
 
     public ArrayList<Fragment> intializeItems() {

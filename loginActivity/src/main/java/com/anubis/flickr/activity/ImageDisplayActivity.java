@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
@@ -13,23 +12,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Scroller;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.anubis.flickr.FlickrClient;
-import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FlickrBaseFragment;
 import com.anubis.flickr.models.FlickrPhoto;
 import com.anubis.flickr.models.FlickrPhoto.Comment;
-import com.anubis.flickr.models.FriendsFlickrPhoto;
 import com.anubis.flickr.util.DateUtility;
-import com.anubis.flickr.util.FlickrUtility;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nostra13.universalimageloader.core.ImageLoader;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -38,7 +27,6 @@ public class ImageDisplayActivity extends Activity {
     WebView wvComments;
     EditText etComments;
     String mUid = "";
-    FlickrClient client = FlickrClientApp.getRestClient();
     Class<FlickrPhoto> type;
     String mContent;
     StringBuilder mBuilder;
@@ -89,6 +77,7 @@ public class ImageDisplayActivity extends Activity {
     }
 
     private void getComments(final String uid) {
+        /*
         client.getComments(new JsonHttpResponseHandler() {
 
             @Override
@@ -120,12 +109,14 @@ public class ImageDisplayActivity extends Activity {
                 }
             }
         }, uid);
-
+        */
     }
 
     public void addComment(View v) {
         String commentString = etComments.getText().toString();
-        if (commentString.length() > 0) {
+        if (commentString.length() > 0) { }
+
+            /*
             client.addComment(new JsonHttpResponseHandler() {
 
                 @Override
@@ -165,6 +156,7 @@ public class ImageDisplayActivity extends Activity {
         } else {
             Toast.makeText(this, R.string.enter_comment, Toast.LENGTH_SHORT).show();
         }
+        */
 
     }
 

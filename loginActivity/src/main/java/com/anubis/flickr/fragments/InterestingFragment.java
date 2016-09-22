@@ -1,7 +1,6 @@
 package com.anubis.flickr.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +9,6 @@ import android.widget.GridView;
 import com.anubis.flickr.R;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.models.InterestingFlickrPhoto;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class InterestingFragment extends FlickrBaseFragment {
 
@@ -49,8 +43,11 @@ public class InterestingFragment extends FlickrBaseFragment {
         if (clear) {
             clearAdapter();
         }
+        /*
         client.getInterestingnessList(new JsonHttpResponseHandler() {
             @Override
+            // @TODO: 9/17/16   get the db work off the main thread
+            //@todo use jackson
             public void onSuccess(JSONObject json) {
                 // Add new photos to SQLite
                 try {
@@ -81,7 +78,9 @@ public class InterestingFragment extends FlickrBaseFragment {
             }
 
         }, page);
+        */
     }
+
 
 
 }
