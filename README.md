@@ -43,7 +43,7 @@ This project uses the [Flickr API] ( https://www.flickr.com/services/api/)
 
 It also uses many other open source libraries such as:
 
- * [OAuthKit]()-- a helper lib for OAuth1.0a with signpost to easily hook into retrofit
+ * [OAuthKit]()-- a helper lib for OAuth1.0a/2.0 with okhttp and signpost to easily hook into retrofit
  
  * [Retrofit]()
  * [RxJava]()
