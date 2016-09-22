@@ -46,7 +46,7 @@ It also uses many other open source libraries such as:
  * [OAuthKit]()-- a helper lib for OAuth1.0a/2.0 with okhttp and signpost to easily hook into retrofit
  
  * [Retrofit]()
- * [RxJava]()
+ * [RxJava]() Observable for easy, reliable threading and beautiful code
  
  * [Picasso]()
  * [Jackson]()  Streaming treemap for fastest JSON parsing available
