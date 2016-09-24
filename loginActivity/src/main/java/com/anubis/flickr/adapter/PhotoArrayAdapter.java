@@ -10,24 +10,23 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.anubis.flickr.R;
-import com.anubis.flickr.models.FlickrPhoto;
-import com.anubis.flickr.models.FriendsFlickrPhoto;
+import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.util.DateUtility;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class PhotoArrayAdapter extends ArrayAdapter<FlickrPhoto> {
+public class PhotoArrayAdapter extends ArrayAdapter<Photo> {
     private int mLayout = 0;
 
     //@todo is there a better pattern
-    public PhotoArrayAdapter(Context context, List<FlickrPhoto> photoList,
+    public PhotoArrayAdapter(Context context, List<Photo> photoList,
                              boolean listview) {
         super(context, R.layout.photo_item_friends, photoList);
         this.mLayout = R.layout.photo_item_friends;
     }
 
-    public PhotoArrayAdapter(Context context, List<FlickrPhoto> photoList) {
+    public PhotoArrayAdapter(Context context, List<Photo> photoList) {
         super(context, R.layout.photo_item, photoList);
         this.mLayout = R.layout.photo_item;
 
@@ -35,7 +34,8 @@ public class PhotoArrayAdapter extends ArrayAdapter<FlickrPhoto> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        FlickrPhoto photo = this.getItem(position);
+
+        Photo photo = this.getItem(position);
         //ImageLoader imageLoader = ImageLoader.getInstance();
         ViewHolder viewHolder;
         if (convertView == null) {
@@ -62,16 +62,16 @@ public class PhotoArrayAdapter extends ArrayAdapter<FlickrPhoto> {
             lp.width = 600; //
             viewHolder.ivImage.setLayoutParams(lp);
 
-            viewHolder.name.setText(((FriendsFlickrPhoto) photo).getName());
+            viewHolder.name.setText( photo.getOwnername());
             viewHolder.title.setText(photo.getTitle());
-            viewHolder.timestamp.setText(DateUtility.relativeTime(photo.getDateTaken(),
+            viewHolder.timestamp.setText(DateUtility.relativeTime(photo.getDatetaken(),
                     this.getContext()));
 
         } else {
             RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) viewHolder.ivImage
                     .getLayoutParams();
             lp.height = 200; // photo.getPhotoHeight() * 2;
-            lp.width = 200; // photo.getPhoto//set the title, name, comments
+            lp.width = 200; // photo.getPhotoList//set the title, name, comments
             viewHolder.ivImage.setLayoutParams(lp);
         }
         //imageLoader.displayImage(photo.getUrl(), viewHolder.ivImage);

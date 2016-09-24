@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/sabine/github/myfriendflickr2016/myfriendflickr/loginActivity/build/intermediates/res/merged/debug/values-hdpi-v4/values-hdpi-v4.xml",
+        "outputFile": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 327
                 },
                 "from": {
-                    "file": "/Users/sabine/github/myfriendflickr2016/myfriendflickr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-hdpi-v4/values-hdpi-v4.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

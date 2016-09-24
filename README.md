@@ -14,7 +14,7 @@ An android client for logging in to Flickr which allows you to view photos from:
 
 In addition you can:
 
-* View and add photo comments
+* View and add photoList comments
 * Take your own pictures with the camera! 
 
 <img src="http://i.imgur.com/FeW5ryx.png" height="545" />

@@ -88,7 +88,7 @@ public class OAuthBaseClient {
                     intent.setFlags(OAuthBaseClient.this.requestIntentFlags);
 
                 }
-                OAuthBaseClient.this.client.setConsumer(consumer);
+                //OAuthBaseClient.this.client.setConsumer(consumer);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 OAuthBaseClient.this.context.startActivity(intent);
             }
@@ -118,6 +118,7 @@ public class OAuthBaseClient {
     }
 
     public void connect() {
+
         this.client.fetchRequestToken();
     }
 

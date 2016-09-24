@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.anubis.flickr.service.FlickrService;
 import com.anubis.flickr.service.ServiceGenerator;
+import com.facebook.stetho.Stetho;
 
 import retrofit2.converter.jackson.JacksonConverterFactory;
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
@@ -35,6 +36,8 @@ public class FlickrClientApp extends com.activeandroid.app.Application {
     public void onCreate() {
         super.onCreate();
         FlickrClientApp.context = this;
+        Stetho.initializeWithDefaults(this);
+
 
         // Create global configuration and initialize ImageLoader with this
         // configuration

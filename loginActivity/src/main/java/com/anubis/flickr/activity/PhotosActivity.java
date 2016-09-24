@@ -1,19 +1,30 @@
 package com.anubis.flickr.activity;
 
 import android.app.ActionBar;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
+import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FriendsFragment;
 import com.anubis.flickr.fragments.InterestingFragment;
 import com.anubis.flickr.fragments.SearchFragment;
+import com.anubis.flickr.models.User;
 
 import java.util.ArrayList;
+
+import retrofit2.adapter.rxjava.HttpException;
+import rx.Observable;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class PhotosActivity extends FragmentActivity {
 
@@ -21,6 +32,9 @@ public class PhotosActivity extends FragmentActivity {
     private MyPagerAdapter adapterViewPager;
     private ViewPager vpPager;
     private String username;
+    protected SharedPreferences prefs;
+    protected SharedPreferences.Editor editor;
+    private Subscription subscription;
 
     public ViewPager getVpPager() {
         return vpPager;
@@ -39,6 +53,9 @@ public class PhotosActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_photos);
+        this.prefs = this.getBaseContext().getSharedPreferences("user_prefs", 0);
+        this.editor = this.prefs.edit();
+
         getLogin();
 
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager(), intializeItems());
@@ -48,27 +65,38 @@ public class PhotosActivity extends FragmentActivity {
     }
 
     private void getLogin() {
+        Observable<User> call =FlickrClientApp.getService().testLogin();
+         subscription = call
+                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<User>() {
+                    @Override
+                    public void onCompleted() {
+                        //Log.d("DEBUG","oncompleted");
 
-      // FlickrClientApp.getService().testLogin
-           /*
-            @Override
-            public void onFailure(Throwable arg0, String arg1) {
-                Log.e("ERROR", "onFailure getLogin  " + arg0.getMessage() + ": " + arg1);
-            }
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        // cast to retrofit.HttpException to get the response code
+                        if (e instanceof HttpException) {
+                            HttpException response = (HttpException)e;
+                            int code = response.code();
+                            Log.e("ERROR",  String.valueOf(code));
+                        }
+                        Log.e("ERROR",  "error getting login" + e);
+                    }
 
-            @Override
-            public void onSuccess(String response) {
-                mLogin = response.substring((response.indexOf("<username>")) + 10,
-                        response.indexOf("</username>"));
-                       /*.setText("Logged in as : "
-                        + response.substring((response.indexOf("<username>")) + 10,
-                                response.indexOf("</username>")));
-
-
-
-        }); */
-        ActionBar ab = getActionBar();
-        ab.setSubtitle("mLogin");
+                    @Override
+                    public void onNext(User u ) {
+                       // Log.d("DEBUG","mlogin: "+ u.getUser().getUsername().getContent());
+                        mLogin = u.getUser().getUsername().getContent();
+                        //store user in db
+                        editor.putString("username",mLogin);
+                        editor.putString("user_id", u.getUser().getId());
+                        editor.commit();
+                        ActionBar ab = getActionBar();
+                        ab.setSubtitle(mLogin);
+                    }
+                });
 
     }
 
@@ -144,5 +172,10 @@ public class PhotosActivity extends FragmentActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        this.subscription.unsubscribe();
+        super.onDestroy();
 
+    }
 }

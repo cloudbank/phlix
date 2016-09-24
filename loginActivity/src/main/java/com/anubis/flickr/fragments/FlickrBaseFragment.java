@@ -28,6 +28,7 @@ import com.anubis.flickr.activity.PreviewPhotoActivity;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.listener.EndlessScrollListener;
 import com.anubis.flickr.models.FlickrPhoto;
+import com.anubis.flickr.models.Photo;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public abstract class FlickrBaseFragment extends Fragment {
     public final String APP_TAG = "FlickrApp";
     public String photoFileName = "photo.jpg";
     File mediaStorageDir;
-    ArrayList<FlickrPhoto> mPhotoItems;
+    ArrayList<Photo> mPhotoItems;
     PhotoArrayAdapter mAdapter;
     AbsListView vPhotos;
     Class<? extends FlickrPhoto> mType;
@@ -58,7 +59,7 @@ public abstract class FlickrBaseFragment extends Fragment {
                                 int position, long arg3) {
             Intent intent = new Intent(getActivity(),
                     ImageDisplayActivity.class);
-            FlickrPhoto result = mPhotoItems.get(position);
+            Photo result = mPhotoItems.get(position);
             intent.putExtra(RESULT, result);
             intent.putExtra(TYPE, mType);
             startActivity(intent);
@@ -96,7 +97,7 @@ public abstract class FlickrBaseFragment extends Fragment {
 
         page = getArguments().getInt(PAGE, 0);
         title = getArguments().getString(TITLE);
-        mPhotoItems = new ArrayList<FlickrPhoto>();
+        mPhotoItems = new ArrayList<Photo>();
         mAdapter = new PhotoArrayAdapter(getActivity(), mPhotoItems);
 
 

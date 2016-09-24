@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/sabine/github/myfriendflickr2016/myfriendflickr/loginActivity/build/intermediates/res/merged/debug/values-port/values-port.xml",
+        "outputFile": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 106
                 },
                 "from": {
-                    "file": "/Users/sabine/github/myfriendflickr2016/myfriendflickr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-port/values-port.xml",
+                    "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-port/values-port.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

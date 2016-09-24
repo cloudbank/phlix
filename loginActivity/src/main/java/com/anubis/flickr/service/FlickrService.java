@@ -1,11 +1,10 @@
 package com.anubis.flickr.service;
 
-import com.anubis.flickr.models.FlickrPhoto;
-
-import java.util.Map;
+import com.anubis.flickr.models.Photos;
+import com.anubis.flickr.models.User;
 
 import retrofit2.http.GET;
-import retrofit2.http.QueryMap;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -15,15 +14,25 @@ import rx.Observable;
 public interface FlickrService {
 
 
-    public static final String API_BASE_URL = "https://api.flickr.com/services/rest";
+    public static final String API_BASE_URL = "https://api.flickr.com/services/rest/";
 
     public static final String API_CALLBACK_URL = "oauth://cprest";
 
-    @GET("forecast/daily?")
-    Observable<FlickrPhoto> sevenDayForecast(
-            @QueryMap Map<String, String> options );
+    @GET(API_BASE_URL+"?method=flickr.test.login&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0")
+    Observable<User> testLogin();
+
+    @GET(API_BASE_URL+"?method=flickr.photos.getContactsPublicPhotos&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&just_friends=1&extras=date_taken,owner_name&count=50&include_self=1")
+    Observable<Photos> getFriendsPhotos(@Query("user_id") String userId);
 
 /*
+ public void getFriendsList(AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("?api_key="
+                + REST_CONSUMER_KEY
+                + "&format=json&nojsoncallback=1&user_id=30840477%40N06&just_friends=1&extras=date_taken,owner_name&count=50&include_self=1&method=flickr.photos.getContactsPublicPhotos");
+        //Log.d("DEBUG", "Sending API call to " + apiUrl);
+        client.get(apiUrl, null, handler);
+    }
+
 
     public void getInterestingnessList(AsyncHttpResponseHandler handler, int page) {
         String apiUrl = getApiUrl("?api_key=" + REST_CONSUMER_KEY
@@ -33,13 +42,7 @@ public interface FlickrService {
         client.get(apiUrl, null, handler);
     }
 
-    public void getFriendsList(AsyncHttpResponseHandler handler) {
-        String apiUrl = getApiUrl("?api_key="
-                + REST_CONSUMER_KEY
-                + "&format=json&nojsoncallback=1&user_id=30840477%40N06&just_friends=1&extras=date_taken,owner_name&count=50&include_self=1&method=flickr.photos.getContactsPublicPhotos");
-        //Log.d("DEBUG", "Sending API call to " + apiUrl);
-        client.get(apiUrl, null, handler);
-    }
+
 
     public void getComments(AsyncHttpResponseHandler handler, String uid) {
         String apiUrl = getApiUrl("?api_key=" + REST_CONSUMER_KEY
