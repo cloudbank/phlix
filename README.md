@@ -1,4 +1,4 @@
-# My Friend Flickr v 1.0
+# My Friend Flickr v 2.0
 
 An android client for logging in to Flickr which allows you to view photos from:
 
@@ -24,7 +24,7 @@ In addition you can:
 
 
 
-I built MyFriendFlickr as a part of the [Android CodePath Bootcamp](http://thecodepath.com/androidbootcamp).  I released it on the [Google Play Store](https://play.google.com/store/apps/details?id=com.anubis.flickr)
+ on the [Google Play Store](https://play.google.com/store/apps/details?id=com.anubis.flickr)
 
 
 
@@ -43,14 +43,16 @@ This project uses the [Flickr API] ( https://www.flickr.com/services/api/)
 
 It also uses many other open source libraries such as:
 
- * [CodePath Rest-Client-Template](https://github.com/thecodepath/android-rest-client-template)
- * [scribe-java](https://github.com/fernandezpablo85/scribe-java)
- * [Android Async HTTP](https://github.com/loopj/android-async-http)
- * [codepath-oauth](https://github.com/thecodepath/android-oauth-handler)
- * [UniversalImageLoader](https://github.com/nostra13/Android-Universal-Image-Loader)
+ * [OAuthKit]()-- a helper lib for OAuth1.0a/2.0 with okhttp and signpost to easily hook into retrofit
+ 
+ * [Retrofit]()
+ * [RxJava]() Observable for easy, reliable threading and beautiful code
+ 
+ * [Picasso]()
+ * [Jackson]()  Streaming treemap for fastest JSON parsing available
  * [ActiveAndroid](https://github.com/pardom/ActiveAndroid)
  * [simple-crop-image] (https://github.com/biokys/cropimage)
- 
+ * [GCM]()  w content provider and sync adapter impl
 
 
 
