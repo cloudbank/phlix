@@ -1,6 +1,8 @@
 package com.anubis.flickr.fragments;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,8 +13,9 @@ import android.widget.ListView;
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
-import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.FriendsFlickrPhoto;
+import com.anubis.flickr.models.Photos;
+import com.anubis.flickr.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +25,7 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 public class FriendsFragment extends FlickrBaseFragment {
@@ -30,7 +34,8 @@ public class FriendsFragment extends FlickrBaseFragment {
     List<FriendsFlickrPhoto.Comment> comments;
     private ArrayList<FriendsFlickrPhoto> extraPhotos;
     private Subscription subscription;
-
+    private String username;
+    private Photos mPhotos;
     protected PhotoArrayAdapter getAdapter() {
         return mAdapter;
     }
@@ -46,25 +51,42 @@ public class FriendsFragment extends FlickrBaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAdapter = new PhotoArrayAdapter(getActivity(), mPhotoItems, true);
+
+        getLogin();
         mType = FriendsFlickrPhoto.class;
         setRetainInstance(true);
-        loadPhotos();
+        ActionBar ab = getActivity().getActionBar();
+        ab.setSubtitle(username);
+
     }
+
+
 
     void customLoadMoreDataFromApi(int page) {
         //@todo add the endless scroll
 
     }
 
-    protected void loadPhotos() {
-        clearAdapter();
-        String userId = this.getContext().getSharedPreferences("user_prefs", 0).getString("user_id","");
-        Observable<Photos> call = FlickrClientApp.getService().getFriendsPhotos(userId);
-        this.subscription = call
-                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<Photos>() {
+    private void getLogin() {
+        final ProgressDialog ringProgressDialog = new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
+        ringProgressDialog.setTitle("Please wait");
+        ringProgressDialog.setMessage("Retrieving data");
+        ringProgressDialog.setCancelable(true);
+        ringProgressDialog.show();
+        subscription =  FlickrClientApp.getService().testLogin()
+                .concatMap(new Func1<User, Observable<Photos>>() {
+                    @Override
+                    public Observable<Photos> call(User user) {
+                        username = user.getUser().getUsername().getContent();
+                        return FlickrClientApp.getService().getFriendsPhotos(user.getUser().getId());
+
+                    }
+                }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Photos>() {
                     @Override
                     public void onCompleted() {
+                        ringProgressDialog.dismiss();
                         //Log.d("DEBUG","oncompleted");
 
                     }
@@ -76,17 +98,22 @@ public class FriendsFragment extends FlickrBaseFragment {
                             int code = response.code();
                             Log.e("ERROR",  String.valueOf(code));
                         }
-                        Log.e("ERROR",  "error getting friends' photos" + e);
+                        Log.e("ERROR",  "error getting login/photos" + e);
                     }
 
                     @Override
-                    public void onNext(Photos photos ) {
-                        mAdapter.addAll((List)photos.getPhotoList());
-
+                    public void onNext(Photos p ) {
                         // Log.d("DEBUG","mlogin: "+ u.getUser().getUsername().getContent());
-
+                        //pass photos to fragment
+                        mAdapter.addAll(p.getPhotoList());
                     }
                 });
+
+    }
+
+    protected void loadPhotos() {
+       // clearAdapter();
+       // String userId = this.getContext().getSharedPreferences("user_prefs", 0).getString("user_id","");
 
 
 
@@ -125,10 +152,12 @@ public class FriendsFragment extends FlickrBaseFragment {
 
     @Override
     public void onDestroy() {
-        this.subscription.unsubscribe();
+        //this.subscription.unsubscribe();
         super.onDestroy();
 
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -141,6 +170,7 @@ public class FriendsFragment extends FlickrBaseFragment {
         setHasOptionsMenu(true);
         return view;
     }
+
 
 
 }

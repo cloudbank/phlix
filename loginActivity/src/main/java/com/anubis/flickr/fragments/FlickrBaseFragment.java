@@ -32,6 +32,7 @@ import com.anubis.flickr.models.Photo;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import eu.janmuller.android.simplecropimage.CropImage;
 
@@ -48,7 +49,7 @@ public abstract class FlickrBaseFragment extends Fragment {
     public final String APP_TAG = "FlickrApp";
     public String photoFileName = "photo.jpg";
     File mediaStorageDir;
-    ArrayList<Photo> mPhotoItems;
+    List<Photo> mPhotoItems;
     PhotoArrayAdapter mAdapter;
     AbsListView vPhotos;
     Class<? extends FlickrPhoto> mType;

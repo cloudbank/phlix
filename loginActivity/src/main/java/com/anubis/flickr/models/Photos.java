@@ -15,7 +15,7 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "photoList",
+    "photo",
     "total",
     "page",
     "per_page",
@@ -23,7 +23,7 @@ import java.util.Map;
 })
 public class Photos {
 
-    @JsonProperty("photoList")
+    @JsonProperty("photo")
     private List<Photo> photoList = new ArrayList<Photo>();
     @JsonProperty("total")
     private Integer total;

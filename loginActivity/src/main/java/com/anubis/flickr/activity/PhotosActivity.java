@@ -1,6 +1,5 @@
 package com.anubis.flickr.activity;
 
-import android.app.ActionBar;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +14,7 @@ import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FriendsFragment;
 import com.anubis.flickr.fragments.InterestingFragment;
 import com.anubis.flickr.fragments.SearchFragment;
+import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.User;
 
 import java.util.ArrayList;
@@ -24,17 +24,18 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 public class PhotosActivity extends FragmentActivity {
 
-    String mLogin;
     private MyPagerAdapter adapterViewPager;
     private ViewPager vpPager;
-    private String username;
+
     protected SharedPreferences prefs;
     protected SharedPreferences.Editor editor;
     private Subscription subscription;
+    private Photos mPhotos;
 
     public ViewPager getVpPager() {
         return vpPager;
@@ -56,19 +57,27 @@ public class PhotosActivity extends FragmentActivity {
         this.prefs = this.getBaseContext().getSharedPreferences("user_prefs", 0);
         this.editor = this.prefs.edit();
 
-        getLogin();
+        //getLogin();
 
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager(), intializeItems());
         vpPager = (ViewPager) findViewById(R.id.vpPager);
         vpPager.setOffscreenPageLimit(2);
         vpPager.setAdapter(adapterViewPager);
+
     }
 
     private void getLogin() {
-        Observable<User> call =FlickrClientApp.getService().testLogin();
-         subscription = call
-                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<User>() {
+         subscription =  FlickrClientApp.getService().testLogin()
+            .concatMap(new Func1<User, Observable<Photos>>() {
+                @Override
+                public Observable<Photos> call(User user) {
+                    //username = user.getUser().getUsername().getContent();
+                    return FlickrClientApp.getService().getFriendsPhotos(user.getUser().getId());
+
+                }
+            }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .observeOn(AndroidSchedulers.mainThread())
+                     .subscribe(new Subscriber<Photos>() {
                     @Override
                     public void onCompleted() {
                         //Log.d("DEBUG","oncompleted");
@@ -82,19 +91,14 @@ public class PhotosActivity extends FragmentActivity {
                             int code = response.code();
                             Log.e("ERROR",  String.valueOf(code));
                         }
-                        Log.e("ERROR",  "error getting login" + e);
+                        Log.e("ERROR",  "error getting login/photos" + e);
                     }
 
                     @Override
-                    public void onNext(User u ) {
+                    public void onNext(Photos p ) {
                        // Log.d("DEBUG","mlogin: "+ u.getUser().getUsername().getContent());
-                        mLogin = u.getUser().getUsername().getContent();
-                        //store user in db
-                        editor.putString("username",mLogin);
-                        editor.putString("user_id", u.getUser().getId());
-                        editor.commit();
-                        ActionBar ab = getActionBar();
-                        ab.setSubtitle(mLogin);
+                       //pass photos to fragment
+                        mPhotos = p;
                     }
                 });
 

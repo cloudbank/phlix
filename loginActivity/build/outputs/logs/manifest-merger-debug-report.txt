@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:2:1-63:12
+ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:2:1-67:12
 	package
 		ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:3:5-32
 		INJECTED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml
@@ -32,7 +32,7 @@ ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main
 	android:name
 		ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:12:22-76
 application
-ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:14:5-61:19
+ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:14:5-65:19
 MERGED from [com.android.support:appcompat-v7:24.2.1] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:24.2.1] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:24.2.1] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/AndroidManifest.xml:25:5-20
@@ -42,6 +42,8 @@ MERGED from [com.android.support:support-core-ui:24.2.1] /Users/sabine/github/my
 MERGED from [com.android.support:support-fragment:24.2.1] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-vector-drawable:24.2.1] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/AndroidManifest.xml:23:5-20
 MERGED from [com.android.support:animated-vector-drawable:24.2.1] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-appindexing:8.4.0] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/AndroidManifest.xml:19:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:20:5-24:19
 	android:label
 		ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:18:9-41
 	android:allowBackup
@@ -128,6 +130,13 @@ service#com.anubis.flickr.service.PollService
 ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:60:9-64
 	android:name
 		ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:60:18-53
+meta-data#com.google.android.gms.version
+ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:62:9-64:69
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:64:13-66
+	android:name
+		ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:63:13-58
 uses-sdk
 INJECTED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [flockr:pullToRefreshListView:unspecified] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/flockr/pullToRefreshListView/unspecified/AndroidManifest.xml:7:5-9:40
@@ -141,6 +150,9 @@ MERGED from [com.android.support:support-fragment:24.2.1] /Users/sabine/github/m
 MERGED from [com.android.support:support-vector-drawable:24.2.1] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/AndroidManifest.xml:21:5-43
 MERGED from [com.android.support:animated-vector-drawable:24.2.1] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/AndroidManifest.xml:20:5-44
 MERGED from [io.reactivex:rxandroid:1.2.1] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/io.reactivex/rxandroid/1.2.1/AndroidManifest.xml:19:5-43
+MERGED from [com.google.android.gms:play-services-appindexing:8.4.0] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-base:8.4.0] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/AndroidManifest.xml:18:5-42
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:24.2.1] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
@@ -150,6 +162,6 @@ MERGED from [io.reactivex:rxandroid:1.2.1] /Users/sabine/github/myfriendflickr20
 		INJECTED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml
 		INJECTED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml
 android:uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:2:1-63:12 reason: eu.janmuller.android.simplecropimage has a targetSdkVersion < 4
+IMPLIED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:2:1-67:12 reason: eu.janmuller.android.simplecropimage has a targetSdkVersion < 4
 android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:2:1-63:12 reason: eu.janmuller.android.simplecropimage requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:2:1-67:12 reason: eu.janmuller.android.simplecropimage requested WRITE_EXTERNAL_STORAGE
