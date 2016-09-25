@@ -118,7 +118,6 @@ public class OAuthBaseClient {
     }
 
     public void connect() {
-
         this.client.fetchRequestToken();
     }
 

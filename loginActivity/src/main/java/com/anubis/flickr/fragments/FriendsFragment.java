@@ -39,7 +39,7 @@ public class FriendsFragment extends FlickrBaseFragment {
     protected PhotoArrayAdapter getAdapter() {
         return mAdapter;
     }
-
+    ProgressDialog ringProgressDialog;
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -51,12 +51,13 @@ public class FriendsFragment extends FlickrBaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAdapter = new PhotoArrayAdapter(getActivity(), mPhotoItems, true);
+        ringProgressDialog= new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
 
-        getLogin();
+        getPhotos();
+
         mType = FriendsFlickrPhoto.class;
         setRetainInstance(true);
-        ActionBar ab = getActivity().getActionBar();
-        ab.setSubtitle(username);
+
 
     }
 
@@ -67,10 +68,9 @@ public class FriendsFragment extends FlickrBaseFragment {
 
     }
 
-    private void getLogin() {
-        final ProgressDialog ringProgressDialog = new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
+    private void getPhotos() {
         ringProgressDialog.setTitle("Please wait");
-        ringProgressDialog.setMessage("Retrieving data");
+        ringProgressDialog.setMessage("Retrieving photos");
         ringProgressDialog.setCancelable(true);
         ringProgressDialog.show();
         subscription =  FlickrClientApp.getService().testLogin()
@@ -78,6 +78,7 @@ public class FriendsFragment extends FlickrBaseFragment {
                     @Override
                     public Observable<Photos> call(User user) {
                         username = user.getUser().getUsername().getContent();
+
                         return FlickrClientApp.getService().getFriendsPhotos(user.getUser().getId());
 
                     }
@@ -86,6 +87,11 @@ public class FriendsFragment extends FlickrBaseFragment {
                 .subscribe(new Subscriber<Photos>() {
                     @Override
                     public void onCompleted() {
+                        ActionBar ab = getActivity().getActionBar();
+                        ab.setSubtitle(username);
+
+
+
                         ringProgressDialog.dismiss();
                         //Log.d("DEBUG","oncompleted");
 
@@ -103,9 +109,11 @@ public class FriendsFragment extends FlickrBaseFragment {
 
                     @Override
                     public void onNext(Photos p ) {
-                        // Log.d("DEBUG","mlogin: "+ u.getUser().getUsername().getContent());
+                        Log.d("DEBUG","mlogin: "+ p);
                         //pass photos to fragment
-                        mAdapter.addAll(p.getPhotoList());
+                        mPhotos = p;
+                        mPhotoItems.addAll(mPhotos.getPhotos().getPhotoList());
+                        mAdapter.notifyDataSetChanged();
                     }
                 });
 
@@ -152,8 +160,9 @@ public class FriendsFragment extends FlickrBaseFragment {
 
     @Override
     public void onDestroy() {
-        //this.subscription.unsubscribe();
         super.onDestroy();
+        this.subscription.unsubscribe();
+
 
     }
 

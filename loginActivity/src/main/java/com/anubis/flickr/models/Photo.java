@@ -14,20 +14,22 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "id",
-        "secret",
-        "server",
-        "farm",
-        "owner",
-        "username",
-        "title",
-        "ispublic",
-        "isfriend",
-        "isfamily",
-        "ownername",
-        "datetaken"
-        })
-public class Photo  implements Serializable  {
+    "id",
+    "secret",
+    "server",
+    "farm",
+    "owner",
+    "username",
+    "title",
+    "ispublic",
+    "isfriend",
+    "isfamily",
+    "datetaken",
+    "datetakengranularity",
+    "datetakenunknown",
+    "ownername"
+})
+public class Photo implements Serializable {
 
     @JsonProperty("id")
     private String id;
@@ -49,17 +51,20 @@ public class Photo  implements Serializable  {
     private Integer isfriend;
     @JsonProperty("isfamily")
     private Integer isfamily;
-    @JsonProperty("ownername")
-    private String ownername;
     @JsonProperty("datetaken")
     private String datetaken;
-
-
+    @JsonProperty("datetakengranularity")
+    private String datetakengranularity;
+    @JsonProperty("datetakenunknown")
+    private Integer datetakenunknown;
+    @JsonProperty("ownername")
+    private String ownername;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     private String url;
 
+    //@todo set before save
     public void setUrl(Photo p) {
 
         this.url = "http://farm" + p.getFarm()
@@ -70,12 +75,16 @@ public class Photo  implements Serializable  {
     }
 
     public String getUrl() {
-        return this.url;
+        return "http://farm" + this.getFarm()
+                + ".staticflickr.com/" + this.getServer() + "/"
+                + getId() + "_" + this.getSecret() + ".jpg";
 
     }
 
     /**
-     * @return The id
+     * 
+     * @return
+     *     The id
      */
     @JsonProperty("id")
     public String getId() {
@@ -83,7 +92,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @param id The id
+     * 
+     * @param id
+     *     The id
      */
     @JsonProperty("id")
     public void setId(String id) {
@@ -91,7 +102,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @return The secret
+     * 
+     * @return
+     *     The secret
      */
     @JsonProperty("secret")
     public String getSecret() {
@@ -99,7 +112,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @param secret The secret
+     * 
+     * @param secret
+     *     The secret
      */
     @JsonProperty("secret")
     public void setSecret(String secret) {
@@ -107,7 +122,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @return The server
+     * 
+     * @return
+     *     The server
      */
     @JsonProperty("server")
     public String getServer() {
@@ -115,7 +132,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @param server The server
+     * 
+     * @param server
+     *     The server
      */
     @JsonProperty("server")
     public void setServer(String server) {
@@ -123,7 +142,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @return The farm
+     * 
+     * @return
+     *     The farm
      */
     @JsonProperty("farm")
     public Integer getFarm() {
@@ -131,7 +152,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @param farm The farm
+     * 
+     * @param farm
+     *     The farm
      */
     @JsonProperty("farm")
     public void setFarm(Integer farm) {
@@ -139,7 +162,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @return The owner
+     * 
+     * @return
+     *     The owner
      */
     @JsonProperty("owner")
     public String getOwner() {
@@ -147,7 +172,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @param owner The owner
+     * 
+     * @param owner
+     *     The owner
      */
     @JsonProperty("owner")
     public void setOwner(String owner) {
@@ -155,7 +182,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @return The username
+     * 
+     * @return
+     *     The username
      */
     @JsonProperty("username")
     public String getUsername() {
@@ -163,7 +192,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @param username The username
+     * 
+     * @param username
+     *     The username
      */
     @JsonProperty("username")
     public void setUsername(String username) {
@@ -171,7 +202,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @return The title
+     * 
+     * @return
+     *     The title
      */
     @JsonProperty("title")
     public String getTitle() {
@@ -179,7 +212,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @param title The title
+     * 
+     * @param title
+     *     The title
      */
     @JsonProperty("title")
     public void setTitle(String title) {
@@ -187,7 +222,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @return The ispublic
+     * 
+     * @return
+     *     The ispublic
      */
     @JsonProperty("ispublic")
     public Integer getIspublic() {
@@ -195,7 +232,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @param ispublic The ispublic
+     * 
+     * @param ispublic
+     *     The ispublic
      */
     @JsonProperty("ispublic")
     public void setIspublic(Integer ispublic) {
@@ -203,7 +242,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @return The isfriend
+     * 
+     * @return
+     *     The isfriend
      */
     @JsonProperty("isfriend")
     public Integer getIsfriend() {
@@ -211,7 +252,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @param isfriend The isfriend
+     * 
+     * @param isfriend
+     *     The isfriend
      */
     @JsonProperty("isfriend")
     public void setIsfriend(Integer isfriend) {
@@ -219,7 +262,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @return The isfamily
+     * 
+     * @return
+     *     The isfamily
      */
     @JsonProperty("isfamily")
     public Integer getIsfamily() {
@@ -227,7 +272,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @param isfamily The isfamily
+     * 
+     * @param isfamily
+     *     The isfamily
      */
     @JsonProperty("isfamily")
     public void setIsfamily(Integer isfamily) {
@@ -235,24 +282,9 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @return The ownername
-     */
-    @JsonProperty("ownername")
-    public String getOwnername() {
-        return ownername;
-    }
-
-    /**
-     * @param ownername The ownername
-     */
-    @JsonProperty("ownername")
-    public void setOwnername(String ownername) {
-        this.ownername = ownername;
-    }
-
-
-    /**
-     * @return The datetaken
+     * 
+     * @return
+     *     The datetaken
      */
     @JsonProperty("datetaken")
     public String getDatetaken() {
@@ -260,13 +292,74 @@ public class Photo  implements Serializable  {
     }
 
     /**
-     * @param datetaken The ownername
+     * 
+     * @param datetaken
+     *     The datetaken
      */
     @JsonProperty("datetaken")
     public void setDatetaken(String datetaken) {
         this.datetaken = datetaken;
     }
 
+    /**
+     * 
+     * @return
+     *     The datetakengranularity
+     */
+    @JsonProperty("datetakengranularity")
+    public String getDatetakengranularity() {
+        return datetakengranularity;
+    }
+
+    /**
+     * 
+     * @param datetakengranularity
+     *     The datetakengranularity
+     */
+    @JsonProperty("datetakengranularity")
+    public void setDatetakengranularity(String datetakengranularity) {
+        this.datetakengranularity = datetakengranularity;
+    }
+
+    /**
+     * 
+     * @return
+     *     The datetakenunknown
+     */
+    @JsonProperty("datetakenunknown")
+    public Integer getDatetakenunknown() {
+        return datetakenunknown;
+    }
+
+    /**
+     * 
+     * @param datetakenunknown
+     *     The datetakenunknown
+     */
+    @JsonProperty("datetakenunknown")
+    public void setDatetakenunknown(Integer datetakenunknown) {
+        this.datetakenunknown = datetakenunknown;
+    }
+
+    /**
+     * 
+     * @return
+     *     The ownername
+     */
+    @JsonProperty("ownername")
+    public String getOwnername() {
+        return ownername;
+    }
+
+    /**
+     * 
+     * @param ownername
+     *     The ownername
+     */
+    @JsonProperty("ownername")
+    public void setOwnername(String ownername) {
+        this.ownername = ownername;
+    }
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {

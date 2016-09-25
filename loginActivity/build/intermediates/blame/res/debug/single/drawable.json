@@ -100,16 +100,16 @@
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/drawable/abc_list_selector_background_transition_holo_light.xml"
     },
     {
-        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable/flickr_progress_horizontal_holo_light.xml",
-        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/drawable/flickr_progress_horizontal_holo_light.xml"
-    },
-    {
         "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable/abc_vector_test.xml",
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/drawable/abc_vector_test.xml"
     },
     {
         "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable/buttonshape.xml",
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/drawable/buttonshape.xml"
+    },
+    {
+        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable/flickr_progress_horizontal_holo_light.xml",
+        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/drawable/flickr_progress_horizontal_holo_light.xml"
     },
     {
         "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_icon_light.xml",

@@ -304,7 +304,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="d417f9e4f271dea7033b35b3d16550c50d19d684">
+        sha1="35f5357ea0b65548a4b0cac3c0a3fbea690152ec">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_9a80fb1819f07b74bd1eb0dffa17946e149ccef1/classes.dex" />
     </item>
     <item
@@ -376,7 +376,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="0efb8e120007d0240a04762835e9224b3eb8772a">
+        sha1="73dddcb2c792b266088f1ce71e53a26f400d4e54">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b508fbc31e9f0600f9421695f3bccb32fefa5f5d/classes.dex" />
     </item>
 

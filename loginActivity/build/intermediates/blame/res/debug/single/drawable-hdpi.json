@@ -112,12 +112,12 @@
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/drawable-hdpi/flickr_progress_secondary_holo_light.9.png"
     },
     {
-        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/flickr_progressbar_indeterminate_holo5.png",
-        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/drawable-hdpi/flickr_progressbar_indeterminate_holo5.png"
-    },
-    {
         "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/flickr_progressbar_indeterminate_holo2.png",
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/drawable-hdpi/flickr_progressbar_indeterminate_holo2.png"
+    },
+    {
+        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/flickr_progressbar_indeterminate_holo5.png",
+        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/drawable-hdpi/flickr_progressbar_indeterminate_holo5.png"
     },
     {
         "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/flickr_progressbar_indeterminate_holo8.png",

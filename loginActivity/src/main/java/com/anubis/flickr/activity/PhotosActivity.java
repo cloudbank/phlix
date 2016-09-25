@@ -178,7 +178,7 @@ public class PhotosActivity extends FragmentActivity {
 
     @Override
     protected void onDestroy() {
-        this.subscription.unsubscribe();
+        //this.subscription.unsubscribe();
         super.onDestroy();
 
     }

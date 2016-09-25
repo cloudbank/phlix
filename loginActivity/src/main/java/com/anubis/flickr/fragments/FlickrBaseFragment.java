@@ -29,6 +29,7 @@ import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.listener.EndlessScrollListener;
 import com.anubis.flickr.models.FlickrPhoto;
 import com.anubis.flickr.models.Photo;
+import com.anubis.flickr.network.OAuthBaseClient;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -199,7 +200,7 @@ public abstract class FlickrBaseFragment extends Fragment {
 
     public void signOut() {
 
-       // FlickrClientApp.getRestClient().clearAccessToken();
+        OAuthBaseClient.getInstance(this.getContext(), null).clearAccessToken();
 
 
         Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.bye), Toast.LENGTH_LONG).show();

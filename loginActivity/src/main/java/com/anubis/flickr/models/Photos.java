@@ -8,132 +8,61 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "photo",
-    "total",
-    "page",
-    "per_page",
-    "pages"
+    "photos",
+    "stat"
 })
 public class Photos {
 
-    @JsonProperty("photo")
-    private List<Photo> photoList = new ArrayList<Photo>();
-    @JsonProperty("total")
-    private Integer total;
-    @JsonProperty("page")
-    private Integer page;
-    @JsonProperty("per_page")
-    private Integer perPage;
-    @JsonProperty("pages")
-    private Integer pages;
+    @JsonProperty("photos")
+    private Photos_ photos;
+    @JsonProperty("stat")
+    private String stat;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * 
      * @return
-     *     The photoList
+     *     The photos
      */
-    @JsonProperty("photoList")
-    public List<Photo> getPhotoList() {
-        return photoList;
+    @JsonProperty("photos")
+    public Photos_ getPhotos() {
+        return photos;
     }
 
     /**
      * 
-     * @param photoList
-     *     The photoList
+     * @param photos
+     *     The photos
      */
-    @JsonProperty("photoList")
-    public void setPhotoList(List<Photo> photoList) {
-        this.photoList = photoList;
-    }
-
-    /**
-     * 
-     * @return
-     *     The total
-     */
-    @JsonProperty("total")
-    public Integer getTotal() {
-        return total;
-    }
-
-    /**
-     * 
-     * @param total
-     *     The total
-     */
-    @JsonProperty("total")
-    public void setTotal(Integer total) {
-        this.total = total;
+    @JsonProperty("photos")
+    public void setPhotos(Photos_ photos) {
+        this.photos = photos;
     }
 
     /**
      * 
      * @return
-     *     The page
+     *     The stat
      */
-    @JsonProperty("page")
-    public Integer getPage() {
-        return page;
+    @JsonProperty("stat")
+    public String getStat() {
+        return stat;
     }
 
     /**
      * 
-     * @param page
-     *     The page
+     * @param stat
+     *     The stat
      */
-    @JsonProperty("page")
-    public void setPage(Integer page) {
-        this.page = page;
-    }
-
-    /**
-     * 
-     * @return
-     *     The perPage
-     */
-    @JsonProperty("per_page")
-    public Integer getPerPage() {
-        return perPage;
-    }
-
-    /**
-     * 
-     * @param perPage
-     *     The per_page
-     */
-    @JsonProperty("per_page")
-    public void setPerPage(Integer perPage) {
-        this.perPage = perPage;
-    }
-
-    /**
-     * 
-     * @return
-     *     The pages
-     */
-    @JsonProperty("pages")
-    public Integer getPages() {
-        return pages;
-    }
-
-    /**
-     * 
-     * @param pages
-     *     The pages
-     */
-    @JsonProperty("pages")
-    public void setPages(Integer pages) {
-        this.pages = pages;
+    @JsonProperty("stat")
+    public void setStat(String stat) {
+        this.stat = stat;
     }
 
     @JsonAnyGetter
