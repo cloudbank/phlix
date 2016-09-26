@@ -70,7 +70,7 @@ public class FriendsFragment extends FlickrBaseFragment {
 
     private void getPhotos() {
         ringProgressDialog.setTitle("Please wait");
-        ringProgressDialog.setMessage("Retrieving photos");
+        ringProgressDialog.setMessage("Retrieving interesting photos");
         ringProgressDialog.setCancelable(true);
         ringProgressDialog.show();
         subscription =  FlickrClientApp.getService().testLogin()

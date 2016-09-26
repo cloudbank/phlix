@@ -3,7 +3,7 @@ package com.anubis.flickr.network;
 
 import android.net.Uri;
 
-import com.codepath.utils.AsyncSimpleTask;
+import com.anubis.flickr.util.AsyncSimpleTask;
 
 import java.util.Properties;
 
@@ -36,7 +36,7 @@ public class OAuthSignPostOKHttpClient {    //
         }
 
         this.consumer = new OkHttpOAuthConsumer(prop.getProperty("consumerKey"), prop.getProperty("consumerSecret"));
-        this.provider = new OkHttpOAuthProvider(prop.getProperty("requestTokenEndpoint"),prop.getProperty("accessTokenEndpoint"),prop.getProperty("authorizationEndpoint"));
+        this.provider = new OkHttpOAuthProvider(prop.getProperty("requestTokenEndpoint"), prop.getProperty("accessTokenEndpoint"), prop.getProperty("authorizationEndpoint"));
     }
 
     public OkHttpOAuthConsumer getConsumer() {
@@ -46,6 +46,7 @@ public class OAuthSignPostOKHttpClient {    //
     public void setConsumer(OkHttpOAuthConsumer consumer) {
         this.consumer = consumer;
     }
+
     public OkHttpOAuthProvider getProvider() {
         return this.provider;
     }
@@ -82,6 +83,12 @@ public class OAuthSignPostOKHttpClient {    //
             }
         });
     }
+
+
+
+
+
+
 
     public void fetchAccessToken(final Uri uri) {
         new AsyncSimpleTask(new AsyncSimpleTask.AsyncSimpleTaskHandler() {

@@ -11,12 +11,12 @@ public final class R {
 		public static final int ptr_pulltorefresh_arrow = 0x7f0200ac;
 	}
 	public static final class id {
-		public static final int ptr_id_header = 0x7f0a0087;
-		public static final int ptr_id_image = 0x7f0a0088;
-		public static final int ptr_id_last_updated = 0x7f0a008c;
-		public static final int ptr_id_spinner = 0x7f0a0089;
-		public static final int ptr_id_text = 0x7f0a008b;
-		public static final int ptr_id_textwrapper = 0x7f0a008a;
+		public static final int ptr_id_header = 0x7f0a0089;
+		public static final int ptr_id_image = 0x7f0a008a;
+		public static final int ptr_id_last_updated = 0x7f0a008e;
+		public static final int ptr_id_spinner = 0x7f0a008b;
+		public static final int ptr_id_text = 0x7f0a008d;
+		public static final int ptr_id_textwrapper = 0x7f0a008c;
 	}
 	public static final class layout {
 		public static final int ptr_header = 0x7f03002d;

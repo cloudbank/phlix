@@ -35,19 +35,7 @@ public class OAuthBaseClient {
     protected static HashMap<Class<? extends OAuthBaseClient>, OAuthBaseClient> instances = new HashMap();
     private static OAuthBaseClient instance;
 
-    public static OAuthBaseClient getInstance(Class<OAuthBaseClient> klass, Context context) {
-        OAuthBaseClient instance = (OAuthBaseClient) instances.get(klass);
-        if (instance == null) {
-            try {
-                instance = (OAuthBaseClient) klass.getConstructor(new Class[]{Context.class}).newInstance(new Object[]{context});
-                instances.put(klass, instance);
-            } catch (Exception var4) {
-                var4.printStackTrace();
-            }
-        }
 
-        return instance;
-    }
 
     public static OAuthBaseClient getInstance(Context context, OAuthBaseClient.OAuthAccessHandler handler) {
         if (instance == null) {

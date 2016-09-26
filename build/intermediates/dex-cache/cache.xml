@@ -21,15 +21,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.nostra13.universalimageloader/universal-image-loader/1.8.4/eee81e43531ce82db1781c5a8b27781ca384eede/universal-image-loader-1.8.4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="eee81e43531ce82db1781c5a8b27781ca384eede">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/universal-image-loader-1.8.4_72b576093c1b65444114f17588be0936589fa731/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
@@ -144,6 +135,15 @@
         revision="24.0.2"
         sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_310cab494714a889faf8a7f73ecbc1f6b35510ad/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.2.1_b714c09eb246f653f82bfa51f66a0bfa23950340/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -291,20 +291,11 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/libs/codepath-utils.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="10901a5ef726eacf1b2443b7f38dc4cc9cd3f7d4">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/2/codepath-utils_1b2fbd9eba4fdfbe875f8a1fbd6750c8872e12f5/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="35f5357ea0b65548a4b0cac3c0a3fbea690152ec">
+        sha1="a13023011fa40de57f7294f3f39bbb91bf7fe32d">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_9a80fb1819f07b74bd1eb0dffa17946e149ccef1/classes.dex" />
     </item>
     <item
@@ -376,7 +367,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="73dddcb2c792b266088f1ce71e53a26f400d4e54">
+        sha1="f2946eea8c096b0f157a655c6b42850bd5597561">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b508fbc31e9f0600f9421695f3bccb32fefa5f5d/classes.dex" />
     </item>
 

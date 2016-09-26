@@ -8,12 +8,12 @@ package com.google.android.gms.base;
 
 public final class R {
 	public static final class attr {
-		public static final int buttonSize = 0x7f0100c3;
+		public static final int buttonSize = 0x7f0100c7;
 		public static final int circleCrop = 0x7f0100ad;
-		public static final int colorScheme = 0x7f0100c4;
+		public static final int colorScheme = 0x7f0100c8;
 		public static final int imageAspectRatio = 0x7f0100ac;
 		public static final int imageAspectRatioAdjust = 0x7f0100ab;
-		public static final int scopeUris = 0x7f0100c5;
+		public static final int scopeUris = 0x7f0100c9;
 	}
 	public static final class color {
 		public static final int common_action_bar_splitter = 0x7f090094;
@@ -85,17 +85,17 @@ public final class R {
 		public static final int common_plus_signin_btn_text_light_pressed = 0x7f02008d;
 	}
 	public static final class id {
-		public static final int adjust_height = 0x7f0a001d;
-		public static final int adjust_width = 0x7f0a001e;
-		public static final int auto = 0x7f0a0027;
-		public static final int dark = 0x7f0a0028;
-		public static final int icon_only = 0x7f0a0024;
-		public static final int light = 0x7f0a0029;
-		public static final int none = 0x7f0a000e;
-		public static final int normal = 0x7f0a000a;
-		public static final int standard = 0x7f0a0025;
-		public static final int wide = 0x7f0a0026;
-		public static final int wrap_content = 0x7f0a0019;
+		public static final int adjust_height = 0x7f0a001e;
+		public static final int adjust_width = 0x7f0a001f;
+		public static final int auto = 0x7f0a0028;
+		public static final int dark = 0x7f0a0029;
+		public static final int icon_only = 0x7f0a0025;
+		public static final int light = 0x7f0a002a;
+		public static final int none = 0x7f0a000f;
+		public static final int normal = 0x7f0a000b;
+		public static final int standard = 0x7f0a0026;
+		public static final int wide = 0x7f0a0027;
+		public static final int wrap_content = 0x7f0a001a;
 	}
 	public static final class integer {
 		public static final int google_play_services_version = 0x7f0b0003;
@@ -144,7 +144,7 @@ public final class R {
 		public static final int LoadingImageView_circleCrop = 2;
 		public static final int LoadingImageView_imageAspectRatio = 1;
 		public static final int LoadingImageView_imageAspectRatioAdjust = 0;
-		public static final int[] SignInButton = { 0x7f0100c3, 0x7f0100c4, 0x7f0100c5 };
+		public static final int[] SignInButton = { 0x7f0100c7, 0x7f0100c8, 0x7f0100c9 };
 		public static final int SignInButton_buttonSize = 0;
 		public static final int SignInButton_colorScheme = 1;
 		public static final int SignInButton_scopeUris = 2;

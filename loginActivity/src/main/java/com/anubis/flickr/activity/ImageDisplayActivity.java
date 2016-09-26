@@ -18,7 +18,7 @@ import com.anubis.flickr.fragments.FlickrBaseFragment;
 import com.anubis.flickr.models.FlickrPhoto;
 import com.anubis.flickr.models.FlickrPhoto.Comment;
 import com.anubis.flickr.util.DateUtility;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,9 +41,10 @@ public class ImageDisplayActivity extends Activity {
         ab.setSubtitle(R.string.image_detail);
         ab.setDisplayHomeAsUpEnabled(true);
         type = (Class<FlickrPhoto>) getIntent().getSerializableExtra(FlickrBaseFragment.TYPE);
-        ImageView image = (ImageView) findViewById(R.id.ivResult);
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        imageLoader.displayImage(photo.getUrl(), image);
+        ImageView imageView = (ImageView) findViewById(R.id.ivResult);
+        Picasso.with(getBaseContext()).load(photo.getUrl()).into(imageView);
+        //ImageLoader imageLoader = ImageLoader.getInstance();
+        //imageLoader.displayImage(photo.getUrl(), image);
         TextView tvUsername = (TextView) findViewById(R.id.username);
         tvUsername.setText(photo.getAuthor());
         TextView tvTimestamp = (TextView) findViewById(R.id.timestamp);

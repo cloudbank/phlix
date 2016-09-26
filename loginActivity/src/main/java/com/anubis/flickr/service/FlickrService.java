@@ -24,6 +24,11 @@ public interface FlickrService {
     @GET(API_BASE_URL+"?method=flickr.photos.getContactsPublicPhotos&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&just_friends=1&extras=date_taken,owner_name&count=50&include_self=1")
     Observable<Photos> getFriendsPhotos(@Query("user_id") String userId);
 
+
+    @GET(API_BASE_URL+"?method=flickr.interestingness.getList&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&just_friends=1&extras=date_taken,owner_name&count=50&include_self=1")
+    Observable<Photos> getInterestingPhotos();
+
+
 /*
  public void getFriendsList(AsyncHttpResponseHandler handler) {
         String apiUrl = getApiUrl("?api_key="
