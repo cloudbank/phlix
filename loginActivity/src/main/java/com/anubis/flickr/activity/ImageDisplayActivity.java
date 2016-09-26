@@ -17,6 +17,7 @@ import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FlickrBaseFragment;
 import com.anubis.flickr.models.FlickrPhoto;
 import com.anubis.flickr.models.FlickrPhoto.Comment;
+import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.util.DateUtility;
 import com.squareup.picasso.Picasso;
 
@@ -35,7 +36,7 @@ public class ImageDisplayActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_display);
-        FlickrPhoto photo = (FlickrPhoto) getIntent().getSerializableExtra(
+        Photo photo = (Photo) getIntent().getSerializableExtra(
                 FlickrBaseFragment.RESULT);
         ActionBar ab = getActionBar();
         ab.setSubtitle(R.string.image_detail);
@@ -46,9 +47,9 @@ public class ImageDisplayActivity extends Activity {
         //ImageLoader imageLoader = ImageLoader.getInstance();
         //imageLoader.displayImage(photo.getUrl(), image);
         TextView tvUsername = (TextView) findViewById(R.id.username);
-        tvUsername.setText(photo.getAuthor());
+        tvUsername.setText(photo.getOwnername());
         TextView tvTimestamp = (TextView) findViewById(R.id.timestamp);
-        tvTimestamp.setText(DateUtility.relativeTime(photo.getDateTaken(), this));
+        tvTimestamp.setText(DateUtility.relativeTime(photo.getDatetaken(), this));
         TextView tvTitle = (TextView) findViewById(R.id.title);
         tvTitle.setText(photo.getTitle());
         etComments = (EditText) findViewById(R.id.etComments);
@@ -60,8 +61,9 @@ public class ImageDisplayActivity extends Activity {
         wvComments.setBackgroundColor(Color.parseColor("#FFFFFF"));
         wvComments.setVerticalScrollBarEnabled(true);
         wvComments.setHorizontalScrollBarEnabled(true);
-        mUid = photo.getUid();
-        getComments(mUid);
+        mUid = photo.getId();
+        //@todo
+        //getComments(mUid);
         // get focus off edittext, hide kb
         // WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.anubis.flickr.R;
@@ -13,6 +14,7 @@ import com.anubis.flickr.models.Photo;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by sabine on 9/26/16.
@@ -110,11 +112,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         // Set item views based on your views and data model
         ImageView imageView = viewHolder.ivImage;
-       /* RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) viewHolder.ivImage
+        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) viewHolder.ivImage
                 .getLayoutParams();
-        lp.height = 200; // photo.getPhotoHeight() * 2;
-        lp.width = 200; // photo.getPhotoList//set the title, name, comments
-        imageView.setLayoutParams(lp);*/
+        //the images come back the same size as thumbnails
+        //set random widths and heights between 75 and 200
+        Random rand = new Random();
+        int  n = rand.nextInt(300) + 200;
+        lp.height = n; // photo.getPhotoHeight() * 2;
+        n = rand.nextInt(200) + 100;
+        lp.width = 400; // photo.getPhotoList//set the title, name, comments
+        imageView.setLayoutParams(lp);
 
         Picasso.with(this.getContext()).load(photo.getUrl()).fit().centerCrop()
                 .placeholder(android.R.drawable.btn_star)

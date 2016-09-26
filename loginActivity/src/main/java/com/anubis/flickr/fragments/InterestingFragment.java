@@ -1,6 +1,7 @@
 package com.anubis.flickr.fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -8,12 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
+import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.adapter.RecyclerAdapter;
 import com.anubis.flickr.models.InterestingFlickrPhoto;
+import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
 
 import retrofit2.adapter.rxjava.HttpException;
@@ -53,13 +55,22 @@ public class InterestingFragment extends FlickrBaseFragment {
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         // Attach the layout manager to the recycler view
         rvPhotos.setLayoutManager(gridLayoutManager);
+        //SpacesItemDecoration decoration = new SpacesItemDecoration(2);
+        //rvPhotos.addItemDecoration(decoration);
+
         // vPhotos.setOnItemClickListener(mListener);
         // vPhotos.setOnScrollListener(mScrollListener);
         rAdapter.setOnItemClickListener(new RecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                String title = mPhotoItems.get(position).getTitle();
-                Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
+               // String title = mPhotoItems.get(position).getTitle();
+                Intent intent = new Intent(getActivity(),
+                        ImageDisplayActivity.class);
+                Photo result = mPhotoItems.get(position);
+                intent.putExtra(RESULT, result);
+                intent.putExtra(TYPE, mType);
+                startActivity(intent);
+                //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }
         });
         setHasOptionsMenu(true);

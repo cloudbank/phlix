@@ -3,17 +3,22 @@ package com.anubis.flickr.fragments;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
+import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
+import com.anubis.flickr.adapter.RecyclerAdapter;
 import com.anubis.flickr.models.FriendsFlickrPhoto;
+import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.User;
 
@@ -40,6 +45,8 @@ public class FriendsFragment extends FlickrBaseFragment {
         return mAdapter;
     }
     ProgressDialog ringProgressDialog;
+    RecyclerAdapter rAdapter;
+    RecyclerView rvPhotos;
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -50,7 +57,7 @@ public class FriendsFragment extends FlickrBaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAdapter = new PhotoArrayAdapter(getActivity(), mPhotoItems, true);
+        rAdapter = new RecyclerAdapter(getActivity(), mPhotoItems);
         ringProgressDialog= new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
 
         getPhotos();
@@ -113,7 +120,7 @@ public class FriendsFragment extends FlickrBaseFragment {
                         //pass photos to fragment
                         mPhotos = p;
                         mPhotoItems.addAll(mPhotos.getPhotos().getPhotoList());
-                        mAdapter.notifyDataSetChanged();
+                        rAdapter.notifyDataSetChanged();
                     }
                 });
 
@@ -171,11 +178,34 @@ public class FriendsFragment extends FlickrBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_friends, container,
+        View view = inflater.inflate(R.layout.fragment_interesting, container,
                 false);
-        vPhotos = (ListView) view.findViewById(R.id.lvPhotos);
-        vPhotos.setAdapter(mAdapter);
-        vPhotos.setOnItemClickListener(mListener);
+
+        rvPhotos = (RecyclerView) view.findViewById(R.id.rvPhotos);
+
+        rvPhotos.setAdapter(rAdapter);
+        StaggeredGridLayoutManager gridLayoutManager =
+                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        // Attach the layout manager to the recycler view
+        rvPhotos.setLayoutManager(gridLayoutManager);
+        //SpacesItemDecoration decoration = new SpacesItemDecoration(2);
+        //rvPhotos.addItemDecoration(decoration);
+
+        // vPhotos.setOnItemClickListener(mListener);
+        // vPhotos.setOnScrollListener(mScrollListener);
+        rAdapter.setOnItemClickListener(new RecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                // String title = mPhotoItems.get(position).getTitle();
+                Intent intent = new Intent(getActivity(),
+                        ImageDisplayActivity.class);
+                Photo result = mPhotoItems.get(position);
+                intent.putExtra(RESULT, result);
+                intent.putExtra(TYPE, mType);
+                startActivity(intent);
+                //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
+            }
+        });
         setHasOptionsMenu(true);
         return view;
     }

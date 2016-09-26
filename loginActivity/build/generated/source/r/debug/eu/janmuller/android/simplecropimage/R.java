@@ -37,6 +37,6 @@ public final class R {
 		public static final int saving_image = 0x7f050037;
 	}
 	public static final class style {
-		public static final int CropButton = 0x7f0700c4;
+		public static final int CropButton = 0x7f0700c8;
 	}
 }
