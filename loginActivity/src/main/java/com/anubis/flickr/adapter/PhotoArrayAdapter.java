@@ -45,11 +45,7 @@ public class PhotoArrayAdapter extends ArrayAdapter<Photo> {
                     false);
             viewHolder.ivImage = (ImageView) convertView.findViewById(R.id.ivPhoto);
 
-            if (mLayout == R.layout.photo_item_friends) {
-                viewHolder.name = (TextView) convertView.findViewById(R.id.friends_username);
-                viewHolder.timestamp = (TextView) convertView.findViewById(R.id.friends_timestamp);
-                viewHolder.title = (TextView) convertView.findViewById(R.id.friends_title);
-            }
+
             convertView.setTag(viewHolder);
 
         } else {
@@ -74,7 +70,7 @@ public class PhotoArrayAdapter extends ArrayAdapter<Photo> {
             lp.width = 200; // photo.getPhotoList//set the title, name, comments
             viewHolder.ivImage.setLayoutParams(lp);
         }
-        //imageLoader.displayImage(photo.getUrl(), viewHolder.ivImage);
+        //imageLoader.displayImage(photo.getUrl(), viewHolder.imageView);
         Picasso.with(this.getContext()).load(photo.getUrl()).fit().centerCrop()
                 .placeholder(android.R.drawable.btn_star)
                 .error(android.R.drawable.btn_star)

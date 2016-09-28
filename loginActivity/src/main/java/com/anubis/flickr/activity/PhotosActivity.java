@@ -2,11 +2,13 @@ package com.anubis.flickr.activity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.anubis.flickr.FlickrClientApp;
@@ -27,7 +29,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
-public class PhotosActivity extends FragmentActivity {
+public class PhotosActivity extends AppCompatActivity {
 
     private MyPagerAdapter adapterViewPager;
     private ViewPager vpPager;
@@ -36,6 +38,10 @@ public class PhotosActivity extends FragmentActivity {
     protected SharedPreferences.Editor editor;
     private Subscription subscription;
     private Photos mPhotos;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
 
     public ViewPager getVpPager() {
         return vpPager;
@@ -58,46 +64,96 @@ public class PhotosActivity extends FragmentActivity {
         this.editor = this.prefs.edit();
 
         //getLogin();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+// ...
+// Display icon in the toolbar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.flickr_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        //getSupportActionBar().setElevation(3);
+        getSupportActionBar().setTitle(R.string.app_name);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.Seashell));
+        getSupportActionBar().setSubtitle("");
+        toolbar.setSubtitleTextColor(getResources().getColor(R.color.Azure));
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+
+
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.friends_and_you));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.interesting_today));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.search_by_tag_text));
+
+
+
+        //set gravity for tab bar
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager(), intializeItems());
+
+
         vpPager = (ViewPager) findViewById(R.id.vpPager);
+
         vpPager.setOffscreenPageLimit(2);
         vpPager.setAdapter(adapterViewPager);
 
+        vpPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(onTabSelectedListener(vpPager));
+
+
+    }
+
+    private TabLayout.OnTabSelectedListener onTabSelectedListener(final ViewPager pager) {
+        return new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                pager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        };
     }
 
     private void getLogin() {
-         subscription =  FlickrClientApp.getService().testLogin()
-            .concatMap(new Func1<User, Observable<Photos>>() {
-                @Override
-                public Observable<Photos> call(User user) {
-                    //username = user.getUser().getUsername().getContent();
-                    return FlickrClientApp.getService().getFriendsPhotos(user.getUser().getId());
+        subscription = FlickrClientApp.getService().testLogin()
+                .concatMap(new Func1<User, Observable<Photos>>() {
+                    @Override
+                    public Observable<Photos> call(User user) {
+                        //username = user.getUser().getUsername().getContent();
+                        return FlickrClientApp.getService().getFriendsPhotos(user.getUser().getId());
 
-                }
-            }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                    }
+                }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())
-                     .subscribe(new Subscriber<Photos>() {
+                .subscribe(new Subscriber<Photos>() {
                     @Override
                     public void onCompleted() {
                         //Log.d("DEBUG","oncompleted");
 
                     }
+
                     @Override
                     public void onError(Throwable e) {
                         // cast to retrofit.HttpException to get the response code
                         if (e instanceof HttpException) {
-                            HttpException response = (HttpException)e;
+                            HttpException response = (HttpException) e;
                             int code = response.code();
-                            Log.e("ERROR",  String.valueOf(code));
+                            Log.e("ERROR", String.valueOf(code));
                         }
-                        Log.e("ERROR",  "error getting login/photos" + e);
+                        Log.e("ERROR", "error getting login/photos" + e);
                     }
 
                     @Override
-                    public void onNext(Photos p ) {
-                       // Log.d("DEBUG","mlogin: "+ u.getUser().getUsername().getContent());
-                       //pass photos to fragment
+                    public void onNext(Photos p) {
+                        // Log.d("DEBUG","mlogin: "+ u.getUser().getUsername().getContent());
+                        //pass photos to fragment
                         mPhotos = p;
                     }
                 });
@@ -111,6 +167,23 @@ public class PhotosActivity extends FragmentActivity {
         a.add(SearchFragment.newInstance(2, getResources().getString(R.string.search_by_tag_text), new SearchFragment()));
         return a;
     }
+
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+
+    }
+
     //keep small number of pages in memory mostly
     public static class MyPagerAdapter extends FragmentPagerAdapter {
         public static int NUM_ITEMS = 3;

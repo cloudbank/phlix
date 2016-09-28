@@ -1,10 +1,11 @@
 package com.anubis.flickr.activity;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
@@ -13,24 +14,31 @@ import android.widget.ImageView;
 import android.widget.Scroller;
 import android.widget.TextView;
 
+import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FlickrBaseFragment;
-import com.anubis.flickr.models.FlickrPhoto;
-import com.anubis.flickr.models.FlickrPhoto.Comment;
+import com.anubis.flickr.models.Comment;
+import com.anubis.flickr.models.Comments;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.util.DateUtility;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ImageDisplayActivity extends Activity {
+import retrofit2.adapter.rxjava.HttpException;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
+public class ImageDisplayActivity extends AppCompatActivity {
 
     WebView wvComments;
     EditText etComments;
     String mUid = "";
-    Class<FlickrPhoto> type;
     String mContent;
     StringBuilder mBuilder;
+    private Subscription subscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +46,18 @@ public class ImageDisplayActivity extends Activity {
         setContentView(R.layout.activity_image_display);
         Photo photo = (Photo) getIntent().getSerializableExtra(
                 FlickrBaseFragment.RESULT);
-        ActionBar ab = getActionBar();
-        ab.setSubtitle(R.string.image_detail);
-        ab.setDisplayHomeAsUpEnabled(true);
-        type = (Class<FlickrPhoto>) getIntent().getSerializableExtra(FlickrBaseFragment.TYPE);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+// ...
+// Display icon in the toolbar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.flickr_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+       // getSupportActionBar().setElevation(3);
+        getSupportActionBar().setTitle(R.string.app_name);
+        getSupportActionBar().setSubtitle(R.string.image_detail);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ImageView imageView = (ImageView) findViewById(R.id.ivResult);
         Picasso.with(getBaseContext()).load(photo.getUrl()).into(imageView);
         //ImageLoader imageLoader = ImageLoader.getInstance();
@@ -63,7 +79,7 @@ public class ImageDisplayActivity extends Activity {
         wvComments.setHorizontalScrollBarEnabled(true);
         mUid = photo.getId();
         //@todo
-        //getComments(mUid);
+        getComments(mUid);
         // get focus off edittext, hide kb
         // WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
@@ -80,6 +96,43 @@ public class ImageDisplayActivity extends Activity {
     }
 
     private void getComments(final String uid) {
+
+        subscription = FlickrClientApp.getService().getComments(uid)
+
+                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Comments>() {
+                    @Override
+                    public void onCompleted() {
+
+
+                        //ringProgressDialog.dismiss();
+                        //Log.d("DEBUG","oncompleted");
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // cast to retrofit.HttpException to get the response code
+                        if (e instanceof HttpException) {
+                            HttpException response = (HttpException) e;
+                            int code = response.code();
+                            Log.e("ERROR", String.valueOf(code));
+                        }
+                        Log.e("ERROR", "error getting interesting photos" + e);
+                    }
+
+                    @Override
+                    public void onNext(Comments comments) {
+                        Log.d("DEBUG", "mlogin: " + comments);
+                        //pass comments to webview
+                        displayComments(wvComments, comments.getComments().getCommentList(), false);
+                    }
+                });
+
+
+
+
         /*
         client.getComments(new JsonHttpResponseHandler() {
 
@@ -180,7 +233,7 @@ public class ImageDisplayActivity extends Activity {
             }
 
 
-            mBuilder.append("<b>" + c.getAuthor() + "</b>: " + htmlString + "<br><br>");
+            mBuilder.append("<b>" + c.getAuthorname() + "</b>: " + htmlString + "<br><br>");
         }
         mBuilder.append("</body></html>");
         commentsView.loadUrl("about:blank");
@@ -188,5 +241,10 @@ public class ImageDisplayActivity extends Activity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        subscription.unsubscribe();
 
+    }
 }

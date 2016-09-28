@@ -371,4 +371,6 @@ public class Photo implements Serializable {
         this.additionalProperties.put(name, value);
     }
 
+
+
 }

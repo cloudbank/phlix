@@ -1,5 +1,6 @@
 package com.anubis.flickr.service;
 
+import com.anubis.flickr.models.Comments;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.User;
 
@@ -25,8 +26,12 @@ public interface FlickrService {
     Observable<Photos> getFriendsPhotos(@Query("user_id") String userId);
 
 
-    @GET(API_BASE_URL+"?method=flickr.interestingness.getList&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&just_friends=1&extras=date_taken,owner_name&count=50&include_self=1")
-    Observable<Photos> getInterestingPhotos();
+    @GET(API_BASE_URL+"?method=flickr.interestingness.getList&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&extras=date_taken,owner_name&per_page=50")
+    Observable<Photos> getInterestingPhotos(@Query("page") String page);
+
+    @GET(API_BASE_URL+"?method=flickr.photos.comments.getList&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0")
+    Observable<Comments> getComments(@Query("photo_id") String photoId);
+
 
 
 /*

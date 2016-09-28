@@ -39,7 +39,7 @@ public class InterestingFragment extends FlickrBaseFragment {
         ringProgressDialog = new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
 
         mType = InterestingFlickrPhoto.class;
-        rAdapter = new RecyclerAdapter(getContext(), mPhotoItems);
+        rAdapter = new RecyclerAdapter(getContext(), mPhotoItems, true);
         loadPhotos(1, true);
     }
 
@@ -51,6 +51,8 @@ public class InterestingFragment extends FlickrBaseFragment {
         rvPhotos = (RecyclerView) view.findViewById(R.id.rvPhotos);
 
         rvPhotos.setAdapter(rAdapter);
+        // make a heterogenous listview here
+
         StaggeredGridLayoutManager gridLayoutManager =
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         // Attach the layout manager to the recycler view
@@ -89,7 +91,7 @@ public class InterestingFragment extends FlickrBaseFragment {
         ringProgressDialog.setMessage("Retrieving photos");
         ringProgressDialog.setCancelable(true);
         ringProgressDialog.show();
-        subscription = FlickrClientApp.getService().getInterestingPhotos()
+        subscription = FlickrClientApp.getService().getInterestingPhotos(String.valueOf(page))
 
                 .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())

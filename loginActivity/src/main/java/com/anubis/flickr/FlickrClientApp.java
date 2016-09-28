@@ -37,23 +37,8 @@ public class FlickrClientApp extends com.activeandroid.app.Application {
         super.onCreate();
         FlickrClientApp.context = this;
         Stetho.initializeWithDefaults(this);
+        //TypefaceUtil.setDefaultFont(this, "SERIF", "fonts/Exo-Medium.otf");
 
-
-        // Create global configuration and initialize ImageLoader with this
-        // configuration
-       /* DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-                .cacheInMemory()
-                .imageScaleType(ImageScaleType.EXACTLY)
-                .cacheOnDisc()
-                .showStubImage(android.R.drawable.btn_star)
-                .resetViewBeforeLoading()
-                .build();
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-                getApplicationContext()).defaultDisplayImageOptions(defaultOptions)
-                // .threadPriority(Thread.NORM_PRIORITY-2)
-                .build();
-
-        ImageLoader.getInstance().init(config); */
 
 
     }

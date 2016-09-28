@@ -1,12 +1,12 @@
 package com.anubis.flickr.fragments;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
+import com.anubis.flickr.adapter.FriendsAdapter;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
-import com.anubis.flickr.adapter.RecyclerAdapter;
 import com.anubis.flickr.models.FriendsFlickrPhoto;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
@@ -45,19 +45,20 @@ public class FriendsFragment extends FlickrBaseFragment {
         return mAdapter;
     }
     ProgressDialog ringProgressDialog;
-    RecyclerAdapter rAdapter;
+    FriendsAdapter fAdapter;
     RecyclerView rvPhotos;
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+    }
 
     // Store instance variables based on arguments passed
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        rAdapter = new RecyclerAdapter(getActivity(), mPhotoItems);
+        fAdapter = new FriendsAdapter(getActivity(), mPhotoItems, false);
         ringProgressDialog= new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
 
         getPhotos();
@@ -94,8 +95,10 @@ public class FriendsFragment extends FlickrBaseFragment {
                 .subscribe(new Subscriber<Photos>() {
                     @Override
                     public void onCompleted() {
-                        ActionBar ab = getActivity().getActionBar();
-                        ab.setSubtitle(username);
+
+                        ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle(username);
+
+
 
 
 
@@ -120,7 +123,7 @@ public class FriendsFragment extends FlickrBaseFragment {
                         //pass photos to fragment
                         mPhotos = p;
                         mPhotoItems.addAll(mPhotos.getPhotos().getPhotoList());
-                        rAdapter.notifyDataSetChanged();
+                        fAdapter.notifyDataSetChanged();
                     }
                 });
 
@@ -183,17 +186,18 @@ public class FriendsFragment extends FlickrBaseFragment {
 
         rvPhotos = (RecyclerView) view.findViewById(R.id.rvPhotos);
 
-        rvPhotos.setAdapter(rAdapter);
-        StaggeredGridLayoutManager gridLayoutManager =
-                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        rvPhotos.setAdapter(fAdapter);
+       // StaggeredGridLayoutManager gridLayoutManager =
+        //new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         // Attach the layout manager to the recycler view
-        rvPhotos.setLayoutManager(gridLayoutManager);
+        //rvPhotos.setLayoutManager(gridLayoutManager);
+        rvPhotos.setLayoutManager(new GridLayoutManager(getContext(),3));
         //SpacesItemDecoration decoration = new SpacesItemDecoration(2);
         //rvPhotos.addItemDecoration(decoration);
 
         // vPhotos.setOnItemClickListener(mListener);
         // vPhotos.setOnScrollListener(mScrollListener);
-        rAdapter.setOnItemClickListener(new RecyclerAdapter.OnItemClickListener() {
+        fAdapter.setOnItemClickListener(new FriendsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 // String title = mPhotoItems.get(position).getTitle();

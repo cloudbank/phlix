@@ -57,15 +57,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appindexing-8.4.0_1277f0aba870fb2d4a2e7ce6ee2eaf8d2f315371/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
@@ -99,15 +90,6 @@
         revision="24.0.2"
         sha1="bf95955dcf3d5a78c201e49b0c336787ea73f161">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/signpost-core-1.2.1.2_66d6c39092cafeda5ec15e80876f059e945d8921/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-8.4.0_ab449efc1845974a0ed8c96b1ef718767e5a0e44/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -219,15 +201,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-8.4.0_4364fa915670a07c4333c9bcb2ff1c2c144c60e3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
@@ -304,7 +277,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="fc3da24a80b23df7739772a7049b06528e3504a7">
+        sha1="aa5db73546d0982158846eff7650e354ea3486bd">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_9a80fb1819f07b74bd1eb0dffa17946e149ccef1/classes.dex" />
     </item>
     <item
@@ -333,6 +306,15 @@
         revision="24.0.2"
         sha1="ef33476a62d9c62dfca6b6c9e086f2e3343a96f4">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/converter-jackson-2.1.0_28bccd3def42e2060f939395e5e5bfcb86037a63/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="23eb0d2998a782213b56168cbf23a0688b9111d9">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.2.0_fdbd5810dcd3417c74e4fd143d6ec96d5d48276f/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -376,7 +358,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="694d18700672be912de6b11488e90c65ea89176c">
+        sha1="ce9f6577e799b0dddbacb86befd2981a7b6cd26b">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b508fbc31e9f0600f9421695f3bccb32fefa5f5d/classes.dex" />
     </item>
 

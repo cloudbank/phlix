@@ -5,22 +5,53 @@
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
 
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#E03D81</item>
+        <item name="colorPrimaryDark">#E00065</item>
+        <item name="colorAccent">@color/AliceBlue</item>
 
-    <!--   
-    Application theme.  
-     -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <item name="android:windowBackground">@color/WhiteSmoke</item>
-        <item name="android:editTextStyle">@style/EditTextStyle</item>
-        <item name="android:textColor">#2B2351</item>
-        <item name="android:progressBarStyleHorizontal">@style/ProgressBarFlickr</item>
     </style>
 
-    <style name="ProgressBarFlickr" parent="android:Widget.Holo.Light.ProgressBar.Horizontal">
-        <item name="android:progressDrawable">@drawable/flickr_progress_horizontal_holo_light</item>
-        <item name="android:indeterminateDrawable">@drawable/flickr_progress_indeterminate_horizontal_holo_light</item>
+
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/MyCustomTabText</item>
+        <item name="tabSelectedTextColor">@color/AliceBlue</item>
+    </style>
+
+    <style name="MyCustomTabText" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!-- android:textColorPrimary is the color of the title text in the Toolbar  -->
+        <item name="android:textColorPrimary">@color/AliceBlue</item>
+        <!-- actionMenuTextColor is the color of the text of action (menu) items  -->
+        <item name="actionMenuTextColor">@android:color/holo_green_light</item>
+        <!-- Tints the input fields like checkboxes and text fields -->
+        <item name="colorAccent">@color/Seashell</item>
+        <!-- Applies to views in their normal state. -->
+        <item name="colorControlNormal">@color/DeepPink</item>
+        <!-- Applies to views in their activated state (i.e checked or switches) -->
+        <item name="colorControlActivated">@color/android_green</item>
+        <!-- Applied to framework control highlights (i.e ripples or list selectors) -->
+        <item name="colorControlHighlight">@color/AliceBlue</item>
+
+        <!-- Enable these below if you want clicking icons to trigger a ripple effect -->
+
+        <item name="selectableItemBackground">?android:selectableItemBackground</item>
+        <item name="selectableItemBackgroundBorderless">?android:selectableItemBackground</item>
+
     </style>
 
     <style name="EditTextStyle" parent="android:Widget.EditText">
@@ -31,19 +62,24 @@
     <style name="CustomProgessBarStyle" parent="@android:style/Theme.Dialog">
         <item name="android:alertDialogStyle">@style/CustomAlertDialogStyle</item>
         <item name="android:background">@color/Snow</item>
-        <item name="android:textColorPrimary">#2B2351</item>
+        <item name="android:textColorPrimary">#E00065</item>
+    </style>
+
+    <style name="MyButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/RoyalBlue</item>
+        <item name="colorButtonNormal">@color/DeepPink</item>
     </style>
 
     <style name="CustomAlertDialogStyle">
-        <item name="android:bottomDark">@color/WhiteSmoke</item>
+        <item name="android:bottomDark">#E00065</item>
         <item name="android:bottomMedium">@color/WhiteSmoke</item>
         <item name="android:centerBright">@color/WhiteSmoke</item>
-        <item name="android:centerDark">@color/WhiteSmoke</item>
+        <item name="android:centerDark">#E00065</item>
         <item name="android:centerMedium">@color/WhiteSmoke</item>
         <item name="android:fullBright">@color/WhiteSmoke</item>
-        <item name="android:fullDark">@color/WhiteSmoke</item>
+        <item name="android:fullDark">#E00065</item>
         <item name="android:topBright">@color/WhiteSmoke</item>
-        <item name="android:topDark">@color/WhiteSmoke</item>
+        <item name="android:topDark">#E00065</item>
     </style>
 
 </resources>

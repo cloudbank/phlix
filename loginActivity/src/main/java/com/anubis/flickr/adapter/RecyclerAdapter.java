@@ -78,9 +78,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     private List<Photo> mPhotos;
     // Store the context for easy access
     private Context mContext;
+    private boolean mStaggered;
 
     // Pass in the contact array into the constructor
-    public RecyclerAdapter(Context context, List<Photo> photos) {
+    public RecyclerAdapter(Context context, List<Photo> photos, boolean staggered) {
+        mStaggered = staggered;
         mPhotos = photos;
         mContext = context;
     }
@@ -116,13 +118,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 .getLayoutParams();
         //the images come back the same size as thumbnails
         //set random widths and heights between 75 and 200
-        Random rand = new Random();
-        int  n = rand.nextInt(300) + 200;
-        lp.height = n; // photo.getPhotoHeight() * 2;
-        n = rand.nextInt(200) + 100;
-        lp.width = 400; // photo.getPhotoList//set the title, name, comments
-        imageView.setLayoutParams(lp);
-
+        if (mStaggered) {
+            Random rand = new Random();
+            int n = rand.nextInt(300) + 200;
+            lp.height = n; // photo.getPhotoHeight() * 2;
+            //n = rand.nextInt(200) + 100;
+            lp.width = 400; // photo.getPhotoList//set the title, name, comments
+            imageView.setLayoutParams(lp);
+        } else {
+            lp.height= 250;
+            lp.width = 300;
+        }
         Picasso.with(this.getContext()).load(photo.getUrl()).fit().centerCrop()
                 .placeholder(android.R.drawable.btn_star)
                 .error(android.R.drawable.btn_star)

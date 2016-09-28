@@ -1,43 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="5dp"
+    card_view:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/friends_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ivPhoto"
-        android:layout_alignParentTop="true"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="12sp"
-        android:textStyle="bold" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
 
-    <TextView
-        android:id="@+id/friends_timestamp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/ivPhoto"
-        android:layout_alignTop="@+id/friends_username"
-        android:text="timestamp"
-        android:textSize="12sp" />
 
-    <ImageView
-        android:id="@+id/ivPhoto"
-        android:layout_width="600dp"
-        android:layout_height="600dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/friends_username"
-        android:scaleType="centerCrop"
-        android:background="#2B2351"
-        android:padding="1dp"/>
+        <ImageView
+            android:id="@+id/ivPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription=""
+            android:scaleType="centerCrop"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:id="@+id/friends_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ivPhoto"
-        android:layout_centerHorizontal="true"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        <include
+            layout="@layout/checkbox_tag"
+            android:orientation="horizontal"></include>
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
