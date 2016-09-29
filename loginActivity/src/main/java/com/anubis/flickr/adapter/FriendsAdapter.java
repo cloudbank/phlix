@@ -1,6 +1,8 @@
 package com.anubis.flickr.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
@@ -11,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,6 +25,8 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 import java.util.Random;
 
+import static com.anubis.flickr.R.id.checkBox;
+
 /**
  * Created by sabine on 9/26/16.
  */
@@ -31,6 +36,9 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
 
     // Define listener member variable
     private OnItemClickListener listener;
+    protected SharedPreferences prefs;
+    protected SharedPreferences.Editor editor;
+
 
     public OnItemClickListener getListener(){
         return this.listener;
@@ -54,6 +62,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
         TextView title;
         ImageView imageView;
         TextView timestamp;
+        CheckBox checkbox;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -78,6 +87,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
                 }
             });
             tags = (TextView)itemView.findViewById(R.id.checkboxtags);
+            checkbox = (CheckBox)itemView.findViewById(checkBox);
 
         }
     }
@@ -93,6 +103,9 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
         mStaggered = staggered;
         mPhotos = photos;
         mContext = context;
+        this.prefs = this.getContext().getSharedPreferences("Flickr_User_Prefs", 0);
+        this.editor = this.prefs.edit();
+
     }
 
     // Easy access to the context object in the recyclerview
@@ -126,8 +139,17 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
                 .getLayoutParams();
 
         TextView tags = viewHolder.tags;
-        tags.setText("Taken by:  "+photo.getOwnername());
-
+        String username = prefs.getString("username","");
+        boolean isMe = photo.getOwnername().equals(username);
+        tags.setText("Taken by:  "+ (isMe ? "Me": photo.getOwnername()));
+        CheckBox cb = viewHolder.checkbox;
+        if (isMe)  {
+            cb.setVisibility(View.VISIBLE);
+            int id = Resources.getSystem().getIdentifier("btn_check_holo_dark", "drawable", "android");
+            cb.setButtonDrawable(id);
+            cb.setHint("Batch Tag");
+            cb.setChecked(true);
+        }
         //the images come back the same size as thumbnails
         //set random widths and heights between 75 and 200
         if (mStaggered) {

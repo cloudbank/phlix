@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Menu;
@@ -17,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
@@ -201,9 +201,11 @@ public abstract class FlickrBaseFragment extends Fragment {
     public void signOut() {
 
         OAuthBaseClient.getInstance(this.getContext(), null).clearAccessToken();
-
-
-        Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.bye), Toast.LENGTH_LONG).show();
+        View v = getActivity().findViewById(R.layout.activity_login);
+        
+        Snackbar.make(v, "Logging out....", Snackbar.LENGTH_SHORT)
+                .setDuration(3000).show();
+       // Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.bye), Toast.LENGTH_LONG).show();
         Intent bye = new Intent(getActivity(), LoginActivity.class);
         startActivity(bye);
     }

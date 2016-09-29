@@ -2,6 +2,7 @@ package com.anubis.flickr.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -47,6 +48,8 @@ public class FriendsFragment extends FlickrBaseFragment {
     ProgressDialog ringProgressDialog;
     FriendsAdapter fAdapter;
     RecyclerView rvPhotos;
+    protected SharedPreferences prefs;
+    protected SharedPreferences.Editor editor;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -60,7 +63,8 @@ public class FriendsFragment extends FlickrBaseFragment {
         super.onCreate(savedInstanceState);
         fAdapter = new FriendsAdapter(getActivity(), mPhotoItems, false);
         ringProgressDialog= new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
-
+        this.prefs = this.getContext().getSharedPreferences("Flickr_User_Prefs", 0);
+        this.editor = this.prefs.edit();
         getPhotos();
 
         mType = FriendsFlickrPhoto.class;
@@ -86,7 +90,8 @@ public class FriendsFragment extends FlickrBaseFragment {
                     @Override
                     public Observable<Photos> call(User user) {
                         username = user.getUser().getUsername().getContent();
-
+                        editor.putString("username", username);
+                        editor.commit();
                         return FlickrClientApp.getService().getFriendsPhotos(user.getUser().getId());
 
                     }
@@ -97,10 +102,6 @@ public class FriendsFragment extends FlickrBaseFragment {
                     public void onCompleted() {
 
                         ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle(username);
-
-
-
-
 
                         ringProgressDialog.dismiss();
                         //Log.d("DEBUG","oncompleted");
@@ -131,41 +132,7 @@ public class FriendsFragment extends FlickrBaseFragment {
 
     protected void loadPhotos() {
        // clearAdapter();
-       // String userId = this.getContext().getSharedPreferences("user_prefs", 0).getString("user_id","");
 
-
-
-      /*  client.getFriendsList(new JsonHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(JSONObject json) {
-                try {
-                    JSONArray photos = json.getJSONObject("photos")
-                            .getJSONArray("photo");
-                    for (int x = 0; x < photos.length(); x++) {
-                        JSONObject jsonObject = photos.getJSONObject(x);
-                        String uid = jsonObject.getString("id");
-                        FlickrPhoto p = FriendsFlickrPhoto
-                                .byPhotoUid(uid, mType);
-                        if (p == null) {
-                            p = new FriendsFlickrPhoto(jsonObject);
-                        }
-                        p.save();
-                        mAdapter.add(p);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.e("Error getting JSON", e.toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable arg0, JSONObject arg1) {
-                Log.e("ERROR", ": onFailure: FriendsFragment " + arg0 + " " + arg1);
-            }
-
-        });
-*/
     }
 
     @Override

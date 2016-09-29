@@ -84,11 +84,11 @@
             <Button
                 android:id="@+id/btnComments"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/etComments"
                 android:layout_toEndOf="@+id/etComments"
                 android:layout_toRightOf="@+id/etComments"
-
+                android:padding="2dp"
                 android:onClick="addComment"
                 android:theme="@style/MyButton"
 

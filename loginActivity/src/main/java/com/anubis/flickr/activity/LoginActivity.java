@@ -24,6 +24,14 @@ public class LoginActivity extends OAuthLoginActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        View v = findViewById(R.id.loginBtn);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginToRest(v);
+            }
+        });
+
 
     }
 

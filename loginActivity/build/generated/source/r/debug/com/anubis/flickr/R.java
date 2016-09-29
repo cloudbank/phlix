@@ -2903,38 +2903,39 @@ containing a value of this type.
         public static final int list_focused_example=0x7f020091;
         public static final int list_pressed_actionbarstyle=0x7f020092;
         public static final int list_pressed_example=0x7f020093;
-        public static final int menu_dropdown_panel_actionbarstyle=0x7f020094;
-        public static final int menu_dropdown_panel_example=0x7f020095;
-        public static final int navigation_empty_icon=0x7f020096;
-        public static final int notification_template_icon_bg=0x7f0200b3;
-        public static final int progress_bg_actionbarstyle=0x7f020097;
-        public static final int progress_horizontal_actionbarstyle=0x7f020098;
-        public static final int progress_primary_actionbarstyle=0x7f020099;
-        public static final int progress_secondary_actionbarstyle=0x7f02009a;
-        public static final int ptr_pulltorefresh_arrow=0x7f02009b;
-        public static final int sakura=0x7f02009c;
-        public static final int selectable_background_actionbarstyle=0x7f02009d;
-        public static final int selectable_background_example=0x7f02009e;
-        public static final int selector_crop_button=0x7f02009f;
-        public static final int spinner_ab_default_actionbarstyle=0x7f0200a0;
-        public static final int spinner_ab_disabled_actionbarstyle=0x7f0200a1;
-        public static final int spinner_ab_focused_actionbarstyle=0x7f0200a2;
-        public static final int spinner_ab_pressed_actionbarstyle=0x7f0200a3;
-        public static final int spinner_background_ab_actionbarstyle=0x7f0200a4;
-        public static final int tab_indicator_ab_actionbarstyle=0x7f0200a5;
-        public static final int tab_indicator_ab_example=0x7f0200a6;
-        public static final int tab_selected_actionbarstyle=0x7f0200a7;
-        public static final int tab_selected_example=0x7f0200a8;
-        public static final int tab_selected_focused_actionbarstyle=0x7f0200a9;
-        public static final int tab_selected_focused_example=0x7f0200aa;
-        public static final int tab_selected_pressed_actionbarstyle=0x7f0200ab;
-        public static final int tab_selected_pressed_example=0x7f0200ac;
-        public static final int tab_unselected_actionbarstyle=0x7f0200ad;
-        public static final int tab_unselected_example=0x7f0200ae;
-        public static final int tab_unselected_focused_actionbarstyle=0x7f0200af;
-        public static final int tab_unselected_focused_example=0x7f0200b0;
-        public static final int tab_unselected_pressed_actionbarstyle=0x7f0200b1;
-        public static final int tab_unselected_pressed_example=0x7f0200b2;
+        public static final int lotus=0x7f020094;
+        public static final int menu_dropdown_panel_actionbarstyle=0x7f020095;
+        public static final int menu_dropdown_panel_example=0x7f020096;
+        public static final int navigation_empty_icon=0x7f020097;
+        public static final int notification_template_icon_bg=0x7f0200b4;
+        public static final int progress_bg_actionbarstyle=0x7f020098;
+        public static final int progress_horizontal_actionbarstyle=0x7f020099;
+        public static final int progress_primary_actionbarstyle=0x7f02009a;
+        public static final int progress_secondary_actionbarstyle=0x7f02009b;
+        public static final int ptr_pulltorefresh_arrow=0x7f02009c;
+        public static final int sakura=0x7f02009d;
+        public static final int selectable_background_actionbarstyle=0x7f02009e;
+        public static final int selectable_background_example=0x7f02009f;
+        public static final int selector_crop_button=0x7f0200a0;
+        public static final int spinner_ab_default_actionbarstyle=0x7f0200a1;
+        public static final int spinner_ab_disabled_actionbarstyle=0x7f0200a2;
+        public static final int spinner_ab_focused_actionbarstyle=0x7f0200a3;
+        public static final int spinner_ab_pressed_actionbarstyle=0x7f0200a4;
+        public static final int spinner_background_ab_actionbarstyle=0x7f0200a5;
+        public static final int tab_indicator_ab_actionbarstyle=0x7f0200a6;
+        public static final int tab_indicator_ab_example=0x7f0200a7;
+        public static final int tab_selected_actionbarstyle=0x7f0200a8;
+        public static final int tab_selected_example=0x7f0200a9;
+        public static final int tab_selected_focused_actionbarstyle=0x7f0200aa;
+        public static final int tab_selected_focused_example=0x7f0200ab;
+        public static final int tab_selected_pressed_actionbarstyle=0x7f0200ac;
+        public static final int tab_selected_pressed_example=0x7f0200ad;
+        public static final int tab_unselected_actionbarstyle=0x7f0200ae;
+        public static final int tab_unselected_example=0x7f0200af;
+        public static final int tab_unselected_focused_actionbarstyle=0x7f0200b0;
+        public static final int tab_unselected_focused_example=0x7f0200b1;
+        public static final int tab_unselected_pressed_actionbarstyle=0x7f0200b2;
+        public static final int tab_unselected_pressed_example=0x7f0200b3;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f0c0076;
@@ -2961,7 +2962,6 @@ containing a value of this type.
         public static final int alertTitle=0x7f0c004c;
         public static final int all=0x7f0c0032;
         public static final int always=0x7f0c0036;
-        public static final int angry_btn=0x7f0c0075;
         public static final int auto=0x7f0c0021;
         public static final int beginning=0x7f0c0034;
         public static final int bottom=0x7f0c0022;
@@ -3030,6 +3030,7 @@ containing a value of this type.
         public static final int line3=0x7f0c009f;
         public static final int listMode=0x7f0c000b;
         public static final int list_item=0x7f0c0044;
+        public static final int loginBtn=0x7f0c0075;
         public static final int lvPhotos=0x7f0c008c;
         public static final int media_actions=0x7f0c0099;
         public static final int middle=0x7f0c0035;
@@ -3201,7 +3202,9 @@ containing a value of this type.
         public static final int preview_photo=0x7f0d0002;
     }
     public static final class mipmap {
-        public static final int lotus=0x7f030000;
+        public static final int ic_launcher=0x7f030000;
+        public static final int ic_lotus=0x7f030001;
+        public static final int lotus=0x7f030002;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f060000;
