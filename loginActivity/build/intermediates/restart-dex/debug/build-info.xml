@@ -4,33 +4,47 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.0"
-    timestamp="151089098561715"
+    timestamp="172895483127738"
     token="2872332265169310905"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="1547" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="1004" />
+        duration="0" />
     <task
         name="verifier"
-        duration="135" />
+        duration="0" />
 
     <artifact
-        location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/outputs/apk/loginActivity-debug.apk"
-        type="MAIN" />
+        location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+        type="RESOURCES" />
 
     <build
-        timestamp="151089098561715"
+        timestamp="171576656696638"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/outputs/apk/loginActivity-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="172677671251675"
+        verifier="FIELD_ADDED" >
+        <artifact
+            location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5/classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="172895483127738"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>

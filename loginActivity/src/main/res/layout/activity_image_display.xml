@@ -1,98 +1,139 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:focusableInTouchMode="true"
-    android:scrollbars="vertical"
-    tools:context=".ImageDisplayActivity">
+    android:background="@color/AliceBlue">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar_main"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
-    <TextView
-        android:id="@+id/timestamp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/toolbar"
-        android:text="timestamp"
-        android:textSize="12sp" />
-
-    <ImageView
-        android:id="@+id/ivResult"
-        android:layout_width="match_parent"
-        android:layout_height="266dp"
-        android:layout_below="@id/timestamp"
-        android:layout_centerHorizontal="true"
-        android:background="#2B2351"
-        android:padding="1dp"
-        android:scaleType="centerCrop" />
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ivResult"
-        android:padding="1dp"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ivResult"
-        android:layout_margin="10dp"
-        android:text="Taken by username"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/tags"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        android:padding="10dp"
-        android:text="NO TAGS YET!"
-        android:textSize="12sp" />
-
-    <EditText
-        android:id="@+id/etComments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tags"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="add commentList"
-        android:textColor="#2B2351"
-        android:textColorHint="#2B2351"></EditText>
-
-    <Button
-        android:id="@+id/btnComments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etComments"
-        android:onClick="addComment"
-        android:padding="2dp"
-        android:text="@string/add"
-
-        android:textColor="#2B2351"
-        android:textSize="14sp"
-        android:theme="@style/MyButton"></Button>
-
-    <WebView
-        android:id="@+id/comments"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etComments"
-        android:layout_below="@+id/btnComments"
-        android:background="@color/AliceBlue"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:focusableInTouchMode="true"
         android:scrollbars="vertical"
-        android:textColor="#2B2351"
-        android:textSize="8sp"></WebView>
+        tools:context=".ImageDisplayActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:layout_centerInParent="true"
+            android:background="@color/AliceBlue"
+            android:textStyle="bold"
+            android:padding="1dp"
+            android:text="the title"
+            android:textColor="@color/RoyalBlue"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/ivResult"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_below="@id/title"
+            android:layout_centerHorizontal="true"
+            android:padding="1dp"
+            android:background="@color/AliceBlue"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taken by username"
+            android:textSize="12sp"
+            android:background="@color/AliceBlue"
+            android:textStyle="bold"
+            android:textColor="@color/RoyalBlue"
+            android:layout_below="@+id/ivResult"
+            android:layout_alignLeft="@+id/ivResult"
+            android:layout_alignStart="@+id/ivResult" />
+        <TextView
+            android:id="@+id/timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivResult"
+            android:layout_alignRight="@+id/ivResult"
+            android:text="timestamp"
+            android:background="@color/AliceBlue"
+            android:textStyle="bold"
+            android:textColor="@color/RoyalBlue"
+            android:textSize="12sp" />
+
+
+        <co.hkm.soltag.TagContainerLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:padding="2dp"
+            app:tag_text_size="9sp"
+            android:layout_below="@id/ivResult"
+            android:id="@+id/tag_group"
+            app:container_background_color="@color/AliceBlue"
+            app:container_enable_drag="false"
+            app:horizontal_interval="5dp"
+            app:vertical_interval="5dp"
+            app:tag_horizontal_padding="5dp"
+            app:tag_vertical_padding="5dp"
+            app:tag_theme="random"
+            app:tag_border_color="@color/RoyalBlue"
+            app:container_border_color="@color/AliceBlue"/>
+
+
+        <EditText
+            android:id="@+id/etComments"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tag_group"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:hint="Comment on this pic..."
+            android:theme="@style/MyEditText"
+            android:layout_alignLeft="@id/tag_group"
+            android:textSize="12sp"
+            android:textColor="@color/RoyalBlue"
+            android:singleLine="false"
+            android:textColorHint="@color/DeepPink"></EditText>
+
+        <Button
+            android:id="@+id/btnComments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tag_group"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignRight="@id/ivResult"
+            android:onClick="addComment"
+            android:padding="5dp"
+            android:text="add comment"
+            android:textColor="@color/AliceBlue"
+            android:textSize="12sp"
+            android:theme="@style/MyButton"></Button>
+
+        <WebView
+            android:id="@+id/comments"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ivResult"
+            android:layout_below="@+id/btnComments"
+            android:background="@color/AliceBlue"
+            android:scrollbars="vertical"
+            android:textColor="#2B2351"
+            android:textSize="8sp"></WebView>
+
+
+
+
+    </RelativeLayout>
+</ScrollView>

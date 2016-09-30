@@ -23,10 +23,13 @@ import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.PhotoInfo;
 import com.anubis.flickr.models.Tag;
 import com.anubis.flickr.util.DateUtility;
+import com.anubis.flickr.util.ImageRoundedTransformation;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import co.hkm.soltag.TagContainerLayout;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
 import rx.Subscriber;
@@ -41,7 +44,8 @@ import static com.anubis.flickr.R.id.username;
 public class ImageDisplayActivity extends AppCompatActivity {
 
     WebView wvComments;
-    TextView mTags;
+    List mTagsList = new ArrayList();
+    TagContainerLayout mTags;
     EditText etComments;
     String mUid = "";
     String mContent;
@@ -67,11 +71,11 @@ public class ImageDisplayActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ImageView imageView = (ImageView) findViewById(R.id.ivResult);
-        Picasso.with(getBaseContext()).load(photo.getUrl()).into(imageView);
+        Picasso.with(getBaseContext()).load(photo.getUrl()).transform(new ImageRoundedTransformation(5,5)).resize(300,300).centerCrop().into(imageView);
         //ImageLoader imageLoader = ImageLoader.getInstance();
         //imageLoader.displayImage(photo.getUrl(), image);
         TextView tvUsername = (TextView) findViewById(username);
-        tvUsername.setText(photo.getOwnername());
+        tvUsername.setText("By: "+photo.getOwnername());
         TextView tvTimestamp = (TextView) findViewById(R.id.timestamp);
         tvTimestamp.setText(DateUtility.relativeTime(photo.getDatetaken(), this));
         TextView tvTitle = (TextView) findViewById(R.id.title);
@@ -86,7 +90,8 @@ public class ImageDisplayActivity extends AppCompatActivity {
         wvComments.setVerticalScrollBarEnabled(true);
         wvComments.setHorizontalScrollBarEnabled(true);
         mUid = photo.getId();
-        mTags = (TextView)findViewById(R.id.tags);
+        mTags =    (TagContainerLayout) findViewById(R.id.tag_group);
+
         //@todo
         getComments(mUid);
         // get focus off edittext, hide kb
@@ -118,7 +123,11 @@ public class ImageDisplayActivity extends AppCompatActivity {
                 .subscribe(new Subscriber<ImageDisplay>() {
                     @Override
                     public void onCompleted() {
-
+                        if (mTagsList.size() == 0) {
+                            mTags.setVisibility(View.GONE);
+                        } else {
+                            mTags.setVisibility(View.VISIBLE);
+                        }
 
                         //ringProgressDialog.dismiss();
                         //Log.d("DEBUG","oncompleted");
@@ -141,28 +150,24 @@ public class ImageDisplayActivity extends AppCompatActivity {
                         Log.d("DEBUG", "mlogin: " + comments);
                         //pass comments to webview
                         displayComments(wvComments, imageDisplay.getComments().getComments().getCommentList(), false);
-                        displayPhotoInfo(imageDisplay.getPhoto().getPhoto().getTags().getTag());
+                        mTagsList =imageDisplay.getPhoto().getPhoto().getTags().getTag();
+                        displayPhotoInfo(mTagsList);
                     }
                 });
 
     }
 
     public void displayPhotoInfo(List<Tag> tags)  {
-        mTags.setText(tags.size() > 0 ? showTags(tags) : ": )");
-
-
-
-    }
-
-    public String showTags(List<Tag> tags)  {
-        StringBuilder sb = new StringBuilder();
-        for (Tag s : tags) {
-            sb.append(s.getContent() + " -||||- ");
-
-
+        //tags.stream().map(it -> it.getContent()).collect(Collectors.toCollection())
+        //when android catches up to 1.8
+        for( Tag t : tags) {
+            mTags.addTag(t.getContent());
         }
-        return sb.toString();
+
+
     }
+
+
 
     public void addComment(View v) {
         String commentString = etComments.getText().toString();

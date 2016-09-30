@@ -3,12 +3,6 @@ package com.anubis.flickr.adapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Shader;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -141,7 +135,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
         TextView tags = viewHolder.tags;
         String username = prefs.getString("username","");
         boolean isMe = photo.getOwnername().equals(username);
-        tags.setText("Taken by:  "+ (isMe ? "Me": photo.getOwnername()));
+        tags.setText("~"+ (isMe ? "Me": photo.getOwnername()));
         CheckBox cb = viewHolder.checkbox;
         if (isMe)  {
             cb.setVisibility(View.VISIBLE);
@@ -163,8 +157,8 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
             imageView.setLayoutParams(lp);
 
         } else {
-           // lp.height= 250;
-           // lp.width = 300;
+           //lp.height= 250;
+           //lp.width = 300;
         }
         Picasso.with(this.getContext()).load(photo.getUrl()).fit().centerCrop()
                 .placeholder(android.R.drawable.btn_star)
@@ -180,37 +174,5 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
     }
 
 
-     class RoundedTransformation implements com.squareup.picasso.Transformation {
-        private final int radius;
-        private final int margin;
 
-        public RoundedTransformation(final int radius, final int margin) {
-            this.radius = radius;
-            this.margin = margin;
-        }
-
-        @Override
-        public Bitmap transform(final Bitmap source) {
-            final Paint paint = new Paint();
-            paint.setAntiAlias(true);
-            paint.setShader(new BitmapShader(source, Shader.TileMode.CLAMP,
-                    Shader.TileMode.CLAMP));
-
-            Bitmap output = Bitmap.createBitmap(source.getWidth(), source.getHeight(),
-                    Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(output);
-            canvas.drawRoundRect(new RectF(margin, margin, source.getWidth() - margin,
-                    source.getHeight() - margin), radius, radius, paint);
-
-            if (source != output) {
-                source.recycle();
-            }
-            return output;
-        }
-
-        @Override
-        public String key() {
-            return "rounded(r=" + radius + ", m=" + margin + ")";
-        }
-    }
 }
