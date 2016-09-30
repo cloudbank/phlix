@@ -149,6 +149,8 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
             cb.setButtonDrawable(id);
             cb.setHint("Batch Tag");
             cb.setChecked(true);
+        } else {
+            cb.setVisibility(View.INVISIBLE);
         }
         //the images come back the same size as thumbnails
         //set random widths and heights between 75 and 200

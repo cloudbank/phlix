@@ -1,6 +1,5 @@
 package com.anubis.flickr.activity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,21 +18,30 @@ import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FlickrBaseFragment;
 import com.anubis.flickr.models.Comment;
 import com.anubis.flickr.models.Comments;
+import com.anubis.flickr.models.ImageDisplay;
 import com.anubis.flickr.models.Photo;
+import com.anubis.flickr.models.PhotoInfo;
+import com.anubis.flickr.models.Tag;
 import com.anubis.flickr.util.DateUtility;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import retrofit2.adapter.rxjava.HttpException;
+import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func2;
 import rx.schedulers.Schedulers;
+
+import static com.anubis.flickr.R.id.comments;
+import static com.anubis.flickr.R.id.username;
 
 public class ImageDisplayActivity extends AppCompatActivity {
 
     WebView wvComments;
+    TextView mTags;
     EditText etComments;
     String mUid = "";
     String mContent;
@@ -53,7 +61,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.flickr_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-       // getSupportActionBar().setElevation(3);
+        // getSupportActionBar().setElevation(3);
         getSupportActionBar().setTitle(R.string.app_name);
         getSupportActionBar().setSubtitle(R.string.image_detail);
 
@@ -62,7 +70,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
         Picasso.with(getBaseContext()).load(photo.getUrl()).into(imageView);
         //ImageLoader imageLoader = ImageLoader.getInstance();
         //imageLoader.displayImage(photo.getUrl(), image);
-        TextView tvUsername = (TextView) findViewById(R.id.username);
+        TextView tvUsername = (TextView) findViewById(username);
         tvUsername.setText(photo.getOwnername());
         TextView tvTimestamp = (TextView) findViewById(R.id.timestamp);
         tvTimestamp.setText(DateUtility.relativeTime(photo.getDatetaken(), this));
@@ -73,11 +81,12 @@ public class ImageDisplayActivity extends AppCompatActivity {
         etComments.setMaxLines(1);
         etComments.setVerticalScrollBarEnabled(true);
         etComments.setMovementMethod(new ScrollingMovementMethod());
-        wvComments = (WebView) findViewById(R.id.comments);
-        wvComments.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        wvComments = (WebView) findViewById(comments);
+        wvComments.setBackgroundColor(getResources().getColor(R.color.AliceBlue));
         wvComments.setVerticalScrollBarEnabled(true);
         wvComments.setHorizontalScrollBarEnabled(true);
         mUid = photo.getId();
+        mTags = (TextView)findViewById(R.id.tags);
         //@todo
         getComments(mUid);
         // get focus off edittext, hide kb
@@ -96,12 +105,17 @@ public class ImageDisplayActivity extends AppCompatActivity {
     }
 
     private void getComments(final String uid) {
+        Observable<PhotoInfo> photoInfo = FlickrClientApp.getService().getPhotoInfo(uid);
+        subscription = FlickrClientApp.getService().getComments(uid).zipWith(photoInfo, new Func2<Comments, PhotoInfo, ImageDisplay>() {
+            @Override
+            public ImageDisplay call(Comments c, PhotoInfo p) {
+                return new ImageDisplay(p, c);
+            }
 
-        subscription = FlickrClientApp.getService().getComments(uid)
 
-                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+        }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Comments>() {
+                .subscribe(new Subscriber<ImageDisplay>() {
                     @Override
                     public void onCompleted() {
 
@@ -123,54 +137,37 @@ public class ImageDisplayActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onNext(Comments comments) {
+                    public void onNext(ImageDisplay imageDisplay) {
                         Log.d("DEBUG", "mlogin: " + comments);
                         //pass comments to webview
-                        displayComments(wvComments, comments.getComments().getCommentList(), false);
+                        displayComments(wvComments, imageDisplay.getComments().getComments().getCommentList(), false);
+                        displayPhotoInfo(imageDisplay.getPhoto().getPhoto().getTags().getTag());
                     }
                 });
 
+    }
+
+    public void displayPhotoInfo(List<Tag> tags)  {
+        mTags.setText(tags.size() > 0 ? showTags(tags) : ": )");
 
 
 
-        /*
-        client.getComments(new JsonHttpResponseHandler() {
+    }
 
-            @Override
-            public void onFailure(Throwable arg0, JSONObject arg1) {
-                Log.e("ERROR", "onFailure: getComments " + arg0 + " " + arg1);
-                //@todo get the last comments from db
-            }
+    public String showTags(List<Tag> tags)  {
+        StringBuilder sb = new StringBuilder();
+        for (Tag s : tags) {
+            sb.append(s.getContent() + " -||||- ");
 
-            @Override
-            public void onSuccess(JSONObject json) {
-                try {
-                    JSONObject c = json.getJSONObject("comments");
-                    if (c.has("comment")) {
-                        JSONArray cArray = c.getJSONArray("comment");
-                        List<com.anubis.flickr.models.FlickrPhoto.Comment> comments = FriendsFlickrPhoto
-                                .getCommentsFromArray(cArray);
-                        FlickrPhoto p = FlickrPhoto.byPhotoUid(
-                                uid, type);
-                        //@todo
-                        if (!(p.getComments().equals(comments))) {
-                            p.setComments(comments);
-                            p.save();
-                        }
-                        displayComments(wvComments, comments, false);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.e("ERROR", "Error getting JSON");
-                }
-            }
-        }, uid);
-        */
+
+        }
+        return sb.toString();
     }
 
     public void addComment(View v) {
         String commentString = etComments.getText().toString();
-        if (commentString.length() > 0) { }
+        if (commentString.length() > 0) {
+        }
 
             /*
             client.addComment(new JsonHttpResponseHandler() {

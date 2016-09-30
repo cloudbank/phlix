@@ -8,6 +8,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:visibility="invisible"
+
+        android:textColor="@color/white"
         />
 
     <TextView

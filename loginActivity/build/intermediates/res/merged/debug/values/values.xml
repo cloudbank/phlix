@@ -1824,6 +1824,11 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/AliceBlue</item>
     </style>
+    <style name="MyLoginButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/PaleVioletRed</item>
+        <item name="colorButtonNormal">@color/RoyalBlue</item>
+
+    </style>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
 

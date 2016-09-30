@@ -87,7 +87,7 @@ Organized by: Willie Tsang
     <color name="aqua">#00FFFF</color>
     <color name="Bisque">#FFE4C4</color>
     <color name="BlanchedAlmond">#FFEBCD</color>
-    <!-- c -->
+    <!-- comments -->
     <color name="Cornsilk">#FFF8DC</color>
     <color name="Coral">#FF7F50</color>
     <color name="Chocolate">#D2691E</color>
@@ -151,7 +151,7 @@ Organized by: Willie Tsang
     <color name="OldLace">#FDF5E6</color>
     <color name="Orchid">#DA70D6</color>
 
-    <!-- p -->
+    <!-- photo -->
     <color name="PeachPuff">#FFDAB9</color>
     <color name="Pink">#FFC0CB</color>
     <color name="Peru">#CD853F</color>

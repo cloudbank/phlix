@@ -1,6 +1,7 @@
 package com.anubis.flickr.service;
 
 import com.anubis.flickr.models.Comments;
+import com.anubis.flickr.models.PhotoInfo;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.User;
 
@@ -32,6 +33,8 @@ public interface FlickrService {
     @GET(API_BASE_URL+"?method=flickr.photos.comments.getList&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0")
     Observable<Comments> getComments(@Query("photo_id") String photoId);
 
+    @GET(API_BASE_URL+"?method=flickr.photos.getInfo&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0")
+    Observable<PhotoInfo> getPhotoInfo(@Query("photo_id") String photoId);
 
 
 /*

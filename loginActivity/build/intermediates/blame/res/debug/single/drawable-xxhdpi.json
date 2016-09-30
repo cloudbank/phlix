@@ -84,6 +84,10 @@
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/drawable-xxhdpi/ic_launcher.png"
     },
     {
+        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_camera_white.png",
+        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/drawable-xxhdpi/ic_camera_white.png"
+    },
+    {
         "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi/tab_selected_actionbarstyle.9.png",
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/drawable-xxhdpi/tab_selected_actionbarstyle.9.png"
     },
