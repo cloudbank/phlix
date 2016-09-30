@@ -81,6 +81,7 @@ public class PhotosActivity extends AppCompatActivity {
 
         tabLayout.addTab(tabLayout.newTab().setText(R.string.friends_and_you));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.interesting_today));
+        tabLayout.addTab(tabLayout.newTab().setText("TAGS"));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.search_by_tag_text));
 
 
@@ -164,7 +165,8 @@ public class PhotosActivity extends AppCompatActivity {
         ArrayList<Fragment> a = new ArrayList<Fragment>();
         a.add(FriendsFragment.newInstance(0, getResources().getString(R.string.friends_and_you), new FriendsFragment()));
         a.add(InterestingFragment.newInstance(1, getResources().getString(R.string.interesting_today), new InterestingFragment()));
-        a.add(SearchFragment.newInstance(2, getResources().getString(R.string.search_by_tag_text), new SearchFragment()));
+        a.add(SearchFragment.newInstance(2, "TAGS", new SearchFragment()));
+        a.add(SearchFragment.newInstance(3, getResources().getString(R.string.search_by_tag_text), new SearchFragment()));
         return a;
     }
 
@@ -186,7 +188,7 @@ public class PhotosActivity extends AppCompatActivity {
 
     //keep small number of pages in memory mostly
     public static class MyPagerAdapter extends FragmentPagerAdapter {
-        public static int NUM_ITEMS = 3;
+        public static int NUM_ITEMS = 4;
         public FragmentManager mFragmentManager;
         private ArrayList<Fragment> mPagerItems;
 
@@ -216,6 +218,8 @@ public class PhotosActivity extends AppCompatActivity {
                     return mPagerItems.get(1);
                 case 2:
                     return mPagerItems.get(2);
+                case 3:
+                    return mPagerItems.get(3);
                 default:
                     return null;
             }

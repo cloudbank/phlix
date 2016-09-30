@@ -6,6 +6,7 @@ import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.User;
 
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -35,6 +36,10 @@ public interface FlickrService {
 
     @GET(API_BASE_URL+"?method=flickr.photos.getInfo&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0")
     Observable<PhotoInfo> getPhotoInfo(@Query("photo_id") String photoId);
+
+    @POST(API_BASE_URL+"?method=flickr.photos.comments.addComment&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0")
+    Observable<PhotoInfo> addComment(@Query("photo_id") String photoId, @Query("comment_text") comment);
+
 
 
 /*

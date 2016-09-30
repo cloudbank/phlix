@@ -26,6 +26,8 @@ import com.anubis.flickr.util.DateUtility;
 import com.anubis.flickr.util.ImageRoundedTransformation;
 import com.squareup.picasso.Picasso;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,7 +126,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
                     @Override
                     public void onCompleted() {
                         if (mTagsList.size() == 0) {
-                            mTags.setVisibility(View.GONE);
+                            mTags.setVisibility(View.INVISIBLE);
                         } else {
                             mTags.setVisibility(View.VISIBLE);
                         }
@@ -171,6 +173,11 @@ public class ImageDisplayActivity extends AppCompatActivity {
 
     public void addComment(View v) {
         String commentString = etComments.getText().toString();
+        try {
+            commentString = URLEncoder.encode(commentString, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         if (commentString.length() > 0) {
         }
 
@@ -220,7 +227,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
 
     private void displayComments(WebView commentsView, List<Comment> comments, boolean added) {
         mBuilder = new StringBuilder();
-        mBuilder.append("<html><head>  <style> body {color: #2B2351;  font-size: 12px;}</style></head><br>");
+        mBuilder.append("<html><head>  <style> body {color: #4169E1;  font-size: 12px;}</style></head><br>");
         for (Comment c : comments) {
             mContent = c.getContent();
             String htmlString = mContent;

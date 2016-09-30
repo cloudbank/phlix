@@ -94,17 +94,19 @@
         <EditText
             android:id="@+id/etComments"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@id/tag_group"
             android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:hint="Comment on this pic..."
             android:theme="@style/MyEditText"
             android:layout_alignLeft="@id/tag_group"
             android:textSize="12sp"
             android:textColor="@color/RoyalBlue"
-            android:singleLine="false"
-            android:textColorHint="@color/DeepPink"></EditText>
+            android:textColorHint="@color/DeepPink"
+            android:inputType="textMultiLine"
+            android:lines="6"
+            android:minLines="6"       />
 
         <Button
             android:id="@+id/btnComments"
@@ -112,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tag_group"
             android:layout_marginBottom="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_alignRight="@id/ivResult"
             android:onClick="addComment"
             android:padding="5dp"
@@ -125,11 +127,13 @@
             android:id="@+id/comments"
             android:layout_width="400dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/ivResult"
+            android:layout_alignLeft="@+id/etComments"
             android:layout_below="@+id/btnComments"
             android:background="@color/AliceBlue"
             android:scrollbars="vertical"
-            android:textColor="#2B2351"
+            android:textColor="@color/DeepPink"
+            android:fontFamily="monospace"
+            android:typeface="monospace"
             android:textSize="8sp"></WebView>
 
 
