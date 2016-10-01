@@ -123,6 +123,7 @@
             android:textSize="12sp"
             android:theme="@style/MyButton"></Button>
 
+
         <WebView
             android:id="@+id/comments"
             android:layout_width="400dp"
@@ -131,7 +132,7 @@
             android:layout_below="@+id/btnComments"
             android:background="@color/AliceBlue"
             android:scrollbars="vertical"
-            android:textColor="@color/DeepPink"
+            android:textColor="@color/RoyalBlue"
             android:fontFamily="monospace"
             android:typeface="monospace"
             android:textSize="8sp"></WebView>

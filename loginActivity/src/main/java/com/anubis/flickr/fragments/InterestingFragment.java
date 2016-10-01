@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
-import com.anubis.flickr.adapter.RecyclerAdapter;
+import com.anubis.flickr.adapter.InterestingAdapter;
 import com.anubis.flickr.models.InterestingFlickrPhoto;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
@@ -25,7 +25,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class InterestingFragment extends FlickrBaseFragment {
-    RecyclerAdapter rAdapter;
+    InterestingAdapter rAdapter;
     RecyclerView rvPhotos;
     ProgressDialog ringProgressDialog;
     private Subscription subscription;
@@ -39,7 +39,7 @@ public class InterestingFragment extends FlickrBaseFragment {
         ringProgressDialog = new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
 
         mType = InterestingFlickrPhoto.class;
-        rAdapter = new RecyclerAdapter(getContext(), mPhotoItems, true);
+        rAdapter = new InterestingAdapter(getContext(), mPhotoItems, true);
         loadPhotos(1, true);
     }
 
@@ -62,7 +62,7 @@ public class InterestingFragment extends FlickrBaseFragment {
 
         // vPhotos.setOnItemClickListener(mListener);
         // vPhotos.setOnScrollListener(mScrollListener);
-        rAdapter.setOnItemClickListener(new RecyclerAdapter.OnItemClickListener() {
+        rAdapter.setOnItemClickListener(new InterestingAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                // String title = mPhotoItems.get(position).getTitle();

@@ -26,9 +26,8 @@ import com.anubis.flickr.util.DateUtility;
 import com.anubis.flickr.util.ImageRoundedTransformation;
 import com.squareup.picasso.Picasso;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,6 +56,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
     private Subscription subscription, subscription2;
     Map<String, String> data = new HashMap<>();
     Photo mPhoto;
+    List mComments = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +97,6 @@ public class ImageDisplayActivity extends AppCompatActivity {
         wvComments.setHorizontalScrollBarEnabled(true);
         mUid = mPhoto.getId();
         mTags = (TagContainerLayout) findViewById(R.id.tag_group);
-
         //@todo
         getComments(mUid);
         // get focus off edittext, hide kb
@@ -153,9 +152,10 @@ public class ImageDisplayActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(ImageDisplay imageDisplay) {
-                        Log.d("DEBUG", "mlogin: " + comments);
+                        Log.d("DEBUG", "mlogin: " + imageDisplay);
                         //pass comments to webview
-                        displayComments(wvComments, imageDisplay.getComments().getComments().getCommentList(), false);
+                        mComments.addAll(imageDisplay.getComments().getComments().getCommentList());
+                        displayComments(wvComments, mComments, false);
                         mTagsList = imageDisplay.getPhoto().getPhoto().getTags().getTag();
                         displayPhotoInfo(mTagsList);
                     }
@@ -176,14 +176,12 @@ public class ImageDisplayActivity extends AppCompatActivity {
 //@todo idempotent only once put, and in reverse w date
     public void addComment(View v) {
         String commentString = etComments.getText().toString();
-        try {
-            commentString = URLEncoder.encode(commentString, "UTF-8");
+        /*try {
+           // commentString = URLEncoder.encode(commentString, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             Log.e("ERROR","Encoding not supported in comment");
-        } finally {
-
-        }
+        }*/
         if (commentString.length() > 0) {
 
             data.put("comment_text", commentString);
@@ -194,7 +192,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
                     .subscribe(new Subscriber<Comment>() {
                         @Override
                         public void onCompleted() {
-
+                            getComments(mUid);
                         }
 
                         @Override
@@ -211,7 +209,8 @@ public class ImageDisplayActivity extends AppCompatActivity {
                         @Override
                         public void onNext(Comment c) {
                             Log.d("DEBUG", "comment: " + c.getId());
-                            //do notheing
+                            //mComments.add(c);
+                            //displayComments(wvComments,mComments, false);
                         }
                     });
 
@@ -237,7 +236,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
             }
 
 
-            mBuilder.append("<b>" + c.getAuthorname() + "</b>: " + htmlString + "<br><br>");
+            mBuilder.append("<b>" + c.getAuthorname() + "</b>  "+ new Date((Long.parseLong(c.getDatecreate())*1000)).toString() + "<br>" + htmlString + "<br><br>");
         }
         mBuilder.append("</body></html>");
         commentsView.loadUrl("about:blank");
