@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Sep 30 16:06:43 PDT 2016
+#Fri Sep 30 17:36:07 PDT 2016
 20.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_
 143.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_
 340.file=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_/res/color-v23/abc_tint_seek_thumb.xml

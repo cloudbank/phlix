@@ -29,7 +29,9 @@ import com.squareup.picasso.Picasso;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import co.hkm.soltag.TagContainerLayout;
 import retrofit2.adapter.rxjava.HttpException;
@@ -52,13 +54,15 @@ public class ImageDisplayActivity extends AppCompatActivity {
     String mUid = "";
     String mContent;
     StringBuilder mBuilder;
-    private Subscription subscription;
+    private Subscription subscription, subscription2;
+    Map<String, String> data = new HashMap<>();
+    Photo mPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_display);
-        Photo photo = (Photo) getIntent().getSerializableExtra(
+        mPhoto = (Photo) getIntent().getSerializableExtra(
                 FlickrBaseFragment.RESULT);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -73,15 +77,15 @@ public class ImageDisplayActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ImageView imageView = (ImageView) findViewById(R.id.ivResult);
-        Picasso.with(getBaseContext()).load(photo.getUrl()).transform(new ImageRoundedTransformation(5,5)).resize(300,300).centerCrop().into(imageView);
+        Picasso.with(getBaseContext()).load(mPhoto.getUrl()).transform(new ImageRoundedTransformation(5, 5)).resize(300, 300).centerCrop().into(imageView);
         //ImageLoader imageLoader = ImageLoader.getInstance();
-        //imageLoader.displayImage(photo.getUrl(), image);
+        //imageLoader.displayImage(mPhoto.getUrl(), image);
         TextView tvUsername = (TextView) findViewById(username);
-        tvUsername.setText("By: "+photo.getOwnername());
+        tvUsername.setText("By: " + mPhoto.getOwnername());
         TextView tvTimestamp = (TextView) findViewById(R.id.timestamp);
-        tvTimestamp.setText(DateUtility.relativeTime(photo.getDatetaken(), this));
+        tvTimestamp.setText(DateUtility.relativeTime(mPhoto.getDatetaken(), this));
         TextView tvTitle = (TextView) findViewById(R.id.title);
-        tvTitle.setText(photo.getTitle());
+        tvTitle.setText(mPhoto.getTitle());
         etComments = (EditText) findViewById(R.id.etComments);
         etComments.setScroller(new Scroller(this));
         etComments.setMaxLines(1);
@@ -91,8 +95,8 @@ public class ImageDisplayActivity extends AppCompatActivity {
         wvComments.setBackgroundColor(getResources().getColor(R.color.AliceBlue));
         wvComments.setVerticalScrollBarEnabled(true);
         wvComments.setHorizontalScrollBarEnabled(true);
-        mUid = photo.getId();
-        mTags =    (TagContainerLayout) findViewById(R.id.tag_group);
+        mUid = mPhoto.getId();
+        mTags = (TagContainerLayout) findViewById(R.id.tag_group);
 
         //@todo
         getComments(mUid);
@@ -152,78 +156,69 @@ public class ImageDisplayActivity extends AppCompatActivity {
                         Log.d("DEBUG", "mlogin: " + comments);
                         //pass comments to webview
                         displayComments(wvComments, imageDisplay.getComments().getComments().getCommentList(), false);
-                        mTagsList =imageDisplay.getPhoto().getPhoto().getTags().getTag();
+                        mTagsList = imageDisplay.getPhoto().getPhoto().getTags().getTag();
                         displayPhotoInfo(mTagsList);
                     }
                 });
 
     }
 
-    public void displayPhotoInfo(List<Tag> tags)  {
+    public void displayPhotoInfo(List<Tag> tags) {
         //tags.stream().map(it -> it.getContent()).collect(Collectors.toCollection())
         //when android catches up to 1.8
-        for( Tag t : tags) {
+        for (Tag t : tags) {
             mTags.addTag(t.getContent());
         }
 
 
     }
 
-
-
+//@todo idempotent only once put, and in reverse w date
     public void addComment(View v) {
         String commentString = etComments.getText().toString();
         try {
             commentString = URLEncoder.encode(commentString, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+            Log.e("ERROR","Encoding not supported in comment");
+        } finally {
+
         }
         if (commentString.length() > 0) {
+
+            data.put("comment_text", commentString);
+            data.put("photo_id", mPhoto.getId());
+            subscription2 = FlickrClientApp.getService().addComment(data)
+                    .subscribeOn(Schedulers.io())  // can be optional if not overriding
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<Comment>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            // cast to retrofit.HttpException to get the response code
+                            if (e instanceof HttpException) {
+                                HttpException response = (HttpException) e;
+                                int code = response.code();
+                                Log.e("ERROR", String.valueOf(code));
+                            }
+                            Log.e("ERROR", "error getting interesting photos" + e);
+                        }
+
+                        @Override
+                        public void onNext(Comment c) {
+                            Log.d("DEBUG", "comment: " + c.getId());
+                            //do notheing
+                        }
+                    });
+
         }
-
-            /*
-            client.addComment(new JsonHttpResponseHandler() {
-
-                @Override
-                public void onFailure(Throwable arg0, JSONObject arg1) {
-                    Log.e("ERROR", "onFailure addComment" + arg0 + arg1);
-                }
-
-                @Override
-                public void onSuccess(JSONObject json) {
-                    FlickrPhoto p = FlickrPhoto.byPhotoUid(mUid,
-                            type);
-                    String author = null, comment = null;
-
-                    try {
-                        comment = json.getJSONObject("comment").getString(
-                                "_content");
-                        author = json.getJSONObject("comment").getString(
-                                "authorname");
-                        List<Comment> comments_list = p.getComments();
-                        comments_list.add(new Comment(author, comment));
-                        p.setComments(comments_list);
-                        p.save();
-                        etComments.setText("");
-                        displayComments(wvComments, comments_list, true);
-
-                    } catch (JSONException e) {
-                        Log.e("ERROR", "Error getting JSON");
-                        e.printStackTrace();
-                    }
-
-                }
-
-            }, commentString, mUid);
-            FlickrUtility.hideKeyboard(this);
-            // refresh the view
-            //wvComments.reload();
-        } else {
-            Toast.makeText(this, R.string.enter_comment, Toast.LENGTH_SHORT).show();
-        }
-        */
-
     }
+
+
 
     private void displayComments(WebView commentsView, List<Comment> comments, boolean added) {
         mBuilder = new StringBuilder();
@@ -254,6 +249,8 @@ public class ImageDisplayActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         subscription.unsubscribe();
-
+        if (null != subscription2) {
+            subscription2.unsubscribe();
+        }
     }
 }
