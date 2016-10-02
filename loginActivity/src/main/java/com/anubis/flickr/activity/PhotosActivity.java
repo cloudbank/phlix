@@ -16,6 +16,7 @@ import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FriendsFragment;
 import com.anubis.flickr.fragments.InterestingFragment;
 import com.anubis.flickr.fragments.SearchFragment;
+import com.anubis.flickr.fragments.TagsFragment;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.User;
 
@@ -79,9 +80,9 @@ public class PhotosActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
 
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.friends_and_you));
+        tabLayout.addTab(tabLayout.newTab().setText( R.string.friends_and_you));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.interesting_today));
-        tabLayout.addTab(tabLayout.newTab().setText("TAGS"));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.tags));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.search_by_tag_text));
 
 
@@ -165,7 +166,7 @@ public class PhotosActivity extends AppCompatActivity {
         ArrayList<Fragment> a = new ArrayList<Fragment>();
         a.add(FriendsFragment.newInstance(0, getResources().getString(R.string.friends_and_you), new FriendsFragment()));
         a.add(InterestingFragment.newInstance(1, getResources().getString(R.string.interesting_today), new InterestingFragment()));
-        a.add(SearchFragment.newInstance(2, "TAGS", new SearchFragment()));
+        a.add(SearchFragment.newInstance(2, "TAGS", new TagsFragment()));
         a.add(SearchFragment.newInstance(3, getResources().getString(R.string.search_by_tag_text), new SearchFragment()));
         return a;
     }

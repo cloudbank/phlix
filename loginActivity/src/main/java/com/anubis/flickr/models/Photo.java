@@ -1,8 +1,6 @@
 
 package com.anubis.flickr.models;
 
-import android.nfc.Tag;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,8 +11,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-
-import static android.R.attr.tag;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -66,7 +62,7 @@ public class Photo implements Serializable {
     @JsonProperty("ownername")
     private String ownername;
     @JsonProperty("tags")
-    private Tags tags;
+    private String tags;
 
 
     @JsonIgnore
@@ -303,7 +299,7 @@ public class Photo implements Serializable {
      * @return The tags
      */
     @JsonProperty("tags")
-    public Tags getTags() {
+    public String getTags() {
         return tags;
     }
 
@@ -311,7 +307,7 @@ public class Photo implements Serializable {
      * @param tags The tags
      */
     @JsonProperty("tags")
-    public void settags(Tags ownername) {
+    public void settags(String ownername) {
         this.tags = tags;
     }
 

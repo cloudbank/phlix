@@ -3,10 +3,12 @@ package com.anubis.flickr.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -95,6 +97,9 @@ public class ImageDisplayActivity extends AppCompatActivity {
         wvComments.setBackgroundColor(getResources().getColor(R.color.AliceBlue));
         wvComments.setVerticalScrollBarEnabled(true);
         wvComments.setHorizontalScrollBarEnabled(true);
+        wvComments.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        wvComments.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        wvComments.getSettings().setJavaScriptEnabled(true);
         mUid = mPhoto.getId();
         mTags = (TagContainerLayout) findViewById(R.id.tag_group);
         //@todo
@@ -128,11 +133,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
                 .subscribe(new Subscriber<ImageDisplay>() {
                     @Override
                     public void onCompleted() {
-                        if (mTagsList.size() == 0) {
-                            mTags.setVisibility(View.INVISIBLE);
-                        } else {
-                            mTags.setVisibility(View.VISIBLE);
-                        }
+
 
                         //ringProgressDialog.dismiss();
                         //Log.d("DEBUG","oncompleted");
@@ -234,9 +235,8 @@ public class ImageDisplayActivity extends AppCompatActivity {
                 //     htmlString = mContent.replaceAll("http\\S+", "<a href=\"" + "$0" + "\">$0</a>");
                 // }
             }
-
-
-            mBuilder.append("<b>" + c.getAuthorname() + "</b>  "+ new Date((Long.parseLong(c.getDatecreate())*1000)).toString() + "<br>" + htmlString + "<br><br>");
+            long ago = new Date().getTime() - Long.parseLong(c.getDatecreate())*1000l;
+            mBuilder.append("<b>" + c.getAuthorname() + ":</b> ("+ DateUtils.getRelativeTimeSpanString(Long.parseLong(c.getDatecreate())*1000l,new Date().getTime(),DateUtils.SECOND_IN_MILLIS)  + ")<br>" + htmlString + "<br><br>");
         }
         mBuilder.append("</body></html>");
         commentsView.loadUrl("about:blank");

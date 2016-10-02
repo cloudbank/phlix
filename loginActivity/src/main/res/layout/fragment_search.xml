@@ -16,60 +16,59 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:theme="@style/MyRadioButton"
             android:text="Tag OR" />
 
         <RadioButton
             android:id="@+id/radio1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:theme="@style/MyRadioButton"
             android:text="Tag AND" />
 
         <RadioButton
             android:id="@+id/radio2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:theme="@style/MyRadioButton"
             android:text="Text" />
     </RadioGroup>
 
-    <GridView
-        android:id="@+id/gvPhotos"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/etQuery"
-        android:horizontalSpacing="5dp"
-        android:numColumns="3"
-        android:layout_marginTop="10dp"
-        android:verticalSpacing="35dp">
 
-    </GridView>
 
     <EditText
         android:id="@+id/etQuery"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/radioGroup1"
         android:layout_alignLeft="@+id/radioGroup1"
         android:layout_marginTop="23dp"
         android:layout_weight="1"
-        android:textSize="14sp"
+        android:textColorHint="@color/RoyalBlue"
+        android:textColor="@color/RoyalBlue"
+        android:theme="@style/MyEditText"
         android:hint="Enter search term">
 
         <requestFocus />
     </EditText>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvSearch"
+        android:layout_below="@+id/etQuery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:gravity="center"
+        android:background="@color/AliceBlue"
+        android:clipToPadding="true" />
 
     <Button
         android:id="@+id/btnQuery"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:background="@drawable/buttonshape"
-        android:shadowColor="#2B2351"
-        android:shadowDx="2"
-        android:shadowDy="3"
-        android:shadowRadius="5"
+        android:layout_height="wrap_content"
         android:text="@string/search"
-        android:textColor="#2B2351"
+        android:textColor="@color/AliceBlue"
         android:textSize="14sp"
+        android:theme="@style/MyButton"
         android:layout_alignBottom="@+id/etQuery"
         android:layout_toRightOf="@+id/etQuery"
         android:layout_toEndOf="@+id/etQuery" />
@@ -80,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/radioGroup1"
+        android:textColor="@color/DeepPink"
         android:layout_alignLeft="@+id/radioGroup1"
         android:text="@string/search_by" />
 

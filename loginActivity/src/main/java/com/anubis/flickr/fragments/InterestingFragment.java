@@ -39,7 +39,7 @@ public class InterestingFragment extends FlickrBaseFragment {
         ringProgressDialog = new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
 
         mType = InterestingFlickrPhoto.class;
-        rAdapter = new InterestingAdapter(getContext(), mPhotoItems, true);
+        rAdapter = new InterestingAdapter(getContext(), mTags, true);
         loadPhotos(1, true);
     }
 
@@ -65,10 +65,10 @@ public class InterestingFragment extends FlickrBaseFragment {
         rAdapter.setOnItemClickListener(new InterestingAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-               // String title = mPhotoItems.get(position).getTitle();
+               // String title = mTags.get(position).getTitle();
                 Intent intent = new Intent(getActivity(),
                         ImageDisplayActivity.class);
-                Photo result = mPhotoItems.get(position);
+                Photo result = mTags.get(position);
                 intent.putExtra(RESULT, result);
                 intent.putExtra(TYPE, mType);
                 startActivity(intent);
@@ -121,7 +121,7 @@ public class InterestingFragment extends FlickrBaseFragment {
                         Log.d("DEBUG", "mlogin: " + p);
                         //pass photos to fragment
                         mPhotos = p;
-                        mPhotoItems.addAll(mPhotos.getPhotos().getPhotoList());
+                        mTags.addAll(mPhotos.getPhotos().getPhotoList());
                         rAdapter.notifyDataSetChanged();
                     }
                 });

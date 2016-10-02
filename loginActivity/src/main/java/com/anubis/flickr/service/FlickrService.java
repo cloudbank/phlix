@@ -2,6 +2,8 @@ package com.anubis.flickr.service;
 
 import com.anubis.flickr.models.Comment;
 import com.anubis.flickr.models.Comments;
+import com.anubis.flickr.models.Hottags;
+import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.PhotoInfo;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.User;
@@ -31,6 +33,8 @@ public interface FlickrService {
     @GET(API_BASE_URL+"?method=flickr.photos.getContactsPublicPhotos&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&just_friends=1&extras=date_taken,owner_name&count=50&include_self=1")
     Observable<Photos> getFriendsPhotos(@Query("user_id") String userId);
 
+    @GET(API_BASE_URL+"?method=flickr.people.getPhotos&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&extras=date_taken,owner_name&count=50")
+    Observable<Photos> getMyPhotos(@Query("user_id") String userId);
 
     @GET(API_BASE_URL+"?method=flickr.interestingness.getList&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&extras=date_taken,owner_name&per_page=50")
     Observable<Photos> getInterestingPhotos(@Query("page") String page);
@@ -43,6 +47,20 @@ public interface FlickrService {
 
     @POST(API_BASE_URL+"?method=flickr.photos.comments.addComment&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0")
     Observable<Comment> addComment(@QueryMap Map<String, String> options);
+
+
+    @GET(API_BASE_URL+"?method=flickr.tags.getHotList&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0")
+    Observable<Hottags> getHotTags();
+
+    @GET(API_BASE_URL+"?method=flickr.photos.search&per_page=50&extras=date_taken,owner_name,tags,description&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0")
+    Observable<Photos> search(@QueryMap Map<String,String> options);
+
+
+    @POST(API_BASE_URL+"?method=flickr.photos.comments.addComment&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0")
+    Observable<Photo> postPhoto(@QueryMap Map<String, String> options);
+
+    @GET(API_BASE_URL+"?method=flickr.photos.getRecent&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&extras=date_taken,owner_name&count=50")
+    Observable<Photos> getRecentPhotos();
 
 
 

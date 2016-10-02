@@ -26,7 +26,7 @@ public final class R {
 	}
 	public static final class layout {
 		public static final int cropimage = 0x7f040020;
-		public static final int main = 0x7f040031;
+		public static final int main = 0x7f040032;
 	}
 	public static final class string {
 		public static final int cancel = 0x7f060015;

@@ -5,10 +5,12 @@
     <string name="search">Search</string>
     <string name="image_detail">Image Detail</string>
     <string name="enter_comment">Enter Comment</string>
-    <string name="friends_and_you">Friends &amp; I</string>
+    <string name="friends_and_you">Friends  &amp; I</string>
     <string name="interesting_today">Explore</string>
     <string name="search_by_tag_text">Search By Tag/Text</string>
+    <string name="tags">Hot Tags  &amp; Recent Photos</string>
     <string name="bye">Bye...</string>
+
     <string name="text_search"> title, description, or tags entered</string>
     <string name="or_search">  any of the tags entered</string>
     <string name="and_search"> all of the tags entered</string>

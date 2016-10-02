@@ -41,7 +41,7 @@ public class FriendsFragment extends FlickrBaseFragment {
     private ArrayList<FriendsFlickrPhoto> extraPhotos;
     private Subscription subscription;
     private String username;
-    private Photos mPhotos;
+    private List<Photo> mPhotos;
     protected PhotoArrayAdapter getAdapter() {
         return mAdapter;
     }
@@ -61,11 +61,14 @@ public class FriendsFragment extends FlickrBaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fAdapter = new FriendsAdapter(getActivity(), mPhotoItems, false);
+        mPhotos = new ArrayList<Photo>();
+        fAdapter = new FriendsAdapter(getActivity(), mPhotos, false);
         ringProgressDialog= new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
         this.prefs = this.getContext().getSharedPreferences("Flickr_User_Prefs", 0);
         this.editor = this.prefs.edit();
+
         getPhotos();
+
 
         mType = FriendsFlickrPhoto.class;
         setRetainInstance(true);
@@ -91,6 +94,7 @@ public class FriendsFragment extends FlickrBaseFragment {
                     public Observable<Photos> call(User user) {
                         username = user.getUser().getUsername().getContent();
                         editor.putString("username", username);
+                        editor.putString("id",user.getUser().getId());
                         editor.commit();
                         return FlickrClientApp.getService().getFriendsPhotos(user.getUser().getId());
 
@@ -122,8 +126,7 @@ public class FriendsFragment extends FlickrBaseFragment {
                     public void onNext(Photos p ) {
                         Log.d("DEBUG","mlogin: "+ p);
                         //pass photos to fragment
-                        mPhotos = p;
-                        mPhotoItems.addAll(mPhotos.getPhotos().getPhotoList());
+                        mPhotos.addAll(p.getPhotos().getPhotoList());
                         fAdapter.notifyDataSetChanged();
                     }
                 });
@@ -167,10 +170,10 @@ public class FriendsFragment extends FlickrBaseFragment {
         fAdapter.setOnItemClickListener(new FriendsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                // String title = mPhotoItems.get(position).getTitle();
+                // String title = mTags.get(position).getTitle();
                 Intent intent = new Intent(getActivity(),
                         ImageDisplayActivity.class);
-                Photo result = mPhotoItems.get(position);
+                Photo result = mPhotos.get(position);
                 intent.putExtra(RESULT, result);
                 intent.putExtra(TYPE, mType);
                 startActivity(intent);

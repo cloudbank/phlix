@@ -49,7 +49,7 @@ public abstract class FlickrBaseFragment extends Fragment {
     public final String APP_TAG = "FlickrApp";
     public String photoFileName = "photo.jpg";
     File mediaStorageDir;
-    List<Photo> mPhotoItems;
+    List<Photo> mTags;
     PhotoArrayAdapter mAdapter;
     AbsListView vPhotos;
     Class<? extends FlickrPhoto> mType;
@@ -60,7 +60,7 @@ public abstract class FlickrBaseFragment extends Fragment {
                                 int position, long arg3) {
             Intent intent = new Intent(getActivity(),
                     ImageDisplayActivity.class);
-            Photo result = mPhotoItems.get(position);
+            Photo result = mTags.get(position);
             intent.putExtra(RESULT, result);
             intent.putExtra(TYPE, mType);
             startActivity(intent);
@@ -98,8 +98,8 @@ public abstract class FlickrBaseFragment extends Fragment {
 
         page = getArguments().getInt(PAGE, 0);
         title = getArguments().getString(TITLE);
-        mPhotoItems = new ArrayList<Photo>();
-        mAdapter = new PhotoArrayAdapter(getActivity(), mPhotoItems);
+        mTags = new ArrayList<Photo>();
+        mAdapter = new PhotoArrayAdapter(getActivity(), mTags);
 
 
         // Get safe storage directory for photos
@@ -121,7 +121,7 @@ public abstract class FlickrBaseFragment extends Fragment {
 
     void clearAdapter() {
         mAdapter.clear();
-        mPhotoItems.clear();
+        mTags.clear();
         mAdapter.notifyDataSetChanged();
     }
 

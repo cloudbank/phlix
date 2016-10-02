@@ -1,22 +1,41 @@
 package com.anubis.flickr.fragments;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
+import com.anubis.flickr.activity.ImageDisplayActivity;
+import com.anubis.flickr.adapter.SearchAdapter;
+import com.anubis.flickr.models.Photo;
+import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.TagsFlickrPhoto;
 import com.anubis.flickr.util.FlickrUtility;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import retrofit2.adapter.rxjava.HttpException;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class SearchFragment extends FlickrBaseFragment {
 
@@ -27,11 +46,19 @@ public class SearchFragment extends FlickrBaseFragment {
     RadioGroup group;
     private String searchString = "";
     private Button btnQuery;
+    RecyclerView rvPhotos;
+    SearchAdapter searchAdapter;
+    List<Photo> sPhotos = new ArrayList<Photo>();
+    private Subscription subscription;
+    Map data = new HashMap<String,String>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mType = TagsFlickrPhoto.class;
+        searchAdapter = new SearchAdapter(getContext(),sPhotos, false);
+
+
         setRetainInstance(true);
     }
 
@@ -59,22 +86,43 @@ public class SearchFragment extends FlickrBaseFragment {
                 info.setText("Search by " + terms);
             }
         });
-        vPhotos = (GridView) view.findViewById(R.id.gvPhotos);
-        vPhotos.setAdapter(mAdapter);
-        vPhotos.setOnItemClickListener(mListener);
-        vPhotos.setOnScrollListener(mScrollListener);
+        rvPhotos = (RecyclerView) view.findViewById(R.id.rvSearch);
 
+        rvPhotos.setAdapter(searchAdapter);
+        //rvPhotos.setOnItemClickListener(mListener);
+        //rvPhotos.setOnScrollListener(mScrollListener);
+        //rvPhotos.setLayoutManager(gridLayoutManager);
+        rvPhotos.setLayoutManager(new GridLayoutManager(getContext(),4));
+        //SpacesItemDecoration decoration = new SpacesItemDecoration(2);
+        //rvPhotos.addItemDecoration(decoration);
+
+        //rvPhotos.setOnItemClickListener(mListener);
+        //rvPhotos.setOnScrollListener(mScrollListener);
+        searchAdapter.setOnItemClickListener(new SearchAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                // String title = mTags.get(position).getTitle();
+                Intent intent = new Intent(getActivity(),
+                        ImageDisplayActivity.class);
+                Photo result = sPhotos.get(position);
+                intent.putExtra(RESULT, result);
+                intent.putExtra(TYPE, mType);
+                startActivity(intent);
+                //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
+            }
+        });
         etQuery = (EditText) view.findViewById(R.id.etQuery);
         btnQuery = (Button) view.findViewById(R.id.btnQuery);
         btnQuery.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                data.clear();
                 searchText = etQuery.getText().toString();
                 boolean empty = (searchText.trim().length() == 0);
                 if (!empty && (!searchText.equals(searchString))) {
-                    searchString = searchUrl(searchText);
-                    loadPhotos(1, true);
+                    searchUrl(searchText);
+                    getPhotos();
                 } else if (empty) {
                     Toast.makeText(getActivity(), "Enter search term",
                             Toast.LENGTH_SHORT).show();
@@ -83,20 +131,21 @@ public class SearchFragment extends FlickrBaseFragment {
 
             }
 
-            private String searchUrl(String searchText) {
+            private void searchUrl(String searchText) {
                 if (rbTagOr.isChecked() || rbTagAnd.isChecked()) {
                     searchText = (searchText.trim()).replaceAll("[\\s]+", ",");
                     // searchText = Uri.encode(searchText);
                     if (rbTagOr.isChecked()) {
-                        searchText = "&tag_mode=any&tags=" + searchText;
+                        data.put("tag_mode","any");
+                        data.put("tags", searchText);
                     } else {
-                        searchText = "&tag_mode=all&tags=" + searchText;
+                        data.put("tag_mode","all");
+                        data.put("tags", searchText);
                     }
                 } else if (rbText.isChecked()) {
-                    searchText = Uri.encode(searchText);
-                    searchText = "&text=" + searchText;
-                }
-                return searchText;
+                    data.put("text", Uri.encode(searchText));
+                 }
+                //return searchText;
             }
         });
         setHasOptionsMenu(true);
@@ -106,6 +155,44 @@ public class SearchFragment extends FlickrBaseFragment {
     void customLoadMoreDataFromApi(int page) {
         loadPhotos(page, false);
     }
+
+
+    private void getPhotos() {
+        sPhotos.clear();
+        subscription =  FlickrClientApp.getService().search(data)
+                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Photos>() {
+                    @Override
+                    public void onCompleted() {
+
+
+                        //Log.d("DEBUG","oncompleted");
+
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        // cast to retrofit.HttpException to get the response code
+                        if (e instanceof HttpException) {
+                            HttpException response = (HttpException)e;
+                            int code = response.code();
+                            Log.e("ERROR",  String.valueOf(code));
+                        }
+                        Log.e("ERROR",  "error getting tags/photos" + e);
+                    }
+
+                    @Override
+                    public void onNext(Photos p ) {
+                        Log.d("DEBUG","tags photos: "+ p);
+                        //pass photos to fragment
+                        sPhotos.addAll(p.getPhotos().getPhotoList());
+                        searchAdapter.notifyDataSetChanged();
+                    }
+                });
+
+    }
+
+
 
     public void loadPhotos(int page, boolean clear) {
         if (clear) {

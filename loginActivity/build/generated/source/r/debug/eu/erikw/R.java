@@ -11,15 +11,15 @@ public final class R {
 		public static final int ptr_pulltorefresh_arrow = 0x7f02009e;
 	}
 	public static final class id {
-		public static final int ptr_id_header = 0x7f0c00ad;
-		public static final int ptr_id_image = 0x7f0c00ae;
-		public static final int ptr_id_last_updated = 0x7f0c00b2;
-		public static final int ptr_id_spinner = 0x7f0c00af;
-		public static final int ptr_id_text = 0x7f0c00b1;
-		public static final int ptr_id_textwrapper = 0x7f0c00b0;
+		public static final int ptr_id_header = 0x7f0c00af;
+		public static final int ptr_id_image = 0x7f0c00b0;
+		public static final int ptr_id_last_updated = 0x7f0c00b4;
+		public static final int ptr_id_spinner = 0x7f0c00b1;
+		public static final int ptr_id_text = 0x7f0c00b3;
+		public static final int ptr_id_textwrapper = 0x7f0c00b2;
 	}
 	public static final class layout {
-		public static final int ptr_header = 0x7f04003c;
+		public static final int ptr_header = 0x7f04003d;
 	}
 	public static final class string {
 		public static final int ptr_last_updated = 0x7f060033;
@@ -28,12 +28,12 @@ public final class R {
 		public static final int ptr_release_to_refresh = 0x7f060036;
 	}
 	public static final class style {
-		public static final int ptr_arrow = 0x7f080174;
-		public static final int ptr_header = 0x7f080175;
-		public static final int ptr_headerContainer = 0x7f080176;
-		public static final int ptr_last_updated = 0x7f080177;
-		public static final int ptr_spinner = 0x7f080178;
-		public static final int ptr_text = 0x7f080179;
-		public static final int ptr_textwrapper = 0x7f08017a;
+		public static final int ptr_arrow = 0x7f080175;
+		public static final int ptr_header = 0x7f080176;
+		public static final int ptr_headerContainer = 0x7f080177;
+		public static final int ptr_last_updated = 0x7f080178;
+		public static final int ptr_spinner = 0x7f080179;
+		public static final int ptr_text = 0x7f08017a;
+		public static final int ptr_textwrapper = 0x7f08017b;
 	}
 }
