@@ -59,6 +59,7 @@
         <activity android:name="eu.janmuller.android.simplecropimage.CropImage" />
         <service android:name=".service.PollService"></service>
 
+
     </application>
 
 </manifest>

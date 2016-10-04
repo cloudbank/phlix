@@ -46,6 +46,8 @@ public abstract class FlickrBaseFragment extends Fragment {
     private static final int TAKE_PHOTO_CODE = 1;
     private static final int CROP_PHOTO_CODE = 3;
     private static final int POST_PHOTO_CODE = 4;
+    private final static int CAMERA_RQ = 6969;
+
     public final String APP_TAG = "FlickrApp";
     public String photoFileName = "photo.jpg";
     File mediaStorageDir;
@@ -135,6 +137,8 @@ public abstract class FlickrBaseFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.action_take_photo) {
+           // new MaterialCamera(this).stillShot()
+             //       .start(CAMERA_RQ);
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, getPhotoFileUri(photoFileName));
             try {
@@ -143,6 +147,9 @@ public abstract class FlickrBaseFragment extends Fragment {
                 e.printStackTrace();
                 Log.e("ERROR", "cannot take picture", e);
             }
+
+
+
         } else if (itemId == R.id.action_logout) {
             signOut();
         }

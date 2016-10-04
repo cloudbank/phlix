@@ -4,78 +4,33 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.0"
-    timestamp="235774481829232"
+    timestamp="24019039124083"
     token="2872332265169310905"
-    verifier="COMPATIBLE" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="2541" />
+        duration="2222" />
     <task
         name="instant-run-dex"
-        duration="282" />
+        duration="0" />
     <task
         name="instant-run-transform"
-        duration="247" />
+        duration="2639" />
     <task
         name="verifier"
-        duration="34" />
+        duration="675" />
 
     <artifact
-        location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/reload-dex/debug/classes.dex"
-        type="RELOAD_DEX" />
+        location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/outputs/apk/loginActivity-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="231938588800801"
+        timestamp="24019039124083"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/outputs/apk/loginActivity-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="232657350385294"
-        verifier="R_CLASS_CHANGE" >
-        <artifact
-            location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5/classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="234293516416982"
-        verifier="CLASS_ADDED" >
-        <artifact
-            location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
-            type="RESOURCES" />
-        <artifact
-            location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3/classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="235089613905483"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="235198372890285"
-        verifier="INSTANT_RUN_DISABLED" >
-        <artifact
-            location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="235620982420810"
-        verifier="METHOD_DELETED" >
-        <artifact
-            location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="235774481829232"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/reload-dex/debug/classes.dex"
-            type="RELOAD_DEX" />
     </build>
 
 </instant-run>

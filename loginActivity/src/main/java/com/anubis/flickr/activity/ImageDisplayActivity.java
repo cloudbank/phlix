@@ -158,6 +158,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
                         mComments.addAll(imageDisplay.getComments().getComments().getCommentList());
                         displayComments(wvComments, mComments, false);
                         mTagsList = imageDisplay.getPhoto().getPhoto().getTags().getTag();
+                        //save tags
                         displayPhotoInfo(mTagsList);
                     }
                 });

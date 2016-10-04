@@ -15,7 +15,7 @@
         android:layout_marginBottom="10dp"
         android:layout_centerInParent="true"
         android:textStyle="bold"
-        android:text="Top 20 Hot Tags"/>
+        android:text="Top 20 Hot Tags For Today"/>
 
 
     <co.hkm.soltag.TagContainerLayout xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -35,8 +35,9 @@
         app:tag_border_color="@color/RoyalBlue"
         app:tag_horizontal_padding="5dp"
         app:tag_text_size="12sp"
-        app:tag_theme="random"
         app:tag_text_color="@color/white"
+        app:tag_theme="random"
+        app:tag_corner_radius="5dp"
         app:tag_vertical_padding="5dp"
         app:vertical_interval="5dp" />
 

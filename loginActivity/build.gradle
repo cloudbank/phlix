@@ -54,8 +54,6 @@ dependencies {
 
     compile files('libs/androidjhlabs.jar')
     compile 'com.hkm.taglib:tag:1.6.0'
-
-
     compile 'com.squareup.picasso:picasso:2.5.2'
 
 }

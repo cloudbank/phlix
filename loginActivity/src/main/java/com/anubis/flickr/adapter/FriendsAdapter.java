@@ -157,8 +157,8 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
             imageView.setLayoutParams(lp);
 
         } else {
-           //lp.height= 250;
-           //lp.width = 300;
+           lp.height= 250;
+           lp.width = 300;
         }
         Picasso.with(this.getContext()).load(photo.getUrl()).fit().centerCrop()
                 .placeholder(android.R.drawable.btn_star)

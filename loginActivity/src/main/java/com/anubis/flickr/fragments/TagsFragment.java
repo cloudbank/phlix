@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.hkm.soltag.TagContainerLayout;
+import co.hkm.soltag.TagView;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
 import rx.Subscription;
@@ -187,7 +189,18 @@ public class TagsFragment extends FlickrBaseFragment {
         View view = inflater.inflate(R.layout.fragment_tags, container,
                 false);
         mTagsView = (TagContainerLayout) view.findViewById(R.id.tag_group);
+        mTagsView.setOnTagClickListener(new TagView.OnTagClickListener() {
 
+            @Override
+            public void onTagClick(int position, String text) {
+                Toast.makeText(getContext(),"Tag "+text,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTagLongClick(final int position, String text) {
+                // ...
+            }
+        });
         rvPhotos = (RecyclerView) view.findViewById(R.id.rvPhotos);
         rvPhotos.setAdapter(tAdapter);
        // StaggeredGridLayoutManager gridLayoutManager =

@@ -136,7 +136,8 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
 
         TextView tags = viewHolder.tags;
 
-        tags.setText(photo.getTitle());
+        tags.setText(photo.getTags());
+        tags.setTextColor(mContext.getResources().getColor(R.color.white));
         CheckBox cb = viewHolder.checkbox;
 
         cb.setVisibility(View.VISIBLE);
@@ -156,8 +157,8 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
             imageView.setLayoutParams(lp);
 
         } else {
-            //lp.height= 250;
-            //lp.width = 300;
+            lp.height= 250;
+            lp.width = 300;
         }
         Picasso.with(this.getContext()).load(photo.getUrl()).fit().centerCrop()
                 .placeholder(android.R.drawable.btn_star)

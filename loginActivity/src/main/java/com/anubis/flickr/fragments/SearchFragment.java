@@ -21,6 +21,7 @@ import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.adapter.SearchAdapter;
+import com.anubis.flickr.listener.EndlessRecyclerViewScrollListener;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.TagsFlickrPhoto;
@@ -92,10 +93,18 @@ public class SearchFragment extends FlickrBaseFragment {
         //rvPhotos.setOnItemClickListener(mListener);
         //rvPhotos.setOnScrollListener(mScrollListener);
         //rvPhotos.setLayoutManager(gridLayoutManager);
-        rvPhotos.setLayoutManager(new GridLayoutManager(getContext(),4));
+        GridLayoutManager gridLayoutManager = new  GridLayoutManager(getContext(),4);
+        rvPhotos.setLayoutManager(gridLayoutManager);
         //SpacesItemDecoration decoration = new SpacesItemDecoration(2);
         //rvPhotos.addItemDecoration(decoration);
-
+        rvPhotos.addOnScrollListener(new EndlessRecyclerViewScrollListener(gridLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to the bottom of the list
+                customLoadMoreDataFromApi(page);
+            }
+        });
         //rvPhotos.setOnItemClickListener(mListener);
         //rvPhotos.setOnScrollListener(mScrollListener);
         searchAdapter.setOnItemClickListener(new SearchAdapter.OnItemClickListener() {
@@ -117,12 +126,11 @@ public class SearchFragment extends FlickrBaseFragment {
 
             @Override
             public void onClick(View v) {
-                data.clear();
                 searchText = etQuery.getText().toString();
                 boolean empty = (searchText.trim().length() == 0);
                 if (!empty && (!searchText.equals(searchString))) {
                     searchUrl(searchText);
-                    getPhotos();
+                    loadPhotos(1,true);
                 } else if (empty) {
                     Toast.makeText(getActivity(), "Enter search term",
                             Toast.LENGTH_SHORT).show();
@@ -145,6 +153,7 @@ public class SearchFragment extends FlickrBaseFragment {
                 } else if (rbText.isChecked()) {
                     data.put("text", Uri.encode(searchText));
                  }
+
                 //return searchText;
             }
         });
@@ -156,9 +165,16 @@ public class SearchFragment extends FlickrBaseFragment {
         loadPhotos(page, false);
     }
 
-
-    private void getPhotos() {
+    void clearAdapter() {
         sPhotos.clear();
+        searchAdapter.notifyDataSetChanged();
+    }
+
+    private void loadPhotos(int page, boolean clear) {
+        if (clear) {
+            clearAdapter();
+        }
+        data.put("page",String.valueOf(page));
         subscription =  FlickrClientApp.getService().search(data)
                 .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())
@@ -194,49 +210,5 @@ public class SearchFragment extends FlickrBaseFragment {
 
 
 
-    public void loadPhotos(int page, boolean clear) {
-        if (clear) {
-            clearAdapter();
-        }/*
-        client.search(new JsonHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(JSONObject json) {
-                try {
-                    JSONArray photos = json.getJSONObject("photos")
-                            .getJSONArray("photo");
-                    if (photos.length() == 0) {
-                        Toast t = Toast.makeText(getActivity(), "No new photos for that search right now", Toast.LENGTH_SHORT);
-                        t.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
-                        t.show();
-
-                    } else {
-                        for (int x = 0; x < photos.length(); x++) {
-                            String uid = photos.getJSONObject(x).getString("id");
-                            TagsFlickrPhoto p = (TagsFlickrPhoto) TagsFlickrPhoto
-                                    .byPhotoUid(uid, TagsFlickrPhoto.class);
-                            if (p == null) {
-                                p = new TagsFlickrPhoto(photos.getJSONObject(x));
-                            }
-
-                            p.save();
-                            mAdapter.add(p);
-                        }
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.e("Error getting JSON", e.toString());
-                }
-
-            }
-
-            @Override
-            public void onFailure(Throwable arg0, JSONObject arg1) {
-                Log.e("ERROR", ": onFailure: SearchFragment " + arg0 + " " + arg1);
-            }
-
-        }, searchString, page);
-        */
-    }
 
 }

@@ -1855,6 +1855,13 @@
         <item name="android:textSize">13sp</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/AliceBlue</item>
+    </style><style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        
+        <item name="colorAccent">@color/DeepPink</item>
+        
+        <item name="android:textColorPrimary">@android:color/white</item>
+        
+        <item name="android:windowBackground">@color/AliceBlue</item>
     </style><style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         
         <item name="colorPrimary">#E03D81</item>

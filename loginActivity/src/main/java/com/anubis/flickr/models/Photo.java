@@ -28,7 +28,10 @@ import java.util.Map;
         "datetakengranularity",
         "datetakenunknown",
         "ownername",
-        "tags"
+        "tags",
+        "url_s",
+        "height_s",
+        "width_s"
 })
 
 public class Photo implements Serializable {
@@ -63,15 +66,45 @@ public class Photo implements Serializable {
     private String ownername;
     @JsonProperty("tags")
     private String tags;
+    @JsonProperty("url_s")
+    private String url_s;
+    @JsonProperty("height_s")
+    private String height;
+    @JsonProperty("width_s")
+    private String width;
+
+    public String getHeight() {
+        return height;
+    }
+
+    public String getUrl_s() {
+        return url_s;
+    }
+
+    public void setUrl_s(String url_s) {
+        this.url_s = url_s;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+
+    }
+
+    public String getWidth() {
+        return width;
+    }
+   private String url;
+
+
+
 
 
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    private String url;
 
     //@todo set before save
-    public void setUrl(Photo p) {
+     void setUrl(Photo p) {
 
         this.url = "http://farm" + p.getFarm()
                 + ".staticflickr.com/" + p.getServer() + "/"
@@ -81,9 +114,14 @@ public class Photo implements Serializable {
     }
 
     public String getUrl() {
-        return "http://farm" + this.getFarm()
+        return  "http://farm" + this.getFarm()
                 + ".staticflickr.com/" + this.getServer() + "/"
                 + getId() + "_" + this.getSecret() + ".jpg";
+
+    }
+
+    public String getPhotoPage() {
+       return  "https://www.flickr.com/photos/"+this.getOwner()+"/"+this.getId();
 
     }
 
@@ -304,7 +342,7 @@ public class Photo implements Serializable {
     }
 
     /**
-     * @param tags The tags
+     * @param
      */
     @JsonProperty("tags")
     public void settags(String ownername) {

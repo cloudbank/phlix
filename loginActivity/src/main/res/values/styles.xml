@@ -86,7 +86,14 @@
         <item name="colorButtonNormal">@color/RoyalBlue</item>
 
     </style>
-
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!--buttons color-->
+        <item name="colorAccent">@color/DeepPink</item>
+        <!--title and message color-->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!--dialog background-->
+        <item name="android:windowBackground">@color/AliceBlue</item>
+    </style>
 
     <style name="CustomAlertDialogStyle">
         <item name="android:bottomDark">#E00065</item>

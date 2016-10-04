@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@color/AliceBlue"
     tools:context=".PreviewPhotoActivity" >
 
     <ImageView
@@ -21,9 +21,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivPreview"
         android:layout_centerHorizontal="true"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/RoyalBlue"
         android:ems="10"
         android:singleLine="true"
+        android:theme="@style/MyEditText"
         android:hint="(&lt;name&gt;)" />
 
 </RelativeLayout>

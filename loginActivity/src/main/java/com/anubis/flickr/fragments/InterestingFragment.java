@@ -14,9 +14,13 @@ import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.adapter.InterestingAdapter;
+import com.anubis.flickr.listener.EndlessRecyclerViewScrollListener;
 import com.anubis.flickr.models.InterestingFlickrPhoto;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
@@ -30,16 +34,16 @@ public class InterestingFragment extends FlickrBaseFragment {
     ProgressDialog ringProgressDialog;
     private Subscription subscription;
     //@todo move up
-    private Photos mPhotos;
+    List<Photo> mInteresting = new ArrayList<Photo>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        ringProgressDialog = new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
+        ringProgressDialog = new ProgressDialog(getContext(), R.style.MyDialogTheme);
 
         mType = InterestingFlickrPhoto.class;
-        rAdapter = new InterestingAdapter(getContext(), mTags, true);
+        rAdapter = new InterestingAdapter(getContext(), mInteresting, true);
         loadPhotos(1, true);
     }
 
@@ -59,16 +63,22 @@ public class InterestingFragment extends FlickrBaseFragment {
         rvPhotos.setLayoutManager(gridLayoutManager);
         //SpacesItemDecoration decoration = new SpacesItemDecoration(2);
         //rvPhotos.addItemDecoration(decoration);
-
+        rvPhotos.addOnScrollListener(new EndlessRecyclerViewScrollListener(gridLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to the bottom of the list
+                customLoadMoreDataFromApi(page);
+            }
+        });
         // vPhotos.setOnItemClickListener(mListener);
         // vPhotos.setOnScrollListener(mScrollListener);
         rAdapter.setOnItemClickListener(new InterestingAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-               // String title = mTags.get(position).getTitle();
                 Intent intent = new Intent(getActivity(),
                         ImageDisplayActivity.class);
-                Photo result = mTags.get(position);
+                Photo result = mInteresting.get(position);
                 intent.putExtra(RESULT, result);
                 intent.putExtra(TYPE, mType);
                 startActivity(intent);
@@ -79,11 +89,16 @@ public class InterestingFragment extends FlickrBaseFragment {
         return view;
     }
 
+    void clearAdapter() {
+        mInteresting.clear();
+        rAdapter.notifyDataSetChanged();
+    }
     void customLoadMoreDataFromApi(int page) {
         loadPhotos(page, false);
     }
 
     public void loadPhotos(int page, boolean clear) {
+        //@todo offline mode
         if (clear) {
             clearAdapter();
         }
@@ -120,49 +135,13 @@ public class InterestingFragment extends FlickrBaseFragment {
                     public void onNext(Photos p) {
                         Log.d("DEBUG", "mlogin: " + p);
                         //pass photos to fragment
-                        mPhotos = p;
-                        mTags.addAll(mPhotos.getPhotos().getPhotoList());
+                        mInteresting.addAll(p.getPhotos().getPhotoList());
                         rAdapter.notifyDataSetChanged();
                     }
                 });
 
     }
-        /*
-        client.getInterestingnessList(new JsonHttpResponseHandler() {
-            @Override
-            // @TODO: 9/17/16   get the db work off the main thread
-            //@todo use jackson
-            public void onSuccess(JSONObject json) {
-                // Add new photos to SQLite
-                try {
-                    JSONArray photos = json.getJSONObject("photos")
-                            .getJSONArray("photo");
-                    for (int x = 0; x < photos.length(); x++) {
-                        String uid = photos.getJSONObject(x).getString("id");
-                        InterestingFlickrPhoto p = (InterestingFlickrPhoto) InterestingFlickrPhoto
-                                .byPhotoUid(uid, InterestingFlickrPhoto.class);
-                        if (p == null) {
-                            p = new InterestingFlickrPhoto(photos
-                                    .getJSONObject(x));
-                        }
-                        p.save();
-                        mAdapter.add(p);
-                    }
-                    mAdapter.notifyDataSetChanged();
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.e("Error getting JSON", e.toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable arg0, JSONObject arg1) {
-                Log.e("ERROR", ": onFailure: InterestingFragment " + arg0 + " " + arg1);
-            }
-
-        }, page);
-        */
 }
 
 
