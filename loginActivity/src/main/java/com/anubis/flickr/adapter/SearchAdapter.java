@@ -116,7 +116,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View photosView = inflater.inflate(R.layout.photo_item_friends, parent, false);
+        View photosView = inflater.inflate(R.layout.photo_item_search, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(photosView, getListener());
@@ -131,36 +131,39 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
         // Set item views based on your views and data model
         ImageView imageView = viewHolder.imageView;
+
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) viewHolder.imageView
                 .getLayoutParams();
 
         TextView tags = viewHolder.tags;
 
-        tags.setText(photo.getTitle());
+        //tags.setText(photo.getOwnername());
         CheckBox cb = viewHolder.checkbox;
 
-        cb.setVisibility(View.VISIBLE);
+        cb.setVisibility(View.GONE);
         int id = Resources.getSystem().getIdentifier("btn_check_holo_dark", "drawable", "android");
         cb.setButtonDrawable(id);
         cb.setHint("Batch Tag");
         cb.setChecked(true);
+        int aspectRatio = (null != photo.getWidth()  && null != photo.getHeight()) ? Integer.parseInt(photo.getHeight())/Integer.parseInt(photo.getWidth()): 1;
 
         //the images come back the same size as thumbnails
         //set random widths and heights between 75 and 200
         if (mStaggered) {
             Random rand = new Random();
-            int n = rand.nextInt(300) + 200;
+            int n = rand.nextInt(200) + 200;
             lp.height = n; // photo.getPhotoHeight() * 2;
             //n = rand.nextInt(200) + 100;
-            lp.width = 400; // photo.getPhotoList//set the title, name, comments
+
+             lp.width =  aspectRatio > 0 ? n/aspectRatio : n; // photo.getPhotoList//set the title, name, comments
             imageView.setLayoutParams(lp);
 
         } else {
             lp.height= 250;
-            lp.width = 300;
+            //lp.width = 300;
         }
         Picasso.with(this.getContext()).load(photo.getUrl()).fit().centerCrop()
-                .placeholder(android.R.drawable.btn_star)
+                //.placeholder(android.R.drawable.btn_star)
                 .error(android.R.drawable.btn_star)
                 .into(imageView);
 

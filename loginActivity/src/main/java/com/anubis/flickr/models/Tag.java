@@ -32,7 +32,7 @@ public class Tag {
     @JsonProperty("_content")
     private String content;
     @JsonProperty("machine_tag")
-    private Integer machineTag;
+    private boolean machineTag;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -142,7 +142,7 @@ public class Tag {
      * The machineTag
      */
     @JsonProperty("machine_tag")
-    public Integer getMachineTag() {
+    public boolean getMachineTag() {
         return machineTag;
     }
 
@@ -152,7 +152,7 @@ public class Tag {
      * The machine_tag
      */
     @JsonProperty("machine_tag")
-    public void setMachineTag(Integer machineTag) {
+    public void setMachineTag(boolean machineTag) {
         this.machineTag = machineTag;
     }
 

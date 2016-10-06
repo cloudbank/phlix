@@ -101,6 +101,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.hkm.taglib/tag/1.6.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.squareup.picasso/picasso/2.6.0-SNAPSHOT/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/io.reactivex/rxandroid/1.2.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-classes" />
@@ -130,7 +131,7 @@
     <orderEntry type="library" exported="" name="tag-1.6.0" level="project" />
     <orderEntry type="library" exported="" name="okio-1.8.0" level="project" />
     <orderEntry type="library" exported="" name="support-fragment-24.2.1" level="project" />
-    <orderEntry type="library" exported="" name="picasso-2.5.2" level="project" />
+    <orderEntry type="library" exported="" name="prettytime-4.0.1.Final" level="project" />
     <orderEntry type="library" exported="" name="stetho-1.3.1" level="project" />
     <orderEntry type="library" exported="" name="activeandroid-3.1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="commons-cli-1.2" level="project" />
@@ -153,6 +154,7 @@
     <orderEntry type="library" exported="" name="jackson-databind-2.8.2" level="project" />
     <orderEntry type="library" exported="" name="retrofit-2.1.0" level="project" />
     <orderEntry type="library" exported="" name="adapter-rxjava-2.1.0" level="project" />
+    <orderEntry type="library" exported="" name="picasso-2.6.0-SNAPSHOT" level="project" />
     <orderEntry type="library" exported="" name="rxandroid-1.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-24.2.1" level="project" />
     <orderEntry type="library" exported="" name="signpost-core-1.2.1.2" level="project" />

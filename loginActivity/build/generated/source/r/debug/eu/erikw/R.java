@@ -8,24 +8,24 @@ package eu.erikw;
 
 public final class R {
 	public static final class drawable {
-		public static final int ptr_pulltorefresh_arrow = 0x7f02009e;
+		public static final int ptr_pulltorefresh_arrow = 0x7f0200a0;
 	}
 	public static final class id {
-		public static final int ptr_id_header = 0x7f0c00af;
-		public static final int ptr_id_image = 0x7f0c00b0;
-		public static final int ptr_id_last_updated = 0x7f0c00b4;
-		public static final int ptr_id_spinner = 0x7f0c00b1;
-		public static final int ptr_id_text = 0x7f0c00b3;
-		public static final int ptr_id_textwrapper = 0x7f0c00b2;
+		public static final int ptr_id_header = 0x7f0c00a9;
+		public static final int ptr_id_image = 0x7f0c00aa;
+		public static final int ptr_id_last_updated = 0x7f0c00ae;
+		public static final int ptr_id_spinner = 0x7f0c00ab;
+		public static final int ptr_id_text = 0x7f0c00ad;
+		public static final int ptr_id_textwrapper = 0x7f0c00ac;
 	}
 	public static final class layout {
-		public static final int ptr_header = 0x7f04003d;
+		public static final int ptr_header = 0x7f04003e;
 	}
 	public static final class string {
-		public static final int ptr_last_updated = 0x7f060033;
-		public static final int ptr_pull_to_refresh = 0x7f060034;
-		public static final int ptr_refreshing = 0x7f060035;
-		public static final int ptr_release_to_refresh = 0x7f060036;
+		public static final int ptr_last_updated = 0x7f060035;
+		public static final int ptr_pull_to_refresh = 0x7f060036;
+		public static final int ptr_refreshing = 0x7f060037;
+		public static final int ptr_release_to_refresh = 0x7f060038;
 	}
 	public static final class style {
 		public static final int ptr_arrow = 0x7f080176;

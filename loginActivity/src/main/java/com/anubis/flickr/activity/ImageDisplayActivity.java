@@ -3,7 +3,6 @@ package com.anubis.flickr.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
@@ -28,6 +27,8 @@ import com.anubis.flickr.util.DateUtility;
 import com.anubis.flickr.util.ImageRoundedTransformation;
 import com.squareup.picasso.Picasso;
 
+import org.ocpsoft.prettytime.PrettyTime;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -49,7 +50,7 @@ import static com.anubis.flickr.R.id.username;
 public class ImageDisplayActivity extends AppCompatActivity {
 
     WebView wvComments;
-    List mTagsList = new ArrayList();
+    List<Tag> mTagsList = new ArrayList<Tag>();
     TagContainerLayout mTags;
     EditText etComments;
     String mUid = "";
@@ -81,7 +82,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.ivResult);
         Picasso.with(getBaseContext()).load(mPhoto.getUrl()).transform(new ImageRoundedTransformation(5, 5)).resize(300, 300).centerCrop().into(imageView);
         //ImageLoader imageLoader = ImageLoader.getInstance();
-        //imageLoader.displayImage(mPhoto.getUrl(), image);
+        //imageLoader.getPhotoAndComments(mPhoto.getUrl(), image);
         TextView tvUsername = (TextView) findViewById(username);
         tvUsername.setText("By: " + mPhoto.getOwnername());
         TextView tvTimestamp = (TextView) findViewById(R.id.timestamp);
@@ -103,7 +104,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
         mUid = mPhoto.getId();
         mTags = (TagContainerLayout) findViewById(R.id.tag_group);
         //@todo
-        getComments(mUid);
+        getPhotoAndComments(mUid);
         // get focus off edittext, hide kb
         // WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
@@ -119,7 +120,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
         }
     }
 
-    private void getComments(final String uid) {
+    private void getPhotoAndComments(final String uid) {
         Observable<PhotoInfo> photoInfo = FlickrClientApp.getService().getPhotoInfo(uid);
         subscription = FlickrClientApp.getService().getComments(uid).zipWith(photoInfo, new Func2<Comments, PhotoInfo, ImageDisplay>() {
             @Override
@@ -148,17 +149,24 @@ public class ImageDisplayActivity extends AppCompatActivity {
                             int code = response.code();
                             Log.e("ERROR", String.valueOf(code));
                         }
-                        Log.e("ERROR", "error getting interesting photos" + e);
+                        Log.e("ERROR", "error getting comments" + e);
                     }
 
                     @Override
                     public void onNext(ImageDisplay imageDisplay) {
                         Log.d("DEBUG", "mlogin: " + imageDisplay);
                         //pass comments to webview
-                        mComments.addAll(imageDisplay.getComments().getComments().getCommentList());
+                        List<Comment> comments = imageDisplay.getComments().getComments().getCommentList();
+
+
+
+                        mComments.addAll(comments);
                         displayComments(wvComments, mComments, false);
+                        //@todo w save this will change
+                        mTagsList.clear();
                         mTagsList = imageDisplay.getPhoto().getPhoto().getTags().getTag();
                         //save tags
+
                         displayPhotoInfo(mTagsList);
                     }
                 });
@@ -175,7 +183,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
 
     }
 
-//@todo idempotent only once put, and in reverse w date
+    //@todo idempotent only once put, and in reverse w date
     public void addComment(View v) {
         String commentString = etComments.getText().toString();
         /*try {
@@ -194,7 +202,8 @@ public class ImageDisplayActivity extends AppCompatActivity {
                     .subscribe(new Subscriber<Comment>() {
                         @Override
                         public void onCompleted() {
-                            getComments(mUid);
+
+                            getPhotoAndComments(mUid);
                         }
 
                         @Override
@@ -205,7 +214,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
                                 int code = response.code();
                                 Log.e("ERROR", String.valueOf(code));
                             }
-                            Log.e("ERROR", "error getting interesting photos" + e);
+                            Log.e("ERROR", "error add comment" + e);
                         }
 
                         @Override
@@ -220,11 +229,12 @@ public class ImageDisplayActivity extends AppCompatActivity {
     }
 
 
-
+    //
     private void displayComments(WebView commentsView, List<Comment> comments, boolean added) {
         mBuilder = new StringBuilder();
         mBuilder.append("<html><head>  <style> body {color: #4169E1;  font-size: 12px;}</style></head><br>");
-        for (Comment c : comments) {
+        for (int i = comments.size()-1; i >= 0; i--) {
+            Comment c = comments.get(i);
             mContent = c.getContent();
             String htmlString = mContent;
 
@@ -236,8 +246,8 @@ public class ImageDisplayActivity extends AppCompatActivity {
                 //     htmlString = mContent.replaceAll("http\\S+", "<a href=\"" + "$0" + "\">$0</a>");
                 // }
             }
-            long ago = new Date().getTime() - Long.parseLong(c.getDatecreate())*1000l;
-            mBuilder.append("<b>" + c.getAuthorname() + ":</b> ("+ DateUtils.getRelativeTimeSpanString(Long.parseLong(c.getDatecreate())*1000l,new Date().getTime(),DateUtils.SECOND_IN_MILLIS)  + ")<br>" + htmlString + "<br><br>");
+            String time = new PrettyTime().format(new Date(Long.parseLong(c.getDatecreate()) * 1000l));
+            mBuilder.append("<b>" + c.getAuthorname() + ":</b> (" + time + ")<br>" + htmlString + "<br><br>");
         }
         mBuilder.append("</body></html>");
         commentsView.loadUrl("about:blank");

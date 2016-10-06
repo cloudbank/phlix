@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/org.ocpsoft.prettytime/prettytime/4.0.1.Final/5537d74e2102a82fd937dd9b8a652e3b26026a7a/prettytime-4.0.1.Final.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="5537d74e2102a82fd937dd9b8a652e3b26026a7a">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/prettytime-4.0.1.Final_714e14581e7e160ee4e064258f211494cf503ffe/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -66,15 +75,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_0bc68094648a4a17601fc81b124ca1c504a45ade/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-v13/24.0.0/jars/libs/internal_impl-24.0.0.jar"
         jumboMode="true"
         optimize="true"
@@ -90,6 +90,15 @@
         revision="24.0.2"
         sha1="c596b3b33b5a92107bb70544bb5ee35f597bc6d8">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/stetho-okhttp3-1.3.1_72def38f1569ba08cecee9db14b0d02668a51cde/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.squareup.picasso/picasso/2.6.0-SNAPSHOT/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b185d2bb5348d7ba97979625db03bf54dc772fc9">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.squareup.picasso-picasso-2.6.0-SNAPSHOT_0ce0f2ec15e1d66986daa7f52cec9db3f8528c2f/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -304,7 +313,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="13bd58831ca93fda97c5a50d41409421d8c1932c">
+        sha1="591a5ef61b80fa0a455ba079de0f7bb125d50d09">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_9a80fb1819f07b74bd1eb0dffa17946e149ccef1/classes.dex" />
     </item>
     <item
@@ -385,7 +394,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="cc4b6b6f4ae7a25ef371ae96097094000fb4a69c">
+        sha1="833fa87933aa34325378933110b49728cc3e2b2c">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b508fbc31e9f0600f9421695f3bccb32fefa5f5d/classes.dex" />
     </item>
 

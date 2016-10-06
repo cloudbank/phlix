@@ -4,33 +4,54 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.0"
-    timestamp="24019039124083"
+    timestamp="54265029296525"
     token="2872332265169310905"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="2222" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="2639" />
+        duration="0" />
     <task
         name="verifier"
-        duration="675" />
+        duration="0" />
 
     <artifact
-        location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/outputs/apk/loginActivity-debug.apk"
-        type="MAIN" />
+        location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+        type="RESOURCES" />
 
     <build
-        timestamp="24019039124083"
+        timestamp="53574583939519"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/outputs/apk/loginActivity-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="53917346497577"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/builds/debug/53917346497577/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="54012195374475"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/builds/debug/54012195374475/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="54265029296525"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>

@@ -82,7 +82,7 @@ public class FriendsFragment extends FlickrBaseFragment {
         //@todo add the endless scroll
 
     }
-
+//flickr.tags.getListUser
     private void getPhotos() {
         ringProgressDialog.setTitle("Please wait");
         ringProgressDialog.setMessage("Retrieving interesting photos");
@@ -151,7 +151,7 @@ public class FriendsFragment extends FlickrBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_interesting, container,
+        View view = inflater.inflate(R.layout.fragment_friends, container,
                 false);
 
         rvPhotos = (RecyclerView) view.findViewById(R.id.rvPhotos);

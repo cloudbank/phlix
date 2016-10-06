@@ -1,94 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/AliceBlue">
-
-    <RadioGroup
-        android:id="@+id/radioGroup1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-
-        android:orientation='horizontal'>
-
-        <RadioButton
-            android:id="@+id/radio0"
+    android:layout_height="wrap_content"
+    android:background="@color/AliceBlue"
+    android:layout_marginLeft="10dp">
+    <!--
+        <RadioGroup
+            android:id="@+id/radioGroup1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:theme="@style/MyRadioButton"
-            android:textStyle="bold"
-            android:textColor="@color/RoyalBlue"
-            android:text="Tag OR" />
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
 
-        <RadioButton
-            android:id="@+id/radio1"
+            android:orientation='horizontal'>
+
+            <RadioButton
+                android:id="@+id/radio0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:theme="@style/MyRadioButton"
+                android:textStyle="bold"
+                android:textColor="@color/RoyalBlue"
+                android:text="Tag OR" />
+
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/RoyalBlue"
+                android:theme="@style/MyRadioButton"
+                android:text="Tag AND" />
+
+            <RadioButton
+                android:id="@+id/radio2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/RoyalBlue"
+                android:theme="@style/MyRadioButton"
+                android:text="Text" />
+        </RadioGroup>
+
+
+
+        <EditText
+            android:id="@+id/etQuery"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioGroup1"
+            android:layout_alignLeft="@+id/radioGroup1"
+            android:layout_marginTop="23dp"
+            android:layout_weight="1"
+            android:textColorHint="@color/RoyalBlue"
+            android:textColor="@color/RoyalBlue"
+            android:theme="@style/MyEditText"
+            android:hint="Enter search term">
+
+            <requestFocus />
+        </EditText>
+
+         <Button
+            android:id="@+id/btnQuery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/RoyalBlue"
-            android:theme="@style/MyRadioButton"
-            android:text="Tag AND" />
+            android:text="@string/search"
+            android:textColor="@color/AliceBlue"
+            android:textSize="14sp"
+            android:theme="@style/MyButton"
+            android:layout_alignBottom="@+id/etQuery"
+            android:layout_toRightOf="@+id/etQuery"
+            android:layout_toEndOf="@+id/etQuery" />
 
-        <RadioButton
-            android:id="@+id/radio2"
+
+        <TextView
+            android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/RoyalBlue"
-            android:theme="@style/MyRadioButton"
-            android:text="Text" />
-    </RadioGroup>
+            android:layout_below="@+id/radioGroup1"
+            android:textColor="@color/DeepPink"
+            android:layout_alignLeft="@+id/radioGroup1"
+            android:text="@string/search_by" />
 
-
-
-    <EditText
-        android:id="@+id/etQuery"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/radioGroup1"
-        android:layout_alignLeft="@+id/radioGroup1"
-        android:layout_marginTop="23dp"
-        android:layout_weight="1"
-        android:textColorHint="@color/RoyalBlue"
-        android:textColor="@color/RoyalBlue"
-        android:theme="@style/MyEditText"
-        android:hint="Enter search term">
-
-        <requestFocus />
-    </EditText>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvSearch"
-        android:layout_below="@+id/etQuery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:gravity="center"
-        android:background="@color/AliceBlue"
-        android:clipToPadding="true" />
-
-    <Button
-        android:id="@+id/btnQuery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/search"
-        android:textColor="@color/AliceBlue"
-        android:textSize="14sp"
-        android:theme="@style/MyButton"
-        android:layout_alignBottom="@+id/etQuery"
-        android:layout_toRightOf="@+id/etQuery"
-        android:layout_toEndOf="@+id/etQuery" />
-
+        -->
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tvCommons2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/radioGroup1"
         android:textColor="@color/DeepPink"
-        android:layout_alignLeft="@+id/radioGroup1"
-        android:text="@string/search_by" />
+        android:textSize="10sp"
+        android:layout_below="@+id/ivCommons"
+        android:text="@string/commons_under"
+        android:textAlignment="viewEnd"
+        android:gravity="clip_horizontal"
+        android:padding="3dp"
+        android:layout_centerInParent="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvSearch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tvCommons2"
+        android:background="@color/AliceBlue"
+        android:clipToPadding="true"
+        android:gravity="center"
+        android:scrollbars="vertical"
+        android:layout_marginBottom="3dp" />
+
+    <TextView
+        android:id="@+id/tvCommons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/RoyalBlue"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:text="@string/commons"
+        android:padding="3dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:elevation="5dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/commons_circle_logo"
+        android:id="@+id/ivCommons"
+        android:padding="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/tvCommons2"
+        android:layout_toStartOf="@+id/tvCommons2"
+        android:layout_alignBottom="@+id/tvCommons" />
+
 
 </RelativeLayout>
