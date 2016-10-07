@@ -13,21 +13,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "period",
     "count",
     "tag"
 })
-public class Hottags_ {
+public class Hottags_  extends RealmObject{
 
     @JsonProperty("period")
     private String period;
     @JsonProperty("count")
     private Integer count;
+
+    private RealmList<Tag> tagsList;
+
+    @Ignore
     @JsonProperty("tag")
     private List<Tag> tag = new ArrayList<Tag>();
     @JsonIgnore
+    @Ignore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**

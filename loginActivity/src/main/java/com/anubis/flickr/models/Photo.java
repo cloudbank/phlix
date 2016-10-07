@@ -12,6 +12,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "id",
@@ -34,7 +37,7 @@ import java.util.Map;
         "width_s"
 })
 
-public class Photo implements Serializable {
+public class Photo extends RealmObject implements Serializable {
 
     @JsonProperty("id")
     private String id;
@@ -73,6 +76,9 @@ public class Photo implements Serializable {
     @JsonProperty("width_s")
     private String width;
 
+    private boolean isCommon = false;
+    private boolean isInteresting = false;
+
     public String getHeight() {
         return height;
     }
@@ -98,7 +104,7 @@ public class Photo implements Serializable {
 
 
 
-
+    @Ignore
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

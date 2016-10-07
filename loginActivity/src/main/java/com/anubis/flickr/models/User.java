@@ -25,6 +25,7 @@ public class User {
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+
     /**
      * 
      * @return

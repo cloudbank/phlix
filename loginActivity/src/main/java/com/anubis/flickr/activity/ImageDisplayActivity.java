@@ -156,7 +156,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
                     public void onNext(ImageDisplay imageDisplay) {
                         Log.d("DEBUG", "mlogin: " + imageDisplay);
                         //pass comments to webview
-                        List<Comment> comments = imageDisplay.getComments().getComments().getCommentList();
+                        List<Comment> comments = imageDisplay.getComments().getComments().getComments();
 
 
 

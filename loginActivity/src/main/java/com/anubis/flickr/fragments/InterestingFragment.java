@@ -15,7 +15,6 @@ import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.adapter.InterestingAdapter;
 import com.anubis.flickr.listener.EndlessRecyclerViewScrollListener;
-import com.anubis.flickr.models.InterestingFlickrPhoto;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
 
@@ -42,7 +41,6 @@ public class InterestingFragment extends FlickrBaseFragment {
         setRetainInstance(true);
         ringProgressDialog = new ProgressDialog(getContext(), R.style.MyDialogTheme);
 
-        mType = InterestingFlickrPhoto.class;
         rAdapter = new InterestingAdapter(getContext(), mInteresting, true);
         loadPhotos(1, true);
     }
@@ -80,7 +78,6 @@ public class InterestingFragment extends FlickrBaseFragment {
                         ImageDisplayActivity.class);
                 Photo result = mInteresting.get(position);
                 intent.putExtra(RESULT, result);
-                intent.putExtra(TYPE, mType);
                 startActivity(intent);
                 //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }

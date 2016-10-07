@@ -18,7 +18,6 @@ import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.adapter.TagsAdapter;
-import com.anubis.flickr.models.FriendsFlickrPhoto;
 import com.anubis.flickr.models.Hottags;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
@@ -37,11 +36,8 @@ import rx.schedulers.Schedulers;
 
 public class TagsFragment extends FlickrBaseFragment {
 
-    FriendsFlickrPhoto p;
-    List<FriendsFlickrPhoto.Comment> comments;
     List mTags;
     TagContainerLayout mTagsView;
-    private ArrayList<FriendsFlickrPhoto> extraPhotos;
     private Subscription subscription, subscription2;
     private String username;
     private List<Photo> mPhotos;
@@ -73,7 +69,6 @@ public class TagsFragment extends FlickrBaseFragment {
 
         getTags();
         getPhotos();
-        mType = FriendsFlickrPhoto.class;
         setRetainInstance(true);
 
 
@@ -221,7 +216,6 @@ public class TagsFragment extends FlickrBaseFragment {
                         ImageDisplayActivity.class);
                 Photo result = mPhotos.get(position);
                 intent.putExtra(RESULT, result);
-                intent.putExtra(TYPE, mType);
                 startActivity(intent);
                 //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }

@@ -11,18 +11,22 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.realm.annotations.Ignore;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "hottags",
     "stat"
 })
-public class Hottags {
+public class Hottags   {
+
 
     @JsonProperty("hottags")
     private Hottags_ hottags;
     @JsonProperty("stat")
     private String stat;
     @JsonIgnore
+    @Ignore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**

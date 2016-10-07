@@ -26,7 +26,6 @@ import com.anubis.flickr.activity.PhotosActivity.MyPagerAdapter;
 import com.anubis.flickr.activity.PreviewPhotoActivity;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.listener.EndlessScrollListener;
-import com.anubis.flickr.models.FlickrPhoto;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.network.OAuthBaseClient;
 
@@ -54,7 +53,6 @@ public abstract class FlickrBaseFragment extends Fragment {
     List<Photo> mTags;
     PhotoArrayAdapter mAdapter;
     AbsListView vPhotos;
-    Class<? extends FlickrPhoto> mType;
     AdapterView.OnItemClickListener mListener = new AdapterView.OnItemClickListener() {
 
         @Override
@@ -64,7 +62,6 @@ public abstract class FlickrBaseFragment extends Fragment {
                     ImageDisplayActivity.class);
             Photo result = mTags.get(position);
             intent.putExtra(RESULT, result);
-            intent.putExtra(TYPE, mType);
             startActivity(intent);
         }
     };

@@ -23,7 +23,6 @@ import com.anubis.flickr.adapter.SpacesItemDecoration;
 import com.anubis.flickr.listener.EndlessRecyclerViewScrollListener;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
-import com.anubis.flickr.models.TagsFlickrPhoto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,7 +53,6 @@ public class SearchFragment extends FlickrBaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mType = TagsFlickrPhoto.class;
         searchAdapter = new SearchAdapter(getContext(), sPhotos, true);
         loadPhotos(1, true);
 
@@ -114,7 +112,6 @@ public class SearchFragment extends FlickrBaseFragment {
                         ImageDisplayActivity.class);
                 Photo result = sPhotos.get(position);
                 intent.putExtra(RESULT, result);
-                intent.putExtra(TYPE, mType);
                 startActivity(intent);
                 //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }

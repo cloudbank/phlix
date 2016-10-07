@@ -10,6 +10,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "id",
@@ -19,7 +22,7 @@ import java.util.Map;
         "_content",
         "machine_tag"
 })
-public class Tag {
+public class Tag extends RealmObject {
 
     @JsonProperty("id")
     private String id;
@@ -33,7 +36,9 @@ public class Tag {
     private String content;
     @JsonProperty("machine_tag")
     private boolean machineTag;
+
     @JsonIgnore
+    @Ignore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
