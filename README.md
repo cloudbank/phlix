@@ -4,14 +4,14 @@ An android client for logging in to Flickr which allows you to view photos from:
 
 * Your own and your friends' photostreams
 * The 'interestingness for today' collection
-* Hot tags anbd Recent Uploads
+* Hot tags and Recent Uploads
 * The Commons 
 
-Designed with the latest Material theme and latest greatest android libs for best viewing pleasure!
+Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
 
-<img src="http://i.imgur.com/.png" height="545"/>
+<img src="http://i.imgur.com/.png" height="145"/>
 &nbsp;&nbsp;
-<img src="http://i.imgur.com/.png" height="545" />
+<img src="http://i.imgur.com/.png" height="145" />
 &nbsp;&nbsp;
 
 In addition you can:
@@ -19,14 +19,14 @@ In addition you can:
 * Add comments & tags
 * Take your own pictures with the camera! 
 
-<img src="http://i.imgur.com/.png" height="545" />
+<img src="http://i.imgur.com/.png" height="145" />
 &nbsp;&nbsp;
-<img src="http://i.imgur.com/.png" height="545" />
+<img src="http://i.imgur.com/.png" height="145" />
 
 
 
 
- on the [Google Play Store](https://play.google.com/store/apps/details?id=com.anubis.flickr)
+ soon on the [Google Play Store](https://play.google.com/store/apps/details?id=com.anubis.flickr)
 
 
 
