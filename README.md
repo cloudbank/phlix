@@ -49,7 +49,7 @@ It also uses many other open source libraries such as:
  
  * [Retrofit]()
  * [RxJava]() Observable for easy, reliable threading and beautiful code
- * [Realm] A new db for devices that is faster than naked sqlite!
+ * [Realm]() A new db for devices that is faster than naked sqlite!
  * 
  * [Picasso]()
  * [Jackson]()  Streaming treemap for fastest JSON parsing available
