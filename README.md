@@ -47,8 +47,8 @@ It also uses many other open source libraries such as:
 
  * [OAuthKit]()-- a helper lib for OAuth1.0a/2.0 with okhttp and signpost to easily hook into retrofit
  
- * [Retrofit]() the best REST client framework for android
- * [RxJava]() Observable for easy, reliable threading and beautiful code that fits with Retrofit
+ * [Retrofit]() Type-safe HTTP client for Android and Java by Square
+ * [RxJava]() Observable for easy, reliable threading and beautiful code that works with Retrofit
  * [Realm]() A new db for devices that is faster than naked sqlite!
  * 
  * [Picasso]() Square's optimized image loading library with built in caching and bg thread capability
