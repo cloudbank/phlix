@@ -4,22 +4,24 @@ An android client for logging in to Flickr which allows you to view photos from:
 
 * Your own and your friends' photostreams
 * The 'interestingness for today' collection
-* Custom search result. Search includes OR, AND, and TEXT options
+* Hot tags anbd Recent Uploads
+* The Commons 
 
+Designed with the latest Material theme and latest greatest android libs for best viewing pleasure!
 
-<img src="http://i.imgur.com/44yj4AE.png" height="545"/>
+<img src="http://i.imgur.com/.png" height="545"/>
 &nbsp;&nbsp;
-<img src="http://i.imgur.com/Eeyx8Ds.png" height="545" />
+<img src="http://i.imgur.com/.png" height="545" />
 &nbsp;&nbsp;
 
 In addition you can:
 
-* View and add photoList comments
+* Add comments & tags
 * Take your own pictures with the camera! 
 
-<img src="http://i.imgur.com/FeW5ryx.png" height="545" />
+<img src="http://i.imgur.com/.png" height="545" />
 &nbsp;&nbsp;
-<img src="http://i.imgur.com/Mi8Zcre.png" height="545" />
+<img src="http://i.imgur.com/.png" height="545" />
 
 
 
@@ -47,13 +49,13 @@ It also uses many other open source libraries such as:
  
  * [Retrofit]()
  * [RxJava]() Observable for easy, reliable threading and beautiful code
- 
+ * [Realm] A new db for devices that is faster than naked sqlite!
+ * 
  * [Picasso]()
  * [Jackson]()  Streaming treemap for fastest JSON parsing available
  * [ActiveAndroid](https://github.com/pardom/ActiveAndroid)
  * [simple-crop-image] (https://github.com/biokys/cropimage)
- * [GCM]()  w content provider and sync adapter impl
-
+ *
 
 
 
