@@ -30,8 +30,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     // Global variables
     // Define a variable to contain a content resolver instance
     ContentResolver mContentResolver;
-    public static final int SYNC_INTERVAL = 60000;  // 23 hrs
-    public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 1;
+    public static final int SYNC_INTERVAL = 60 * 180;
+    public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
 
     /**
      * Set up the sync adapter
@@ -176,9 +176,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         ContentResolver.setSyncAutomatically(newAccount, FlickrClientApp.AUTHORITY, true);
 
         /*
-         * Finally, let's do a sync to get things started
+         * Finally, let's do a sync to get things started--
+         * NOT NEEDED
          */
-        syncImmediately(context);
+        //syncImmediately(context);
     }
 
     public static void initializeSyncAdapter(Context context) {

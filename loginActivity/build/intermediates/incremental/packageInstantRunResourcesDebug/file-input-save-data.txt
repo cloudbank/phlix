@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Oct 07 18:11:51 PDT 2016
+#Fri Oct 07 18:35:03 PDT 2016
 20.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_
 143.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_
 340.file=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_/res/mipmap-xxhdpi-v4/ic_lotus.png
