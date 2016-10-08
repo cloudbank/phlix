@@ -7,6 +7,7 @@ package com.anubis.flickr.service;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 
 import com.anubis.flickr.sync.SyncAdapter;
 
@@ -30,6 +31,7 @@ public class SyncService extends Service {
          * Set the sync adapter as syncable
          * Disallow parallel syncs
          */
+        Log.d("FlickrSyncService", "onCreate - FlickrSyncService");
         synchronized (sSyncAdapterLock) {
             if (sSyncAdapter == null) {
                 sSyncAdapter = new SyncAdapter(getApplicationContext(), true);

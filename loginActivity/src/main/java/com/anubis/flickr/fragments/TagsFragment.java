@@ -63,7 +63,7 @@ public class TagsFragment extends FlickrBaseFragment {
         mPhotos = new ArrayList<Photo>();
         tAdapter = new TagsAdapter(getActivity(), mPhotos, false);
         //ringProgressDialog= new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
-        this.prefs = this.getContext().getSharedPreferences("Flickr_User_Prefs", 0);
+        this.prefs = FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
         this.editor = this.prefs.edit();
         mTags = new ArrayList<Tag>();
 
@@ -188,7 +188,7 @@ public class TagsFragment extends FlickrBaseFragment {
 
             @Override
             public void onTagClick(int position, String text) {
-                Toast.makeText(getContext(),"Tag "+text,Toast.LENGTH_SHORT).show();
+                Toast.makeText(FlickrClientApp.getAppContext(),"Tag "+text,Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -202,7 +202,7 @@ public class TagsFragment extends FlickrBaseFragment {
         //new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         // Attach the layout manager to the recycler view
         //rvPhotos.setLayoutManager(gridLayoutManager);
-        rvPhotos.setLayoutManager(new GridLayoutManager(getContext(),3));
+        rvPhotos.setLayoutManager(new GridLayoutManager(FlickrClientApp.getAppContext(),3));
         //SpacesItemDecoration decoration = new SpacesItemDecoration(2);
         //rvPhotos.addItemDecoration(decoration);
 

@@ -35,7 +35,14 @@ public class OAuthBaseClient {
     protected static HashMap<Class<? extends OAuthBaseClient>, OAuthBaseClient> instances = new HashMap();
     private static OAuthBaseClient instance;
 
+    public SharedPreferences getPrefs() {
+        return this.prefs;
+    }
 
+
+    public OAuthBaseClient.OAuthAccessHandler getAccessHandler() {
+        return this.accessHandler;
+    }
 
     public static OAuthBaseClient getInstance(Context context, OAuthBaseClient.OAuthAccessHandler handler) {
         if (instance == null) {
@@ -144,10 +151,13 @@ public class OAuthBaseClient {
         return this.baseUrl + "/" + path;
     }
 
-    public void clearAccessToken() {
+    public void clearTokens() {
         this.client.setAccessToken((Token) null);
         this.editor.remove("oauth_token");
         this.editor.remove("oauth_token_secret");
+        this.editor.remove("request_token");
+        this.editor.remove("request_token_secret");
+
         this.editor.commit();
     }
 

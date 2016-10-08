@@ -203,7 +203,7 @@ public abstract class FlickrBaseFragment extends Fragment {
 
     public void signOut() {
 
-        OAuthBaseClient.getInstance(this.getContext(), null).clearAccessToken();
+        OAuthBaseClient.getInstance(getActivity().getApplicationContext(), null).clearTokens();
 
        // Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.bye), Toast.LENGTH_LONG).show();
         Intent bye = new Intent(getActivity(), LoginActivity.class);

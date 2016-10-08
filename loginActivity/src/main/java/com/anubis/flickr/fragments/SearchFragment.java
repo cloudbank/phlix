@@ -53,7 +53,7 @@ public class SearchFragment extends FlickrBaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        searchAdapter = new SearchAdapter(getContext(), sPhotos, true);
+        searchAdapter = new SearchAdapter(FlickrClientApp.getAppContext(), sPhotos, true);
         loadPhotos(1, true);
 
         setRetainInstance(true);

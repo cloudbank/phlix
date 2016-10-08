@@ -39,9 +39,9 @@ public class InterestingFragment extends FlickrBaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        ringProgressDialog = new ProgressDialog(getContext(), R.style.MyDialogTheme);
+        ringProgressDialog = new ProgressDialog(getActivity(), R.style.MyDialogTheme);
 
-        rAdapter = new InterestingAdapter(getContext(), mInteresting, true);
+        rAdapter = new InterestingAdapter(FlickrClientApp.getAppContext(), mInteresting, true);
         loadPhotos(1, true);
     }
 
@@ -139,6 +139,14 @@ public class InterestingFragment extends FlickrBaseFragment {
 
     }
 
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if ( null != ringProgressDialog ) {
+            ringProgressDialog = null;
+        }
+    }
 }
 
 

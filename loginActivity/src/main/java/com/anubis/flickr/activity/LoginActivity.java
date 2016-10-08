@@ -18,7 +18,7 @@ import com.anubis.flickr.network.OAuthBaseClient;
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
 
 public class LoginActivity extends OAuthLoginActivity {
-
+    OAuthBaseClient client;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,16 @@ public class LoginActivity extends OAuthLoginActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //prevent leaking activity
+        if (null != this.client && null != this.client.getAccessHandler() ) {
+            OAuthBaseClient.OAuthAccessHandler handler = this.client.getAccessHandler();
+            handler = null;
+        }
     }
 
     private Boolean isNetworkAvailable() {
@@ -78,7 +88,7 @@ public class LoginActivity extends OAuthLoginActivity {
             Toast.makeText(this, " You have no network/internet connection",
                     Toast.LENGTH_SHORT).show();
         } else {
-            OAuthBaseClient client = OAuthBaseClient.getInstance(this, this);
+            client = OAuthBaseClient.getInstance(FlickrClientApp.getAppContext(), this);
             client.connect();
         }
         ringProgressDialog.dismiss();

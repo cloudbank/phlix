@@ -14,6 +14,10 @@ import android.content.SyncRequest;
 import android.content.SyncResult;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
@@ -26,8 +30,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     // Global variables
     // Define a variable to contain a content resolver instance
     ContentResolver mContentResolver;
-    public static final int SYNC_INTERVAL = 60 * (23 * 60);  // 23 hrs
-    public static final int SYNC_FLEXTIME = SYNC_INTERVAL/23;
+    public static final int SYNC_INTERVAL = 60000;  // 23 hrs
+    public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 1;
+
     /**
      * Set up the sync adapter
      */
@@ -55,7 +60,17 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     /*
      * Put the data transfer code here.
      */
+        Handler handler = new Handler(Looper.getMainLooper());
 
+        handler.post(new Runnable() {
+
+            @Override
+            public void run() {
+                //Your UI code here
+                Toast.makeText(FlickrClientApp.getAppContext(),"Hiney, hiney, hiney",Toast.LENGTH_LONG).show();
+            }
+        });
+        Log.d("SYNC", "onPeformSync");
 
     }
 
@@ -76,6 +91,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         mContentResolver = context.getContentResolver();
 
     }
+
     /**
      * Helper method to schedule the sync adapter periodic execution
      */
@@ -97,6 +113,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
     /**
      * Helper method to have the sync adapter sync immediately
+     *
      * @param context The context used to access the account service
      */
     public static void syncImmediately(Context context) {
@@ -105,6 +122,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
         ContentResolver.requestSync(getSyncAccount(context),
                 FlickrClientApp.AUTHORITY, bundle);
+        Log.d("SYNC", "sync request");
     }
 
     /**
@@ -122,13 +140,13 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         // Create the account type and default account
         Account newAccount = new Account(
-                context.getString(R.string.app_name),FlickrClientApp.ACCOUNT_TYPE);
+                context.getString(R.string.app_name), FlickrClientApp.ACCOUNT_TYPE);
 
         // If the password doesn't exist, the account doesn't exist
-        if ( null == accountManager.getPassword(newAccount) ) {
+        if (null == accountManager.getPassword(newAccount)) {
 
         /*
-         * Add the account and account type, no password or user data
+         * Add the account and account type, empty password or user data
          * If successful, return the Account object, otherwise report an error.
          */
             if (!accountManager.addAccountExplicitly(newAccount, "", null)) {
@@ -140,7 +158,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
              * then call ContentResolver.setIsSyncable(account, AUTHORITY, 1)
              * here.
              */
-
+            Log.d("SYNC", "about to call onACCOUNT");
             onAccountCreated(newAccount, context);
         }
         return newAccount;

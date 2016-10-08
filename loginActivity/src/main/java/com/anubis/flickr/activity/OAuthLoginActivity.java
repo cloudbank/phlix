@@ -15,6 +15,16 @@ import com.anubis.flickr.network.OAuthBaseClient;
 public abstract class OAuthLoginActivity  extends FragmentActivity
         implements OAuthBaseClient.OAuthAccessHandler {
 
+    private OAuthBaseClient client;
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //prevent leaking activity
+         if (null != this.client.getAccessHandler() ) {
+             OAuthBaseClient.OAuthAccessHandler handler = this.client.getAccessHandler();
+             handler = null;
+         }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,7 +34,7 @@ public abstract class OAuthLoginActivity  extends FragmentActivity
 
 
 
-    private OAuthBaseClient client;
+
 
     // Use this to properly assign the new intent with callback code
     // for activities with a "singleTask" launch mode
@@ -43,12 +53,14 @@ public abstract class OAuthLoginActivity  extends FragmentActivity
         //Class<T> clientClass = getClientClass();
         // Extracts the authenticated url data after the user
         // authorizes the OAuth app in the browser
-        Uri uri = getIntent().getData();
-        try {
-            //client = (T) com.anubis.flickr.network.OAuthBaseClient.getInstance(client.getClass(), this);
-            client.authorize(uri); // fetch access token (if needed)
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (this.client.getPrefs().contains("request_token")) {
+            Uri uri = getIntent().getData();
+            try {
+                //client = (T) com.anubis.flickr.network.OAuthBaseClient.getInstance(client.getClass(), this);
+                client.authorize(uri); // fetch access token (if needed)
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

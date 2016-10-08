@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.models.Photo;
 import com.squareup.picasso.Picasso;
@@ -97,7 +98,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
         mStaggered = staggered;
         mPhotos = photos;
         mContext = context;
-        this.prefs = this.getContext().getSharedPreferences("Flickr_User_Prefs", 0);
+        this.prefs = FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
         this.editor = this.prefs.edit();
 
     }

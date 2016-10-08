@@ -59,8 +59,8 @@ public class FriendsFragment extends FlickrBaseFragment {
         super.onCreate(savedInstanceState);
         mPhotos = new ArrayList<Photo>();
         fAdapter = new FriendsAdapter(getActivity(), mPhotos, false);
-        ringProgressDialog= new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
-        this.prefs = this.getContext().getSharedPreferences("Flickr_User_Prefs", 0);
+        ringProgressDialog= new ProgressDialog(getActivity(), R.style.CustomProgessBarStyle);
+        this.prefs = FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
         this.editor = this.prefs.edit();
 
         getPhotos();
@@ -137,6 +137,7 @@ public class FriendsFragment extends FlickrBaseFragment {
     public void onDestroy() {
         super.onDestroy();
         this.subscription.unsubscribe();
+        this.ringProgressDialog = null;
 
 
     }
@@ -156,7 +157,7 @@ public class FriendsFragment extends FlickrBaseFragment {
         //new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         // Attach the layout manager to the recycler view
         //rvPhotos.setLayoutManager(gridLayoutManager);
-        rvPhotos.setLayoutManager(new GridLayoutManager(getContext(),3));
+        rvPhotos.setLayoutManager(new GridLayoutManager(FlickrClientApp.getAppContext(),3));
         //SpacesItemDecoration decoration = new SpacesItemDecoration(2);
         //rvPhotos.addItemDecoration(decoration);
 

@@ -99,7 +99,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         mStaggered = staggered;
         mPhotos = photos;
         mContext = context;
-        this.prefs = this.getContext().getSharedPreferences("Flickr_User_Prefs", 0);
+        this.prefs = context.getSharedPreferences("Flickr_User_Prefs", 0);
         this.editor = this.prefs.edit();
 
     }

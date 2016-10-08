@@ -19,6 +19,7 @@ import com.anubis.flickr.fragments.SearchFragment;
 import com.anubis.flickr.fragments.TagsFragment;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.User;
+import com.anubis.flickr.sync.SyncAdapter;
 
 import java.util.ArrayList;
 
@@ -59,7 +60,7 @@ public class PhotosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        SyncAdapter.initializeSyncAdapter(this);
         setContentView(R.layout.activity_photos);
         this.prefs = this.getBaseContext().getSharedPreferences("user_prefs", 0);
         this.editor = this.prefs.edit();
