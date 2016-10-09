@@ -83,7 +83,7 @@ public class TagsFragment extends FlickrBaseFragment {
 
     private void getTags() {
 
-        subscription =  FlickrClientApp.getService().getHotTags()
+        subscription =  FlickrClientApp.getJacksonService().getHotTags()
              .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Hottags>() {
@@ -119,7 +119,7 @@ public class TagsFragment extends FlickrBaseFragment {
 
     private void getPhotos() {
 
-        subscription2 =  FlickrClientApp.getService().getRecentPhotos()
+        subscription2 =  FlickrClientApp.getJacksonService().getRecentPhotos()
                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Photos>() {

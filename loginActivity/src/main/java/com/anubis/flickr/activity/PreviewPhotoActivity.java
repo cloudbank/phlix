@@ -1,19 +1,38 @@
 package com.anubis.flickr.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FlickrBaseFragment;
 import com.anubis.flickr.util.ImageFilterProcessor;
 
-public class PreviewPhotoActivity extends FragmentActivity {
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.adapter.rxjava.HttpException;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
+public class PreviewPhotoActivity extends AppCompatActivity {
     public static final String IMAGE_PNG = "image.png";
     public static final String PLEASE_WAIT = "Please wait";
     public static final String UPLOADING_IMAGE = "Uploading Image";
@@ -26,6 +45,9 @@ public class PreviewPhotoActivity extends FragmentActivity {
     private EditText etFilename;
     private ImageView ivPreview;
     private ImageFilterProcessor filterProcessor;
+    Map<String, Object> data = new HashMap<>();
+    private Subscription subscription;
+    ProgressDialog ringProgressDialog
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +58,17 @@ public class PreviewPhotoActivity extends FragmentActivity {
         photoBitmap = getIntent().getParcelableExtra(FlickrBaseFragment.PHOTO_BITMAP);
         filterProcessor = new ImageFilterProcessor(photoBitmap);
         redisplayPreview(ImageFilterProcessor.NONE);
+        //getLogin();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+// ...
+// Display icon in the toolbar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.flickr_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        // getSupportActionBar().setElevation(3);
+        getSupportActionBar().setTitle(R.string.app_name);
+        getSupportActionBar().setSubtitle("Picture Preview");
     }
 
     private void redisplayPreview(int effectId) {
@@ -78,7 +111,7 @@ public class PreviewPhotoActivity extends FragmentActivity {
     }
 
     public void onSaveButton(MenuItem menuItem) {
-        final ProgressDialog ringProgressDialog = new ProgressDialog(this, R.style.CustomProgessBarStyle);
+        ringProgressDialog = new ProgressDialog(this, R.style.CustomProgessBarStyle);
         ringProgressDialog.setTitle(PLEASE_WAIT);
         ringProgressDialog.setMessage(UPLOADING_IMAGE);
 
@@ -88,7 +121,72 @@ public class PreviewPhotoActivity extends FragmentActivity {
         if (filename.length() == 0) {
             filename = IMAGE_PNG;
         }
-        /*
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        processedBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        final byte[] bytes = stream.toByteArray();
+        // data.put("photo", bytes);
+        // data.put("filename", filename);
+        MultipartBody.Part filePart = MultipartBody.Part.createFormData("photo", filename, RequestBody.create(MediaType.parse("image/*"), bytes));
+
+        subscription = FlickrClientApp.getDefaultService().postPhoto(filePart)
+                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ResponseBody>() {
+                    @Override
+                    public void onCompleted() {
+
+
+                        //Log.d("DEBUG","oncompleted");
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // cast to retrofit.HttpException to get the response code
+                        if (e instanceof HttpException) {
+                            HttpException response = (HttpException) e;
+                            int code = response.code();
+                            Log.e("ERROR", String.valueOf(code));
+                        }
+                        Log.e("ERROR", "error getting tags" + e);
+                    }
+
+                    @Override
+                    public void onNext(ResponseBody x) {
+                        Intent data = new Intent();
+                        try {
+                            Log.d("DEBUG", "post photo: " + x.string());
+                            String id = x.string();
+                            data.putExtra("id", parseId(id));
+                            setResult(RESULT_OK, data);
+                            ringProgressDialog.dismiss();
+                            PreviewPhotoActivity.this.finish();
+                            //pass photos to fragment
+                        } catch (IOException|ArrayIndexOutOfBoundsException e) {
+
+                        }
+                    }
+                });
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != subscription) {
+            subscription.unsubscribe();
+        }
+        if (null != ringProgressDialog) {
+            ringProgressDialog =  null;
+        }
+    }
+
+    private String parseId(String id) {
+        return id.substring((id.indexOf(PHOTOID_BEGINTAG)) + 9,
+                id.indexOf(PHOTOID_ENDTAG));
+    }
+/*
         client.createPhotoPost(processedBitmap, filename, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int arg0, String id) {
@@ -117,5 +215,8 @@ public class PreviewPhotoActivity extends FragmentActivity {
         });
     }
     */
-    }
 }
+
+
+
+

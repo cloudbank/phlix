@@ -14,24 +14,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.AbsListView;
-import android.widget.AdapterView;
 
 import com.anubis.flickr.R;
-import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.activity.LoginActivity;
 import com.anubis.flickr.activity.PhotosActivity;
-import com.anubis.flickr.activity.PhotosActivity.MyPagerAdapter;
 import com.anubis.flickr.activity.PreviewPhotoActivity;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.listener.EndlessScrollListener;
-import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.network.OAuthBaseClient;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import eu.janmuller.android.simplecropimage.CropImage;
 
@@ -50,10 +43,10 @@ public abstract class FlickrBaseFragment extends Fragment {
     public final String APP_TAG = "FlickrApp";
     public String photoFileName = "photo.jpg";
     File mediaStorageDir;
-    List<Photo> mTags;
+    //List<Photo> mTags;
     PhotoArrayAdapter mAdapter;
     AbsListView vPhotos;
-    AdapterView.OnItemClickListener mListener = new AdapterView.OnItemClickListener() {
+    /*AdapterView.OnItemClickListener mListener = new AdapterView.OnItemClickListener() {
 
         @Override
         public void onItemClick(AdapterView<?> adapter, View parent,
@@ -64,7 +57,7 @@ public abstract class FlickrBaseFragment extends Fragment {
             intent.putExtra(RESULT, result);
             startActivity(intent);
         }
-    };
+    };*/
     EndlessScrollListener mScrollListener = new EndlessScrollListener() {
         @Override
         public void onLoadMore(int page, int totalItemsCount) {
@@ -97,8 +90,8 @@ public abstract class FlickrBaseFragment extends Fragment {
 
         page = getArguments().getInt(PAGE, 0);
         title = getArguments().getString(TITLE);
-        mTags = new ArrayList<Photo>();
-        mAdapter = new PhotoArrayAdapter(getActivity(), mTags);
+       // mTags = new ArrayList<Photo>();
+       // mAdapter = new PhotoArrayAdapter(getActivity(), mTags);
 
 
         // Get safe storage directory for photos
@@ -118,11 +111,11 @@ public abstract class FlickrBaseFragment extends Fragment {
 
     }
 
-    void clearAdapter() {
+   /* void clearAdapter() {
         mAdapter.clear();
-        mTags.clear();
+        //mTags.clear();
         mAdapter.notifyDataSetChanged();
-    }
+    }*/
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -169,9 +162,11 @@ public abstract class FlickrBaseFragment extends Fragment {
                 startPreviewPhotoActivity();
             } else if (requestCode == POST_PHOTO_CODE) {
                 PhotosActivity activity = ((PhotosActivity) getActivity());
-                MyPagerAdapter mPagerAdapter = activity.getAdapterViewPager();
-                mPagerAdapter.setPagerItems(activity.intializeItems());
-                mPagerAdapter.notifyDataSetChanged();
+              // @todo
+//fragment callback
+           //    FriendsAdapter fAdapter = getFriendsAdapter
+                     //add the photo
+              //  fAdapter.notifyDataSetChanged();
                 activity.getVpPager().setCurrentItem(0);
 
             }

@@ -103,7 +103,7 @@ public class InterestingFragment extends FlickrBaseFragment {
         ringProgressDialog.setMessage("Retrieving photos");
         ringProgressDialog.setCancelable(true);
         ringProgressDialog.show();
-        subscription = FlickrClientApp.getService().getInterestingPhotos(String.valueOf(page))
+        subscription = FlickrClientApp.getJacksonService().getInterestingPhotos(String.valueOf(page))
 
                 .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())
@@ -146,6 +146,7 @@ public class InterestingFragment extends FlickrBaseFragment {
         if ( null != ringProgressDialog ) {
             ringProgressDialog = null;
         }
+       subscription.unsubscribe();
     }
 }
 

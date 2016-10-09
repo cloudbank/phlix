@@ -17,7 +17,8 @@ import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
 public class FlickrClientApp extends Application {
 
 
-    private static FlickrService service;
+    private static FlickrService jacksonService;
+    private static FlickrService defaultService;
     // The authority for the sync adapter's content provider
     public static final String AUTHORITY = "com.anubis.flickr.provider";
     // An account type, in the form of a domain name
@@ -37,12 +38,22 @@ public class FlickrClientApp extends Application {
     //prevent leaking activity context http://bit.ly/6LRzfx
 
 
-    public static FlickrService getService() {
-        return (FlickrService) service;
+    public static FlickrService getJacksonService() {
+        return (FlickrService) jacksonService;
     }
 
-    public static void setService(OkHttpOAuthConsumer consumer, String baseUrl) {
-        service = ServiceGenerator.createRetrofitRxService(consumer, FlickrService.class, baseUrl, JacksonConverterFactory.create());
+    public static FlickrService getDefaultService() {
+        return (FlickrService) defaultService;
+    }
+
+
+
+    public static void setJacksonService(OkHttpOAuthConsumer consumer, String baseUrl) {
+        jacksonService = ServiceGenerator.createRetrofitRxService(consumer, FlickrService.class, baseUrl, JacksonConverterFactory.create());
+    }
+
+    public static void setDefaultService(OkHttpOAuthConsumer consumer, String baseUrl) {
+        defaultService = ServiceGenerator.createRetrofitRxService(consumer, FlickrService.class, baseUrl, null);
     }
 
 

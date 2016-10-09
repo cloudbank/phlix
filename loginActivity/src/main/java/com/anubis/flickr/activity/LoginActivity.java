@@ -23,6 +23,7 @@ public class LoginActivity extends OAuthLoginActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //@todo clear tokens for notifications open--don't want someone to access someone else's account this way
         setContentView(R.layout.activity_login);
         View v = findViewById(R.id.loginBtn);
         v.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +63,8 @@ public class LoginActivity extends OAuthLoginActivity {
 
     @Override
     public void onLoginSuccess(OkHttpOAuthConsumer consumer, String baseUrl) {
-        FlickrClientApp.setService(consumer, baseUrl);
+        FlickrClientApp.setJacksonService(consumer, baseUrl);
+        FlickrClientApp.setDefaultService(consumer, baseUrl);
         Intent i = new Intent(this, PhotosActivity.class);
         startActivity(i);
     }

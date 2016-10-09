@@ -51,6 +51,12 @@ public class SearchFragment extends FlickrBaseFragment {
     Map data = new HashMap<String, String>();
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        subscription.unsubscribe();
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         searchAdapter = new SearchAdapter(FlickrClientApp.getAppContext(), sPhotos, true);
@@ -171,9 +177,9 @@ public class SearchFragment extends FlickrBaseFragment {
             clearAdapter();
         }
         data.put("page", String.valueOf(page));
-        data.put("is_commons", "true");
-        data.put("text","Search The Commons");
-        subscription = FlickrClientApp.getService().commons(data)
+       // data.put("is_commons", "true");
+       // data.put("text","Search The Commons");
+        subscription = FlickrClientApp.getJacksonService().commons(data)
                 .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Photos>() {

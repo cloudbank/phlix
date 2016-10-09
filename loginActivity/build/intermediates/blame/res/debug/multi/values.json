@@ -11381,12 +11381,12 @@
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
                     "position": {
-                        "startLine": 97,
+                        "startLine": 118,
                         "startColumn": 4,
-                        "startOffset": 4229,
-                        "endLine": 107,
+                        "startOffset": 4933,
+                        "endLine": 128,
                         "endColumn": 12,
-                        "endOffset": 4824
+                        "endOffset": 5528
                     }
                 }
             },
@@ -11402,12 +11402,12 @@
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
                     "position": {
-                        "startLine": 71,
+                        "startLine": 92,
                         "startColumn": 4,
-                        "startOffset": 3127,
-                        "endLine": 75,
+                        "startOffset": 3831,
+                        "endLine": 96,
                         "endColumn": 12,
-                        "endOffset": 3416
+                        "endOffset": 4120
                     }
                 }
             },
@@ -11423,12 +11423,12 @@
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
                     "position": {
-                        "startLine": 77,
+                        "startLine": 98,
                         "startColumn": 4,
-                        "startOffset": 3422,
-                        "endLine": 81,
+                        "startOffset": 4126,
+                        "endLine": 102,
                         "endColumn": 12,
-                        "endOffset": 3619
+                        "endOffset": 4323
                     }
                 }
             },
@@ -11444,12 +11444,12 @@
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
                     "position": {
-                        "startLine": 17,
+                        "startLine": 38,
                         "startColumn": 4,
-                        "startOffset": 580,
-                        "endLine": 20,
+                        "startOffset": 1284,
+                        "endLine": 41,
                         "endColumn": 12,
-                        "endOffset": 793
+                        "endOffset": 1497
                     }
                 }
             },
@@ -11465,12 +11465,12 @@
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
                     "position": {
-                        "startLine": 22,
+                        "startLine": 43,
                         "startColumn": 4,
-                        "startOffset": 799,
-                        "endLine": 26,
+                        "startOffset": 1503,
+                        "endLine": 47,
                         "endColumn": 12,
-                        "endOffset": 1049
+                        "endOffset": 1753
                     }
                 }
             },
@@ -11479,61 +11479,61 @@
                     "startLine": 1827,
                     "startColumn": 4,
                     "startOffset": 126845,
-                    "endLine": 1834,
+                    "endLine": 1831,
                     "endColumn": 12,
-                    "endOffset": 127231
+                    "endOffset": 127103
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
                     "position": {
-                        "startLine": 88,
+                        "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 3837,
-                        "endLine": 95,
+                        "startOffset": 580,
+                        "endLine": 21,
                         "endColumn": 12,
-                        "endOffset": 4223
+                        "endOffset": 838
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 1835,
+                    "startLine": 1832,
                     "startColumn": 4,
-                    "startOffset": 127236,
-                    "endLine": 1838,
+                    "startOffset": 127108,
+                    "endLine": 1839,
                     "endColumn": 12,
-                    "endOffset": 127435
+                    "endOffset": 127494
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
                     "position": {
-                        "startLine": 66,
+                        "startLine": 109,
                         "startColumn": 4,
-                        "startOffset": 2922,
-                        "endLine": 69,
+                        "startOffset": 4541,
+                        "endLine": 116,
                         "endColumn": 12,
-                        "endOffset": 3121
+                        "endOffset": 4927
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 1839,
+                    "startLine": 1840,
                     "startColumn": 4,
-                    "startOffset": 127440,
+                    "startOffset": 127499,
                     "endLine": 1843,
                     "endColumn": 12,
-                    "endOffset": 127647
+                    "endOffset": 127698
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
                     "position": {
-                        "startLine": 83,
+                        "startLine": 87,
                         "startColumn": 4,
-                        "startOffset": 3625,
-                        "endLine": 87,
+                        "startOffset": 3626,
+                        "endLine": 90,
                         "endColumn": 12,
-                        "endOffset": 3832
+                        "endOffset": 3825
                     }
                 }
             },
@@ -11541,20 +11541,20 @@
                 "to": {
                     "startLine": 1844,
                     "startColumn": 4,
-                    "startOffset": 127652,
+                    "startOffset": 127703,
                     "endLine": 1848,
                     "endColumn": 12,
-                    "endOffset": 127917
+                    "endOffset": 127910
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
                     "position": {
-                        "startLine": 28,
+                        "startLine": 104,
                         "startColumn": 4,
-                        "startOffset": 1055,
-                        "endLine": 32,
+                        "startOffset": 4329,
+                        "endLine": 108,
                         "endColumn": 12,
-                        "endOffset": 1320
+                        "endOffset": 4536
                     }
                 }
             },
@@ -11562,10 +11562,52 @@
                 "to": {
                     "startLine": 1849,
                     "startColumn": 4,
-                    "startOffset": 127922,
-                    "endLine": 1890,
+                    "startOffset": 127915,
+                    "endLine": 1853,
                     "endColumn": 12,
-                    "endOffset": 131095
+                    "endOffset": 128180
+                },
+                "from": {
+                    "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 49,
+                        "startColumn": 4,
+                        "startOffset": 1759,
+                        "endLine": 53,
+                        "endColumn": 12,
+                        "endOffset": 2024
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1854,
+                    "startColumn": 4,
+                    "startOffset": 128185,
+                    "endLine": 1863,
+                    "endColumn": 12,
+                    "endOffset": 128615
+                },
+                "from": {
+                    "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 847,
+                        "endLine": 35,
+                        "endColumn": 12,
+                        "endOffset": 1277
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1864,
+                    "startColumn": 4,
+                    "startOffset": 128620,
+                    "endLine": 1905,
+                    "endColumn": 12,
+                    "endOffset": 131793
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11581,12 +11623,12 @@
             },
             {
                 "to": {
-                    "startLine": 1891,
+                    "startLine": 1906,
                     "startColumn": 4,
-                    "startOffset": 131100,
-                    "endLine": 1933,
+                    "startOffset": 131798,
+                    "endLine": 1948,
                     "endColumn": 12,
-                    "endOffset": 134416
+                    "endOffset": 135114
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11602,11 +11644,11 @@
             },
             {
                 "to": {
-                    "startLine": 1934,
+                    "startLine": 1949,
                     "startColumn": 4,
-                    "startOffset": 134421,
+                    "startOffset": 135119,
                     "endColumn": 61,
-                    "endOffset": 134478
+                    "endOffset": 135176
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11621,12 +11663,12 @@
             },
             {
                 "to": {
-                    "startLine": 1935,
+                    "startLine": 1950,
                     "startColumn": 4,
-                    "startOffset": 134483,
-                    "endLine": 1944,
+                    "startOffset": 135181,
+                    "endLine": 1959,
                     "endColumn": 12,
-                    "endOffset": 135108
+                    "endOffset": 135806
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11642,12 +11684,12 @@
             },
             {
                 "to": {
-                    "startLine": 1945,
+                    "startLine": 1960,
                     "startColumn": 4,
-                    "startOffset": 135113,
-                    "endLine": 1953,
+                    "startOffset": 135811,
+                    "endLine": 1968,
                     "endColumn": 12,
-                    "endOffset": 135722
+                    "endOffset": 136420
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11663,11 +11705,11 @@
             },
             {
                 "to": {
-                    "startLine": 1954,
+                    "startLine": 1969,
                     "startColumn": 4,
-                    "startOffset": 135727,
+                    "startOffset": 136425,
                     "endColumn": 85,
-                    "endOffset": 135808
+                    "endOffset": 136506
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11682,12 +11724,12 @@
             },
             {
                 "to": {
-                    "startLine": 1955,
+                    "startLine": 1970,
                     "startColumn": 4,
-                    "startOffset": 135813,
-                    "endLine": 1956,
+                    "startOffset": 136511,
+                    "endLine": 1971,
                     "endColumn": 12,
-                    "endOffset": 135921
+                    "endOffset": 136619
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11703,12 +11745,12 @@
             },
             {
                 "to": {
-                    "startLine": 1957,
+                    "startLine": 1972,
                     "startColumn": 4,
-                    "startOffset": 135926,
-                    "endLine": 1960,
+                    "startOffset": 136624,
+                    "endLine": 1975,
                     "endColumn": 12,
-                    "endOffset": 136150
+                    "endOffset": 136848
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11724,12 +11766,12 @@
             },
             {
                 "to": {
-                    "startLine": 1961,
+                    "startLine": 1976,
                     "startColumn": 4,
-                    "startOffset": 136155,
-                    "endLine": 1963,
+                    "startOffset": 136853,
+                    "endLine": 1978,
                     "endColumn": 12,
-                    "endOffset": 136310
+                    "endOffset": 137008
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11745,12 +11787,12 @@
             },
             {
                 "to": {
-                    "startLine": 1964,
+                    "startLine": 1979,
                     "startColumn": 4,
-                    "startOffset": 136315,
-                    "endLine": 1966,
+                    "startOffset": 137013,
+                    "endLine": 1981,
                     "endColumn": 12,
-                    "endOffset": 136462
+                    "endOffset": 137160
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11766,12 +11808,12 @@
             },
             {
                 "to": {
-                    "startLine": 1967,
+                    "startLine": 1982,
                     "startColumn": 4,
-                    "startOffset": 136467,
-                    "endLine": 1969,
+                    "startOffset": 137165,
+                    "endLine": 1984,
                     "endColumn": 12,
-                    "endOffset": 136633
+                    "endOffset": 137331
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11787,12 +11829,12 @@
             },
             {
                 "to": {
-                    "startLine": 1970,
+                    "startLine": 1985,
                     "startColumn": 4,
-                    "startOffset": 136638,
-                    "endLine": 1972,
+                    "startOffset": 137336,
+                    "endLine": 1987,
                     "endColumn": 12,
-                    "endOffset": 136800
+                    "endOffset": 137498
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11808,12 +11850,12 @@
             },
             {
                 "to": {
-                    "startLine": 1973,
+                    "startLine": 1988,
                     "startColumn": 4,
-                    "startOffset": 136805,
-                    "endLine": 1976,
+                    "startOffset": 137503,
+                    "endLine": 1991,
                     "endColumn": 12,
-                    "endOffset": 137043
+                    "endOffset": 137741
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11829,12 +11871,12 @@
             },
             {
                 "to": {
-                    "startLine": 1977,
+                    "startLine": 1992,
                     "startColumn": 4,
-                    "startOffset": 137048,
-                    "endLine": 1979,
+                    "startOffset": 137746,
+                    "endLine": 1994,
                     "endColumn": 12,
-                    "endOffset": 137213
+                    "endOffset": 137911
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11850,12 +11892,12 @@
             },
             {
                 "to": {
-                    "startLine": 1980,
+                    "startLine": 1995,
                     "startColumn": 4,
-                    "startOffset": 137218,
-                    "endLine": 1982,
+                    "startOffset": 137916,
+                    "endLine": 1997,
                     "endColumn": 12,
-                    "endOffset": 137386
+                    "endOffset": 138084
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11871,12 +11913,12 @@
             },
             {
                 "to": {
-                    "startLine": 1983,
+                    "startLine": 1998,
                     "startColumn": 4,
-                    "startOffset": 137391,
-                    "endLine": 1985,
+                    "startOffset": 138089,
+                    "endLine": 2000,
                     "endColumn": 12,
-                    "endOffset": 137557
+                    "endOffset": 138255
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11892,12 +11934,12 @@
             },
             {
                 "to": {
-                    "startLine": 1986,
+                    "startLine": 2001,
                     "startColumn": 4,
-                    "startOffset": 137562,
-                    "endLine": 1989,
+                    "startOffset": 138260,
+                    "endLine": 2004,
                     "endColumn": 12,
-                    "endOffset": 137831
+                    "endOffset": 138529
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11913,12 +11955,12 @@
             },
             {
                 "to": {
-                    "startLine": 1990,
+                    "startLine": 2005,
                     "startColumn": 4,
-                    "startOffset": 137836,
-                    "endLine": 1992,
+                    "startOffset": 138534,
+                    "endLine": 2007,
                     "endColumn": 12,
-                    "endOffset": 138030
+                    "endOffset": 138728
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11934,12 +11976,12 @@
             },
             {
                 "to": {
-                    "startLine": 1993,
+                    "startLine": 2008,
                     "startColumn": 4,
-                    "startOffset": 138035,
-                    "endLine": 1996,
+                    "startOffset": 138733,
+                    "endLine": 2011,
                     "endColumn": 12,
-                    "endOffset": 138235
+                    "endOffset": 138933
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11955,12 +11997,12 @@
             },
             {
                 "to": {
-                    "startLine": 1997,
+                    "startLine": 2012,
                     "startColumn": 4,
-                    "startOffset": 138240,
-                    "endLine": 2000,
+                    "startOffset": 138938,
+                    "endLine": 2015,
                     "endColumn": 12,
-                    "endOffset": 138565
+                    "endOffset": 139263
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11976,11 +12018,11 @@
             },
             {
                 "to": {
-                    "startLine": 2001,
+                    "startLine": 2016,
                     "startColumn": 4,
-                    "startOffset": 138570,
+                    "startOffset": 139268,
                     "endColumn": 83,
-                    "endOffset": 138649
+                    "endOffset": 139347
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -11995,11 +12037,11 @@
             },
             {
                 "to": {
-                    "startLine": 2002,
+                    "startLine": 2017,
                     "startColumn": 4,
-                    "startOffset": 138654,
+                    "startOffset": 139352,
                     "endColumn": 95,
-                    "endOffset": 138745
+                    "endOffset": 139443
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12014,11 +12056,11 @@
             },
             {
                 "to": {
-                    "startLine": 2003,
+                    "startLine": 2018,
                     "startColumn": 4,
-                    "startOffset": 138750,
+                    "startOffset": 139448,
                     "endColumn": 95,
-                    "endOffset": 138841
+                    "endOffset": 139539
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12033,11 +12075,11 @@
             },
             {
                 "to": {
-                    "startLine": 2004,
+                    "startLine": 2019,
                     "startColumn": 4,
-                    "startOffset": 138846,
+                    "startOffset": 139544,
                     "endColumn": 97,
-                    "endOffset": 138939
+                    "endOffset": 139637
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12052,11 +12094,11 @@
             },
             {
                 "to": {
-                    "startLine": 2005,
+                    "startLine": 2020,
                     "startColumn": 4,
-                    "startOffset": 138944,
+                    "startOffset": 139642,
                     "endColumn": 99,
-                    "endOffset": 139039
+                    "endOffset": 139737
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12071,11 +12113,11 @@
             },
             {
                 "to": {
-                    "startLine": 2006,
+                    "startLine": 2021,
                     "startColumn": 4,
-                    "startOffset": 139044,
+                    "startOffset": 139742,
                     "endColumn": 101,
-                    "endOffset": 139141
+                    "endOffset": 139839
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12090,11 +12132,11 @@
             },
             {
                 "to": {
-                    "startLine": 2007,
+                    "startLine": 2022,
                     "startColumn": 4,
-                    "startOffset": 139146,
+                    "startOffset": 139844,
                     "endColumn": 101,
-                    "endOffset": 139243
+                    "endOffset": 139941
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12109,11 +12151,11 @@
             },
             {
                 "to": {
-                    "startLine": 2008,
+                    "startLine": 2023,
                     "startColumn": 4,
-                    "startOffset": 139248,
+                    "startOffset": 139946,
                     "endColumn": 101,
-                    "endOffset": 139345
+                    "endOffset": 140043
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12128,11 +12170,11 @@
             },
             {
                 "to": {
-                    "startLine": 2009,
+                    "startLine": 2024,
                     "startColumn": 4,
-                    "startOffset": 139350,
+                    "startOffset": 140048,
                     "endColumn": 101,
-                    "endOffset": 139447
+                    "endOffset": 140145
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12147,11 +12189,11 @@
             },
             {
                 "to": {
-                    "startLine": 2010,
+                    "startLine": 2025,
                     "startColumn": 4,
-                    "startOffset": 139452,
+                    "startOffset": 140150,
                     "endColumn": 101,
-                    "endOffset": 139549
+                    "endOffset": 140247
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12166,11 +12208,11 @@
             },
             {
                 "to": {
-                    "startLine": 2011,
+                    "startLine": 2026,
                     "startColumn": 4,
-                    "startOffset": 139554,
+                    "startOffset": 140252,
                     "endColumn": 99,
-                    "endOffset": 139649
+                    "endOffset": 140347
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12185,11 +12227,11 @@
             },
             {
                 "to": {
-                    "startLine": 2012,
+                    "startLine": 2027,
                     "startColumn": 4,
-                    "startOffset": 139654,
+                    "startOffset": 140352,
                     "endColumn": 95,
-                    "endOffset": 139745
+                    "endOffset": 140443
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12204,11 +12246,11 @@
             },
             {
                 "to": {
-                    "startLine": 2013,
+                    "startLine": 2028,
                     "startColumn": 4,
-                    "startOffset": 139750,
+                    "startOffset": 140448,
                     "endColumn": 111,
-                    "endOffset": 139857
+                    "endOffset": 140555
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12223,11 +12265,11 @@
             },
             {
                 "to": {
-                    "startLine": 2014,
+                    "startLine": 2029,
                     "startColumn": 4,
-                    "startOffset": 139862,
+                    "startOffset": 140560,
                     "endColumn": 128,
-                    "endOffset": 139986
+                    "endOffset": 140684
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12242,11 +12284,11 @@
             },
             {
                 "to": {
-                    "startLine": 2015,
+                    "startLine": 2030,
                     "startColumn": 4,
-                    "startOffset": 139991,
+                    "startOffset": 140689,
                     "endColumn": 122,
-                    "endOffset": 140109
+                    "endOffset": 140807
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12261,11 +12303,11 @@
             },
             {
                 "to": {
-                    "startLine": 2016,
+                    "startLine": 2031,
                     "startColumn": 4,
-                    "startOffset": 140114,
+                    "startOffset": 140812,
                     "endColumn": 130,
-                    "endOffset": 140240
+                    "endOffset": 140938
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12280,11 +12322,11 @@
             },
             {
                 "to": {
-                    "startLine": 2017,
+                    "startLine": 2032,
                     "startColumn": 4,
-                    "startOffset": 140245,
+                    "startOffset": 140943,
                     "endColumn": 130,
-                    "endOffset": 140371
+                    "endOffset": 141069
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12299,11 +12341,11 @@
             },
             {
                 "to": {
-                    "startLine": 2018,
+                    "startLine": 2033,
                     "startColumn": 4,
-                    "startOffset": 140376,
+                    "startOffset": 141074,
                     "endColumn": 97,
-                    "endOffset": 140469
+                    "endOffset": 141167
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12318,11 +12360,11 @@
             },
             {
                 "to": {
-                    "startLine": 2019,
+                    "startLine": 2034,
                     "startColumn": 4,
-                    "startOffset": 140474,
+                    "startOffset": 141172,
                     "endColumn": 113,
-                    "endOffset": 140583
+                    "endOffset": 141281
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12337,11 +12379,11 @@
             },
             {
                 "to": {
-                    "startLine": 2020,
+                    "startLine": 2035,
                     "startColumn": 4,
-                    "startOffset": 140588,
+                    "startOffset": 141286,
                     "endColumn": 93,
-                    "endOffset": 140677
+                    "endOffset": 141375
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12356,12 +12398,12 @@
             },
             {
                 "to": {
-                    "startLine": 2021,
+                    "startLine": 2036,
                     "startColumn": 4,
-                    "startOffset": 140682,
-                    "endLine": 2022,
+                    "startOffset": 141380,
+                    "endLine": 2037,
                     "endColumn": 12,
-                    "endOffset": 140817
+                    "endOffset": 141515
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12377,12 +12419,12 @@
             },
             {
                 "to": {
-                    "startLine": 2023,
+                    "startLine": 2038,
                     "startColumn": 4,
-                    "startOffset": 140822,
-                    "endLine": 2024,
+                    "startOffset": 141520,
+                    "endLine": 2039,
                     "endColumn": 12,
-                    "endOffset": 140951
+                    "endOffset": 141649
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12398,11 +12440,11 @@
             },
             {
                 "to": {
-                    "startLine": 2025,
+                    "startLine": 2040,
                     "startColumn": 4,
-                    "startOffset": 140956,
+                    "startOffset": 141654,
                     "endColumn": 95,
-                    "endOffset": 141047
+                    "endOffset": 141745
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12417,11 +12459,11 @@
             },
             {
                 "to": {
-                    "startLine": 2026,
+                    "startLine": 2041,
                     "startColumn": 4,
-                    "startOffset": 141052,
+                    "startOffset": 141750,
                     "endColumn": 111,
-                    "endOffset": 141159
+                    "endOffset": 141857
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12436,11 +12478,11 @@
             },
             {
                 "to": {
-                    "startLine": 2027,
+                    "startLine": 2042,
                     "startColumn": 4,
-                    "startOffset": 141164,
+                    "startOffset": 141862,
                     "endColumn": 99,
-                    "endOffset": 141259
+                    "endOffset": 141957
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12455,11 +12497,11 @@
             },
             {
                 "to": {
-                    "startLine": 2028,
+                    "startLine": 2043,
                     "startColumn": 4,
-                    "startOffset": 141264,
+                    "startOffset": 141962,
                     "endColumn": 115,
-                    "endOffset": 141375
+                    "endOffset": 142073
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12474,11 +12516,11 @@
             },
             {
                 "to": {
-                    "startLine": 2029,
+                    "startLine": 2044,
                     "startColumn": 4,
-                    "startOffset": 141380,
+                    "startOffset": 142078,
                     "endColumn": 95,
-                    "endOffset": 141471
+                    "endOffset": 142169
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12493,11 +12535,11 @@
             },
             {
                 "to": {
-                    "startLine": 2030,
+                    "startLine": 2045,
                     "startColumn": 4,
-                    "startOffset": 141476,
+                    "startOffset": 142174,
                     "endColumn": 111,
-                    "endOffset": 141583
+                    "endOffset": 142281
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12512,12 +12554,12 @@
             },
             {
                 "to": {
-                    "startLine": 2031,
+                    "startLine": 2046,
                     "startColumn": 4,
-                    "startOffset": 141588,
-                    "endLine": 2032,
+                    "startOffset": 142286,
+                    "endLine": 2047,
                     "endColumn": 12,
-                    "endOffset": 141723
+                    "endOffset": 142421
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12533,11 +12575,11 @@
             },
             {
                 "to": {
-                    "startLine": 2033,
+                    "startLine": 2048,
                     "startColumn": 4,
-                    "startOffset": 141728,
+                    "startOffset": 142426,
                     "endColumn": 135,
-                    "endOffset": 141859
+                    "endOffset": 142557
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12552,12 +12594,12 @@
             },
             {
                 "to": {
-                    "startLine": 2034,
+                    "startLine": 2049,
                     "startColumn": 4,
-                    "startOffset": 141864,
-                    "endLine": 2035,
+                    "startOffset": 142562,
+                    "endLine": 2050,
                     "endColumn": 12,
-                    "endOffset": 142023
+                    "endOffset": 142721
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12573,11 +12615,11 @@
             },
             {
                 "to": {
-                    "startLine": 2036,
+                    "startLine": 2051,
                     "startColumn": 4,
-                    "startOffset": 142028,
+                    "startOffset": 142726,
                     "endColumn": 129,
-                    "endOffset": 142153
+                    "endOffset": 142851
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12592,12 +12634,12 @@
             },
             {
                 "to": {
-                    "startLine": 2037,
+                    "startLine": 2052,
                     "startColumn": 4,
-                    "startOffset": 142158,
-                    "endLine": 2038,
+                    "startOffset": 142856,
+                    "endLine": 2053,
                     "endColumn": 12,
-                    "endOffset": 142311
+                    "endOffset": 143009
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12613,12 +12655,12 @@
             },
             {
                 "to": {
-                    "startLine": 2039,
+                    "startLine": 2054,
                     "startColumn": 4,
-                    "startOffset": 142316,
-                    "endLine": 2040,
+                    "startOffset": 143014,
+                    "endLine": 2055,
                     "endColumn": 12,
-                    "endOffset": 142461
+                    "endOffset": 143159
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12634,11 +12676,11 @@
             },
             {
                 "to": {
-                    "startLine": 2041,
+                    "startLine": 2056,
                     "startColumn": 4,
-                    "startOffset": 142466,
+                    "startOffset": 143164,
                     "endColumn": 140,
-                    "endOffset": 142602
+                    "endOffset": 143300
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12653,12 +12695,12 @@
             },
             {
                 "to": {
-                    "startLine": 2042,
+                    "startLine": 2057,
                     "startColumn": 4,
-                    "startOffset": 142607,
-                    "endLine": 2043,
+                    "startOffset": 143305,
+                    "endLine": 2058,
                     "endColumn": 12,
-                    "endOffset": 142746
+                    "endOffset": 143444
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12674,11 +12716,11 @@
             },
             {
                 "to": {
-                    "startLine": 2044,
+                    "startLine": 2059,
                     "startColumn": 4,
-                    "startOffset": 142751,
+                    "startOffset": 143449,
                     "endColumn": 134,
-                    "endOffset": 142881
+                    "endOffset": 143579
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12693,11 +12735,11 @@
             },
             {
                 "to": {
-                    "startLine": 2045,
+                    "startLine": 2060,
                     "startColumn": 4,
-                    "startOffset": 142886,
+                    "startOffset": 143584,
                     "endColumn": 111,
-                    "endOffset": 142993
+                    "endOffset": 143691
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12712,11 +12754,11 @@
             },
             {
                 "to": {
-                    "startLine": 2046,
+                    "startLine": 2061,
                     "startColumn": 4,
-                    "startOffset": 142998,
+                    "startOffset": 143696,
                     "endColumn": 127,
-                    "endOffset": 143121
+                    "endOffset": 143819
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12731,12 +12773,12 @@
             },
             {
                 "to": {
-                    "startLine": 2047,
+                    "startLine": 2062,
                     "startColumn": 4,
-                    "startOffset": 143126,
-                    "endLine": 2048,
+                    "startOffset": 143824,
+                    "endLine": 2063,
                     "endColumn": 12,
-                    "endOffset": 143257
+                    "endOffset": 143955
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12752,11 +12794,11 @@
             },
             {
                 "to": {
-                    "startLine": 2049,
+                    "startLine": 2064,
                     "startColumn": 4,
-                    "startOffset": 143262,
+                    "startOffset": 143960,
                     "endColumn": 131,
-                    "endOffset": 143389
+                    "endOffset": 144087
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12771,11 +12813,11 @@
             },
             {
                 "to": {
-                    "startLine": 2050,
+                    "startLine": 2065,
                     "startColumn": 4,
-                    "startOffset": 143394,
+                    "startOffset": 144092,
                     "endColumn": 129,
-                    "endOffset": 143519
+                    "endOffset": 144217
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12790,11 +12832,11 @@
             },
             {
                 "to": {
-                    "startLine": 2051,
+                    "startLine": 2066,
                     "startColumn": 4,
-                    "startOffset": 143524,
+                    "startOffset": 144222,
                     "endColumn": 129,
-                    "endOffset": 143649
+                    "endOffset": 144347
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12809,11 +12851,11 @@
             },
             {
                 "to": {
-                    "startLine": 2052,
+                    "startLine": 2067,
                     "startColumn": 4,
-                    "startOffset": 143654,
+                    "startOffset": 144352,
                     "endColumn": 111,
-                    "endOffset": 143761
+                    "endOffset": 144459
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12828,11 +12870,11 @@
             },
             {
                 "to": {
-                    "startLine": 2053,
+                    "startLine": 2068,
                     "startColumn": 4,
-                    "startOffset": 143766,
+                    "startOffset": 144464,
                     "endColumn": 139,
-                    "endOffset": 143901
+                    "endOffset": 144599
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -12847,12 +12889,12 @@
             },
             {
                 "to": {
-                    "startLine": 2054,
+                    "startLine": 2069,
                     "startColumn": 4,
-                    "startOffset": 143906,
-                    "endLine": 2056,
+                    "startOffset": 144604,
+                    "endLine": 2071,
                     "endColumn": 12,
-                    "endOffset": 144102
+                    "endOffset": 144800
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -12868,11 +12910,11 @@
             },
             {
                 "to": {
-                    "startLine": 2057,
+                    "startLine": 2072,
                     "startColumn": 4,
-                    "startOffset": 144107,
+                    "startOffset": 144805,
                     "endColumn": 91,
-                    "endOffset": 144194
+                    "endOffset": 144892
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -12887,12 +12929,12 @@
             },
             {
                 "to": {
-                    "startLine": 2058,
+                    "startLine": 2073,
                     "startColumn": 4,
-                    "startOffset": 144199,
-                    "endLine": 2060,
+                    "startOffset": 144897,
+                    "endLine": 2075,
                     "endColumn": 12,
-                    "endOffset": 144373
+                    "endOffset": 145071
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -12908,12 +12950,12 @@
             },
             {
                 "to": {
-                    "startLine": 2061,
+                    "startLine": 2076,
                     "startColumn": 4,
-                    "startOffset": 144378,
-                    "endLine": 2063,
+                    "startOffset": 145076,
+                    "endLine": 2078,
                     "endColumn": 12,
-                    "endOffset": 144541
+                    "endOffset": 145239
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -12929,12 +12971,12 @@
             },
             {
                 "to": {
-                    "startLine": 2064,
+                    "startLine": 2079,
                     "startColumn": 4,
-                    "startOffset": 144546,
-                    "endLine": 2066,
+                    "startOffset": 145244,
+                    "endLine": 2081,
                     "endColumn": 12,
-                    "endOffset": 144716
+                    "endOffset": 145414
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -12950,12 +12992,12 @@
             },
             {
                 "to": {
-                    "startLine": 2067,
+                    "startLine": 2082,
                     "startColumn": 4,
-                    "startOffset": 144721,
-                    "endLine": 2070,
+                    "startOffset": 145419,
+                    "endLine": 2085,
                     "endColumn": 12,
-                    "endOffset": 144969
+                    "endOffset": 145667
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -12971,12 +13013,12 @@
             },
             {
                 "to": {
-                    "startLine": 2071,
+                    "startLine": 2086,
                     "startColumn": 4,
-                    "startOffset": 144974,
-                    "endLine": 2075,
+                    "startOffset": 145672,
+                    "endLine": 2090,
                     "endColumn": 12,
-                    "endOffset": 145260
+                    "endOffset": 145958
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -12992,11 +13034,11 @@
             },
             {
                 "to": {
-                    "startLine": 2076,
+                    "startLine": 2091,
                     "startColumn": 4,
-                    "startOffset": 145265,
+                    "startOffset": 145963,
                     "endColumn": 67,
-                    "endOffset": 145328
+                    "endOffset": 146026
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13011,11 +13053,11 @@
             },
             {
                 "to": {
-                    "startLine": 2077,
+                    "startLine": 2092,
                     "startColumn": 4,
-                    "startOffset": 145333,
+                    "startOffset": 146031,
                     "endColumn": 72,
-                    "endOffset": 145401
+                    "endOffset": 146099
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13030,11 +13072,11 @@
             },
             {
                 "to": {
-                    "startLine": 2078,
+                    "startLine": 2093,
                     "startColumn": 4,
-                    "startOffset": 145406,
+                    "startOffset": 146104,
                     "endColumn": 73,
-                    "endOffset": 145475
+                    "endOffset": 146173
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13049,11 +13091,11 @@
             },
             {
                 "to": {
-                    "startLine": 2079,
+                    "startLine": 2094,
                     "startColumn": 4,
-                    "startOffset": 145480,
+                    "startOffset": 146178,
                     "endColumn": 72,
-                    "endOffset": 145548
+                    "endOffset": 146246
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13068,11 +13110,11 @@
             },
             {
                 "to": {
-                    "startLine": 2080,
+                    "startLine": 2095,
                     "startColumn": 4,
-                    "startOffset": 145553,
+                    "startOffset": 146251,
                     "endColumn": 73,
-                    "endOffset": 145622
+                    "endOffset": 146320
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13087,12 +13129,12 @@
             },
             {
                 "to": {
-                    "startLine": 2081,
+                    "startLine": 2096,
                     "startColumn": 4,
-                    "startOffset": 145627,
-                    "endLine": 2082,
+                    "startOffset": 146325,
+                    "endLine": 2097,
                     "endColumn": 12,
-                    "endOffset": 145768
+                    "endOffset": 146466
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13108,12 +13150,12 @@
             },
             {
                 "to": {
-                    "startLine": 2083,
+                    "startLine": 2098,
                     "startColumn": 4,
-                    "startOffset": 145773,
-                    "endLine": 2084,
+                    "startOffset": 146471,
+                    "endLine": 2099,
                     "endColumn": 12,
-                    "endOffset": 145912
+                    "endOffset": 146610
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13129,12 +13171,12 @@
             },
             {
                 "to": {
-                    "startLine": 2085,
+                    "startLine": 2100,
                     "startColumn": 4,
-                    "startOffset": 145917,
-                    "endLine": 2086,
+                    "startOffset": 146615,
+                    "endLine": 2101,
                     "endColumn": 12,
-                    "endOffset": 146050
+                    "endOffset": 146748
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13150,11 +13192,11 @@
             },
             {
                 "to": {
-                    "startLine": 2087,
+                    "startLine": 2102,
                     "startColumn": 4,
-                    "startOffset": 146055,
+                    "startOffset": 146753,
                     "endColumn": 65,
-                    "endOffset": 146116
+                    "endOffset": 146814
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13169,11 +13211,11 @@
             },
             {
                 "to": {
-                    "startLine": 2088,
+                    "startLine": 2103,
                     "startColumn": 4,
-                    "startOffset": 146121,
+                    "startOffset": 146819,
                     "endColumn": 89,
-                    "endOffset": 146206
+                    "endOffset": 146904
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13188,11 +13230,11 @@
             },
             {
                 "to": {
-                    "startLine": 2089,
+                    "startLine": 2104,
                     "startColumn": 4,
-                    "startOffset": 146211,
+                    "startOffset": 146909,
                     "endColumn": 75,
-                    "endOffset": 146282
+                    "endOffset": 146980
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13207,11 +13249,11 @@
             },
             {
                 "to": {
-                    "startLine": 2090,
+                    "startLine": 2105,
                     "startColumn": 4,
-                    "startOffset": 146287,
+                    "startOffset": 146985,
                     "endColumn": 103,
-                    "endOffset": 146386
+                    "endOffset": 147084
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13226,11 +13268,11 @@
             },
             {
                 "to": {
-                    "startLine": 2091,
+                    "startLine": 2106,
                     "startColumn": 4,
-                    "startOffset": 146391,
+                    "startOffset": 147089,
                     "endColumn": 89,
-                    "endOffset": 146476
+                    "endOffset": 147174
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13245,11 +13287,11 @@
             },
             {
                 "to": {
-                    "startLine": 2092,
+                    "startLine": 2107,
                     "startColumn": 4,
-                    "startOffset": 146481,
+                    "startOffset": 147179,
                     "endColumn": 101,
-                    "endOffset": 146578
+                    "endOffset": 147276
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13264,11 +13306,11 @@
             },
             {
                 "to": {
-                    "startLine": 2093,
+                    "startLine": 2108,
                     "startColumn": 4,
-                    "startOffset": 146583,
+                    "startOffset": 147281,
                     "endColumn": 107,
-                    "endOffset": 146686
+                    "endOffset": 147384
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13283,11 +13325,11 @@
             },
             {
                 "to": {
-                    "startLine": 2094,
+                    "startLine": 2109,
                     "startColumn": 4,
-                    "startOffset": 146691,
+                    "startOffset": 147389,
                     "endColumn": 107,
-                    "endOffset": 146794
+                    "endOffset": 147492
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13302,11 +13344,11 @@
             },
             {
                 "to": {
-                    "startLine": 2095,
+                    "startLine": 2110,
                     "startColumn": 4,
-                    "startOffset": 146799,
+                    "startOffset": 147497,
                     "endColumn": 99,
-                    "endOffset": 146894
+                    "endOffset": 147592
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13321,11 +13363,11 @@
             },
             {
                 "to": {
-                    "startLine": 2096,
+                    "startLine": 2111,
                     "startColumn": 4,
-                    "startOffset": 146899,
+                    "startOffset": 147597,
                     "endColumn": 79,
-                    "endOffset": 146974
+                    "endOffset": 147672
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13340,11 +13382,11 @@
             },
             {
                 "to": {
-                    "startLine": 2097,
+                    "startLine": 2112,
                     "startColumn": 4,
-                    "startOffset": 146979,
+                    "startOffset": 147677,
                     "endColumn": 91,
-                    "endOffset": 147066
+                    "endOffset": 147764
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13359,11 +13401,11 @@
             },
             {
                 "to": {
-                    "startLine": 2098,
+                    "startLine": 2113,
                     "startColumn": 4,
-                    "startOffset": 147071,
+                    "startOffset": 147769,
                     "endColumn": 97,
-                    "endOffset": 147164
+                    "endOffset": 147862
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13378,12 +13420,12 @@
             },
             {
                 "to": {
-                    "startLine": 2099,
+                    "startLine": 2114,
                     "startColumn": 4,
-                    "startOffset": 147169,
-                    "endLine": 2100,
+                    "startOffset": 147867,
+                    "endLine": 2115,
                     "endColumn": 12,
-                    "endOffset": 147274
+                    "endOffset": 147972
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13399,11 +13441,11 @@
             },
             {
                 "to": {
-                    "startLine": 2101,
+                    "startLine": 2116,
                     "startColumn": 4,
-                    "startOffset": 147279,
+                    "startOffset": 147977,
                     "endColumn": 77,
-                    "endOffset": 147352
+                    "endOffset": 148050
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13418,11 +13460,11 @@
             },
             {
                 "to": {
-                    "startLine": 2102,
+                    "startLine": 2117,
                     "startColumn": 4,
-                    "startOffset": 147357,
+                    "startOffset": 148055,
                     "endColumn": 105,
-                    "endOffset": 147458
+                    "endOffset": 148156
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13437,11 +13479,11 @@
             },
             {
                 "to": {
-                    "startLine": 2103,
+                    "startLine": 2118,
                     "startColumn": 4,
-                    "startOffset": 147463,
+                    "startOffset": 148161,
                     "endColumn": 91,
-                    "endOffset": 147550
+                    "endOffset": 148248
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13456,11 +13498,11 @@
             },
             {
                 "to": {
-                    "startLine": 2104,
+                    "startLine": 2119,
                     "startColumn": 4,
-                    "startOffset": 147555,
+                    "startOffset": 148253,
                     "endColumn": 103,
-                    "endOffset": 147654
+                    "endOffset": 148352
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13475,11 +13517,11 @@
             },
             {
                 "to": {
-                    "startLine": 2105,
+                    "startLine": 2120,
                     "startColumn": 4,
-                    "startOffset": 147659,
+                    "startOffset": 148357,
                     "endColumn": 109,
-                    "endOffset": 147764
+                    "endOffset": 148462
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13494,12 +13536,12 @@
             },
             {
                 "to": {
-                    "startLine": 2106,
+                    "startLine": 2121,
                     "startColumn": 4,
-                    "startOffset": 147769,
-                    "endLine": 2107,
+                    "startOffset": 148467,
+                    "endLine": 2122,
                     "endColumn": 12,
-                    "endOffset": 147886
+                    "endOffset": 148584
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13515,12 +13557,12 @@
             },
             {
                 "to": {
-                    "startLine": 2108,
+                    "startLine": 2123,
                     "startColumn": 4,
-                    "startOffset": 147891,
-                    "endLine": 2111,
+                    "startOffset": 148589,
+                    "endLine": 2126,
                     "endColumn": 12,
-                    "endOffset": 148049
+                    "endOffset": 148747
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13536,12 +13578,12 @@
             },
             {
                 "to": {
-                    "startLine": 2112,
+                    "startLine": 2127,
                     "startColumn": 4,
-                    "startOffset": 148054,
-                    "endLine": 2115,
+                    "startOffset": 148752,
+                    "endLine": 2130,
                     "endColumn": 12,
-                    "endOffset": 148206
+                    "endOffset": 148904
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13557,12 +13599,12 @@
             },
             {
                 "to": {
-                    "startLine": 2116,
+                    "startLine": 2131,
                     "startColumn": 4,
-                    "startOffset": 148211,
-                    "endLine": 2118,
+                    "startOffset": 148909,
+                    "endLine": 2133,
                     "endColumn": 12,
-                    "endOffset": 148360
+                    "endOffset": 149058
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -13578,12 +13620,12 @@
             },
             {
                 "to": {
-                    "startLine": 2119,
+                    "startLine": 2134,
                     "startColumn": 4,
-                    "startOffset": 148365,
-                    "endLine": 2123,
+                    "startOffset": 149063,
+                    "endLine": 2138,
                     "endColumn": 12,
-                    "endOffset": 148718
+                    "endOffset": 149416
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -13599,12 +13641,12 @@
             },
             {
                 "to": {
-                    "startLine": 2124,
+                    "startLine": 2139,
                     "startColumn": 4,
-                    "startOffset": 148723,
-                    "endLine": 2126,
+                    "startOffset": 149421,
+                    "endLine": 2141,
                     "endColumn": 12,
-                    "endOffset": 148885
+                    "endOffset": 149583
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -13620,12 +13662,12 @@
             },
             {
                 "to": {
-                    "startLine": 2127,
+                    "startLine": 2142,
                     "startColumn": 4,
-                    "startOffset": 148890,
-                    "endLine": 2131,
+                    "startOffset": 149588,
+                    "endLine": 2146,
                     "endColumn": 12,
-                    "endOffset": 149255
+                    "endOffset": 149953
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -13641,12 +13683,12 @@
             },
             {
                 "to": {
-                    "startLine": 2132,
+                    "startLine": 2147,
                     "startColumn": 4,
-                    "startOffset": 149260,
-                    "endLine": 2135,
+                    "startOffset": 149958,
+                    "endLine": 2150,
                     "endColumn": 12,
-                    "endOffset": 149415
+                    "endOffset": 150113
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -13662,12 +13704,12 @@
             },
             {
                 "to": {
-                    "startLine": 2136,
+                    "startLine": 2151,
                     "startColumn": 4,
-                    "startOffset": 149420,
-                    "endLine": 2139,
+                    "startOffset": 150118,
+                    "endLine": 2154,
                     "endColumn": 12,
-                    "endOffset": 149569
+                    "endOffset": 150267
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -13683,11 +13725,11 @@
             },
             {
                 "to": {
-                    "startLine": 2140,
+                    "startLine": 2155,
                     "startColumn": 4,
-                    "startOffset": 149574,
+                    "startOffset": 150272,
                     "endColumn": 79,
-                    "endOffset": 149649
+                    "endOffset": 150347
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13702,11 +13744,11 @@
             },
             {
                 "to": {
-                    "startLine": 2141,
+                    "startLine": 2156,
                     "startColumn": 4,
-                    "startOffset": 149654,
+                    "startOffset": 150352,
                     "endColumn": 99,
-                    "endOffset": 149749
+                    "endOffset": 150447
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13721,11 +13763,11 @@
             },
             {
                 "to": {
-                    "startLine": 2142,
+                    "startLine": 2157,
                     "startColumn": 4,
-                    "startOffset": 149754,
+                    "startOffset": 150452,
                     "endColumn": 89,
-                    "endOffset": 149839
+                    "endOffset": 150537
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13740,11 +13782,11 @@
             },
             {
                 "to": {
-                    "startLine": 2143,
+                    "startLine": 2158,
                     "startColumn": 4,
-                    "startOffset": 149844,
+                    "startOffset": 150542,
                     "endColumn": 109,
-                    "endOffset": 149949
+                    "endOffset": 150647
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13759,11 +13801,11 @@
             },
             {
                 "to": {
-                    "startLine": 2144,
+                    "startLine": 2159,
                     "startColumn": 4,
-                    "startOffset": 149954,
+                    "startOffset": 150652,
                     "endColumn": 93,
-                    "endOffset": 150043
+                    "endOffset": 150741
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13778,11 +13820,11 @@
             },
             {
                 "to": {
-                    "startLine": 2145,
+                    "startLine": 2160,
                     "startColumn": 4,
-                    "startOffset": 150048,
+                    "startOffset": 150746,
                     "endColumn": 105,
-                    "endOffset": 150149
+                    "endOffset": 150847
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13797,11 +13839,11 @@
             },
             {
                 "to": {
-                    "startLine": 2146,
+                    "startLine": 2161,
                     "startColumn": 4,
-                    "startOffset": 150154,
+                    "startOffset": 150852,
                     "endColumn": 91,
-                    "endOffset": 150241
+                    "endOffset": 150939
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13816,54 +13858,54 @@
             },
             {
                 "to": {
-                    "startLine": 2147,
+                    "startLine": 2162,
                     "startColumn": 4,
-                    "startOffset": 150246,
-                    "endLine": 2152,
+                    "startOffset": 150944,
+                    "endLine": 2167,
                     "endColumn": 12,
-                    "endOffset": 150560
+                    "endOffset": 151258
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
                     "position": {
-                        "startLine": 35,
+                        "startLine": 56,
                         "startColumn": 4,
-                        "startOffset": 1327,
-                        "endLine": 40,
-                        "endColumn": 12,
-                        "endOffset": 1641
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 2153,
-                    "startColumn": 4,
-                    "startOffset": 150565,
-                    "endLine": 2172,
-                    "endColumn": 12,
-                    "endOffset": 151831
-                },
-                "from": {
-                    "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
-                    "position": {
-                        "startLine": 42,
-                        "startColumn": 4,
-                        "startOffset": 1647,
+                        "startOffset": 2031,
                         "endLine": 61,
                         "endColumn": 12,
-                        "endOffset": 2913
+                        "endOffset": 2345
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 2173,
+                    "startLine": 2168,
                     "startColumn": 4,
-                    "startOffset": 151836,
-                    "endLine": 2174,
+                    "startOffset": 151263,
+                    "endLine": 2187,
                     "endColumn": 12,
-                    "endOffset": 151931
+                    "endOffset": 152529
+                },
+                "from": {
+                    "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 63,
+                        "startColumn": 4,
+                        "startOffset": 2351,
+                        "endLine": 82,
+                        "endColumn": 12,
+                        "endOffset": 3617
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 2188,
+                    "startColumn": 4,
+                    "startOffset": 152534,
+                    "endLine": 2189,
+                    "endColumn": 12,
+                    "endOffset": 152629
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13879,12 +13921,12 @@
             },
             {
                 "to": {
-                    "startLine": 2175,
+                    "startLine": 2190,
                     "startColumn": 4,
-                    "startOffset": 151936,
-                    "endLine": 2176,
+                    "startOffset": 152634,
+                    "endLine": 2191,
                     "endColumn": 12,
-                    "endOffset": 152043
+                    "endOffset": 152741
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13900,12 +13942,12 @@
             },
             {
                 "to": {
-                    "startLine": 2177,
+                    "startLine": 2192,
                     "startColumn": 4,
-                    "startOffset": 152048,
-                    "endLine": 2178,
+                    "startOffset": 152746,
+                    "endLine": 2193,
                     "endColumn": 12,
-                    "endOffset": 152157
+                    "endOffset": 152855
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13921,12 +13963,12 @@
             },
             {
                 "to": {
-                    "startLine": 2179,
+                    "startLine": 2194,
                     "startColumn": 4,
-                    "startOffset": 152162,
-                    "endLine": 2180,
+                    "startOffset": 152860,
+                    "endLine": 2195,
                     "endColumn": 12,
-                    "endOffset": 152273
+                    "endOffset": 152971
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13942,12 +13984,12 @@
             },
             {
                 "to": {
-                    "startLine": 2181,
+                    "startLine": 2196,
                     "startColumn": 4,
-                    "startOffset": 152278,
-                    "endLine": 2182,
+                    "startOffset": 152976,
+                    "endLine": 2197,
                     "endColumn": 12,
-                    "endOffset": 152389
+                    "endOffset": 153087
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13963,11 +14005,11 @@
             },
             {
                 "to": {
-                    "startLine": 2183,
+                    "startLine": 2198,
                     "startColumn": 4,
-                    "startOffset": 152394,
+                    "startOffset": 153092,
                     "endColumn": 93,
-                    "endOffset": 152483
+                    "endOffset": 153181
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -13982,11 +14024,11 @@
             },
             {
                 "to": {
-                    "startLine": 2184,
+                    "startLine": 2199,
                     "startColumn": 4,
-                    "startOffset": 152488,
+                    "startOffset": 153186,
                     "endColumn": 113,
-                    "endOffset": 152597
+                    "endOffset": 153295
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14001,11 +14043,11 @@
             },
             {
                 "to": {
-                    "startLine": 2185,
+                    "startLine": 2200,
                     "startColumn": 4,
-                    "startOffset": 152602,
+                    "startOffset": 153300,
                     "endColumn": 111,
-                    "endOffset": 152709
+                    "endOffset": 153407
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14020,12 +14062,12 @@
             },
             {
                 "to": {
-                    "startLine": 2186,
+                    "startLine": 2201,
                     "startColumn": 4,
-                    "startOffset": 152714,
-                    "endLine": 2187,
+                    "startOffset": 153412,
+                    "endLine": 2202,
                     "endColumn": 12,
-                    "endOffset": 152811
+                    "endOffset": 153509
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14041,12 +14083,12 @@
             },
             {
                 "to": {
-                    "startLine": 2188,
+                    "startLine": 2203,
                     "startColumn": 4,
-                    "startOffset": 152816,
-                    "endLine": 2189,
+                    "startOffset": 153514,
+                    "endLine": 2204,
                     "endColumn": 12,
-                    "endOffset": 152931
+                    "endOffset": 153629
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14062,12 +14104,12 @@
             },
             {
                 "to": {
-                    "startLine": 2190,
+                    "startLine": 2205,
                     "startColumn": 4,
-                    "startOffset": 152936,
-                    "endLine": 2191,
+                    "startOffset": 153634,
+                    "endLine": 2206,
                     "endColumn": 12,
-                    "endOffset": 153053
+                    "endOffset": 153751
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14083,11 +14125,11 @@
             },
             {
                 "to": {
-                    "startLine": 2192,
+                    "startLine": 2207,
                     "startColumn": 4,
-                    "startOffset": 153058,
+                    "startOffset": 153756,
                     "endColumn": 81,
-                    "endOffset": 153135
+                    "endOffset": 153833
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14102,11 +14144,11 @@
             },
             {
                 "to": {
-                    "startLine": 2193,
+                    "startLine": 2208,
                     "startColumn": 4,
-                    "startOffset": 153140,
+                    "startOffset": 153838,
                     "endColumn": 103,
-                    "endOffset": 153239
+                    "endOffset": 153937
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14121,11 +14163,11 @@
             },
             {
                 "to": {
-                    "startLine": 2194,
+                    "startLine": 2209,
                     "startColumn": 4,
-                    "startOffset": 153244,
+                    "startOffset": 153942,
                     "endColumn": 119,
-                    "endOffset": 153359
+                    "endOffset": 154057
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14140,11 +14182,11 @@
             },
             {
                 "to": {
-                    "startLine": 2195,
+                    "startLine": 2210,
                     "startColumn": 4,
-                    "startOffset": 153364,
+                    "startOffset": 154062,
                     "endColumn": 125,
-                    "endOffset": 153485
+                    "endOffset": 154183
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14159,11 +14201,11 @@
             },
             {
                 "to": {
-                    "startLine": 2196,
+                    "startLine": 2211,
                     "startColumn": 4,
-                    "startOffset": 153490,
+                    "startOffset": 154188,
                     "endColumn": 97,
-                    "endOffset": 153583
+                    "endOffset": 154281
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14178,11 +14220,11 @@
             },
             {
                 "to": {
-                    "startLine": 2197,
+                    "startLine": 2212,
                     "startColumn": 4,
-                    "startOffset": 153588,
+                    "startOffset": 154286,
                     "endColumn": 93,
-                    "endOffset": 153677
+                    "endOffset": 154375
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14197,11 +14239,11 @@
             },
             {
                 "to": {
-                    "startLine": 2198,
+                    "startLine": 2213,
                     "startColumn": 4,
-                    "startOffset": 153682,
+                    "startOffset": 154380,
                     "endColumn": 87,
-                    "endOffset": 153765
+                    "endOffset": 154463
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14216,11 +14258,11 @@
             },
             {
                 "to": {
-                    "startLine": 2199,
+                    "startLine": 2214,
                     "startColumn": 4,
-                    "startOffset": 153770,
+                    "startOffset": 154468,
                     "endColumn": 111,
-                    "endOffset": 153877
+                    "endOffset": 154575
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14235,11 +14277,11 @@
             },
             {
                 "to": {
-                    "startLine": 2200,
+                    "startLine": 2215,
                     "startColumn": 4,
-                    "startOffset": 153882,
+                    "startOffset": 154580,
                     "endColumn": 115,
-                    "endOffset": 153993
+                    "endOffset": 154691
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14254,11 +14296,11 @@
             },
             {
                 "to": {
-                    "startLine": 2201,
+                    "startLine": 2216,
                     "startColumn": 4,
-                    "startOffset": 153998,
+                    "startOffset": 154696,
                     "endColumn": 121,
-                    "endOffset": 154115
+                    "endOffset": 154813
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14273,11 +14315,11 @@
             },
             {
                 "to": {
-                    "startLine": 2202,
+                    "startLine": 2217,
                     "startColumn": 4,
-                    "startOffset": 154120,
+                    "startOffset": 154818,
                     "endColumn": 111,
-                    "endOffset": 154227
+                    "endOffset": 154925
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14292,12 +14334,12 @@
             },
             {
                 "to": {
-                    "startLine": 2203,
+                    "startLine": 2218,
                     "startColumn": 4,
-                    "startOffset": 154232,
-                    "endLine": 2205,
+                    "startOffset": 154930,
+                    "endLine": 2220,
                     "endColumn": 12,
-                    "endOffset": 154402
+                    "endOffset": 155100
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14313,11 +14355,11 @@
             },
             {
                 "to": {
-                    "startLine": 2206,
+                    "startLine": 2221,
                     "startColumn": 4,
-                    "startOffset": 154407,
+                    "startOffset": 155105,
                     "endColumn": 115,
-                    "endOffset": 154518
+                    "endOffset": 155216
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14332,11 +14374,11 @@
             },
             {
                 "to": {
-                    "startLine": 2207,
+                    "startLine": 2222,
                     "startColumn": 4,
-                    "startOffset": 154523,
+                    "startOffset": 155221,
                     "endColumn": 85,
-                    "endOffset": 154604
+                    "endOffset": 155302
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14351,11 +14393,11 @@
             },
             {
                 "to": {
-                    "startLine": 2208,
+                    "startLine": 2223,
                     "startColumn": 4,
-                    "startOffset": 154609,
+                    "startOffset": 155307,
                     "endColumn": 91,
-                    "endOffset": 154696
+                    "endOffset": 155394
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14370,12 +14412,12 @@
             },
             {
                 "to": {
-                    "startLine": 2209,
+                    "startLine": 2224,
                     "startColumn": 4,
-                    "startOffset": 154701,
-                    "endLine": 2210,
+                    "startOffset": 155399,
+                    "endLine": 2225,
                     "endColumn": 12,
-                    "endOffset": 154808
+                    "endOffset": 155506
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14391,12 +14433,12 @@
             },
             {
                 "to": {
-                    "startLine": 2211,
+                    "startLine": 2226,
                     "startColumn": 4,
-                    "startOffset": 154813,
-                    "endLine": 2212,
+                    "startOffset": 155511,
+                    "endLine": 2227,
                     "endColumn": 12,
-                    "endOffset": 154932
+                    "endOffset": 155630
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14412,11 +14454,11 @@
             },
             {
                 "to": {
-                    "startLine": 2213,
+                    "startLine": 2228,
                     "startColumn": 4,
-                    "startOffset": 154937,
+                    "startOffset": 155635,
                     "endColumn": 66,
-                    "endOffset": 154999
+                    "endOffset": 155697
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14431,12 +14473,12 @@
             },
             {
                 "to": {
-                    "startLine": 2214,
+                    "startLine": 2229,
                     "startColumn": 4,
-                    "startOffset": 155004,
-                    "endLine": 2215,
+                    "startOffset": 155702,
+                    "endLine": 2230,
                     "endColumn": 12,
-                    "endOffset": 155125
+                    "endOffset": 155823
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14452,11 +14494,11 @@
             },
             {
                 "to": {
-                    "startLine": 2216,
+                    "startLine": 2231,
                     "startColumn": 4,
-                    "startOffset": 155130,
+                    "startOffset": 155828,
                     "endColumn": 67,
-                    "endOffset": 155193
+                    "endOffset": 155891
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14471,12 +14513,12 @@
             },
             {
                 "to": {
-                    "startLine": 2217,
+                    "startLine": 2232,
                     "startColumn": 4,
-                    "startOffset": 155198,
-                    "endLine": 2218,
+                    "startOffset": 155896,
+                    "endLine": 2233,
                     "endColumn": 12,
-                    "endOffset": 155321
+                    "endOffset": 156019
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14492,12 +14534,12 @@
             },
             {
                 "to": {
-                    "startLine": 2219,
+                    "startLine": 2234,
                     "startColumn": 4,
-                    "startOffset": 155326,
-                    "endLine": 2220,
+                    "startOffset": 156024,
+                    "endLine": 2235,
                     "endColumn": 12,
-                    "endOffset": 155465
+                    "endOffset": 156163
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14513,12 +14555,12 @@
             },
             {
                 "to": {
-                    "startLine": 2221,
+                    "startLine": 2236,
                     "startColumn": 4,
-                    "startOffset": 155470,
-                    "endLine": 2222,
+                    "startOffset": 156168,
+                    "endLine": 2237,
                     "endColumn": 12,
-                    "endOffset": 155593
+                    "endOffset": 156291
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14534,11 +14576,11 @@
             },
             {
                 "to": {
-                    "startLine": 2223,
+                    "startLine": 2238,
                     "startColumn": 4,
-                    "startOffset": 155598,
+                    "startOffset": 156296,
                     "endColumn": 68,
-                    "endOffset": 155662
+                    "endOffset": 156360
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14553,11 +14595,11 @@
             },
             {
                 "to": {
-                    "startLine": 2224,
+                    "startLine": 2239,
                     "startColumn": 4,
-                    "startOffset": 155667,
+                    "startOffset": 156365,
                     "endColumn": 94,
-                    "endOffset": 155757
+                    "endOffset": 156455
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14572,11 +14614,11 @@
             },
             {
                 "to": {
-                    "startLine": 2225,
+                    "startLine": 2240,
                     "startColumn": 4,
-                    "startOffset": 155762,
+                    "startOffset": 156460,
                     "endColumn": 114,
-                    "endOffset": 155872
+                    "endOffset": 156570
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14591,11 +14633,11 @@
             },
             {
                 "to": {
-                    "startLine": 2226,
+                    "startLine": 2241,
                     "startColumn": 4,
-                    "startOffset": 155877,
+                    "startOffset": 156575,
                     "endColumn": 112,
-                    "endOffset": 155985
+                    "endOffset": 156683
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14610,11 +14652,11 @@
             },
             {
                 "to": {
-                    "startLine": 2227,
+                    "startLine": 2242,
                     "startColumn": 4,
-                    "startOffset": 155990,
+                    "startOffset": 156688,
                     "endColumn": 98,
-                    "endOffset": 156084
+                    "endOffset": 156782
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14629,11 +14671,11 @@
             },
             {
                 "to": {
-                    "startLine": 2228,
+                    "startLine": 2243,
                     "startColumn": 4,
-                    "startOffset": 156089,
+                    "startOffset": 156787,
                     "endColumn": 108,
-                    "endOffset": 156193
+                    "endOffset": 156891
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14648,11 +14690,11 @@
             },
             {
                 "to": {
-                    "startLine": 2229,
+                    "startLine": 2244,
                     "startColumn": 4,
-                    "startOffset": 156198,
+                    "startOffset": 156896,
                     "endColumn": 110,
-                    "endOffset": 156304
+                    "endOffset": 157002
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14667,11 +14709,11 @@
             },
             {
                 "to": {
-                    "startLine": 2230,
+                    "startLine": 2245,
                     "startColumn": 4,
-                    "startOffset": 156309,
+                    "startOffset": 157007,
                     "endColumn": 110,
-                    "endOffset": 156415
+                    "endOffset": 157113
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14686,11 +14728,11 @@
             },
             {
                 "to": {
-                    "startLine": 2231,
+                    "startLine": 2246,
                     "startColumn": 4,
-                    "startOffset": 156420,
+                    "startOffset": 157118,
                     "endColumn": 100,
-                    "endOffset": 156516
+                    "endOffset": 157214
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14705,11 +14747,11 @@
             },
             {
                 "to": {
-                    "startLine": 2232,
+                    "startLine": 2247,
                     "startColumn": 4,
-                    "startOffset": 156521,
+                    "startOffset": 157219,
                     "endColumn": 104,
-                    "endOffset": 156621
+                    "endOffset": 157319
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14724,11 +14766,11 @@
             },
             {
                 "to": {
-                    "startLine": 2233,
+                    "startLine": 2248,
                     "startColumn": 4,
-                    "startOffset": 156626,
+                    "startOffset": 157324,
                     "endColumn": 99,
-                    "endOffset": 156721
+                    "endOffset": 157419
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14743,12 +14785,12 @@
             },
             {
                 "to": {
-                    "startLine": 2234,
+                    "startLine": 2249,
                     "startColumn": 4,
-                    "startOffset": 156726,
-                    "endLine": 2235,
+                    "startOffset": 157424,
+                    "endLine": 2250,
                     "endColumn": 12,
-                    "endOffset": 156851
+                    "endOffset": 157549
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14764,11 +14806,11 @@
             },
             {
                 "to": {
-                    "startLine": 2236,
+                    "startLine": 2251,
                     "startColumn": 4,
-                    "startOffset": 156856,
+                    "startOffset": 157554,
                     "endColumn": 90,
-                    "endOffset": 156942
+                    "endOffset": 157640
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14783,11 +14825,11 @@
             },
             {
                 "to": {
-                    "startLine": 2237,
+                    "startLine": 2252,
                     "startColumn": 4,
-                    "startOffset": 156947,
+                    "startOffset": 157645,
                     "endColumn": 122,
-                    "endOffset": 157065
+                    "endOffset": 157763
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14802,11 +14844,11 @@
             },
             {
                 "to": {
-                    "startLine": 2238,
+                    "startLine": 2253,
                     "startColumn": 4,
-                    "startOffset": 157070,
+                    "startOffset": 157768,
                     "endColumn": 93,
-                    "endOffset": 157159
+                    "endOffset": 157857
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14821,12 +14863,12 @@
             },
             {
                 "to": {
-                    "startLine": 2239,
+                    "startLine": 2254,
                     "startColumn": 4,
-                    "startOffset": 157164,
-                    "endLine": 2240,
+                    "startOffset": 157862,
+                    "endLine": 2255,
                     "endColumn": 12,
-                    "endOffset": 157271
+                    "endOffset": 157969
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14842,11 +14884,11 @@
             },
             {
                 "to": {
-                    "startLine": 2241,
+                    "startLine": 2256,
                     "startColumn": 4,
-                    "startOffset": 157276,
+                    "startOffset": 157974,
                     "endColumn": 85,
-                    "endOffset": 157357
+                    "endOffset": 158055
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14861,11 +14903,11 @@
             },
             {
                 "to": {
-                    "startLine": 2242,
+                    "startLine": 2257,
                     "startColumn": 4,
-                    "startOffset": 157362,
+                    "startOffset": 158060,
                     "endColumn": 103,
-                    "endOffset": 157461
+                    "endOffset": 158159
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14880,11 +14922,11 @@
             },
             {
                 "to": {
-                    "startLine": 2243,
+                    "startLine": 2258,
                     "startColumn": 4,
-                    "startOffset": 157466,
+                    "startOffset": 158164,
                     "endColumn": 95,
-                    "endOffset": 157557
+                    "endOffset": 158255
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14899,11 +14941,11 @@
             },
             {
                 "to": {
-                    "startLine": 2244,
+                    "startLine": 2259,
                     "startColumn": 4,
-                    "startOffset": 157562,
+                    "startOffset": 158260,
                     "endColumn": 87,
-                    "endOffset": 157645
+                    "endOffset": 158343
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14918,12 +14960,12 @@
             },
             {
                 "to": {
-                    "startLine": 2245,
+                    "startLine": 2260,
                     "startColumn": 4,
-                    "startOffset": 157650,
-                    "endLine": 2246,
+                    "startOffset": 158348,
+                    "endLine": 2261,
                     "endColumn": 12,
-                    "endOffset": 157763
+                    "endOffset": 158461
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14939,12 +14981,12 @@
             },
             {
                 "to": {
-                    "startLine": 2247,
+                    "startLine": 2262,
                     "startColumn": 4,
-                    "startOffset": 157768,
-                    "endLine": 2248,
+                    "startOffset": 158466,
+                    "endLine": 2263,
                     "endColumn": 12,
-                    "endOffset": 157867
+                    "endOffset": 158565
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14960,12 +15002,12 @@
             },
             {
                 "to": {
-                    "startLine": 2249,
+                    "startLine": 2264,
                     "startColumn": 4,
-                    "startOffset": 157872,
-                    "endLine": 2250,
+                    "startOffset": 158570,
+                    "endLine": 2265,
                     "endColumn": 12,
-                    "endOffset": 157971
+                    "endOffset": 158669
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -14981,12 +15023,12 @@
             },
             {
                 "to": {
-                    "startLine": 2251,
+                    "startLine": 2266,
                     "startColumn": 4,
-                    "startOffset": 157976,
-                    "endLine": 2252,
+                    "startOffset": 158674,
+                    "endLine": 2267,
                     "endColumn": 12,
-                    "endOffset": 158097
+                    "endOffset": 158795
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15002,11 +15044,11 @@
             },
             {
                 "to": {
-                    "startLine": 2253,
+                    "startLine": 2268,
                     "startColumn": 4,
-                    "startOffset": 158102,
+                    "startOffset": 158800,
                     "endColumn": 87,
-                    "endOffset": 158185
+                    "endOffset": 158883
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15021,11 +15063,11 @@
             },
             {
                 "to": {
-                    "startLine": 2254,
+                    "startLine": 2269,
                     "startColumn": 4,
-                    "startOffset": 158190,
+                    "startOffset": 158888,
                     "endColumn": 107,
-                    "endOffset": 158293
+                    "endOffset": 158991
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15040,11 +15082,11 @@
             },
             {
                 "to": {
-                    "startLine": 2255,
+                    "startLine": 2270,
                     "startColumn": 4,
-                    "startOffset": 158298,
+                    "startOffset": 158996,
                     "endColumn": 99,
-                    "endOffset": 158393
+                    "endOffset": 159091
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15059,11 +15101,11 @@
             },
             {
                 "to": {
-                    "startLine": 2256,
+                    "startLine": 2271,
                     "startColumn": 4,
-                    "startOffset": 158398,
+                    "startOffset": 159096,
                     "endColumn": 89,
-                    "endOffset": 158483
+                    "endOffset": 159181
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15078,11 +15120,11 @@
             },
             {
                 "to": {
-                    "startLine": 2257,
+                    "startLine": 2272,
                     "startColumn": 4,
-                    "startOffset": 158488,
+                    "startOffset": 159186,
                     "endColumn": 109,
-                    "endOffset": 158593
+                    "endOffset": 159291
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15097,11 +15139,11 @@
             },
             {
                 "to": {
-                    "startLine": 2258,
+                    "startLine": 2273,
                     "startColumn": 4,
-                    "startOffset": 158598,
+                    "startOffset": 159296,
                     "endColumn": 83,
-                    "endOffset": 158677
+                    "endOffset": 159375
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15116,11 +15158,11 @@
             },
             {
                 "to": {
-                    "startLine": 2259,
+                    "startLine": 2274,
                     "startColumn": 4,
-                    "startOffset": 158682,
+                    "startOffset": 159380,
                     "endColumn": 101,
-                    "endOffset": 158779
+                    "endOffset": 159477
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15135,11 +15177,11 @@
             },
             {
                 "to": {
-                    "startLine": 2260,
+                    "startLine": 2275,
                     "startColumn": 4,
-                    "startOffset": 158784,
+                    "startOffset": 159482,
                     "endColumn": 83,
-                    "endOffset": 158863
+                    "endOffset": 159561
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15154,11 +15196,11 @@
             },
             {
                 "to": {
-                    "startLine": 2261,
+                    "startLine": 2276,
                     "startColumn": 4,
-                    "startOffset": 158868,
+                    "startOffset": 159566,
                     "endColumn": 53,
-                    "endOffset": 158917
+                    "endOffset": 159615
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15173,11 +15215,11 @@
             },
             {
                 "to": {
-                    "startLine": 2262,
+                    "startLine": 2277,
                     "startColumn": 4,
-                    "startOffset": 158922,
+                    "startOffset": 159620,
                     "endColumn": 63,
-                    "endOffset": 158981
+                    "endOffset": 159679
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15192,11 +15234,11 @@
             },
             {
                 "to": {
-                    "startLine": 2263,
+                    "startLine": 2278,
                     "startColumn": 4,
-                    "startOffset": 158986,
+                    "startOffset": 159684,
                     "endColumn": 105,
-                    "endOffset": 159087
+                    "endOffset": 159785
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15211,11 +15253,11 @@
             },
             {
                 "to": {
-                    "startLine": 2264,
+                    "startLine": 2279,
                     "startColumn": 4,
-                    "startOffset": 159092,
+                    "startOffset": 159790,
                     "endColumn": 109,
-                    "endOffset": 159197
+                    "endOffset": 159895
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15230,11 +15272,11 @@
             },
             {
                 "to": {
-                    "startLine": 2265,
+                    "startLine": 2280,
                     "startColumn": 4,
-                    "startOffset": 159202,
+                    "startOffset": 159900,
                     "endColumn": 83,
-                    "endOffset": 159281
+                    "endOffset": 159979
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15249,11 +15291,11 @@
             },
             {
                 "to": {
-                    "startLine": 2266,
+                    "startLine": 2281,
                     "startColumn": 4,
-                    "startOffset": 159286,
+                    "startOffset": 159984,
                     "endColumn": 119,
-                    "endOffset": 159401
+                    "endOffset": 160099
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values/values.xml",
@@ -15268,12 +15310,12 @@
             },
             {
                 "to": {
-                    "startLine": 2267,
+                    "startLine": 2282,
                     "startColumn": 4,
-                    "startOffset": 159406,
-                    "endLine": 2268,
+                    "startOffset": 160104,
+                    "endLine": 2283,
                     "endColumn": 12,
-                    "endOffset": 159501
+                    "endOffset": 160199
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -15289,12 +15331,12 @@
             },
             {
                 "to": {
-                    "startLine": 2269,
+                    "startLine": 2284,
                     "startColumn": 4,
-                    "startOffset": 159506,
-                    "endLine": 2275,
+                    "startOffset": 160204,
+                    "endLine": 2290,
                     "endColumn": 12,
-                    "endOffset": 159916
+                    "endOffset": 160614
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -15310,12 +15352,12 @@
             },
             {
                 "to": {
-                    "startLine": 2276,
+                    "startLine": 2291,
                     "startColumn": 4,
-                    "startOffset": 159921,
-                    "endLine": 2279,
+                    "startOffset": 160619,
+                    "endLine": 2294,
                     "endColumn": 12,
-                    "endOffset": 160123
+                    "endOffset": 160821
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -15331,12 +15373,12 @@
             },
             {
                 "to": {
-                    "startLine": 2280,
+                    "startLine": 2295,
                     "startColumn": 4,
-                    "startOffset": 160128,
-                    "endLine": 2282,
+                    "startOffset": 160826,
+                    "endLine": 2297,
                     "endColumn": 12,
-                    "endOffset": 160282
+                    "endOffset": 160980
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -15352,12 +15394,12 @@
             },
             {
                 "to": {
-                    "startLine": 2283,
+                    "startLine": 2298,
                     "startColumn": 4,
-                    "startOffset": 160287,
-                    "endLine": 2291,
+                    "startOffset": 160985,
+                    "endLine": 2306,
                     "endColumn": 12,
-                    "endOffset": 160847
+                    "endOffset": 161545
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -15373,12 +15415,12 @@
             },
             {
                 "to": {
-                    "startLine": 2292,
+                    "startLine": 2307,
                     "startColumn": 4,
-                    "startOffset": 160852,
-                    "endLine": 2297,
+                    "startOffset": 161550,
+                    "endLine": 2312,
                     "endColumn": 12,
-                    "endOffset": 161208
+                    "endOffset": 161906
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -15394,12 +15436,12 @@
             },
             {
                 "to": {
-                    "startLine": 2298,
+                    "startLine": 2313,
                     "startColumn": 4,
-                    "startOffset": 161213,
-                    "endLine": 2300,
+                    "startOffset": 161911,
+                    "endLine": 2315,
                     "endColumn": 12,
-                    "endOffset": 161337
+                    "endOffset": 162035
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -15415,12 +15457,12 @@
             },
             {
                 "to": {
-                    "startLine": 2301,
+                    "startLine": 2316,
                     "startColumn": 4,
-                    "startOffset": 161342,
-                    "endLine": 2309,
+                    "startOffset": 162040,
+                    "endLine": 2324,
                     "endColumn": 12,
-                    "endOffset": 162004
+                    "endOffset": 162702
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -15436,12 +15478,12 @@
             },
             {
                 "to": {
-                    "startLine": 2310,
+                    "startLine": 2325,
                     "startColumn": 4,
-                    "startOffset": 162009,
-                    "endLine": 2313,
+                    "startOffset": 162707,
+                    "endLine": 2328,
                     "endColumn": 12,
-                    "endOffset": 162184
+                    "endOffset": 162882
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -15457,12 +15499,12 @@
             },
             {
                 "to": {
-                    "startLine": 2314,
+                    "startLine": 2329,
                     "startColumn": 4,
-                    "startOffset": 162189,
-                    "endLine": 2321,
+                    "startOffset": 162887,
+                    "endLine": 2336,
                     "endColumn": 12,
-                    "endOffset": 162789
+                    "endOffset": 163487
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/res/values/values.xml",
@@ -15478,12 +15520,12 @@
             },
             {
                 "to": {
-                    "startLine": 2322,
+                    "startLine": 2337,
                     "startColumn": 4,
-                    "startOffset": 162794,
-                    "endLine": 2328,
+                    "startOffset": 163492,
+                    "endLine": 2343,
                     "endColumn": 12,
-                    "endOffset": 163152
+                    "endOffset": 163850
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/flockr/pullToRefreshListView/unspecified/res/values/values.xml",
@@ -15499,12 +15541,12 @@
             },
             {
                 "to": {
-                    "startLine": 2329,
+                    "startLine": 2344,
                     "startColumn": 4,
-                    "startOffset": 163157,
-                    "endLine": 2334,
+                    "startOffset": 163855,
+                    "endLine": 2349,
                     "endColumn": 12,
-                    "endOffset": 163427
+                    "endOffset": 164125
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/flockr/pullToRefreshListView/unspecified/res/values/values.xml",
@@ -15520,12 +15562,12 @@
             },
             {
                 "to": {
-                    "startLine": 2335,
+                    "startLine": 2350,
                     "startColumn": 4,
-                    "startOffset": 163432,
-                    "endLine": 2339,
+                    "startOffset": 164130,
+                    "endLine": 2354,
                     "endColumn": 12,
-                    "endOffset": 163645
+                    "endOffset": 164343
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/flockr/pullToRefreshListView/unspecified/res/values/values.xml",
@@ -15541,12 +15583,12 @@
             },
             {
                 "to": {
-                    "startLine": 2340,
+                    "startLine": 2355,
                     "startColumn": 4,
-                    "startOffset": 163650,
-                    "endLine": 2346,
+                    "startOffset": 164348,
+                    "endLine": 2361,
                     "endColumn": 12,
-                    "endOffset": 164020
+                    "endOffset": 164718
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/flockr/pullToRefreshListView/unspecified/res/values/values.xml",
@@ -15562,12 +15604,12 @@
             },
             {
                 "to": {
-                    "startLine": 2347,
+                    "startLine": 2362,
                     "startColumn": 4,
-                    "startOffset": 164025,
-                    "endLine": 2353,
+                    "startOffset": 164723,
+                    "endLine": 2368,
                     "endColumn": 12,
-                    "endOffset": 164415
+                    "endOffset": 165113
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/flockr/pullToRefreshListView/unspecified/res/values/values.xml",
@@ -15583,12 +15625,12 @@
             },
             {
                 "to": {
-                    "startLine": 2354,
+                    "startLine": 2369,
                     "startColumn": 4,
-                    "startOffset": 164420,
-                    "endLine": 2362,
+                    "startOffset": 165118,
+                    "endLine": 2377,
                     "endColumn": 12,
-                    "endOffset": 164887
+                    "endOffset": 165585
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/flockr/pullToRefreshListView/unspecified/res/values/values.xml",
@@ -15604,12 +15646,12 @@
             },
             {
                 "to": {
-                    "startLine": 2363,
+                    "startLine": 2378,
                     "startColumn": 4,
-                    "startOffset": 164892,
-                    "endLine": 2369,
+                    "startOffset": 165590,
+                    "endLine": 2384,
                     "endColumn": 12,
-                    "endOffset": 165241
+                    "endOffset": 165939
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/flockr/pullToRefreshListView/unspecified/res/values/values.xml",

@@ -125,12 +125,12 @@ public class PhotosActivity extends AppCompatActivity {
     }
 
     private void getLogin() {
-        subscription = FlickrClientApp.getService().testLogin()
+        subscription = FlickrClientApp.getJacksonService().testLogin()
                 .concatMap(new Func1<User, Observable<Photos>>() {
                     @Override
                     public Observable<Photos> call(User user) {
                         //username = user.getUser().getUsername().getContent();
-                        return FlickrClientApp.getService().getFriendsPhotos(user.getUser().getId());
+                        return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getId());
 
                     }
                 }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior

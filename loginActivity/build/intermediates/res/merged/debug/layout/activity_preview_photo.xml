@@ -5,12 +5,18 @@
     android:background="@color/AliceBlue"
     tools:context=".PreviewPhotoActivity" >
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ImageView
         android:id="@+id/ivPreview"
         android:layout_width="300dp"
         android:contentDescription="Image Preview"
         android:layout_height="300dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         />

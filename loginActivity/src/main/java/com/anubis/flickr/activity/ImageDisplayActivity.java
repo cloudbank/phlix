@@ -121,8 +121,8 @@ public class ImageDisplayActivity extends AppCompatActivity {
     }
 
     private void getPhotoAndComments(final String uid) {
-        Observable<PhotoInfo> photoInfo = FlickrClientApp.getService().getPhotoInfo(uid);
-        subscription = FlickrClientApp.getService().getComments(uid).zipWith(photoInfo, new Func2<Comments, PhotoInfo, ImageDisplay>() {
+        Observable<PhotoInfo> photoInfo = FlickrClientApp.getJacksonService().getPhotoInfo(uid);
+        subscription = FlickrClientApp.getJacksonService().getComments(uid).zipWith(photoInfo, new Func2<Comments, PhotoInfo, ImageDisplay>() {
             @Override
             public ImageDisplay call(Comments c, PhotoInfo p) {
                 return new ImageDisplay(p, c);
@@ -196,7 +196,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
 
             data.put("comment_text", commentString);
             data.put("photo_id", mPhoto.getId());
-            subscription2 = FlickrClientApp.getService().addComment(data)
+            subscription2 = FlickrClientApp.getJacksonService().addComment(data)
                     .subscribeOn(Schedulers.io())  // can be optional if not overriding
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Subscriber<Comment>() {

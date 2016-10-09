@@ -20,11 +20,14 @@ import com.anubis.flickr.adapter.FriendsAdapter;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
+import com.anubis.flickr.models.Tag;
 import com.anubis.flickr.models.User;
+import com.anubis.flickr.models.Who;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import co.hkm.soltag.TagContainerLayout;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
 import rx.Subscriber;
@@ -44,8 +47,10 @@ public class FriendsFragment extends FlickrBaseFragment {
     ProgressDialog ringProgressDialog;
     FriendsAdapter fAdapter;
     RecyclerView rvPhotos;
+    List<Tag> mTags;
     protected SharedPreferences prefs;
     protected SharedPreferences.Editor editor;
+    TagContainerLayout mTagView;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -58,12 +63,14 @@ public class FriendsFragment extends FlickrBaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPhotos = new ArrayList<Photo>();
+        mTags = new ArrayList<Tag>();
         fAdapter = new FriendsAdapter(getActivity(), mPhotos, false);
         ringProgressDialog= new ProgressDialog(getActivity(), R.style.CustomProgessBarStyle);
         this.prefs = FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
         this.editor = this.prefs.edit();
 
         getPhotos();
+        getTags();
 
 
         setRetainInstance(true);
@@ -83,7 +90,7 @@ public class FriendsFragment extends FlickrBaseFragment {
         ringProgressDialog.setMessage("Retrieving interesting photos");
         ringProgressDialog.setCancelable(true);
         ringProgressDialog.show();
-        subscription =  FlickrClientApp.getService().testLogin()
+        subscription =  FlickrClientApp.getJacksonService().testLogin()
                 .concatMap(new Func1<User, Observable<Photos>>() {
                     @Override
                     public Observable<Photos> call(User user) {
@@ -91,7 +98,7 @@ public class FriendsFragment extends FlickrBaseFragment {
                         editor.putString("username", username);
                         editor.putString("id",user.getUser().getId());
                         editor.commit();
-                        return FlickrClientApp.getService().getFriendsPhotos(user.getUser().getId());
+                        return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getId());
 
                     }
                 }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
@@ -128,6 +135,49 @@ public class FriendsFragment extends FlickrBaseFragment {
 
     }
 
+    private void getTags() {
+        String uid = prefs.getString("id","");
+        subscription =  FlickrClientApp.getJacksonService().getTags(uid)
+                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Who>() {
+                    @Override
+                    public void onCompleted() {
+
+
+                        //Log.d("DEBUG","oncompleted");
+
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        // cast to retrofit.HttpException to get the response code
+                        if (e instanceof HttpException) {
+                            HttpException response = (HttpException)e;
+                            int code = response.code();
+                            Log.e("ERROR",  String.valueOf(code));
+                        }
+                        Log.e("ERROR",  "error getting tags" + e);
+                    }
+
+                    @Override
+                    public void onNext(Who w ) {
+                        Log.d("DEBUG","tags for user: "+ w);
+                        //pass photos to fragment
+                        mTags.addAll(w.getWho().getTags().getTag());
+                        displayTags(mTags);
+                    }
+                });
+
+    }
+    public void displayTags(List<Tag> tags) {
+        //tags.stream().map(it -> it.getContent()).collect(Collectors.toCollection())
+        //when android catches up to 1.8
+        for (Tag t : tags) {
+            mTagView.addTag(t.getContent());
+        }
+
+
+    }
     protected void loadPhotos() {
        // clearAdapter();
 
@@ -175,6 +225,7 @@ public class FriendsFragment extends FlickrBaseFragment {
                 //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }
         });
+        mTagView = (TagContainerLayout)view.findViewById(R.id.my_tag_group);
         setHasOptionsMenu(true);
         return view;
     }
