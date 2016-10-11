@@ -41,9 +41,11 @@ public class FriendsFragment extends FlickrBaseFragment {
     private Subscription subscription;
     private String username;
     private List<Photo> mPhotos;
+
     protected PhotoArrayAdapter getAdapter() {
         return mAdapter;
     }
+
     ProgressDialog ringProgressDialog;
     FriendsAdapter fAdapter;
     RecyclerView rvPhotos;
@@ -65,7 +67,7 @@ public class FriendsFragment extends FlickrBaseFragment {
         mPhotos = new ArrayList<Photo>();
         mTags = new ArrayList<Tag>();
         fAdapter = new FriendsAdapter(getActivity(), mPhotos, false);
-        ringProgressDialog= new ProgressDialog(getActivity(), R.style.CustomProgessBarStyle);
+        ringProgressDialog = new ProgressDialog(getActivity(), R.style.CustomProgessBarStyle);
         this.prefs = FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
         this.editor = this.prefs.edit();
 
@@ -79,65 +81,77 @@ public class FriendsFragment extends FlickrBaseFragment {
     }
 
 
-
     void customLoadMoreDataFromApi(int page) {
         //@todo add the endless scroll
 
     }
-//flickr.tags.getListUser
+
+    //flickr.tags.getListUser
     private void getPhotos() {
-        ringProgressDialog.setTitle("Please wait");
-        ringProgressDialog.setMessage("Retrieving interesting photos");
-        ringProgressDialog.setCancelable(true);
-        ringProgressDialog.show();
-        subscription =  FlickrClientApp.getJacksonService().testLogin()
-                .concatMap(new Func1<User, Observable<Photos>>() {
-                    @Override
-                    public Observable<Photos> call(User user) {
-                        username = user.getUser().getUsername().getContent();
-                        editor.putString("username", username);
-                        editor.putString("id",user.getUser().getId());
-                        editor.commit();
-                        return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getId());
+        if (null != prefs.getString("username", "")) {
 
-                    }
-                }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Photos>() {
-                    @Override
-                    public void onCompleted() {
 
-                        ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle(username);
+            ringProgressDialog.setTitle("Please wait");
+            ringProgressDialog.setMessage("Retrieving interesting photos");
+            ringProgressDialog.setCancelable(true);
+            ringProgressDialog.show();
 
-                        ringProgressDialog.dismiss();
-                        //Log.d("DEBUG","oncompleted");
+            //use picasso cache if there try with setting and see if works as advertised
+            //stackoverflow claim that it needs to be set in policy
+            //SA
+            //..run it in own process
+            // remember to run in main thread in syncer
+            //concat the tags
+            subscription = FlickrClientApp.getJacksonService().testLogin()
+                    .concatMap(new Func1<User, Observable<Photos>>() {
+                        @Override
+                        public Observable<Photos> call(User user) {
+                            username = user.getUser().getUsername().getContent();
+                            editor.putString("username", username);
+                            editor.putString("id", user.getUser().getId());
+                            editor.commit();
+                            return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getId());
 
-                    }
-                    @Override
-                    public void onError(Throwable e) {
-                        // cast to retrofit.HttpException to get the response code
-                        if (e instanceof HttpException) {
-                            HttpException response = (HttpException)e;
-                            int code = response.code();
-                            Log.e("ERROR",  String.valueOf(code));
                         }
-                        Log.e("ERROR",  "error getting login/photos" + e);
-                    }
+                    }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<Photos>() {
+                        @Override
+                        public void onCompleted() {
 
-                    @Override
-                    public void onNext(Photos p ) {
-                        Log.d("DEBUG","mlogin: "+ p);
-                        //pass photos to fragment
-                        mPhotos.addAll(p.getPhotos().getPhotoList());
-                        fAdapter.notifyDataSetChanged();
-                    }
-                });
+                            ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(username);
 
+                            ringProgressDialog.dismiss();
+                            //Log.d("DEBUG","oncompleted");
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            // cast to retrofit.HttpException to get the response code
+                            if (e instanceof HttpException) {
+                                HttpException response = (HttpException) e;
+                                int code = response.code();
+                                Log.e("ERROR", String.valueOf(code));
+                            }
+                            Log.e("ERROR", "error getting login/photos" + e);
+                        }
+
+                        @Override
+                        public void onNext(Photos p) {
+                            Log.d("DEBUG", "mlogin: " + p);
+                            //add photos to realm
+                            mPhotos.addAll(p.getPhotos().getPhotoList());
+                            fAdapter.notifyDataSetChanged();
+                        }
+                    });
+
+        }
     }
 
     private void getTags() {
-        String uid = prefs.getString("id","");
-        subscription =  FlickrClientApp.getJacksonService().getTags(uid)
+        String uid = prefs.getString("id", "");
+        subscription = FlickrClientApp.getJacksonService().getTags(uid)
                 .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Who>() {
@@ -148,20 +162,21 @@ public class FriendsFragment extends FlickrBaseFragment {
                         //Log.d("DEBUG","oncompleted");
 
                     }
+
                     @Override
                     public void onError(Throwable e) {
                         // cast to retrofit.HttpException to get the response code
                         if (e instanceof HttpException) {
-                            HttpException response = (HttpException)e;
+                            HttpException response = (HttpException) e;
                             int code = response.code();
-                            Log.e("ERROR",  String.valueOf(code));
+                            Log.e("ERROR", String.valueOf(code));
                         }
-                        Log.e("ERROR",  "error getting tags" + e);
+                        Log.e("ERROR", "error getting tags" + e);
                     }
 
                     @Override
-                    public void onNext(Who w ) {
-                        Log.d("DEBUG","tags for user: "+ w);
+                    public void onNext(Who w) {
+                        Log.d("DEBUG", "tags for user: " + w);
                         //pass photos to fragment
                         mTags.addAll(w.getWho().getTags().getTag());
                         displayTags(mTags);
@@ -169,6 +184,7 @@ public class FriendsFragment extends FlickrBaseFragment {
                 });
 
     }
+
     public void displayTags(List<Tag> tags) {
         //tags.stream().map(it -> it.getContent()).collect(Collectors.toCollection())
         //when android catches up to 1.8
@@ -178,8 +194,9 @@ public class FriendsFragment extends FlickrBaseFragment {
 
 
     }
+
     protected void loadPhotos() {
-       // clearAdapter();
+        // clearAdapter();
 
     }
 
@@ -193,7 +210,6 @@ public class FriendsFragment extends FlickrBaseFragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -203,11 +219,11 @@ public class FriendsFragment extends FlickrBaseFragment {
         rvPhotos = (RecyclerView) view.findViewById(R.id.rvPhotos);
 
         rvPhotos.setAdapter(fAdapter);
-       // StaggeredGridLayoutManager gridLayoutManager =
+        // StaggeredGridLayoutManager gridLayoutManager =
         //new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         // Attach the layout manager to the recycler view
         //rvPhotos.setLayoutManager(gridLayoutManager);
-        rvPhotos.setLayoutManager(new GridLayoutManager(FlickrClientApp.getAppContext(),3));
+        rvPhotos.setLayoutManager(new GridLayoutManager(FlickrClientApp.getAppContext(), 3));
         //SpacesItemDecoration decoration = new SpacesItemDecoration(2);
         //rvPhotos.addItemDecoration(decoration);
 
@@ -225,11 +241,10 @@ public class FriendsFragment extends FlickrBaseFragment {
                 //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }
         });
-        mTagView = (TagContainerLayout)view.findViewById(R.id.my_tag_group);
+        mTagView = (TagContainerLayout) view.findViewById(R.id.my_tag_group);
         setHasOptionsMenu(true);
         return view;
     }
-
 
 
 }

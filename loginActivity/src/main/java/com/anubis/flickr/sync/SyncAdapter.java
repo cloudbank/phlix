@@ -81,6 +81,52 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         Log.d("SYNC", "onPeformSync");
 
     }
+/*
+    private  void getPhotos() {
+
+
+        //use picasso cache if there try with setting and see if works as advertised
+        //stackoverflow claim that it needs to be set in policy
+        //SA
+        //..run it in own process
+        // remember to run in main thread in syncer
+       // userid in prefs
+       /* subscription =  FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getId());
+
+                    }
+                }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Photos>() {
+                    @Override
+                    public void onCompleted() {
+
+
+                        //Log.d("DEBUG","oncompleted");
+
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        // cast to retrofit.HttpException to get the response code
+                        if (e instanceof HttpException) {
+                            HttpException response = (HttpException)e;
+                            int code = response.code();
+                            Log.e("ERROR",  String.valueOf(code));
+                        }
+                        Log.e("ERROR",  "error getting login/photos" + e);
+                    }
+
+                    @Override
+                    public void onNext(Photos p ) {
+                        Log.d("DEBUG","mlogin: "+ p);
+                        //add photos to realm
+                        mPhotos.addAll(p.getPhotos().getPhotoList());
+                        fAdapter.notifyDataSetChanged();
+                    }
+                });
+
+
+    }
+    */
 
     /**
      * Set up the sync adapter. This form of the

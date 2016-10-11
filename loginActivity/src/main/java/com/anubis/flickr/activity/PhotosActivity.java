@@ -13,6 +13,7 @@ import android.util.Log;
 
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
+import com.anubis.flickr.fragments.FlickrBaseFragment;
 import com.anubis.flickr.fragments.FriendsFragment;
 import com.anubis.flickr.fragments.InterestingFragment;
 import com.anubis.flickr.fragments.SearchFragment;
@@ -31,7 +32,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
-public class PhotosActivity extends AppCompatActivity {
+public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragment.OnPhotoPostedListener {
 
     private MyPagerAdapter adapterViewPager;
     private ViewPager vpPager;
@@ -44,6 +45,22 @@ public class PhotosActivity extends AppCompatActivity {
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
+
+
+    @Override
+    public void onPhotoPosted() {
+        //==there are 50 max in friends call
+        // ==you cannot get the url from the post
+        // ==you have to build the url from a network call to e.g. getphotoInfo anyway
+        // and put it in the cache manually and then refresh the viewpager
+        //just call friends and get it all in one shot w updates to friend photos as bonus
+        //
+        FriendsFragment f = (FriendsFragment)adapterViewPager.getItem(0);
+
+        //getFriendsList()
+        vpPager.setCurrentItem(0);
+    }
+
 
     public ViewPager getVpPager() {
         return vpPager;

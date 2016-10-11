@@ -99,9 +99,8 @@ public class Photo extends RealmObject implements Serializable {
     public String getWidth() {
         return width;
     }
-   private String url;
 
-
+    private String url;
 
 
     @Ignore
@@ -110,7 +109,7 @@ public class Photo extends RealmObject implements Serializable {
 
 
     //@todo set before save
-     void setUrl(Photo p) {
+    void setUrl(Photo p) {
 
         this.url = "http://farm" + p.getFarm()
                 + ".staticflickr.com/" + p.getServer() + "/"
@@ -120,14 +119,14 @@ public class Photo extends RealmObject implements Serializable {
     }
 
     public String getUrl() {
-        return  "http://farm" + this.getFarm()
+        return "http://farm" + this.getFarm()
                 + ".staticflickr.com/" + this.getServer() + "/"
                 + getId() + "_" + this.getSecret() + ".jpg";
 
     }
 
     public String getPhotoPage() {
-       return  "https://www.flickr.com/photos/"+this.getOwner()+"/"+this.getId();
+        return "https://www.flickr.com/photos/" + this.getOwner() + "/" + this.getId();
 
     }
 
@@ -370,8 +369,6 @@ public class Photo extends RealmObject implements Serializable {
     public void setOwnername(String ownername) {
         this.ownername = ownername;
     }
-
-
 
 
     @JsonAnyGetter

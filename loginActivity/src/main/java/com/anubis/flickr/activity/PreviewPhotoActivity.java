@@ -47,7 +47,7 @@ public class PreviewPhotoActivity extends AppCompatActivity {
     private ImageFilterProcessor filterProcessor;
     Map<String, Object> data = new HashMap<>();
     private Subscription subscription;
-    ProgressDialog ringProgressDialog
+    ProgressDialog ringProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,11 +122,16 @@ public class PreviewPhotoActivity extends AppCompatActivity {
             filename = IMAGE_PNG;
         }
 
+
+
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         processedBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         final byte[] bytes = stream.toByteArray();
         // data.put("photo", bytes);
         // data.put("filename", filename);
+
+
+
         MultipartBody.Part filePart = MultipartBody.Part.createFormData("photo", filename, RequestBody.create(MediaType.parse("image/*"), bytes));
 
         subscription = FlickrClientApp.getDefaultService().postPhoto(filePart)
@@ -157,12 +162,13 @@ public class PreviewPhotoActivity extends AppCompatActivity {
                         Intent data = new Intent();
                         try {
                             Log.d("DEBUG", "post photo: " + x.string());
-                            String id = x.string();
-                            data.putExtra("id", parseId(id));
+                            String id = parseId(x.string());
+                            data.putExtra("id", id);
                             setResult(RESULT_OK, data);
                             ringProgressDialog.dismiss();
+
                             PreviewPhotoActivity.this.finish();
-                            //pass photos to fragment
+
                         } catch (IOException|ArrayIndexOutOfBoundsException e) {
 
                         }

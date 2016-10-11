@@ -8,6 +8,8 @@ import android.content.Context;
 import com.anubis.flickr.service.FlickrService;
 import com.anubis.flickr.service.ServiceGenerator;
 import com.facebook.stetho.Stetho;
+import com.squareup.picasso.OkHttpDownloader;
+import com.squareup.picasso.Picasso;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -76,6 +78,12 @@ public class FlickrClientApp extends Application {
                 (AccountManager) context.getSystemService(
                         ACCOUNT_SERVICE);
         //TypefaceUtil.setDefaultFont(this, "SERIF", "fonts/Exo-Medium.otf");
+        Picasso.Builder builder = new Picasso.Builder(this);
+        builder.downloader(new OkHttpDownloader(this,Integer.MAX_VALUE));
+        Picasso built = builder.build();
+        built.setIndicatorsEnabled(true);
+        built.setLoggingEnabled(true);
+        Picasso.setSingletonInstance(built);
 
 
     }

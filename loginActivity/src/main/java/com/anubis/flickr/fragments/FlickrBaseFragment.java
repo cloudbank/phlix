@@ -16,9 +16,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.AbsListView;
 
+import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
-import com.anubis.flickr.activity.PhotosActivity;
 import com.anubis.flickr.activity.PreviewPhotoActivity;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.listener.EndlessScrollListener;
@@ -46,6 +46,29 @@ public abstract class FlickrBaseFragment extends Fragment {
     //List<Photo> mTags;
     PhotoArrayAdapter mAdapter;
     AbsListView vPhotos;
+    OnPhotoPostedListener mCallback;
+
+
+    // Container Activity must implement this interface
+    public interface OnPhotoPostedListener {
+        public void onPhotoPosted();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (OnPhotoPostedListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnPhotoPostedListener");
+        }
+    }
+
+
     /*AdapterView.OnItemClickListener mListener = new AdapterView.OnItemClickListener() {
 
         @Override
@@ -161,13 +184,12 @@ public abstract class FlickrBaseFragment extends Fragment {
                 photoBitmap = BitmapFactory.decodeFile(path);
                 startPreviewPhotoActivity();
             } else if (requestCode == POST_PHOTO_CODE) {
-                PhotosActivity activity = ((PhotosActivity) getActivity());
-              // @todo
-//fragment callback
-           //    FriendsAdapter fAdapter = getFriendsAdapter
-                     //add the photo
-              //  fAdapter.notifyDataSetChanged();
-                activity.getVpPager().setCurrentItem(0);
+                //PhotosActivity activity = ((PhotosActivity) getActivity());
+                // @todo if api changes update this
+               // Photo photo = new Photo();
+               // photo.setId(data.getStringExtra("id"));
+                mCallback.onPhotoPosted();
+
 
             }
         }
@@ -199,7 +221,8 @@ public abstract class FlickrBaseFragment extends Fragment {
     public void signOut() {
 
         OAuthBaseClient.getInstance(getActivity().getApplicationContext(), null).clearTokens();
-
+      // @todo usereditor.clear()
+       FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0).edit().clear().commit();
        // Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.bye), Toast.LENGTH_LONG).show();
         Intent bye = new Intent(getActivity(), LoginActivity.class);
         startActivity(bye);
