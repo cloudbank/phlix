@@ -27,6 +27,14 @@ import android.widget.Toast;
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
+import com.anubis.flickr.models.Photo;
+import com.anubis.flickr.models.Photos;
+import com.anubis.flickr.network.NetworkUtil;
+
+import io.realm.RealmList;
+import retrofit2.adapter.rxjava.HttpException;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 
 /**
  * Handle the transfer of data between a server and an
@@ -77,55 +85,14 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                 Toast.makeText(FlickrClientApp.getAppContext(), "Hiney, hiney, hiney", Toast.LENGTH_SHORT).show();
             }
         });
+        getFriendsPhotos();
+
         notifyWeather();
         Log.d("SYNC", "onPeformSync");
 
     }
 /*
-    private  void getPhotos() {
 
-
-        //use picasso cache if there try with setting and see if works as advertised
-        //stackoverflow claim that it needs to be set in policy
-        //SA
-        //..run it in own process
-        // remember to run in main thread in syncer
-       // userid in prefs
-       /* subscription =  FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getId());
-
-                    }
-                }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Photos>() {
-                    @Override
-                    public void onCompleted() {
-
-
-                        //Log.d("DEBUG","oncompleted");
-
-                    }
-                    @Override
-                    public void onError(Throwable e) {
-                        // cast to retrofit.HttpException to get the response code
-                        if (e instanceof HttpException) {
-                            HttpException response = (HttpException)e;
-                            int code = response.code();
-                            Log.e("ERROR",  String.valueOf(code));
-                        }
-                        Log.e("ERROR",  "error getting login/photos" + e);
-                    }
-
-                    @Override
-                    public void onNext(Photos p ) {
-                        Log.d("DEBUG","mlogin: "+ p);
-                        //add photos to realm
-                        mPhotos.addAll(p.getPhotos().getPhotoList());
-                        fAdapter.notifyDataSetChanged();
-                    }
-                });
-
-
-    }
     */
 
     /**
@@ -194,7 +161,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         // Create the account type and default account
         Account newAccount = new Account(
-                context.getString(R.string.app_name), FlickrClientApp.ACCOUNT_TYPE);
+                FlickrClientApp.ACCOUNT, FlickrClientApp.ACCOUNT_TYPE);
 
         // If the password doesn't exist, the account doesn't exist
         if (null == accountManager.getPassword(newAccount)) {
@@ -319,4 +286,55 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
        // editor.putLong(lastNotificationKey, System.currentTimeMillis());
         //editor.commit();
     }
+
+    private void getFriendsPhotos() {
+        NetworkUtil.getInstance().getFriendsList()
+        .subscribeOn(AndroidSchedulers.mainThread()) //  we are in the bg already
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Photos>() {
+                    @Override
+                    public void onCompleted() {
+                        Handler handler = new Handler(Looper.getMainLooper());
+
+                        handler.post(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                //Your UI code here
+                                Toast.makeText(FlickrClientApp.getAppContext(), "Got our friends", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        //Log.d("DEBUG","oncompleted");
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // cast to retrofit.HttpException to get the response code
+                        if (e instanceof HttpException) {
+                            HttpException response = (HttpException) e;
+                            int code = response.code();
+                            Log.e("ERROR", String.valueOf(code));
+                        }
+                        Log.e("ERROR", "error getting login/photos" + e);
+                    }
+
+                    @Override
+                    public void onNext(Photos p) {
+                        Log.d("DEBUG", "mlogin: " + p);
+                        //add photos to realm
+                        RealmList f = new RealmList<Photo>();
+                        f.addAll(p.getPhotos().getPhotoList());
+                        //.setFriends(f);
+                       // mCallBack.onDataReceived
+                    }
+                });
+
+    }
 }
+
+
+
+
+
+

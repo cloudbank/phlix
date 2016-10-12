@@ -12,5 +12,17 @@ import io.realm.RealmObject;
 public class Friends extends RealmObject {
     private Date timestamp;
 
-    private RealmList<Photo> friends;
+    public Friends() {}
+
+
+
+    private  RealmList<Photo> friends;
+
+    public RealmList<Photo> getFriends() {
+        return friends;
+    }
+
+    public  void setFriends(RealmList<Photo> mFriends) {
+        friends = mFriends;
+    }
 }

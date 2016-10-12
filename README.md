@@ -2,7 +2,7 @@
 
 An android client for logging in to Flickr which allows you to view photos from:
 
-* Your own and your friends' photostreams
+* Your own and your mFriends' photostreams
 * The 'interestingness for today' collection
 * Hot tags and Recent Uploads
 * The Commons 

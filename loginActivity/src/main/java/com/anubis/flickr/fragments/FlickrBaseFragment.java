@@ -16,7 +16,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.AbsListView;
 
-import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
 import com.anubis.flickr.activity.PreviewPhotoActivity;
@@ -222,9 +221,9 @@ public abstract class FlickrBaseFragment extends Fragment {
 
         OAuthBaseClient.getInstance(getActivity().getApplicationContext(), null).clearTokens();
       // @todo usereditor.clear()
-       FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0).edit().clear().commit();
        // Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.bye), Toast.LENGTH_LONG).show();
         Intent bye = new Intent(getActivity(), LoginActivity.class);
+
         startActivity(bye);
     }
 

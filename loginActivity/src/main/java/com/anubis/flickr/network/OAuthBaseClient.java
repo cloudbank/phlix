@@ -68,7 +68,7 @@ public class OAuthBaseClient {
         this.callbackUrl = prop.getProperty("callbackUrl");
         this.client = new OAuthSignPostOKHttpClient(prop, new OAuthSignPostOKHttpClient.OAuthTokenHandler() {
 
-
+            //@todo implement interface and ovverride here
             public void onReceivedRequestToken(OkHttpOAuthConsumer consumer, String authorizeUrl) {
                 if (consumer != null)
 

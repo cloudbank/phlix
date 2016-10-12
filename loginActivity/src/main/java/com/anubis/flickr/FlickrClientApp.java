@@ -1,7 +1,6 @@
 package com.anubis.flickr;
 
 import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.Application;
 import android.content.Context;
 
@@ -26,7 +25,7 @@ public class FlickrClientApp extends Application {
     // An account type, in the form of a domain name
     public static final String ACCOUNT_TYPE = "com.example";
     // The account name
-    public static final String ACCOUNT = "dummyaccount";
+    public static final String ACCOUNT = "flickraccount";
     // Instance fields
     Account mAccount;
 
@@ -59,6 +58,7 @@ public class FlickrClientApp extends Application {
     }
 
 
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -71,12 +71,7 @@ public class FlickrClientApp extends Application {
         FlickrClientApp.context = getApplicationContext();
         Stetho.initializeWithDefaults(this);
 
-        Account newAccount = new Account(
-                ACCOUNT, ACCOUNT_TYPE);
-        // Get an instance of the Android account manager
-        AccountManager accountManager =
-                (AccountManager) context.getSystemService(
-                        ACCOUNT_SERVICE);
+
         //TypefaceUtil.setDefaultFont(this, "SERIF", "fonts/Exo-Medium.otf");
         Picasso.Builder builder = new Picasso.Builder(this);
         builder.downloader(new OkHttpDownloader(this,Integer.MAX_VALUE));

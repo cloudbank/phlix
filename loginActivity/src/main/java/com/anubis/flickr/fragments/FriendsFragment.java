@@ -71,7 +71,7 @@ public class FriendsFragment extends FlickrBaseFragment {
         this.prefs = FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
         this.editor = this.prefs.edit();
 
-        getPhotos();
+        getFriendsFromRealm();
         getTags();
 
 
@@ -86,68 +86,77 @@ public class FriendsFragment extends FlickrBaseFragment {
 
     }
 
+    void getFriendsFromRealm() {
+        //read friendslist
+        //RealmList<Photo> fList =  Friends.getInstance().getFriends();
+
+       // mPhotos.addAll(fList);
+        fAdapter.notifyDataSetChanged();
+
+    }
+
     //flickr.tags.getListUser
     private void getPhotos() {
-        if (null != prefs.getString("username", "")) {
 
 
-            ringProgressDialog.setTitle("Please wait");
-            ringProgressDialog.setMessage("Retrieving interesting photos");
-            ringProgressDialog.setCancelable(true);
-            ringProgressDialog.show();
+        ringProgressDialog.setTitle("Please wait");
+        ringProgressDialog.setMessage("Retrieving interesting photos");
+        ringProgressDialog.setCancelable(true);
+        ringProgressDialog.show();
 
-            //use picasso cache if there try with setting and see if works as advertised
-            //stackoverflow claim that it needs to be set in policy
-            //SA
-            //..run it in own process
-            // remember to run in main thread in syncer
-            //concat the tags
-            subscription = FlickrClientApp.getJacksonService().testLogin()
-                    .concatMap(new Func1<User, Observable<Photos>>() {
-                        @Override
-                        public Observable<Photos> call(User user) {
-                            username = user.getUser().getUsername().getContent();
-                            editor.putString("username", username);
-                            editor.putString("id", user.getUser().getId());
-                            editor.commit();
-                            return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getId());
+        //use picasso cache if there try with setting and see if works as advertised
+        //stackoverflow claim that it needs to be set in policy
+        //SA
+        //..run it in own process
+        // remember to run in main thread in syncer
+        //concat the tags
+        subscription = FlickrClientApp.getJacksonService().testLogin()
+                .concatMap(new Func1<User, Observable<Photos>>() {
+                    @Override
+                    public Observable<Photos> call(User user) {
+                        username = user.getUser().getUsername().getContent();
 
+                        editor.putString("username", username);
+                        editor.putString("id", user.getUser().getId());
+                        editor.commit();
+                        return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getId());
+
+                    }
+                }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Photos>() {
+                    @Override
+                    public void onCompleted() {
+
+                        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(username);
+
+                        ringProgressDialog.dismiss();
+                        //Log.d("DEBUG","oncompleted");
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // cast to retrofit.HttpException to get the response code
+                        if (e instanceof HttpException) {
+                            HttpException response = (HttpException) e;
+                            int code = response.code();
+                            Log.e("ERROR", String.valueOf(code));
                         }
-                    }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Subscriber<Photos>() {
-                        @Override
-                        public void onCompleted() {
+                        Log.e("ERROR", "error getting login/photos" + e);
+                    }
 
-                            ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(username);
+                    @Override
+                    public void onNext(Photos p) {
+                        Log.d("DEBUG", "mlogin: " + p);
+                        //add photos to realm
+                        mPhotos.addAll(p.getPhotos().getPhotoList());
+                        fAdapter.notifyDataSetChanged();
+                    }
+                });
 
-                            ringProgressDialog.dismiss();
-                            //Log.d("DEBUG","oncompleted");
-
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            // cast to retrofit.HttpException to get the response code
-                            if (e instanceof HttpException) {
-                                HttpException response = (HttpException) e;
-                                int code = response.code();
-                                Log.e("ERROR", String.valueOf(code));
-                            }
-                            Log.e("ERROR", "error getting login/photos" + e);
-                        }
-
-                        @Override
-                        public void onNext(Photos p) {
-                            Log.d("DEBUG", "mlogin: " + p);
-                            //add photos to realm
-                            mPhotos.addAll(p.getPhotos().getPhotoList());
-                            fAdapter.notifyDataSetChanged();
-                        }
-                    });
-
-        }
     }
+
 
     private void getTags() {
         String uid = prefs.getString("id", "");

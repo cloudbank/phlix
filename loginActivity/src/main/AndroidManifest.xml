@@ -64,7 +64,6 @@
             android:label="flickr provider"
             android:syncable="true" />
 
-        <service android:name=".service.PollService"></service>
 
         <service android:name="com.anubis.flickr.service.AuthenticatorService">
             <intent-filter>
