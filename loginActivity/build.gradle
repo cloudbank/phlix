@@ -46,7 +46,8 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'com.squareup.picasso:picasso:2.6.0-SNAPSHOT'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
 
     compile 'com.squareup.okhttp3:okhttp:3.0.0-RC1'
     compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
