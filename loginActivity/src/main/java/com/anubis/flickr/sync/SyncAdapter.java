@@ -27,10 +27,11 @@ import android.widget.Toast;
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
-import com.anubis.flickr.models.Photo;
+import com.anubis.flickr.models.Friends;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.network.NetworkUtil;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
@@ -47,7 +48,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     public static final int SYNC_INTERVAL = 60;
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
-
+    Realm realm;
     /**
      * Set up the sync adapter
      */
@@ -75,6 +76,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     /*
      * Put the data transfer code here.
      */
+        /*
         Handler handler = new Handler(Looper.getMainLooper());
 
         handler.post(new Runnable() {
@@ -85,6 +87,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                 Toast.makeText(FlickrClientApp.getAppContext(), "Hiney, hiney, hiney", Toast.LENGTH_SHORT).show();
             }
         });
+        */
         getFriendsPhotos();
 
         notifyWeather();
@@ -257,7 +260,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         .setColor(context.getResources().getColor(R.color.SkyBlue))
                         .setSmallIcon(iconId)
                         .setContentTitle("SNOW")
-                        .setContentText("there is snow");
+                        .setContentText("there is new snow");
 
         // Make something interesting happen when the user clicks on the notification.
         // In this case, opening the app is sufficient.
@@ -294,6 +297,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                 .subscribe(new Subscriber<Photos>() {
                     @Override
                     public void onCompleted() {
+                        realm.close();
                         Handler handler = new Handler(Looper.getMainLooper());
 
                         handler.post(new Runnable() {
@@ -323,8 +327,16 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                     public void onNext(Photos p) {
                         Log.d("DEBUG", "mlogin: " + p);
                         //add photos to realm
-                        RealmList f = new RealmList<Photo>();
-                        f.addAll(p.getPhotos().getPhotoList());
+
+                        realm = Realm.getDefaultInstance();
+                        realm.beginTransaction();
+                        Friends f = realm.createObject(Friends.class); //
+                        RealmList flist = f.getFriends();  //managed
+                        flist.addAll(p.getPhotos().getPhotoList());
+                        f.setFriends(flist);
+                        realm.copyToRealm(f);  //deep copy
+                        realm.commitTransaction();
+
                         //.setFriends(f);
                        // mCallBack.onDataReceived
                     }

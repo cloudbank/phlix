@@ -46,16 +46,24 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.squareup.picasso:picasso:2.6.0-SNAPSHOT'
+
+    compile 'com.squareup.okhttp3:okhttp:3.0.0-RC1'
+    compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.squareup.retrofit2:converter-jackson:2.1.0'
-    compile 'com.squareup.retrofit2:converter-simplexml:2.1.0'
-    compile 'se.akerfeldt:okhttp-signpost:1.1.0'
-    compile 'com.squareup.okhttp3:okhttp:3.0.0-RC1'
+    compile ('com.squareup.retrofit2:converter-simplexml:2.1.0') {
+        exclude group: 'xpp3', module: 'xpp3'
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'stax', module: 'stax'
+    }
+     compile 'se.akerfeldt:okhttp-signpost:1.1.0'
+
     compile 'oauth.signpost:signpost-core:1.2.1.2'
 
     compile files('libs/androidjhlabs.jar')
     compile 'com.hkm.taglib:tag:1.6.0'
-    compile 'com.squareup.picasso:picasso:2.6.0-SNAPSHOT'
 
     compile 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
 }

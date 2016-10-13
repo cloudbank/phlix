@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.8.0/5ea7af56cc7c567ed9856d99efb30740e9b17ff/okio-1.8.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.8.0_63921f15939949ee3661635e438beb3add73c7ee/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -30,12 +39,39 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_9452e05c595825881d0ea73bcc3ccc8b0cb97818/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/org.simpleframework/simple-xml/2.7.1/dd91fb744c2ff921407475cb29a1e3fee397d411/simple-xml-2.7.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="dd91fb744c2ff921407475cb29a1e3fee397d411">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/simple-xml-2.7.1_3b613c17e0b799b58b10f6702eadc69d411638d8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/cardview-v7/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-cardview-v7-24.2.1_40a494257219826220cad12d26edf33b2845afa5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.8.2/1f12816593c1422be957471c98a80bfbace60fa2/jackson-databind-2.8.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="1f12816593c1422be957471c98a80bfbace60fa2">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-databind-2.8.2_3dbc64f207c88cd197334fb38201e092da8adcad/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -48,12 +84,39 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.hkm.taglib/tag/1.6.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="97f64b75ae9e514620e3e3a5c69fa2a237943208">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.hkm.taglib-tag-1.6.0_60b19a4d1c93f46eeedc1c89314a0214a276ec89/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-simplexml/2.1.0/a71c37fa341165df2c61ba93f549c4ceeb98d6c8/converter-simplexml-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="a71c37fa341165df2c61ba93f549c4ceeb98d6c8">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/converter-simplexml-2.1.0_7a8288753712bc14710b6850beea78c46bf58fac/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.3/fd32786786e2adb664d5ecc965da47629dca14ba/commons-codec-1.3.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="fd32786786e2adb664d5ecc965da47629dca14ba">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/commons-codec-1.3_165540aa3c0223f4b8625fbb42c52ed289039b11/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/Downloads/android-sdk-macosx-3/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_6d4d2c965788ec917d9e9d63ede10692ff5d9263/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -66,12 +129,48 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/2.0.1/516c03b21d50a644d538de0f0369c620989cd8f0/jsr305-2.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="516c03b21d50a644d538de0f0369c620989cd8f0">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/jsr305-2.0.1_7feef7e9c3a9966932f9724e7f76dae16d45a2f9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_7dc2168e62c01ecb55f5ece652a9c8b9825669bc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.8.2/a38d544583e90cf163b2e45e4a57f5c54de670d3/jackson-annotations-2.8.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="a38d544583e90cf163b2e45e4a57f5c54de670d3">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-annotations-2.8.2_fa5cc6a3ad8061c0e6c10f4159cd958645d8c1a0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-v13/24.0.0/jars/libs/internal_impl-24.0.0.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="61fd2644ca586288d0e733377d12b5f6da18c4ca">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_9dec044a0dc0ac391216e013d6a714b3675c6c94/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e5780ac0c42af382811c961cd605b2b6f56e0908">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_9a80fb1819f07b74bd1eb0dffa17946e149ccef1/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -84,11 +183,20 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.1.0/2de7cd8b95b7021b1d597f049bcb422055119f2c/retrofit-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.1.0_e1246a81b37da863fe2060ba7ce3b46229e17148/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.squareup.picasso/picasso/2.6.0-SNAPSHOT/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="b185d2bb5348d7ba97979625db03bf54dc772fc9">
+        sha1="5de60d86dd7880b7e4b09dcea09c973c49058ecb">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.squareup.picasso-picasso-2.6.0-SNAPSHOT_0ce0f2ec15e1d66986daa7f52cec9db3f8528c2f/classes.dex" />
     </item>
     <item
@@ -102,6 +210,33 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.1.6/2586312cd2b8a511e4c6236736f5a039fc0f2273/rxjava-1.1.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="2586312cd2b8a511e4c6236736f5a039fc0f2273">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/rxjava-1.1.6_31a95f9e7f62055976dd7cce505cc3d93dbbf004/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-jackson/2.1.0/ef33476a62d9c62dfca6b6c9e086f2e3343a96f4/converter-jackson-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ef33476a62d9c62dfca6b6c9e086f2e3343a96f4">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/converter-jackson-2.1.0_28bccd3def42e2060f939395e5e5bfcb86037a63/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/io.realm/realm-annotations/2.0.2/e97f64258ef6d0daeb26b3b88988215e0b14d9b2/realm-annotations-2.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e97f64258ef6d0daeb26b3b88988215e0b14d9b2">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/realm-annotations-2.0.2_17eb8d01d60cd2dae44f8e5a7520fdc2b7f7ba70/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-v13/24.0.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -111,12 +246,30 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="23eb0d2998a782213b56168cbf23a0688b9111d9">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.2.0_fdbd5810dcd3417c74e4fd143d6ec96d5d48276f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/io.reactivex/rxandroid/1.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="5a2386ad9bfff580b206a7fe305cdccd00798159">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/io.reactivex-rxandroid-1.2.1_b34c26f401f6a8a5438bda252cc3a9bbfd8b02ff/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_2315b59c6e6ccb45d9032e8d989f08440362063a/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -135,6 +288,15 @@
         revision="24.0.2"
         sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_c030f02a7dcced68a72c7d534dd9df19501b6d0d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_2e467256e27d04726f441148d0adc33db3ab0133/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -183,6 +345,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.8.2/80004060cc6f71a027b81e89ef4d74628f824f/jackson-core-2.8.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0080004060cc6f71a027b81e89ef4d74628f824f">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-core-2.8.2_c0fad985e6a90c41d44233b9af2e18913cb7319b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -228,6 +399,24 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/adapter-rxjava/2.1.0/693eddc23e87ab13f9cf5001707ce8e7e1d1ff01/adapter-rxjava-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="693eddc23e87ab13f9cf5001707ce8e7e1d1ff01">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/adapter-rxjava-2.1.0_62f014721f0deaf3ae5fc22509a1140aefdc2ed1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8bf03ca36ee8708afc5823b500657a4111cc8d8c">
+        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b508fbc31e9f0600f9421695f3bccb32fefa5f5d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/io.realm/realm-android-library/2.0.2/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -243,177 +432,6 @@
         revision="24.0.2"
         sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
         <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_4fe92d1f5248240a744ffe709bb56a2f81e76bfb/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.8.0/5ea7af56cc7c567ed9856d99efb30740e9b17ff/okio-1.8.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.8.0_63921f15939949ee3661635e438beb3add73c7ee/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_9452e05c595825881d0ea73bcc3ccc8b0cb97818/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.8.2/1f12816593c1422be957471c98a80bfbace60fa2/jackson-databind-2.8.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="1f12816593c1422be957471c98a80bfbace60fa2">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-databind-2.8.2_3dbc64f207c88cd197334fb38201e092da8adcad/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.hkm.taglib/tag/1.6.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="97f64b75ae9e514620e3e3a5c69fa2a237943208">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.hkm.taglib-tag-1.6.0_60b19a4d1c93f46eeedc1c89314a0214a276ec89/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/Downloads/android-sdk-macosx-3/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_6d4d2c965788ec917d9e9d63ede10692ff5d9263/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/2.0.1/516c03b21d50a644d538de0f0369c620989cd8f0/jsr305-2.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="516c03b21d50a644d538de0f0369c620989cd8f0">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/jsr305-2.0.1_7feef7e9c3a9966932f9724e7f76dae16d45a2f9/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_7dc2168e62c01ecb55f5ece652a9c8b9825669bc/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.8.2/a38d544583e90cf163b2e45e4a57f5c54de670d3/jackson-annotations-2.8.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="a38d544583e90cf163b2e45e4a57f5c54de670d3">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-annotations-2.8.2_fa5cc6a3ad8061c0e6c10f4159cd958645d8c1a0/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d520aff450dc833a5b7feb04d99b8bd3cb9c963e">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_9a80fb1819f07b74bd1eb0dffa17946e149ccef1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.1.0/2de7cd8b95b7021b1d597f049bcb422055119f2c/retrofit-2.1.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.1.0_e1246a81b37da863fe2060ba7ce3b46229e17148/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.1.6/2586312cd2b8a511e4c6236736f5a039fc0f2273/rxjava-1.1.6.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="2586312cd2b8a511e4c6236736f5a039fc0f2273">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/rxjava-1.1.6_31a95f9e7f62055976dd7cce505cc3d93dbbf004/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-jackson/2.1.0/ef33476a62d9c62dfca6b6c9e086f2e3343a96f4/converter-jackson-2.1.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="ef33476a62d9c62dfca6b6c9e086f2e3343a96f4">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/converter-jackson-2.1.0_28bccd3def42e2060f939395e5e5bfcb86037a63/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/io.realm/realm-annotations/2.0.2/e97f64258ef6d0daeb26b3b88988215e0b14d9b2/realm-annotations-2.0.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e97f64258ef6d0daeb26b3b88988215e0b14d9b2">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/realm-annotations-2.0.2_17eb8d01d60cd2dae44f8e5a7520fdc2b7f7ba70/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/design/24.2.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="23eb0d2998a782213b56168cbf23a0688b9111d9">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.2.0_fdbd5810dcd3417c74e4fd143d6ec96d5d48276f/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_2315b59c6e6ccb45d9032e8d989f08440362063a/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_2e467256e27d04726f441148d0adc33db3ab0133/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.8.2/80004060cc6f71a027b81e89ef4d74628f824f/jackson-core-2.8.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="0080004060cc6f71a027b81e89ef4d74628f824f">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-core-2.8.2_c0fad985e6a90c41d44233b9af2e18913cb7319b/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/adapter-rxjava/2.1.0/693eddc23e87ab13f9cf5001707ce8e7e1d1ff01/adapter-rxjava-2.1.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="693eddc23e87ab13f9cf5001707ce8e7e1d1ff01">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/adapter-rxjava-2.1.0_62f014721f0deaf3ae5fc22509a1140aefdc2ed1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="4fcf10878ca525e31fd63dcbcc01609aef4fdcb8">
-        <dex dex="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b508fbc31e9f0600f9421695f3bccb32fefa5f5d/classes.dex" />
     </item>
 
 </items>

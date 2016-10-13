@@ -18,6 +18,7 @@ import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.adapter.FriendsAdapter;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
+import com.anubis.flickr.models.Friends;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.Tag;
@@ -28,6 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.hkm.soltag.TagContainerLayout;
+import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmList;
+import io.realm.RealmResults;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
 import rx.Subscriber;
@@ -53,6 +58,7 @@ public class FriendsFragment extends FlickrBaseFragment {
     protected SharedPreferences prefs;
     protected SharedPreferences.Editor editor;
     TagContainerLayout mTagView;
+    Realm realm;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -87,13 +93,30 @@ public class FriendsFragment extends FlickrBaseFragment {
     }
 
     void getFriendsFromRealm() {
+        realm = Realm.getDefaultInstance();
+        RealmResults<Friends> f  = realm.where(Friends.class).findAll();
+
+        final RealmList<Photo> friendsList = f.get(0).getFriends();
+
+
+        // Tell Realm to notify our listener when the friends results
+        // have changed (items added, removed, updated, anything of the sort).
+        f.addChangeListener(new RealmChangeListener<RealmResults<Friends>>() {
+            @Override
+            public void onChange(RealmResults<Friends> results) {
+                // Query results are updated in real time
+                mPhotos.addAll(friendsList);
+                fAdapter.notifyDataSetChanged();
+            }
+        });
+    }
         //read friendslist
         //RealmList<Photo> fList =  Friends.getInstance().getFriends();
 
        // mPhotos.addAll(fList);
-        fAdapter.notifyDataSetChanged();
+       // fAdapter.notifyDataSetChanged();
 
-    }
+
 
     //flickr.tags.getListUser
     private void getPhotos() {
@@ -212,7 +235,10 @@ public class FriendsFragment extends FlickrBaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.subscription.unsubscribe();
+        realm.close();
+        if (null != this.subscription)  {
+            this.subscription.unsubscribe();
+        }
         this.ringProgressDialog = null;
 
 
