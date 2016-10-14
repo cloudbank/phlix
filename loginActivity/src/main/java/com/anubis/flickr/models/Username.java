@@ -21,7 +21,7 @@ import io.realm.annotations.Ignore;
 public class Username  extends RealmObject {
 
     @JsonProperty("_content")
-    private String content;
+    public String content;
     @Ignore
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();

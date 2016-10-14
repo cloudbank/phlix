@@ -17,6 +17,10 @@
     <string name="and_search"> all of the tags entered</string>
     <string name="add">Add</string>
     <string name="search_by">Search by any tags entered </string>
+    <string name="previous_user">previousUser</string>
+    <string name="current_user">currentUser</string>
+    <string name="user_id">userId</string>
+
 
 
 

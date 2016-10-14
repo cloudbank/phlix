@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 
 import com.anubis.flickr.FlickrClientApp;
+import com.anubis.flickr.R;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,17 +26,17 @@ public class Util {
 
     }
 
-    public static  boolean isLoggedIn() {
-        return FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0).contains("username");
+    public static  boolean isInit() {
+        return !(FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0).contains(FlickrClientApp.getAppContext().getResources().getString(R.string.current_user)));
     }
 
     public static  boolean isNewUser(String username) {
-        return FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0).getString("username","").equals(username);
+        return !FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0).getString(FlickrClientApp.getAppContext().getResources().getString(R.string.current_user),"").equals(username);
     }
 
-    public static String getUserId() {
-        SharedPreferences prefs = FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
-        return prefs.getString("id", "");
+    public static String getCurrentUser() {
+        SharedPreferences prefs = Util.getUserPrefs();
+        return prefs.getString(FlickrClientApp.getAppContext().getResources().getString(R.string.current_user), "");
     }
 
     public static SharedPreferences getUserPrefs() {

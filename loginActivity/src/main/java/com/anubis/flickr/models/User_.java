@@ -13,6 +13,7 @@ import java.util.Map;
 
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -22,9 +23,11 @@ import io.realm.annotations.Ignore;
 public class User_ extends RealmObject {
 
     @JsonProperty("id")
-    private String id;
+    @PrimaryKey
+    public String id;
+
     @JsonProperty("username")
-    private Username username;
+    public Username username;
     @Ignore
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();

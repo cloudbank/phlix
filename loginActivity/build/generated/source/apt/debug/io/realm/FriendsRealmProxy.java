@@ -36,12 +36,15 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
         implements Cloneable {
 
         public long timestampIndex;
+        public long userIndex;
         public long friendsIndex;
 
         FriendsColumnInfo(String path, Table table) {
-            final Map<String, Long> indicesMap = new HashMap<String, Long>(2);
+            final Map<String, Long> indicesMap = new HashMap<String, Long>(3);
             this.timestampIndex = getValidColumnIndex(path, table, "Friends", "timestamp");
             indicesMap.put("timestamp", this.timestampIndex);
+            this.userIndex = getValidColumnIndex(path, table, "Friends", "user");
+            indicesMap.put("user", this.userIndex);
             this.friendsIndex = getValidColumnIndex(path, table, "Friends", "friends");
             indicesMap.put("friends", this.friendsIndex);
 
@@ -52,6 +55,7 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
         public final void copyColumnInfoFrom(ColumnInfo other) {
             final FriendsColumnInfo otherInfo = (FriendsColumnInfo) other;
             this.timestampIndex = otherInfo.timestampIndex;
+            this.userIndex = otherInfo.userIndex;
             this.friendsIndex = otherInfo.friendsIndex;
 
             setIndicesMap(otherInfo.getIndicesMap());
@@ -70,6 +74,7 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
     static {
         List<String> fieldNames = new ArrayList<String>();
         fieldNames.add("timestamp");
+        fieldNames.add("user");
         fieldNames.add("friends");
         FIELD_NAMES = Collections.unmodifiableList(fieldNames);
     }
@@ -130,6 +135,32 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
             return;
         }
         proxyState.getRow$realm().setDate(columnInfo.timestampIndex, value);
+    }
+
+    @SuppressWarnings("cast")
+    public String realmGet$user() {
+        if (proxyState == null) {
+            // Called from model's constructor. Inject context.
+            injectObjectContext();
+        }
+
+        proxyState.getRealm$realm().checkIfValid();
+        return (java.lang.String) proxyState.getRow$realm().getString(columnInfo.userIndex);
+    }
+
+    public void realmSet$user(String value) {
+        if (proxyState == null) {
+            // Called from model's constructor. Inject context.
+            injectObjectContext();
+        }
+
+        if (proxyState.isUnderConstruction()) {
+            // default value of the primary key is always ignored.
+            return;
+        }
+
+        proxyState.getRealm$realm().checkIfValid();
+        throw new io.realm.exceptions.RealmException("Primary key field 'user' cannot be changed after object was created.");
     }
 
     public RealmList<com.anubis.flickr.models.Photo> realmGet$friends() {
@@ -197,6 +228,7 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
         if (!realmSchema.contains("Friends")) {
             RealmObjectSchema realmObjectSchema = realmSchema.create("Friends");
             realmObjectSchema.add(new Property("timestamp", RealmFieldType.DATE, !Property.PRIMARY_KEY, !Property.INDEXED, !Property.REQUIRED));
+            realmObjectSchema.add(new Property("user", RealmFieldType.STRING, Property.PRIMARY_KEY, Property.INDEXED, !Property.REQUIRED));
             if (!realmSchema.contains("Photo")) {
                 PhotoRealmProxy.createRealmObjectSchema(realmSchema);
             }
@@ -210,11 +242,13 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
         if (!sharedRealm.hasTable("class_Friends")) {
             Table table = sharedRealm.getTable("class_Friends");
             table.addColumn(RealmFieldType.DATE, "timestamp", Table.NULLABLE);
+            table.addColumn(RealmFieldType.STRING, "user", Table.NULLABLE);
             if (!sharedRealm.hasTable("class_Photo")) {
                 PhotoRealmProxy.initTable(sharedRealm);
             }
             table.addColumnLink(RealmFieldType.LIST, "friends", sharedRealm.getTable("class_Photo"));
-            table.setPrimaryKey("");
+            table.addSearchIndex(table.getColumnIndex("user"));
+            table.setPrimaryKey("user");
             return table;
         }
         return sharedRealm.getTable("class_Friends");
@@ -224,18 +258,18 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
         if (sharedRealm.hasTable("class_Friends")) {
             Table table = sharedRealm.getTable("class_Friends");
             final long columnCount = table.getColumnCount();
-            if (columnCount != 2) {
-                if (columnCount < 2) {
-                    throw new RealmMigrationNeededException(sharedRealm.getPath(), "Field count is less than expected - expected 2 but was " + columnCount);
+            if (columnCount != 3) {
+                if (columnCount < 3) {
+                    throw new RealmMigrationNeededException(sharedRealm.getPath(), "Field count is less than expected - expected 3 but was " + columnCount);
                 }
                 if (allowExtraColumns) {
-                    RealmLog.debug("Field count is more than expected - expected 2 but was %1$d", columnCount);
+                    RealmLog.debug("Field count is more than expected - expected 3 but was %1$d", columnCount);
                 } else {
-                    throw new RealmMigrationNeededException(sharedRealm.getPath(), "Field count is more than expected - expected 2 but was " + columnCount);
+                    throw new RealmMigrationNeededException(sharedRealm.getPath(), "Field count is more than expected - expected 3 but was " + columnCount);
                 }
             }
             Map<String, RealmFieldType> columnTypes = new HashMap<String, RealmFieldType>();
-            for (long i = 0; i < 2; i++) {
+            for (long i = 0; i < 3; i++) {
                 columnTypes.put(table.getColumnName(i), table.getColumnType(i));
             }
 
@@ -250,6 +284,21 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
             if (!table.isColumnNullable(columnInfo.timestampIndex)) {
                 throw new RealmMigrationNeededException(sharedRealm.getPath(), "Field 'timestamp' is required. Either set @Required to field 'timestamp' or migrate using RealmObjectSchema.setNullable().");
             }
+            if (!columnTypes.containsKey("user")) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Missing field 'user' in existing Realm file. Either remove field or migrate using io.realm.internal.Table.addColumn().");
+            }
+            if (columnTypes.get("user") != RealmFieldType.STRING) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Invalid type 'String' for field 'user' in existing Realm file.");
+            }
+            if (!table.isColumnNullable(columnInfo.userIndex)) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(),"@PrimaryKey field 'user' does not support null values in the existing Realm file. Migrate using RealmObjectSchema.setNullable(), or mark the field as @Required.");
+            }
+            if (table.getPrimaryKey() != table.getColumnIndex("user")) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Primary key not defined for field 'user' in existing Realm file. Add @PrimaryKey.");
+            }
+            if (!table.hasSearchIndex(table.getColumnIndex("user"))) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Index not defined for field 'user' in existing Realm file. Either set @Index or migrate using io.realm.internal.Table.removeSearchIndex().");
+            }
             if (!columnTypes.containsKey("friends")) {
                 throw new RealmMigrationNeededException(sharedRealm.getPath(), "Missing field 'friends'");
             }
@@ -259,9 +308,9 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
             if (!sharedRealm.hasTable("class_Photo")) {
                 throw new RealmMigrationNeededException(sharedRealm.getPath(), "Missing class 'class_Photo' for field 'friends'");
             }
-            Table table_1 = sharedRealm.getTable("class_Photo");
-            if (!table.getLinkTarget(columnInfo.friendsIndex).hasSameSchema(table_1)) {
-                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Invalid RealmList type for field 'friends': '" + table.getLinkTarget(columnInfo.friendsIndex).getName() + "' expected - was '" + table_1.getName() + "'");
+            Table table_2 = sharedRealm.getTable("class_Photo");
+            if (!table.getLinkTarget(columnInfo.friendsIndex).hasSameSchema(table_2)) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Invalid RealmList type for field 'friends': '" + table.getLinkTarget(columnInfo.friendsIndex).getName() + "' expected - was '" + table_2.getName() + "'");
             }
             return columnInfo;
         } else {
@@ -281,10 +330,40 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
     public static com.anubis.flickr.models.Friends createOrUpdateUsingJsonObject(Realm realm, JSONObject json, boolean update)
         throws JSONException {
         final List<String> excludeFields = new ArrayList<String>(1);
-        if (json.has("friends")) {
-            excludeFields.add("friends");
+        com.anubis.flickr.models.Friends obj = null;
+        if (update) {
+            Table table = realm.getTable(com.anubis.flickr.models.Friends.class);
+            long pkColumnIndex = table.getPrimaryKey();
+            long rowIndex = TableOrView.NO_MATCH;
+            if (json.isNull("user")) {
+                rowIndex = table.findFirstNull(pkColumnIndex);
+            } else {
+                rowIndex = table.findFirstString(pkColumnIndex, json.getString("user"));
+            }
+            if (rowIndex != TableOrView.NO_MATCH) {
+                final BaseRealm.RealmObjectContext objectContext = BaseRealm.objectContext.get();
+                try {
+                    objectContext.set(realm, table.getUncheckedRow(rowIndex), realm.schema.getColumnInfo(com.anubis.flickr.models.Friends.class), false, Collections.<String> emptyList());
+                    obj = new io.realm.FriendsRealmProxy();
+                } finally {
+                    objectContext.clear();
+                }
+            }
         }
-        com.anubis.flickr.models.Friends obj = realm.createObjectInternal(com.anubis.flickr.models.Friends.class, true, excludeFields);
+        if (obj == null) {
+            if (json.has("friends")) {
+                excludeFields.add("friends");
+            }
+            if (json.has("user")) {
+                if (json.isNull("user")) {
+                    obj = (io.realm.FriendsRealmProxy) realm.createObjectInternal(com.anubis.flickr.models.Friends.class, null, true, excludeFields);
+                } else {
+                    obj = (io.realm.FriendsRealmProxy) realm.createObjectInternal(com.anubis.flickr.models.Friends.class, json.getString("user"), true, excludeFields);
+                }
+            } else {
+                throw new IllegalArgumentException("JSON object doesn't have the primary key field 'user'.");
+            }
+        }
         if (json.has("timestamp")) {
             if (json.isNull("timestamp")) {
                 ((FriendsRealmProxyInterface) obj).realmSet$timestamp(null);
@@ -316,6 +395,7 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static com.anubis.flickr.models.Friends createUsingJsonStream(Realm realm, JsonReader reader)
         throws IOException {
+        boolean jsonHasPrimaryKey = false;
         com.anubis.flickr.models.Friends obj = new com.anubis.flickr.models.Friends();
         reader.beginObject();
         while (reader.hasNext()) {
@@ -332,6 +412,14 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
                 } else {
                     ((FriendsRealmProxyInterface) obj).realmSet$timestamp(JsonUtils.stringToDate(reader.nextString()));
                 }
+            } else if (name.equals("user")) {
+                if (reader.peek() == JsonToken.NULL) {
+                    reader.skipValue();
+                    ((FriendsRealmProxyInterface) obj).realmSet$user(null);
+                } else {
+                    ((FriendsRealmProxyInterface) obj).realmSet$user((String) reader.nextString());
+                }
+                jsonHasPrimaryKey = true;
             } else if (name.equals("friends")) {
                 if (reader.peek() == JsonToken.NULL) {
                     reader.skipValue();
@@ -350,6 +438,9 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
             }
         }
         reader.endObject();
+        if (!jsonHasPrimaryKey) {
+            throw new IllegalArgumentException("JSON object doesn't have the primary key field 'user'.");
+        }
         obj = realm.copyToRealm(obj);
         return obj;
     }
@@ -366,7 +457,36 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
         if (cachedRealmObject != null) {
             return (com.anubis.flickr.models.Friends) cachedRealmObject;
         } else {
-            return copy(realm, object, update, cache);
+            com.anubis.flickr.models.Friends realmObject = null;
+            boolean canUpdate = update;
+            if (canUpdate) {
+                Table table = realm.getTable(com.anubis.flickr.models.Friends.class);
+                long pkColumnIndex = table.getPrimaryKey();
+                String value = ((FriendsRealmProxyInterface) object).realmGet$user();
+                long rowIndex = TableOrView.NO_MATCH;
+                if (value == null) {
+                    rowIndex = table.findFirstNull(pkColumnIndex);
+                } else {
+                    rowIndex = table.findFirstString(pkColumnIndex, value);
+                }
+                if (rowIndex != TableOrView.NO_MATCH) {
+                    try {
+                        objectContext.set(realm, table.getUncheckedRow(rowIndex), realm.schema.getColumnInfo(com.anubis.flickr.models.Friends.class), false, Collections.<String> emptyList());
+                        realmObject = new io.realm.FriendsRealmProxy();
+                        cache.put(object, (RealmObjectProxy) realmObject);
+                    } finally {
+                        objectContext.clear();
+                    }
+                } else {
+                    canUpdate = false;
+                }
+            }
+
+            if (canUpdate) {
+                return update(realm, realmObject, object, cache);
+            } else {
+                return copy(realm, object, update, cache);
+            }
         }
     }
 
@@ -376,7 +496,7 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
             return (com.anubis.flickr.models.Friends) cachedRealmObject;
         } else {
             // rejecting default values to avoid creating unexpected objects from RealmModel/RealmList fields.
-            com.anubis.flickr.models.Friends realmObject = realm.createObjectInternal(com.anubis.flickr.models.Friends.class, false, Collections.<String>emptyList());
+            com.anubis.flickr.models.Friends realmObject = realm.createObjectInternal(com.anubis.flickr.models.Friends.class, ((FriendsRealmProxyInterface) newObject).realmGet$user(), false, Collections.<String>emptyList());
             cache.put(newObject, (RealmObjectProxy) realmObject);
             ((FriendsRealmProxyInterface) realmObject).realmSet$timestamp(((FriendsRealmProxyInterface) newObject).realmGet$timestamp());
 
@@ -405,7 +525,19 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
         Table table = realm.getTable(com.anubis.flickr.models.Friends.class);
         long tableNativePtr = table.getNativeTablePointer();
         FriendsColumnInfo columnInfo = (FriendsColumnInfo) realm.schema.getColumnInfo(com.anubis.flickr.models.Friends.class);
-        long rowIndex = Table.nativeAddEmptyRow(tableNativePtr, 1);
+        long pkColumnIndex = table.getPrimaryKey();
+        String primaryKeyValue = ((FriendsRealmProxyInterface) object).realmGet$user();
+        long rowIndex = TableOrView.NO_MATCH;
+        if (primaryKeyValue == null) {
+            rowIndex = Table.nativeFindFirstNull(tableNativePtr, pkColumnIndex);
+        } else {
+            rowIndex = Table.nativeFindFirstString(tableNativePtr, pkColumnIndex, primaryKeyValue);
+        }
+        if (rowIndex == TableOrView.NO_MATCH) {
+            rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
+        } else {
+            Table.throwDuplicatePrimaryKeyException(primaryKeyValue);
+        }
         cache.put(object, rowIndex);
         java.util.Date realmGet$timestamp = ((FriendsRealmProxyInterface)object).realmGet$timestamp();
         if (realmGet$timestamp != null) {
@@ -432,6 +564,7 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
         Table table = realm.getTable(com.anubis.flickr.models.Friends.class);
         long tableNativePtr = table.getNativeTablePointer();
         FriendsColumnInfo columnInfo = (FriendsColumnInfo) realm.schema.getColumnInfo(com.anubis.flickr.models.Friends.class);
+        long pkColumnIndex = table.getPrimaryKey();
         com.anubis.flickr.models.Friends object = null;
         while (objects.hasNext()) {
             object = (com.anubis.flickr.models.Friends) objects.next();
@@ -440,7 +573,18 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
                     cache.put(object, ((RealmObjectProxy)object).realmGet$proxyState().getRow$realm().getIndex());
                     continue;
                 }
-                long rowIndex = Table.nativeAddEmptyRow(tableNativePtr, 1);
+                String primaryKeyValue = ((FriendsRealmProxyInterface) object).realmGet$user();
+                long rowIndex = TableOrView.NO_MATCH;
+                if (primaryKeyValue == null) {
+                    rowIndex = Table.nativeFindFirstNull(tableNativePtr, pkColumnIndex);
+                } else {
+                    rowIndex = Table.nativeFindFirstString(tableNativePtr, pkColumnIndex, primaryKeyValue);
+                }
+                if (rowIndex == TableOrView.NO_MATCH) {
+                    rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
+                } else {
+                    Table.throwDuplicatePrimaryKeyException(primaryKeyValue);
+                }
                 cache.put(object, rowIndex);
                 java.util.Date realmGet$timestamp = ((FriendsRealmProxyInterface)object).realmGet$timestamp();
                 if (realmGet$timestamp != null) {
@@ -471,7 +615,17 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
         Table table = realm.getTable(com.anubis.flickr.models.Friends.class);
         long tableNativePtr = table.getNativeTablePointer();
         FriendsColumnInfo columnInfo = (FriendsColumnInfo) realm.schema.getColumnInfo(com.anubis.flickr.models.Friends.class);
-        long rowIndex = Table.nativeAddEmptyRow(tableNativePtr, 1);
+        long pkColumnIndex = table.getPrimaryKey();
+        String primaryKeyValue = ((FriendsRealmProxyInterface) object).realmGet$user();
+        long rowIndex = TableOrView.NO_MATCH;
+        if (primaryKeyValue == null) {
+            rowIndex = Table.nativeFindFirstNull(tableNativePtr, pkColumnIndex);
+        } else {
+            rowIndex = Table.nativeFindFirstString(tableNativePtr, pkColumnIndex, primaryKeyValue);
+        }
+        if (rowIndex == TableOrView.NO_MATCH) {
+            rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
+        }
         cache.put(object, rowIndex);
         java.util.Date realmGet$timestamp = ((FriendsRealmProxyInterface)object).realmGet$timestamp();
         if (realmGet$timestamp != null) {
@@ -501,6 +655,7 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
         Table table = realm.getTable(com.anubis.flickr.models.Friends.class);
         long tableNativePtr = table.getNativeTablePointer();
         FriendsColumnInfo columnInfo = (FriendsColumnInfo) realm.schema.getColumnInfo(com.anubis.flickr.models.Friends.class);
+        long pkColumnIndex = table.getPrimaryKey();
         com.anubis.flickr.models.Friends object = null;
         while (objects.hasNext()) {
             object = (com.anubis.flickr.models.Friends) objects.next();
@@ -509,7 +664,16 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
                     cache.put(object, ((RealmObjectProxy)object).realmGet$proxyState().getRow$realm().getIndex());
                     continue;
                 }
-                long rowIndex = Table.nativeAddEmptyRow(tableNativePtr, 1);
+                String primaryKeyValue = ((FriendsRealmProxyInterface) object).realmGet$user();
+                long rowIndex = TableOrView.NO_MATCH;
+                if (primaryKeyValue == null) {
+                    rowIndex = Table.nativeFindFirstNull(tableNativePtr, pkColumnIndex);
+                } else {
+                    rowIndex = Table.nativeFindFirstString(tableNativePtr, pkColumnIndex, primaryKeyValue);
+                }
+                if (rowIndex == TableOrView.NO_MATCH) {
+                    rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
+                }
                 cache.put(object, rowIndex);
                 java.util.Date realmGet$timestamp = ((FriendsRealmProxyInterface)object).realmGet$timestamp();
                 if (realmGet$timestamp != null) {
@@ -555,6 +719,7 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
             cache.put(realmObject, new RealmObjectProxy.CacheData(currentDepth, unmanagedObject));
         }
         ((FriendsRealmProxyInterface) unmanagedObject).realmSet$timestamp(((FriendsRealmProxyInterface) realmObject).realmGet$timestamp());
+        ((FriendsRealmProxyInterface) unmanagedObject).realmSet$user(((FriendsRealmProxyInterface) realmObject).realmGet$user());
 
         // Deep copy of friends
         if (currentDepth == maxDepth) {
@@ -573,6 +738,25 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
         return unmanagedObject;
     }
 
+    static com.anubis.flickr.models.Friends update(Realm realm, com.anubis.flickr.models.Friends realmObject, com.anubis.flickr.models.Friends newObject, Map<RealmModel, RealmObjectProxy> cache) {
+        ((FriendsRealmProxyInterface) realmObject).realmSet$timestamp(((FriendsRealmProxyInterface) newObject).realmGet$timestamp());
+        RealmList<com.anubis.flickr.models.Photo> friendsList = ((FriendsRealmProxyInterface) newObject).realmGet$friends();
+        RealmList<com.anubis.flickr.models.Photo> friendsRealmList = ((FriendsRealmProxyInterface) realmObject).realmGet$friends();
+        friendsRealmList.clear();
+        if (friendsList != null) {
+            for (int i = 0; i < friendsList.size(); i++) {
+                com.anubis.flickr.models.Photo friendsItem = friendsList.get(i);
+                com.anubis.flickr.models.Photo cachefriends = (com.anubis.flickr.models.Photo) cache.get(friendsItem);
+                if (cachefriends != null) {
+                    friendsRealmList.add(cachefriends);
+                } else {
+                    friendsRealmList.add(PhotoRealmProxy.copyOrUpdate(realm, friendsList.get(i), true, cache));
+                }
+            }
+        }
+        return realmObject;
+    }
+
     @Override
     public String toString() {
         if (!RealmObject.isValid(this)) {
@@ -581,6 +765,10 @@ public class FriendsRealmProxy extends com.anubis.flickr.models.Friends
         StringBuilder stringBuilder = new StringBuilder("Friends = [");
         stringBuilder.append("{timestamp:");
         stringBuilder.append(realmGet$timestamp() != null ? realmGet$timestamp() : "null");
+        stringBuilder.append("}");
+        stringBuilder.append(",");
+        stringBuilder.append("{user:");
+        stringBuilder.append(realmGet$user() != null ? realmGet$user() : "null");
         stringBuilder.append("}");
         stringBuilder.append(",");
         stringBuilder.append("{friends:");

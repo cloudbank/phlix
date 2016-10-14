@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
 
 public class FlickrClientApp extends Application {
@@ -54,7 +55,7 @@ public class FlickrClientApp extends Application {
     }
 
     public static void setDefaultService(OkHttpOAuthConsumer consumer, String baseUrl) {
-        defaultService = ServiceGenerator.createRetrofitRxService(consumer, FlickrService.class, baseUrl, null);
+        defaultService = ServiceGenerator.createRetrofitRxService(consumer, FlickrService.class, baseUrl, SimpleXmlConverterFactory.create());
     }
 
 
@@ -74,6 +75,7 @@ public class FlickrClientApp extends Application {
 
         //TypefaceUtil.setDefaultFont(this, "SERIF", "fonts/Exo-Medium.otf");
         Picasso.Builder builder = new Picasso.Builder(this);
+        //wharton lib requires picasso 2.5.2 right now
         builder.downloader(new OkHttp3Downloader(this,Integer.MAX_VALUE));
         Picasso built = builder.build();
         built.setIndicatorsEnabled(true);

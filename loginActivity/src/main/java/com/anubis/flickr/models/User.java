@@ -18,6 +18,7 @@ import java.util.Map;
 })
 public class User {
 
+    //foreignkey
     @JsonProperty("user")
     private User_ user;
     @JsonProperty("stat")

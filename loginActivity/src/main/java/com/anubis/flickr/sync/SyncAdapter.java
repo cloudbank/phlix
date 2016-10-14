@@ -30,6 +30,9 @@ import com.anubis.flickr.activity.LoginActivity;
 import com.anubis.flickr.models.Friends;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.network.NetworkUtil;
+import com.anubis.flickr.util.Util;
+
+import java.util.Calendar;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -289,28 +292,29 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
        // editor.putLong(lastNotificationKey, System.currentTimeMillis());
         //editor.commit();
     }
-
+    //sync adapter starts too slowly for init, so assume this is > 1st  (24 hr)
     private void getFriendsPhotos() {
-        NetworkUtil.getInstance().getFriendsList()
-        .subscribeOn(AndroidSchedulers.mainThread()) //  we are in the bg already
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Photos>() {
-                    @Override
-                    public void onCompleted() {
-                        realm.close();
-                        Handler handler = new Handler(Looper.getMainLooper());
 
-                        handler.post(new Runnable() {
+       //NetworkUtil.getInstance().getFriendsList()
+                    .subscribeOn(AndroidSchedulers.mainThread()) //  we are in the bg already
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Subscriber<Photos>() {
+                        @Override
+                        public void onCompleted() {
+                            realm.close();
+                            Handler handler = new Handler(Looper.getMainLooper());
 
-                            @Override
-                            public void run() {
-                                //Your UI code here
-                                Toast.makeText(FlickrClientApp.getAppContext(), "Got our friends", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        //Log.d("DEBUG","oncompleted");
+                            handler.post(new Runnable() {
 
-                    }
+                                @Override
+                                public void run() {
+                                    //Your UI code here
+                                    Toast.makeText(FlickrClientApp.getAppContext(), "Got our friends", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            //Log.d("DEBUG","oncompleted");
+
+                        }
 
                     @Override
                     public void onError(Throwable e) {
@@ -330,10 +334,20 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                         realm = Realm.getDefaultInstance();
                         realm.beginTransaction();
-                        Friends f = realm.createObject(Friends.class); //
+                        String username = Util.getCurrentUser();
+                        if ( username.length() == 0 ) {
+                            //stop the sync adapter and remove account
+                            //try to sign out grtacefully
+                        }
+                        Friends f = realm.where(Friends.class).equalTo("user.username.content", username).findFirst();
+                        if (null == f) {
+                            //throw exception, stop sync, sign out gracefully
+                        }
                         RealmList flist = f.getFriends();  //managed
                         flist.addAll(p.getPhotos().getPhotoList());
                         f.setFriends(flist);
+                        //f.user.username.content =
+                        f.timestamp = Calendar.getInstance().getTime();
                         realm.copyToRealm(f);  //deep copy
                         realm.commitTransaction();
 

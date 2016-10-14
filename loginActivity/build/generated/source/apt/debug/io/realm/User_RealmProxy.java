@@ -108,24 +108,12 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
         }
 
         if (proxyState.isUnderConstruction()) {
-            if (!proxyState.getAcceptDefaultValue$realm()) {
-                return;
-            }
-            final Row row = proxyState.getRow$realm();
-            if (value == null) {
-                row.getTable().setNull(columnInfo.idIndex, row.getIndex(), true);
-                return;
-            }
-            row.getTable().setString(columnInfo.idIndex, row.getIndex(), value, true);
+            // default value of the primary key is always ignored.
             return;
         }
 
         proxyState.getRealm$realm().checkIfValid();
-        if (value == null) {
-            proxyState.getRow$realm().setNull(columnInfo.idIndex);
-            return;
-        }
-        proxyState.getRow$realm().setString(columnInfo.idIndex, value);
+        throw new io.realm.exceptions.RealmException("Primary key field 'id' cannot be changed after object was created.");
     }
 
     public com.anubis.flickr.models.Username realmGet$username() {
@@ -190,7 +178,7 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
     public static RealmObjectSchema createRealmObjectSchema(RealmSchema realmSchema) {
         if (!realmSchema.contains("User_")) {
             RealmObjectSchema realmObjectSchema = realmSchema.create("User_");
-            realmObjectSchema.add(new Property("id", RealmFieldType.STRING, !Property.PRIMARY_KEY, !Property.INDEXED, !Property.REQUIRED));
+            realmObjectSchema.add(new Property("id", RealmFieldType.STRING, Property.PRIMARY_KEY, Property.INDEXED, !Property.REQUIRED));
             if (!realmSchema.contains("Username")) {
                 UsernameRealmProxy.createRealmObjectSchema(realmSchema);
             }
@@ -208,7 +196,8 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
                 UsernameRealmProxy.initTable(sharedRealm);
             }
             table.addColumnLink(RealmFieldType.OBJECT, "username", sharedRealm.getTable("class_Username"));
-            table.setPrimaryKey("");
+            table.addSearchIndex(table.getColumnIndex("id"));
+            table.setPrimaryKey("id");
             return table;
         }
         return sharedRealm.getTable("class_User_");
@@ -242,7 +231,13 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
                 throw new RealmMigrationNeededException(sharedRealm.getPath(), "Invalid type 'String' for field 'id' in existing Realm file.");
             }
             if (!table.isColumnNullable(columnInfo.idIndex)) {
-                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Field 'id' is required. Either set @Required to field 'id' or migrate using RealmObjectSchema.setNullable().");
+                throw new RealmMigrationNeededException(sharedRealm.getPath(),"@PrimaryKey field 'id' does not support null values in the existing Realm file. Migrate using RealmObjectSchema.setNullable(), or mark the field as @Required.");
+            }
+            if (table.getPrimaryKey() != table.getColumnIndex("id")) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Primary key not defined for field 'id' in existing Realm file. Add @PrimaryKey.");
+            }
+            if (!table.hasSearchIndex(table.getColumnIndex("id"))) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Index not defined for field 'id' in existing Realm file. Either set @Index or migrate using io.realm.internal.Table.removeSearchIndex().");
             }
             if (!columnTypes.containsKey("username")) {
                 throw new RealmMigrationNeededException(sharedRealm.getPath(), "Missing field 'username' in existing Realm file. Either remove field or migrate using io.realm.internal.Table.addColumn().");
@@ -275,15 +270,38 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
     public static com.anubis.flickr.models.User_ createOrUpdateUsingJsonObject(Realm realm, JSONObject json, boolean update)
         throws JSONException {
         final List<String> excludeFields = new ArrayList<String>(1);
-        if (json.has("username")) {
-            excludeFields.add("username");
-        }
-        com.anubis.flickr.models.User_ obj = realm.createObjectInternal(com.anubis.flickr.models.User_.class, true, excludeFields);
-        if (json.has("id")) {
+        com.anubis.flickr.models.User_ obj = null;
+        if (update) {
+            Table table = realm.getTable(com.anubis.flickr.models.User_.class);
+            long pkColumnIndex = table.getPrimaryKey();
+            long rowIndex = TableOrView.NO_MATCH;
             if (json.isNull("id")) {
-                ((User_RealmProxyInterface) obj).realmSet$id(null);
+                rowIndex = table.findFirstNull(pkColumnIndex);
             } else {
-                ((User_RealmProxyInterface) obj).realmSet$id((String) json.getString("id"));
+                rowIndex = table.findFirstString(pkColumnIndex, json.getString("id"));
+            }
+            if (rowIndex != TableOrView.NO_MATCH) {
+                final BaseRealm.RealmObjectContext objectContext = BaseRealm.objectContext.get();
+                try {
+                    objectContext.set(realm, table.getUncheckedRow(rowIndex), realm.schema.getColumnInfo(com.anubis.flickr.models.User_.class), false, Collections.<String> emptyList());
+                    obj = new io.realm.User_RealmProxy();
+                } finally {
+                    objectContext.clear();
+                }
+            }
+        }
+        if (obj == null) {
+            if (json.has("username")) {
+                excludeFields.add("username");
+            }
+            if (json.has("id")) {
+                if (json.isNull("id")) {
+                    obj = (io.realm.User_RealmProxy) realm.createObjectInternal(com.anubis.flickr.models.User_.class, null, true, excludeFields);
+                } else {
+                    obj = (io.realm.User_RealmProxy) realm.createObjectInternal(com.anubis.flickr.models.User_.class, json.getString("id"), true, excludeFields);
+                }
+            } else {
+                throw new IllegalArgumentException("JSON object doesn't have the primary key field 'id'.");
             }
         }
         if (json.has("username")) {
@@ -301,6 +319,7 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static com.anubis.flickr.models.User_ createUsingJsonStream(Realm realm, JsonReader reader)
         throws IOException {
+        boolean jsonHasPrimaryKey = false;
         com.anubis.flickr.models.User_ obj = new com.anubis.flickr.models.User_();
         reader.beginObject();
         while (reader.hasNext()) {
@@ -312,6 +331,7 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
                 } else {
                     ((User_RealmProxyInterface) obj).realmSet$id((String) reader.nextString());
                 }
+                jsonHasPrimaryKey = true;
             } else if (name.equals("username")) {
                 if (reader.peek() == JsonToken.NULL) {
                     reader.skipValue();
@@ -325,6 +345,9 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
             }
         }
         reader.endObject();
+        if (!jsonHasPrimaryKey) {
+            throw new IllegalArgumentException("JSON object doesn't have the primary key field 'id'.");
+        }
         obj = realm.copyToRealm(obj);
         return obj;
     }
@@ -341,7 +364,36 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
         if (cachedRealmObject != null) {
             return (com.anubis.flickr.models.User_) cachedRealmObject;
         } else {
-            return copy(realm, object, update, cache);
+            com.anubis.flickr.models.User_ realmObject = null;
+            boolean canUpdate = update;
+            if (canUpdate) {
+                Table table = realm.getTable(com.anubis.flickr.models.User_.class);
+                long pkColumnIndex = table.getPrimaryKey();
+                String value = ((User_RealmProxyInterface) object).realmGet$id();
+                long rowIndex = TableOrView.NO_MATCH;
+                if (value == null) {
+                    rowIndex = table.findFirstNull(pkColumnIndex);
+                } else {
+                    rowIndex = table.findFirstString(pkColumnIndex, value);
+                }
+                if (rowIndex != TableOrView.NO_MATCH) {
+                    try {
+                        objectContext.set(realm, table.getUncheckedRow(rowIndex), realm.schema.getColumnInfo(com.anubis.flickr.models.User_.class), false, Collections.<String> emptyList());
+                        realmObject = new io.realm.User_RealmProxy();
+                        cache.put(object, (RealmObjectProxy) realmObject);
+                    } finally {
+                        objectContext.clear();
+                    }
+                } else {
+                    canUpdate = false;
+                }
+            }
+
+            if (canUpdate) {
+                return update(realm, realmObject, object, cache);
+            } else {
+                return copy(realm, object, update, cache);
+            }
         }
     }
 
@@ -351,9 +403,8 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
             return (com.anubis.flickr.models.User_) cachedRealmObject;
         } else {
             // rejecting default values to avoid creating unexpected objects from RealmModel/RealmList fields.
-            com.anubis.flickr.models.User_ realmObject = realm.createObjectInternal(com.anubis.flickr.models.User_.class, false, Collections.<String>emptyList());
+            com.anubis.flickr.models.User_ realmObject = realm.createObjectInternal(com.anubis.flickr.models.User_.class, ((User_RealmProxyInterface) newObject).realmGet$id(), false, Collections.<String>emptyList());
             cache.put(newObject, (RealmObjectProxy) realmObject);
-            ((User_RealmProxyInterface) realmObject).realmSet$id(((User_RealmProxyInterface) newObject).realmGet$id());
 
             com.anubis.flickr.models.Username usernameObj = ((User_RealmProxyInterface) newObject).realmGet$username();
             if (usernameObj != null) {
@@ -377,12 +428,20 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
         Table table = realm.getTable(com.anubis.flickr.models.User_.class);
         long tableNativePtr = table.getNativeTablePointer();
         User_ColumnInfo columnInfo = (User_ColumnInfo) realm.schema.getColumnInfo(com.anubis.flickr.models.User_.class);
-        long rowIndex = Table.nativeAddEmptyRow(tableNativePtr, 1);
-        cache.put(object, rowIndex);
-        String realmGet$id = ((User_RealmProxyInterface)object).realmGet$id();
-        if (realmGet$id != null) {
-            Table.nativeSetString(tableNativePtr, columnInfo.idIndex, rowIndex, realmGet$id, false);
+        long pkColumnIndex = table.getPrimaryKey();
+        String primaryKeyValue = ((User_RealmProxyInterface) object).realmGet$id();
+        long rowIndex = TableOrView.NO_MATCH;
+        if (primaryKeyValue == null) {
+            rowIndex = Table.nativeFindFirstNull(tableNativePtr, pkColumnIndex);
+        } else {
+            rowIndex = Table.nativeFindFirstString(tableNativePtr, pkColumnIndex, primaryKeyValue);
         }
+        if (rowIndex == TableOrView.NO_MATCH) {
+            rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
+        } else {
+            Table.throwDuplicatePrimaryKeyException(primaryKeyValue);
+        }
+        cache.put(object, rowIndex);
 
         com.anubis.flickr.models.Username usernameObj = ((User_RealmProxyInterface) object).realmGet$username();
         if (usernameObj != null) {
@@ -399,6 +458,7 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
         Table table = realm.getTable(com.anubis.flickr.models.User_.class);
         long tableNativePtr = table.getNativeTablePointer();
         User_ColumnInfo columnInfo = (User_ColumnInfo) realm.schema.getColumnInfo(com.anubis.flickr.models.User_.class);
+        long pkColumnIndex = table.getPrimaryKey();
         com.anubis.flickr.models.User_ object = null;
         while (objects.hasNext()) {
             object = (com.anubis.flickr.models.User_) objects.next();
@@ -407,12 +467,19 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
                     cache.put(object, ((RealmObjectProxy)object).realmGet$proxyState().getRow$realm().getIndex());
                     continue;
                 }
-                long rowIndex = Table.nativeAddEmptyRow(tableNativePtr, 1);
-                cache.put(object, rowIndex);
-                String realmGet$id = ((User_RealmProxyInterface)object).realmGet$id();
-                if (realmGet$id != null) {
-                    Table.nativeSetString(tableNativePtr, columnInfo.idIndex, rowIndex, realmGet$id, false);
+                String primaryKeyValue = ((User_RealmProxyInterface) object).realmGet$id();
+                long rowIndex = TableOrView.NO_MATCH;
+                if (primaryKeyValue == null) {
+                    rowIndex = Table.nativeFindFirstNull(tableNativePtr, pkColumnIndex);
+                } else {
+                    rowIndex = Table.nativeFindFirstString(tableNativePtr, pkColumnIndex, primaryKeyValue);
                 }
+                if (rowIndex == TableOrView.NO_MATCH) {
+                    rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
+                } else {
+                    Table.throwDuplicatePrimaryKeyException(primaryKeyValue);
+                }
+                cache.put(object, rowIndex);
 
                 com.anubis.flickr.models.Username usernameObj = ((User_RealmProxyInterface) object).realmGet$username();
                 if (usernameObj != null) {
@@ -433,14 +500,18 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
         Table table = realm.getTable(com.anubis.flickr.models.User_.class);
         long tableNativePtr = table.getNativeTablePointer();
         User_ColumnInfo columnInfo = (User_ColumnInfo) realm.schema.getColumnInfo(com.anubis.flickr.models.User_.class);
-        long rowIndex = Table.nativeAddEmptyRow(tableNativePtr, 1);
-        cache.put(object, rowIndex);
-        String realmGet$id = ((User_RealmProxyInterface)object).realmGet$id();
-        if (realmGet$id != null) {
-            Table.nativeSetString(tableNativePtr, columnInfo.idIndex, rowIndex, realmGet$id, false);
+        long pkColumnIndex = table.getPrimaryKey();
+        String primaryKeyValue = ((User_RealmProxyInterface) object).realmGet$id();
+        long rowIndex = TableOrView.NO_MATCH;
+        if (primaryKeyValue == null) {
+            rowIndex = Table.nativeFindFirstNull(tableNativePtr, pkColumnIndex);
         } else {
-            Table.nativeSetNull(tableNativePtr, columnInfo.idIndex, rowIndex, false);
+            rowIndex = Table.nativeFindFirstString(tableNativePtr, pkColumnIndex, primaryKeyValue);
         }
+        if (rowIndex == TableOrView.NO_MATCH) {
+            rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
+        }
+        cache.put(object, rowIndex);
 
         com.anubis.flickr.models.Username usernameObj = ((User_RealmProxyInterface) object).realmGet$username();
         if (usernameObj != null) {
@@ -459,6 +530,7 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
         Table table = realm.getTable(com.anubis.flickr.models.User_.class);
         long tableNativePtr = table.getNativeTablePointer();
         User_ColumnInfo columnInfo = (User_ColumnInfo) realm.schema.getColumnInfo(com.anubis.flickr.models.User_.class);
+        long pkColumnIndex = table.getPrimaryKey();
         com.anubis.flickr.models.User_ object = null;
         while (objects.hasNext()) {
             object = (com.anubis.flickr.models.User_) objects.next();
@@ -467,14 +539,17 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
                     cache.put(object, ((RealmObjectProxy)object).realmGet$proxyState().getRow$realm().getIndex());
                     continue;
                 }
-                long rowIndex = Table.nativeAddEmptyRow(tableNativePtr, 1);
-                cache.put(object, rowIndex);
-                String realmGet$id = ((User_RealmProxyInterface)object).realmGet$id();
-                if (realmGet$id != null) {
-                    Table.nativeSetString(tableNativePtr, columnInfo.idIndex, rowIndex, realmGet$id, false);
+                String primaryKeyValue = ((User_RealmProxyInterface) object).realmGet$id();
+                long rowIndex = TableOrView.NO_MATCH;
+                if (primaryKeyValue == null) {
+                    rowIndex = Table.nativeFindFirstNull(tableNativePtr, pkColumnIndex);
                 } else {
-                    Table.nativeSetNull(tableNativePtr, columnInfo.idIndex, rowIndex, false);
+                    rowIndex = Table.nativeFindFirstString(tableNativePtr, pkColumnIndex, primaryKeyValue);
                 }
+                if (rowIndex == TableOrView.NO_MATCH) {
+                    rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
+                }
+                cache.put(object, rowIndex);
 
                 com.anubis.flickr.models.Username usernameObj = ((User_RealmProxyInterface) object).realmGet$username();
                 if (usernameObj != null) {
@@ -513,6 +588,21 @@ public class User_RealmProxy extends com.anubis.flickr.models.User_
         // Deep copy of username
         ((User_RealmProxyInterface) unmanagedObject).realmSet$username(UsernameRealmProxy.createDetachedCopy(((User_RealmProxyInterface) realmObject).realmGet$username(), currentDepth + 1, maxDepth, cache));
         return unmanagedObject;
+    }
+
+    static com.anubis.flickr.models.User_ update(Realm realm, com.anubis.flickr.models.User_ realmObject, com.anubis.flickr.models.User_ newObject, Map<RealmModel, RealmObjectProxy> cache) {
+        com.anubis.flickr.models.Username usernameObj = ((User_RealmProxyInterface) newObject).realmGet$username();
+        if (usernameObj != null) {
+            com.anubis.flickr.models.Username cacheusername = (com.anubis.flickr.models.Username) cache.get(usernameObj);
+            if (cacheusername != null) {
+                ((User_RealmProxyInterface) realmObject).realmSet$username(cacheusername);
+            } else {
+                ((User_RealmProxyInterface) realmObject).realmSet$username(UsernameRealmProxy.copyOrUpdate(realm, usernameObj, true, cache));
+            }
+        } else {
+            ((User_RealmProxyInterface) realmObject).realmSet$username(null);
+        }
+        return realmObject;
     }
 
     @Override
