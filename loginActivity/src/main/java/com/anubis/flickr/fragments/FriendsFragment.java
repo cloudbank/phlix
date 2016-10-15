@@ -33,12 +33,16 @@ import java.util.List;
 
 import co.hkm.soltag.TagContainerLayout;
 import io.realm.Realm;
+import io.realm.RealmAsyncTask;
+import io.realm.RealmChangeListener;
 import io.realm.RealmList;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+
+import static com.anubis.flickr.R.id.username;
 
 public class FriendsFragment extends FlickrBaseFragment {
 
@@ -58,18 +62,23 @@ public class FriendsFragment extends FlickrBaseFragment {
     protected SharedPreferences prefs;
     protected SharedPreferences.Editor editor;
     TagContainerLayout mTagView;
-    Realm realm;
+    Realm friendsRealm;
+    public Friends mFriends;
+    RealmChangeListener changeListener;
+    RealmAsyncTask transaction;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //syncadapter is too slow for realm query
+
     }
 
     // Store instance variables based on arguments passed
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         mPhotos = new ArrayList<Photo>();
         mTags = new ArrayList<Tag>();
         fAdapter = new FriendsAdapter(getActivity(), mPhotos, false);
@@ -79,6 +88,26 @@ public class FriendsFragment extends FlickrBaseFragment {
         //slow right now--get it to work
         //@todo move shared prefs code to User
         //until hack the oauth to get full response w mUsername and id
+        friendsRealm = Realm.getDefaultInstance();
+        // get all the customers
+
+        // ... build a list adapter and set it to the ListView/RecyclerView/etc
+        mFriends = friendsRealm.where(Friends.class).equalTo("user.mUsername.content", username).findFirst();
+        // set up a Realm change listener
+        changeListener = new RealmChangeListener<Friends>() {
+            @Override
+            public void onChange(Friends f) {
+                // This is called anytime the Realm database changes on any thread.
+                // Please note, change listeners only work on Looper threads.
+                // For non-looper threads, you manually have to use Realm.waitForChange() instead.
+                updateDisplay(f);
+            }
+        };
+        // Tell Realm to notify our listener when the customers results
+        // have changed (items added, removed, updated, anything of the sort).
+        mFriends.addChangeListener(changeListener);
+        //syncadapter is too slow for friendsRealm query
+
         getLoginAndId();
 
 
@@ -112,7 +141,8 @@ public class FriendsFragment extends FlickrBaseFragment {
                             int code = response.code();
                             Log.e("ERROR", String.valueOf(code));
                         }
-                        Log.e("ERROR", "error getting login/photos" + e);
+                        Log.e("ERROR", "error getting login" + e);
+                        //signout
                     }
 
                     @Override
@@ -122,9 +152,9 @@ public class FriendsFragment extends FlickrBaseFragment {
                         mUsername = user.getUser().getUsername().getContent();
                         mPreviousUser = Util.getCurrentUser();
 
-                        editor.putString(getContext().getResources().getString(R.string.previous_user), mPreviousUser);
-                        editor.putString(getContext().getResources().getString(R.string.current_user), mUsername);
-                        editor.putString(getContext().getResources().getString(R.string.user_id), user.getUser().getId());
+                        editor.putString(FlickrClientApp.getAppContext().getResources().getString(R.string.previous_user), mPreviousUser);
+                        editor.putString(FlickrClientApp.getAppContext().getString(R.string.current_user), mUsername);
+                        editor.putString(FlickrClientApp.getAppContext().getString(R.string.user_id), user.getUser().getId());
                         editor.commit();
                     }
                 });
@@ -138,42 +168,45 @@ public class FriendsFragment extends FlickrBaseFragment {
     }
 
     void getFriends(String username) {
-        ringProgressDialog.setTitle("Please wait");
-        ringProgressDialog.setMessage("Retrieving friend photos");
-        ringProgressDialog.setCancelable(true);
-        ringProgressDialog.show();
 
-        Friends f;
-        realm = Realm.getDefaultInstance();
-        //----->  entry in realm
-        f = realm.where(Friends.class).equalTo("user.mUsername.content", username).findFirst();
-        realm.close();
-        if (null == f) {
+
+        if (null == mFriends) {
             //first login for app or user
 
             //@todo if !isInit cancel sync
             // ContentResolver.cancelSync();
-            //need to get f getPhotos
-            getPhotos();
+            //need to get mFriends getPhotos
+
+            try {
+                getPhotos();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
-//----->  diff entry in prefs,
+
             if (Util.isNewUser(mPreviousUser)) {
                 //new user  w previous login  but current list
                 //ContentResolver.cancelSync();
                 //@todo don't need to get photos,
-                updateDisplay(f);
+
+                //there is no change to friendsRealm
+                updateDisplay(mFriends);
 
                 ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(username);
-                //----->  stale entry in realm,
-            } else if (checkTime(f.timestamp)) {  //24 hrs
-                //stale but logged in f @todo need to get f getPhotos 24 hrs
 
-                getPhotos();
-                //
+            } else if (checkTime(mFriends.timestamp)) {  //24 hrs
+                //stale but logged in mFriends @todo need to get mFriends getPhotos 24 hrs
+
+                try {
+                    getPhotos();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             } else {
-
+                // same user good w/in 24 hrs
                 ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(username);
-                // not stale isLoggedin don't need to get f or update anything except toolbar
+                // not stale isLoggedin don't need to get mFriends or update anything except toolbar
             }
 
         }
@@ -190,13 +223,13 @@ public class FriendsFragment extends FlickrBaseFragment {
     /*
         // Tell Realm to notify our listener when the friends results
         / have changed (items added, removed, updated, anything of the sort).
-                f.addChangeListener(new RealmChangeListener<Friends>()
+                mFriends.addChangeListener(new RealmChangeListener<Friends>()
 
         {
             @Override
             public void onChange (Friends results){
             // Query results are updated in real time
-            mPhotos.addAll(f.getFriends());
+            mPhotos.addAll(mFriends.getFriends());
             fAdapter.notifyDataSetChanged();
         }
         }
@@ -204,16 +237,14 @@ public class FriendsFragment extends FlickrBaseFragment {
         );
       */
     private boolean checkTime(Date timestamp) {
-
-        Calendar cal = Calendar.getInstance()
-        cal.setTime(cal.getTime());
-        cal.add(Calendar.DATE, 1);
-        //yourDate = cal.getTime();
-
+        Calendar cachedTime = Calendar.getInstance();
+        cachedTime.setTime(timestamp);
+        cachedTime.add(Calendar.HOUR, 23);
+        return (Calendar.getInstance().getTime()).after(cachedTime.getTime());
     }
 
 
-    private void getPhotos() {
+    private void getPhotos() throws Exception {
 
 
         ringProgressDialog.setTitle("Please wait");
@@ -227,11 +258,16 @@ public class FriendsFragment extends FlickrBaseFragment {
         //..run it in own process
         // remember to run in main thread in syncer
         //concat the tags
-        String userId ="";
+        String userId = prefs.getString(FlickrClientApp.getAppContext().getResources().getString(R.string.user_id), "");
+        if (userId.length() == 0) {
+            Log.e("ERROR", "user id is not set");
+            throw new Exception("No user id in prefs");
+
+        }
         subscription = FlickrClientApp.getJacksonService().getFriendsPhotos(userId)
 
 
-                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .subscribeOn(Schedulers.io()) // runs with thread pool
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Photos>() {
                     @Override
@@ -251,38 +287,62 @@ public class FriendsFragment extends FlickrBaseFragment {
                             int code = response.code();
                             Log.e("ERROR", String.valueOf(code));
                         }
-                        Log.e("ERROR", "error getting login/photos" + e);
+                        Log.e("ERROR", "error getting friends/photos" + e);
                     }
 
                     @Override
                     public void onNext(Photos p) {
                         Log.d("DEBUG", "mlogin: " + p);
                         //add photos to real
-                        realm = Realm.getDefaultInstance();
-                        realm.beginTransaction();
+                        //@todo run in bg thread
+                        updateFriendsList(p);
 
-                        String username = Util.getUserPrefs().getString(FlickrClientApp.getAppContext().getResources().getString(R.string.current_user), "");
-                        Friends f = realm.where(Friends.class).equalTo("user.mUsername.content", username).findFirst();
-                        if (null == f) {
-                            f = realm.createObject(Friends.class, username);
-                        }
-                        //User_ u =
-                        //@todo  create User_ and persist here if needed
-                        f.user = username;
-                        RealmList friendsList = f.getFriends();
-                        friendsList.addAll(p.getPhotos().getPhotoList());
-                        f.friends = friendsList;
 
-                        f.timestamp = Calendar.getInstance().getTime();
-                        realm.copyToRealmOrUpdate(f);
-
-                        realm.commitTransaction();
-                        realm.close();
-
-                        mPhotos.addAll(p.getPhotos().getPhotoList());
-                        fAdapter.notifyDataSetChanged();
+                        // mPhotos.addAll(p.getPhotos().getPhotoList());
+                        // fAdapter.notifyDataSetChanged();
                     }
                 });
+
+    }
+
+    private void updateFriendsList(final Photos p) {
+        transaction = friendsRealm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm bgRealm) {
+                String username = Util.getUserPrefs().getString(FlickrClientApp.getAppContext().getResources().getString(R.string.current_user), "");
+                Friends f;
+                if (null == mFriends) {
+                    f = friendsRealm.createObject(Friends.class, username);
+                    f.addChangeListener(changeListener);
+                } else {
+                    f = mFriends;
+                }
+                //User_ u =
+                //@todo  create User_ and persist here if needed
+                f.user = username;  //primary key
+                RealmList friendsList = f.getFriends(); //managed
+                friendsList.addAll(p.getPhotos().getPhotoList());
+                f.friends = friendsList;
+
+                updateDisplay(f);
+
+                f.timestamp = Calendar.getInstance().getTime();
+                friendsRealm.copyToRealmOrUpdate(f);
+
+                //friendsRealm.commitTransaction();
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+                // Transaction was a success.
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                // Transaction failed and was automatically canceled.
+            }
+        });
+
 
     }
 
@@ -341,12 +401,36 @@ public class FriendsFragment extends FlickrBaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        realm.close();
+        if (!friendsRealm.isClosed()) {
+            friendsRealm.close();
+        }
         if (null != this.subscription) {
             this.subscription.unsubscribe();
         }
-        this.ringProgressDialog = null;
+        if (null != this.ringProgressDialog) {
+            this.ringProgressDialog = null;
+        }
 
+
+    }
+
+
+    // Use onStart()/onStop() for Fragments as onDestroy() might not be called.
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (!friendsRealm.isClosed()) {
+            friendsRealm.close();
+        }
+        if (transaction != null && !transaction.isCancelled()) {
+            transaction.cancel();
+        }
+        if (null != this.subscription) {
+            this.subscription.unsubscribe();
+        }
+        if (null != this.ringProgressDialog) {
+            this.ringProgressDialog = null;
+        }
 
     }
 

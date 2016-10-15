@@ -56,7 +56,7 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
         //just call friends and get it all in one shot w updates to friend photos as bonus
         //
         FriendsFragment f = (FriendsFragment)adapterViewPager.getItem(0);
-
+       // @todo
         //getFriendsList()
         vpPager.setCurrentItem(0);
     }
@@ -141,44 +141,6 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
         };
     }
 
-    private void getLogin() {
-        subscription = FlickrClientApp.getJacksonService().testLogin()
-                .concatMap(new Func1<User, Observable<Photos>>() {
-                    @Override
-                    public Observable<Photos> call(User user) {
-                        //username = user.getUser().getUsername().getContent();
-                        return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getId());
-
-                    }
-                }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Photos>() {
-                    @Override
-                    public void onCompleted() {
-                        //Log.d("DEBUG","oncompleted");
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        // cast to retrofit.HttpException to get the response code
-                        if (e instanceof HttpException) {
-                            HttpException response = (HttpException) e;
-                            int code = response.code();
-                            Log.e("ERROR", String.valueOf(code));
-                        }
-                        Log.e("ERROR", "error getting login/photos" + e);
-                    }
-
-                    @Override
-                    public void onNext(Photos p) {
-                        // Log.d("DEBUG","mlogin: "+ u.getUser().getUsername().getContent());
-                        //pass photos to fragment
-                        mPhotos = p;
-                    }
-                });
-
-    }
 
     public ArrayList<Fragment> intializeItems() {
         ArrayList<Fragment> a = new ArrayList<Fragment>();

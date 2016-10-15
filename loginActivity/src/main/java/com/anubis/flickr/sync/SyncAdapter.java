@@ -29,7 +29,6 @@ import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
 import com.anubis.flickr.models.Friends;
 import com.anubis.flickr.models.Photos;
-import com.anubis.flickr.network.NetworkUtil;
 import com.anubis.flickr.util.Util;
 
 import java.util.Calendar;
@@ -38,6 +37,7 @@ import io.realm.Realm;
 import io.realm.RealmList;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 
 /**
@@ -48,10 +48,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     // Global variables
     // Define a variable to contain a content resolver instance
     ContentResolver mContentResolver;
-    public static final int SYNC_INTERVAL = 60;
+    public static final int SYNC_INTERVAL = 60;  //@todo change to 23 hrs
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
     Realm realm;
+    Subscription friendsSubscription;
     /**
      * Set up the sync adapter
      */
@@ -91,8 +92,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
             }
         });
         */
-        getFriendsPhotos();
-
+        getFriendsPhotos();//add tags
+        //getInteresting
+        //getRecent and Hotags
+        //get Commons --> this should not need update
         notifyWeather();
         Log.d("SYNC", "onPeformSync");
 
@@ -292,11 +295,13 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
        // editor.putLong(lastNotificationKey, System.currentTimeMillis());
         //editor.commit();
     }
-    //sync adapter starts too slowly for init, so assume this is > 1st  (24 hr)
+    //sync adapter starts too slowly for init, so assume this is after 1st  (23 hr)
+    //it may run right away but still slow
+    //@todo delay syncadapter start
     private void getFriendsPhotos() {
-
-       //NetworkUtil.getInstance().getFriendsList()
-                    .subscribeOn(AndroidSchedulers.mainThread()) //  we are in the bg already
+        String id = Util.getUserPrefs().getString(FlickrClientApp.getAppContext().getResources().getString(R.string.user_id), "");
+        friendsSubscription = FlickrClientApp.getJacksonService().getFriendsPhotos(id)
+                            .subscribeOn(AndroidSchedulers.mainThread()) //  we are in the bg already
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new Subscriber<Photos>() {
                         @Override
@@ -337,7 +342,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         String username = Util.getCurrentUser();
                         if ( username.length() == 0 ) {
                             //stop the sync adapter and remove account
-                            //try to sign out grtacefully
+                            //try to sign out gracefully
                         }
                         Friends f = realm.where(Friends.class).equalTo("user.username.content", username).findFirst();
                         if (null == f) {
@@ -350,6 +355,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         f.timestamp = Calendar.getInstance().getTime();
                         realm.copyToRealm(f);  //deep copy
                         realm.commitTransaction();
+                        realm.close();
 
                         //.setFriends(f);
                        // mCallBack.onDataReceived
