@@ -1,21 +1,15 @@
 package com.anubis.flickr.util;
 
-import android.content.ContentResolver;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.anubis.flickr.FlickrClientApp;
-import com.anubis.flickr.R;
 import com.anubis.flickr.models.Photos;
-import com.anubis.flickr.models.User;
-import com.anubis.flickr.sync.SyncAdapter;
 
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -54,7 +48,7 @@ public class NetworkUtil {
     }
 
 
-    public Observable<Photos> getFriendsList() {
+    public void getFriendsList() {
 
 
         //use picasso cache if there try with setting and see if works as advertised
@@ -67,7 +61,7 @@ public class NetworkUtil {
 
 
 
-            friendsSubscription = FlickrClientApp.getJacksonService().getFriendsPhotos(id);
+            friendsSubscription = FlickrClientApp.getJacksonService().getFriendsPhotos("1")
                     .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Subscriber<Photos>() {
@@ -92,7 +86,7 @@ public class NetworkUtil {
                         public void onNext(Photos p) {
                             // Log.d("DEBUG","mlogin: "+ u.getUser().getUsername().getContent());
                             //pass photos to fragment
-                            mPhotos = p;
+                           // mPhotos = p;
                         }
                     });
 
@@ -101,6 +95,6 @@ public class NetworkUtil {
 
     }
 
-}
+
 
 

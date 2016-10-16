@@ -732,6 +732,7 @@
     <string name="not_enough_space">Not enough space</string>
     <string name="or_search">  any of the tags entered</string>
     <string name="preparing_card">Preparing card</string>
+    <string name="previous_user">previousUser</string>
     <string name="ptr_last_updated">Updated: %1$s</string>
     <string name="ptr_pull_to_refresh">Pull to refresh</string>
     <string name="ptr_refreshing">Refreshing…</string>

@@ -135,6 +135,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
 
         TextView tags = viewHolder.tags;
         String username = prefs.getString("username","");
+        //
         boolean isMe = photo.getOwnername().equals(username);
         tags.setText("~"+ (isMe ? "Me": photo.getOwnername()));
         CheckBox cb = viewHolder.checkbox;

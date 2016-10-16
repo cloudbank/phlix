@@ -99,10 +99,7 @@ public class InterestingFragment extends FlickrBaseFragment {
         if (clear) {
             clearAdapter();
         }
-        ringProgressDialog.setTitle("Please wait");
-        ringProgressDialog.setMessage("Retrieving photos");
-        ringProgressDialog.setCancelable(true);
-        ringProgressDialog.show();
+
         subscription = FlickrClientApp.getJacksonService().getInterestingPhotos(String.valueOf(page))
 
                 .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
@@ -112,7 +109,6 @@ public class InterestingFragment extends FlickrBaseFragment {
                     public void onCompleted() {
 
 
-                        ringProgressDialog.dismiss();
                         //Log.d("DEBUG","oncompleted");
 
                     }
@@ -130,7 +126,7 @@ public class InterestingFragment extends FlickrBaseFragment {
 
                     @Override
                     public void onNext(Photos p) {
-                        Log.d("DEBUG", "mlogin: " + p);
+                        Log.d("DEBUG", "interesting: " + p);
                         //pass photos to fragment
                         mInteresting.addAll(p.getPhotos().getPhotoList());
                         rAdapter.notifyDataSetChanged();

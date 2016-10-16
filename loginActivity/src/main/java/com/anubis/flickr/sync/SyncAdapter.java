@@ -13,6 +13,7 @@ import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.SyncRequest;
 import android.content.SyncResult;
 import android.os.Build;
@@ -28,7 +29,9 @@ import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
 import com.anubis.flickr.models.Friends;
+import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
+import com.anubis.flickr.models.User;
 import com.anubis.flickr.util.Util;
 
 import java.util.Calendar;
@@ -36,9 +39,12 @@ import java.util.Calendar;
 import io.realm.Realm;
 import io.realm.RealmList;
 import retrofit2.adapter.rxjava.HttpException;
+import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Handle the transfer of data between a server and an
@@ -48,11 +54,12 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     // Global variables
     // Define a variable to contain a content resolver instance
     ContentResolver mContentResolver;
-    public static final int SYNC_INTERVAL = 60;  //@todo change to 23 hrs
+    public static final int SYNC_INTERVAL = 60 * 180;  //@todo change to 23 hrs
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
     Realm realm;
-    Subscription friendsSubscription;
+    Subscription loginSubscription, friendsSubscription, interestingSubscription;
+
     /**
      * Set up the sync adapter
      */
@@ -92,8 +99,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
             }
         });
         */
-        getFriendsPhotos();//add tags
-        //getInteresting
+        //getFriendsPhotos();//add tags
+        Log.d("SYNC", "starting onPerformSync");
+        getLoginAndFriends();
+        //getInterestingPhotos();
         //getRecent and Hotags
         //get Commons --> this should not need update
         notifyWeather();
@@ -188,7 +197,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
              * then call ContentResolver.setIsSyncable(account, AUTHORITY, 1)
              * here.
              */
-            Log.d("SYNC", "about to call onACCOUNT");
+            //Log.d("SYNC", "about to call onACCOUNT");
             onAccountCreated(newAccount, context);
         }
         return newAccount;
@@ -207,9 +216,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         /*
          * Finally, let's do a sync to get things started--
-         * NOT NEEDED
+         * NOT NEEDED @todo
          */
-        //syncImmediately(context);
+        syncImmediately(context);
     }
 
     public static void initializeSyncAdapter(Context context) {
@@ -266,7 +275,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         .setColor(context.getResources().getColor(R.color.SkyBlue))
                         .setSmallIcon(iconId)
                         .setContentTitle("SNOW")
-                        .setContentText("there is new snow");
+                        .setContentText("there is now snow");
 
         // Make something interesting happen when the user clicks on the notification.
         // In this case, opening the app is sufficient.
@@ -291,35 +300,47 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         mNotificationManager.notify(WEATHER_NOTIFICATION_ID, mBuilder.build());
 
         //refreshing last sync
-       // SharedPreferences.Editor editor = prefs.edit();
-       // editor.putLong(lastNotificationKey, System.currentTimeMillis());
+        // SharedPreferences.Editor editor = prefs.edit();
+        // editor.putLong(lastNotificationKey, System.currentTimeMillis());
         //editor.commit();
     }
-    //sync adapter starts too slowly for init, so assume this is after 1st  (23 hr)
-    //it may run right away but still slow
-    //@todo delay syncadapter start
-    private void getFriendsPhotos() {
-        String id = Util.getUserPrefs().getString(FlickrClientApp.getAppContext().getResources().getString(R.string.user_id), "");
-        friendsSubscription = FlickrClientApp.getJacksonService().getFriendsPhotos(id)
-                            .subscribeOn(AndroidSchedulers.mainThread()) //  we are in the bg already
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(new Subscriber<Photos>() {
-                        @Override
-                        public void onCompleted() {
-                            realm.close();
-                            Handler handler = new Handler(Looper.getMainLooper());
 
-                            handler.post(new Runnable() {
 
-                                @Override
-                                public void run() {
-                                    //Your UI code here
-                                    Toast.makeText(FlickrClientApp.getAppContext(), "Got our friends", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                            //Log.d("DEBUG","oncompleted");
+    private void getLoginAndFriends() {
+        loginSubscription = FlickrClientApp.getJacksonService().testLogin()
+                .concatMap(new Func1<User, Observable<Photos>>() {
+                    @Override
+                    public Observable<Photos> call(User user) {
+                        String username = user.getUser().getUsername().getContent();
+                        String prevUser = Util.getCurrentUser();
+                        SharedPreferences.Editor editor = Util.getUserPrefs().edit();
 
-                        }
+                        editor.putString(FlickrClientApp.getAppContext().getResources().getString(R.string.previous_user), prevUser);
+                        editor.putString(FlickrClientApp.getAppContext().getString(R.string.current_user), username);
+                        editor.putString(FlickrClientApp.getAppContext().getString(R.string.user_id), user.getUser().getId());
+                        editor.commit();
+                        return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getId());
+
+                    }
+                }).subscribeOn(Schedulers.immediate()) // thread pool
+                .observeOn(Schedulers.immediate())
+                .subscribe(new Subscriber<Photos>() {
+                    @Override
+                    public void onCompleted() {
+                        Handler handler = new Handler(Looper.getMainLooper());
+
+                        handler.post(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                //Your UI code here
+                                Toast.makeText(FlickrClientApp.getAppContext(), "Got our friends", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                        //Log.d("DEBUG","oncompleted");
+
+                    }
 
                     @Override
                     public void onError(Throwable e) {
@@ -329,36 +350,80 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                             int code = response.code();
                             Log.e("ERROR", String.valueOf(code));
                         }
-                        Log.e("ERROR", "error getting login/photos" + e);
+                        Log.e("ERROR", "error getting login" + e);
+                        //signout
+                    }
+
+                    @Override
+                    public void onNext(Photos photos) {
+
+                        //add photos to real
+                        String username = Util.getCurrentUser();
+                        //if (username.length() == 0) {
+                            //throw new Exception("username is not set")
+                            //stop the sync adapter and remove account
+                            //try to sign out gracefully
+
+
+                       // }
+                        realm = Realm.getDefaultInstance();
+                        realm.beginTransaction();
+                        Friends f = null;
+                        f = realm.where(Friends.class).equalTo("user", username).findFirst();
+                        if (null == f) {
+                            f = realm.createObject(Friends.class, username);
+                        }
+                        //f.user = username;  cannot reset primary key even if same
+                        RealmList flist = f.getFriends();  //managed
+                        for (Photo p :photos.getPhotos().getPhotoList() ) {
+                            flist.add(p);
+                        }
+                        Log.d("SYNC&&&","flist.size" + flist.size());
+                        //f.user.username.content =
+                        f.timestamp = Calendar.getInstance().getTime();
+                        realm.copyToRealmOrUpdate(f);  //deep copy
+                        realm.commitTransaction();
+                        realm.close();
+                        Log.d("DEBUG", "mlogin: " + photos);
+                    }
+
+                });
+
+
+    }
+
+
+    public void getInterestingPhotos() {
+        //@todo offline mode
+        //@TODO need iterableFLATMAP TO GET ALL PAGES
+        interestingSubscription = FlickrClientApp.getJacksonService().getInterestingPhotos("1")
+
+                .subscribeOn(AndroidSchedulers.mainThread()) // optional if you do not wish to override the default behavior
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Photos>() {
+                    @Override
+                    public void onCompleted() {
+
+
+                        Log.d("DEBUG", "oncompleted interesting");
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // cast to retrofit.HttpException to get the response code
+                        if (e instanceof HttpException) {
+                            HttpException response = (HttpException) e;
+                            int code = response.code();
+                            Log.e("ERROR", String.valueOf(code));
+                        }
+                        Log.e("ERROR", "error getting interesting photos" + e);
                     }
 
                     @Override
                     public void onNext(Photos p) {
-                        Log.d("DEBUG", "mlogin: " + p);
-                        //add photos to realm
-
-                        realm = Realm.getDefaultInstance();
-                        realm.beginTransaction();
-                        String username = Util.getCurrentUser();
-                        if ( username.length() == 0 ) {
-                            //stop the sync adapter and remove account
-                            //try to sign out gracefully
-                        }
-                        Friends f = realm.where(Friends.class).equalTo("user.username.content", username).findFirst();
-                        if (null == f) {
-                            //throw exception, stop sync, sign out gracefully
-                        }
-                        RealmList flist = f.getFriends();  //managed
-                        flist.addAll(p.getPhotos().getPhotoList());
-                        f.setFriends(flist);
-                        //f.user.username.content =
-                        f.timestamp = Calendar.getInstance().getTime();
-                        realm.copyToRealm(f);  //deep copy
-                        realm.commitTransaction();
-                        realm.close();
-
-                        //.setFriends(f);
-                       // mCallBack.onDataReceived
+                        Log.d("DEBUG", "onNext interesting: " + p);
+                        //pass photos to fragment
                     }
                 });
 

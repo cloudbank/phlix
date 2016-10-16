@@ -9,9 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 
-import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FlickrBaseFragment;
 import com.anubis.flickr.fragments.FriendsFragment;
@@ -19,18 +17,11 @@ import com.anubis.flickr.fragments.InterestingFragment;
 import com.anubis.flickr.fragments.SearchFragment;
 import com.anubis.flickr.fragments.TagsFragment;
 import com.anubis.flickr.models.Photos;
-import com.anubis.flickr.models.User;
 import com.anubis.flickr.sync.SyncAdapter;
 
 import java.util.ArrayList;
 
-import retrofit2.adapter.rxjava.HttpException;
-import rx.Observable;
-import rx.Subscriber;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragment.OnPhotoPostedListener {
 
@@ -77,7 +68,9 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         SyncAdapter.initializeSyncAdapter(this);
+
         setContentView(R.layout.activity_photos);
         this.prefs = this.getBaseContext().getSharedPreferences("user_prefs", 0);
         this.editor = this.prefs.edit();

@@ -3534,20 +3534,21 @@ containing a value of this type.
         public static final int not_enough_space=0x7f070017;
         public static final int or_search=0x7f070035;
         public static final int preparing_card=0x7f070018;
-        public static final int ptr_last_updated=0x7f070036;
-        public static final int ptr_pull_to_refresh=0x7f070037;
-        public static final int ptr_refreshing=0x7f070038;
-        public static final int ptr_release_to_refresh=0x7f070039;
+        public static final int previous_user=0x7f070036;
+        public static final int ptr_last_updated=0x7f070037;
+        public static final int ptr_pull_to_refresh=0x7f070038;
+        public static final int ptr_refreshing=0x7f070039;
+        public static final int ptr_release_to_refresh=0x7f07003a;
         public static final int save=0x7f070019;
         public static final int saving_image=0x7f07001a;
-        public static final int search=0x7f07003a;
-        public static final int search_by=0x7f07003b;
-        public static final int search_by_tag_text=0x7f07003c;
+        public static final int search=0x7f07003b;
+        public static final int search_by=0x7f07003c;
+        public static final int search_by_tag_text=0x7f07003d;
         public static final int search_menu_title=0x7f070013;
         public static final int status_bar_notification_info_overflow=0x7f070014;
-        public static final int tags=0x7f07003d;
-        public static final int text_search=0x7f07003e;
-        public static final int user_id=0x7f07003f;
+        public static final int tags=0x7f07003e;
+        public static final int text_search=0x7f07003f;
+        public static final int user_id=0x7f070040;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f09008d;
