@@ -39,7 +39,7 @@ import io.realm.annotations.Ignore;
 
 public class Photo extends RealmObject implements Serializable {
 
-    @JsonProperty("userId")
+    @JsonProperty("id")
     private String id;
     @JsonProperty("secret")
     private String secret;
@@ -133,7 +133,7 @@ public class Photo extends RealmObject implements Serializable {
     /**
      * @return The userId
      */
-    @JsonProperty("userId")
+    @JsonProperty("id")
     public String getId() {
         return id;
     }
@@ -141,7 +141,7 @@ public class Photo extends RealmObject implements Serializable {
     /**
      * @param id The userId
      */
-    @JsonProperty("userId")
+    @JsonProperty("id")
     public void setId(String id) {
         this.id = id;
     }

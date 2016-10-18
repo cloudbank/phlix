@@ -43,7 +43,7 @@ import java.util.Map;
 })
 public class PhotoInfo_ {
 
-    @JsonProperty("userId")
+    @JsonProperty("id")
     private String id;
     @JsonProperty("secret")
     private String secret;
@@ -105,7 +105,7 @@ public class PhotoInfo_ {
      * @return
      *     The userId
      */
-    @JsonProperty("userId")
+    @JsonProperty("id")
     public String getId() {
         return id;
     }
@@ -115,7 +115,7 @@ public class PhotoInfo_ {
      * @param id
      *     The userId
      */
-    @JsonProperty("userId")
+    @JsonProperty("id")
     public void setId(String id) {
         this.id = id;
     }

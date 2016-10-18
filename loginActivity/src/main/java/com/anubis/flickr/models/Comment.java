@@ -30,7 +30,7 @@ import io.realm.annotations.Ignore;
 })
 public class Comment extends RealmObject {
 
-    @JsonProperty("userId")
+    @JsonProperty("id")
     private String id;
     @JsonProperty("author")
     private String author;
@@ -61,7 +61,7 @@ public class Comment extends RealmObject {
      * @return
      *     The userId
      */
-    @JsonProperty("userId")
+    @JsonProperty("id")
     public String getId() {
         return id;
     }
@@ -71,7 +71,7 @@ public class Comment extends RealmObject {
      * @param id
      *     The userId
      */
-    @JsonProperty("userId")
+    @JsonProperty("id")
     public void setId(String id) {
         this.id = id;
     }

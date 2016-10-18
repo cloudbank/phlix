@@ -19,7 +19,7 @@ import io.realm.annotations.PrimaryKey;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "userId",
+    "id",
     "username"
 })
 public class UserModel extends RealmObject {
@@ -77,9 +77,11 @@ public class UserModel extends RealmObject {
     /**
      * 
      * @return
+     * @returnid
+     *
      *     The userId
      */
-    @JsonProperty("userId")
+    @JsonProperty("id")
     public String getUserId() {
         return userId;
     }
@@ -89,7 +91,7 @@ public class UserModel extends RealmObject {
      * @param userId
      *     The userId
      */
-    @JsonProperty("userId")
+    @JsonProperty("id")
     public void setUserId(String userId) {
         this.userId = userId;
     }

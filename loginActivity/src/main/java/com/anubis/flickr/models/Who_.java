@@ -18,7 +18,7 @@ import java.util.Map;
 })
 public class Who_ {
 
-    @JsonProperty("userId")
+    @JsonProperty("id")
     private String id;
     @JsonProperty("tags")
     private Tags tags;
@@ -30,7 +30,7 @@ public class Who_ {
      * @return
      *     The userId
      */
-    @JsonProperty("userId")
+    @JsonProperty("id")
     public String getId() {
         return id;
     }
@@ -40,7 +40,7 @@ public class Who_ {
      * @param id
      *     The userId
      */
-    @JsonProperty("userId")
+    @JsonProperty("id")
     public void setId(String id) {
         this.id = id;
     }

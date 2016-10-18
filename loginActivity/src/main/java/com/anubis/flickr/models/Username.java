@@ -11,14 +11,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "_content"
 })
-public class Username  extends RealmObject {
+public class Username   {
 
     @JsonProperty("_content")
     public String content;
