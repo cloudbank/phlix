@@ -317,11 +317,12 @@ public class FriendsFragment extends FlickrBaseFragment {
         fAdapter.setOnItemClickListener(new FriendsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+
                 // String title = mTags.get(position).getTitle();
-                Intent intent = new Intent(getActivity(),
+               Intent intent = new Intent(getActivity(),
                         ImageDisplayActivity.class);
-                Photo result = mPhotos.get(position);
-                intent.putExtra(RESULT, result);
+                Photo photo = mPhotos.get(position);
+                intent.putExtra(RESULT, photo.getId());
                 startActivity(intent);
                 //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }

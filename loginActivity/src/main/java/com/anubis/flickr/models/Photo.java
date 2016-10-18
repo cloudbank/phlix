@@ -14,6 +14,7 @@ import java.util.Map;
 
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -40,6 +41,7 @@ import io.realm.annotations.Ignore;
 public class Photo extends RealmObject implements Serializable {
 
     @JsonProperty("id")
+    @PrimaryKey
     private String id;
     @JsonProperty("secret")
     private String secret;

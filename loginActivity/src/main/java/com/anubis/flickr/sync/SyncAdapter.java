@@ -349,7 +349,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                         });
                     }
-                }).subscribeOn(Schedulers.immediate()) // thread pool; bg + bg
+                }).subscribeOn(Schedulers.io()) // thread pool; bg + bg
                 .observeOn(Schedulers.immediate())
                 .subscribe(new Subscriber<UserInfo>() {
                     @Override
@@ -410,6 +410,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         }
                         RealmList tagsList = u.getTagsList();
                         for (Tag t : tags) {
+                            t.setAuthorname(Util.getCurrentUser());
                             tagsList.add(t);
                         }
                         //f.user.username.content =

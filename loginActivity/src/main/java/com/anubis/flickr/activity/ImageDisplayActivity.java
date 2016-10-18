@@ -36,6 +36,7 @@ import java.util.List;
 import java.util.Map;
 
 import co.hkm.soltag.TagContainerLayout;
+import io.realm.Realm;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
 import rx.Subscriber;
@@ -59,14 +60,17 @@ public class ImageDisplayActivity extends AppCompatActivity {
     private Subscription subscription, subscription2;
     Map<String, String> data = new HashMap<>();
     Photo mPhoto;
+    Realm pRealm;
     List mComments = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_display);
-        mPhoto = (Photo) getIntent().getSerializableExtra(
-                FlickrBaseFragment.RESULT);
+
+        String pid =  getIntent().getStringExtra(FlickrBaseFragment.RESULT);
+        pRealm = Realm.getDefaultInstance();
+        mPhoto = pRealm.where(Photo.class).equalTo("id",pid).findFirst();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 // ...
@@ -104,6 +108,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
         mUid = mPhoto.getId();
         mTags = (TagContainerLayout) findViewById(R.id.tag_group);
         //@todo
+        //getPhotoFromRealm
         getPhotoAndComments(mUid);
         // get focus off edittext, hide kb
         // WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);

@@ -203,24 +203,12 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
         }
 
         if (proxyState.isUnderConstruction()) {
-            if (!proxyState.getAcceptDefaultValue$realm()) {
-                return;
-            }
-            final Row row = proxyState.getRow$realm();
-            if (value == null) {
-                row.getTable().setNull(columnInfo.idIndex, row.getIndex(), true);
-                return;
-            }
-            row.getTable().setString(columnInfo.idIndex, row.getIndex(), value, true);
+            // default value of the primary key is always ignored.
             return;
         }
 
         proxyState.getRealm$realm().checkIfValid();
-        if (value == null) {
-            proxyState.getRow$realm().setNull(columnInfo.idIndex);
-            return;
-        }
-        proxyState.getRow$realm().setString(columnInfo.idIndex, value);
+        throw new io.realm.exceptions.RealmException("Primary key field 'id' cannot be changed after object was created.");
     }
 
     @SuppressWarnings("cast")
@@ -985,7 +973,7 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
     public static RealmObjectSchema createRealmObjectSchema(RealmSchema realmSchema) {
         if (!realmSchema.contains("Photo")) {
             RealmObjectSchema realmObjectSchema = realmSchema.create("Photo");
-            realmObjectSchema.add(new Property("id", RealmFieldType.STRING, !Property.PRIMARY_KEY, !Property.INDEXED, !Property.REQUIRED));
+            realmObjectSchema.add(new Property("id", RealmFieldType.STRING, Property.PRIMARY_KEY, Property.INDEXED, !Property.REQUIRED));
             realmObjectSchema.add(new Property("secret", RealmFieldType.STRING, !Property.PRIMARY_KEY, !Property.INDEXED, !Property.REQUIRED));
             realmObjectSchema.add(new Property("server", RealmFieldType.STRING, !Property.PRIMARY_KEY, !Property.INDEXED, !Property.REQUIRED));
             realmObjectSchema.add(new Property("farm", RealmFieldType.INTEGER, !Property.PRIMARY_KEY, !Property.INDEXED, !Property.REQUIRED));
@@ -1035,7 +1023,8 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
             table.addColumn(RealmFieldType.BOOLEAN, "isCommon", Table.NOT_NULLABLE);
             table.addColumn(RealmFieldType.BOOLEAN, "isInteresting", Table.NOT_NULLABLE);
             table.addColumn(RealmFieldType.STRING, "url", Table.NULLABLE);
-            table.setPrimaryKey("");
+            table.addSearchIndex(table.getColumnIndex("id"));
+            table.setPrimaryKey("id");
             return table;
         }
         return sharedRealm.getTable("class_Photo");
@@ -1069,7 +1058,13 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
                 throw new RealmMigrationNeededException(sharedRealm.getPath(), "Invalid type 'String' for field 'id' in existing Realm file.");
             }
             if (!table.isColumnNullable(columnInfo.idIndex)) {
-                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Field 'id' is required. Either set @Required to field 'id' or migrate using RealmObjectSchema.setNullable().");
+                throw new RealmMigrationNeededException(sharedRealm.getPath(),"@PrimaryKey field 'id' does not support null values in the existing Realm file. Migrate using RealmObjectSchema.setNullable(), or mark the field as @Required.");
+            }
+            if (table.getPrimaryKey() != table.getColumnIndex("id")) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Primary key not defined for field 'id' in existing Realm file. Add @PrimaryKey.");
+            }
+            if (!table.hasSearchIndex(table.getColumnIndex("id"))) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Index not defined for field 'id' in existing Realm file. Either set @Index or migrate using io.realm.internal.Table.removeSearchIndex().");
             }
             if (!columnTypes.containsKey("secret")) {
                 throw new RealmMigrationNeededException(sharedRealm.getPath(), "Missing field 'secret' in existing Realm file. Either remove field or migrate using io.realm.internal.Table.addColumn().");
@@ -1269,12 +1264,35 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
     public static com.anubis.flickr.models.Photo createOrUpdateUsingJsonObject(Realm realm, JSONObject json, boolean update)
         throws JSONException {
         final List<String> excludeFields = Collections.<String> emptyList();
-        com.anubis.flickr.models.Photo obj = realm.createObjectInternal(com.anubis.flickr.models.Photo.class, true, excludeFields);
-        if (json.has("id")) {
+        com.anubis.flickr.models.Photo obj = null;
+        if (update) {
+            Table table = realm.getTable(com.anubis.flickr.models.Photo.class);
+            long pkColumnIndex = table.getPrimaryKey();
+            long rowIndex = TableOrView.NO_MATCH;
             if (json.isNull("id")) {
-                ((PhotoRealmProxyInterface) obj).realmSet$id(null);
+                rowIndex = table.findFirstNull(pkColumnIndex);
             } else {
-                ((PhotoRealmProxyInterface) obj).realmSet$id((String) json.getString("id"));
+                rowIndex = table.findFirstString(pkColumnIndex, json.getString("id"));
+            }
+            if (rowIndex != TableOrView.NO_MATCH) {
+                final BaseRealm.RealmObjectContext objectContext = BaseRealm.objectContext.get();
+                try {
+                    objectContext.set(realm, table.getUncheckedRow(rowIndex), realm.schema.getColumnInfo(com.anubis.flickr.models.Photo.class), false, Collections.<String> emptyList());
+                    obj = new io.realm.PhotoRealmProxy();
+                } finally {
+                    objectContext.clear();
+                }
+            }
+        }
+        if (obj == null) {
+            if (json.has("id")) {
+                if (json.isNull("id")) {
+                    obj = (io.realm.PhotoRealmProxy) realm.createObjectInternal(com.anubis.flickr.models.Photo.class, null, true, excludeFields);
+                } else {
+                    obj = (io.realm.PhotoRealmProxy) realm.createObjectInternal(com.anubis.flickr.models.Photo.class, json.getString("id"), true, excludeFields);
+                }
+            } else {
+                throw new IllegalArgumentException("JSON object doesn't have the primary key field 'id'.");
             }
         }
         if (json.has("secret")) {
@@ -1424,6 +1442,7 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static com.anubis.flickr.models.Photo createUsingJsonStream(Realm realm, JsonReader reader)
         throws IOException {
+        boolean jsonHasPrimaryKey = false;
         com.anubis.flickr.models.Photo obj = new com.anubis.flickr.models.Photo();
         reader.beginObject();
         while (reader.hasNext()) {
@@ -1435,6 +1454,7 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
                 } else {
                     ((PhotoRealmProxyInterface) obj).realmSet$id((String) reader.nextString());
                 }
+                jsonHasPrimaryKey = true;
             } else if (name.equals("secret")) {
                 if (reader.peek() == JsonToken.NULL) {
                     reader.skipValue();
@@ -1580,6 +1600,9 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
             }
         }
         reader.endObject();
+        if (!jsonHasPrimaryKey) {
+            throw new IllegalArgumentException("JSON object doesn't have the primary key field 'id'.");
+        }
         obj = realm.copyToRealm(obj);
         return obj;
     }
@@ -1596,7 +1619,36 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
         if (cachedRealmObject != null) {
             return (com.anubis.flickr.models.Photo) cachedRealmObject;
         } else {
-            return copy(realm, object, update, cache);
+            com.anubis.flickr.models.Photo realmObject = null;
+            boolean canUpdate = update;
+            if (canUpdate) {
+                Table table = realm.getTable(com.anubis.flickr.models.Photo.class);
+                long pkColumnIndex = table.getPrimaryKey();
+                String value = ((PhotoRealmProxyInterface) object).realmGet$id();
+                long rowIndex = TableOrView.NO_MATCH;
+                if (value == null) {
+                    rowIndex = table.findFirstNull(pkColumnIndex);
+                } else {
+                    rowIndex = table.findFirstString(pkColumnIndex, value);
+                }
+                if (rowIndex != TableOrView.NO_MATCH) {
+                    try {
+                        objectContext.set(realm, table.getUncheckedRow(rowIndex), realm.schema.getColumnInfo(com.anubis.flickr.models.Photo.class), false, Collections.<String> emptyList());
+                        realmObject = new io.realm.PhotoRealmProxy();
+                        cache.put(object, (RealmObjectProxy) realmObject);
+                    } finally {
+                        objectContext.clear();
+                    }
+                } else {
+                    canUpdate = false;
+                }
+            }
+
+            if (canUpdate) {
+                return update(realm, realmObject, object, cache);
+            } else {
+                return copy(realm, object, update, cache);
+            }
         }
     }
 
@@ -1606,9 +1658,8 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
             return (com.anubis.flickr.models.Photo) cachedRealmObject;
         } else {
             // rejecting default values to avoid creating unexpected objects from RealmModel/RealmList fields.
-            com.anubis.flickr.models.Photo realmObject = realm.createObjectInternal(com.anubis.flickr.models.Photo.class, false, Collections.<String>emptyList());
+            com.anubis.flickr.models.Photo realmObject = realm.createObjectInternal(com.anubis.flickr.models.Photo.class, ((PhotoRealmProxyInterface) newObject).realmGet$id(), false, Collections.<String>emptyList());
             cache.put(newObject, (RealmObjectProxy) realmObject);
-            ((PhotoRealmProxyInterface) realmObject).realmSet$id(((PhotoRealmProxyInterface) newObject).realmGet$id());
             ((PhotoRealmProxyInterface) realmObject).realmSet$secret(((PhotoRealmProxyInterface) newObject).realmGet$secret());
             ((PhotoRealmProxyInterface) realmObject).realmSet$server(((PhotoRealmProxyInterface) newObject).realmGet$server());
             ((PhotoRealmProxyInterface) realmObject).realmSet$farm(((PhotoRealmProxyInterface) newObject).realmGet$farm());
@@ -1640,12 +1691,20 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
         Table table = realm.getTable(com.anubis.flickr.models.Photo.class);
         long tableNativePtr = table.getNativeTablePointer();
         PhotoColumnInfo columnInfo = (PhotoColumnInfo) realm.schema.getColumnInfo(com.anubis.flickr.models.Photo.class);
-        long rowIndex = Table.nativeAddEmptyRow(tableNativePtr, 1);
-        cache.put(object, rowIndex);
-        String realmGet$id = ((PhotoRealmProxyInterface)object).realmGet$id();
-        if (realmGet$id != null) {
-            Table.nativeSetString(tableNativePtr, columnInfo.idIndex, rowIndex, realmGet$id, false);
+        long pkColumnIndex = table.getPrimaryKey();
+        String primaryKeyValue = ((PhotoRealmProxyInterface) object).realmGet$id();
+        long rowIndex = TableOrView.NO_MATCH;
+        if (primaryKeyValue == null) {
+            rowIndex = Table.nativeFindFirstNull(tableNativePtr, pkColumnIndex);
+        } else {
+            rowIndex = Table.nativeFindFirstString(tableNativePtr, pkColumnIndex, primaryKeyValue);
         }
+        if (rowIndex == TableOrView.NO_MATCH) {
+            rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
+        } else {
+            Table.throwDuplicatePrimaryKeyException(primaryKeyValue);
+        }
+        cache.put(object, rowIndex);
         String realmGet$secret = ((PhotoRealmProxyInterface)object).realmGet$secret();
         if (realmGet$secret != null) {
             Table.nativeSetString(tableNativePtr, columnInfo.secretIndex, rowIndex, realmGet$secret, false);
@@ -1727,6 +1786,7 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
         Table table = realm.getTable(com.anubis.flickr.models.Photo.class);
         long tableNativePtr = table.getNativeTablePointer();
         PhotoColumnInfo columnInfo = (PhotoColumnInfo) realm.schema.getColumnInfo(com.anubis.flickr.models.Photo.class);
+        long pkColumnIndex = table.getPrimaryKey();
         com.anubis.flickr.models.Photo object = null;
         while (objects.hasNext()) {
             object = (com.anubis.flickr.models.Photo) objects.next();
@@ -1735,12 +1795,19 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
                     cache.put(object, ((RealmObjectProxy)object).realmGet$proxyState().getRow$realm().getIndex());
                     continue;
                 }
-                long rowIndex = Table.nativeAddEmptyRow(tableNativePtr, 1);
-                cache.put(object, rowIndex);
-                String realmGet$id = ((PhotoRealmProxyInterface)object).realmGet$id();
-                if (realmGet$id != null) {
-                    Table.nativeSetString(tableNativePtr, columnInfo.idIndex, rowIndex, realmGet$id, false);
+                String primaryKeyValue = ((PhotoRealmProxyInterface) object).realmGet$id();
+                long rowIndex = TableOrView.NO_MATCH;
+                if (primaryKeyValue == null) {
+                    rowIndex = Table.nativeFindFirstNull(tableNativePtr, pkColumnIndex);
+                } else {
+                    rowIndex = Table.nativeFindFirstString(tableNativePtr, pkColumnIndex, primaryKeyValue);
                 }
+                if (rowIndex == TableOrView.NO_MATCH) {
+                    rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
+                } else {
+                    Table.throwDuplicatePrimaryKeyException(primaryKeyValue);
+                }
+                cache.put(object, rowIndex);
                 String realmGet$secret = ((PhotoRealmProxyInterface)object).realmGet$secret();
                 if (realmGet$secret != null) {
                     Table.nativeSetString(tableNativePtr, columnInfo.secretIndex, rowIndex, realmGet$secret, false);
@@ -1826,14 +1893,18 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
         Table table = realm.getTable(com.anubis.flickr.models.Photo.class);
         long tableNativePtr = table.getNativeTablePointer();
         PhotoColumnInfo columnInfo = (PhotoColumnInfo) realm.schema.getColumnInfo(com.anubis.flickr.models.Photo.class);
-        long rowIndex = Table.nativeAddEmptyRow(tableNativePtr, 1);
-        cache.put(object, rowIndex);
-        String realmGet$id = ((PhotoRealmProxyInterface)object).realmGet$id();
-        if (realmGet$id != null) {
-            Table.nativeSetString(tableNativePtr, columnInfo.idIndex, rowIndex, realmGet$id, false);
+        long pkColumnIndex = table.getPrimaryKey();
+        String primaryKeyValue = ((PhotoRealmProxyInterface) object).realmGet$id();
+        long rowIndex = TableOrView.NO_MATCH;
+        if (primaryKeyValue == null) {
+            rowIndex = Table.nativeFindFirstNull(tableNativePtr, pkColumnIndex);
         } else {
-            Table.nativeSetNull(tableNativePtr, columnInfo.idIndex, rowIndex, false);
+            rowIndex = Table.nativeFindFirstString(tableNativePtr, pkColumnIndex, primaryKeyValue);
         }
+        if (rowIndex == TableOrView.NO_MATCH) {
+            rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
+        }
+        cache.put(object, rowIndex);
         String realmGet$secret = ((PhotoRealmProxyInterface)object).realmGet$secret();
         if (realmGet$secret != null) {
             Table.nativeSetString(tableNativePtr, columnInfo.secretIndex, rowIndex, realmGet$secret, false);
@@ -1951,6 +2022,7 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
         Table table = realm.getTable(com.anubis.flickr.models.Photo.class);
         long tableNativePtr = table.getNativeTablePointer();
         PhotoColumnInfo columnInfo = (PhotoColumnInfo) realm.schema.getColumnInfo(com.anubis.flickr.models.Photo.class);
+        long pkColumnIndex = table.getPrimaryKey();
         com.anubis.flickr.models.Photo object = null;
         while (objects.hasNext()) {
             object = (com.anubis.flickr.models.Photo) objects.next();
@@ -1959,14 +2031,17 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
                     cache.put(object, ((RealmObjectProxy)object).realmGet$proxyState().getRow$realm().getIndex());
                     continue;
                 }
-                long rowIndex = Table.nativeAddEmptyRow(tableNativePtr, 1);
-                cache.put(object, rowIndex);
-                String realmGet$id = ((PhotoRealmProxyInterface)object).realmGet$id();
-                if (realmGet$id != null) {
-                    Table.nativeSetString(tableNativePtr, columnInfo.idIndex, rowIndex, realmGet$id, false);
+                String primaryKeyValue = ((PhotoRealmProxyInterface) object).realmGet$id();
+                long rowIndex = TableOrView.NO_MATCH;
+                if (primaryKeyValue == null) {
+                    rowIndex = Table.nativeFindFirstNull(tableNativePtr, pkColumnIndex);
                 } else {
-                    Table.nativeSetNull(tableNativePtr, columnInfo.idIndex, rowIndex, false);
+                    rowIndex = Table.nativeFindFirstString(tableNativePtr, pkColumnIndex, primaryKeyValue);
                 }
+                if (rowIndex == TableOrView.NO_MATCH) {
+                    rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
+                }
+                cache.put(object, rowIndex);
                 String realmGet$secret = ((PhotoRealmProxyInterface)object).realmGet$secret();
                 if (realmGet$secret != null) {
                     Table.nativeSetString(tableNativePtr, columnInfo.secretIndex, rowIndex, realmGet$secret, false);
@@ -2121,6 +2196,30 @@ public class PhotoRealmProxy extends com.anubis.flickr.models.Photo
         ((PhotoRealmProxyInterface) unmanagedObject).realmSet$isInteresting(((PhotoRealmProxyInterface) realmObject).realmGet$isInteresting());
         ((PhotoRealmProxyInterface) unmanagedObject).realmSet$url(((PhotoRealmProxyInterface) realmObject).realmGet$url());
         return unmanagedObject;
+    }
+
+    static com.anubis.flickr.models.Photo update(Realm realm, com.anubis.flickr.models.Photo realmObject, com.anubis.flickr.models.Photo newObject, Map<RealmModel, RealmObjectProxy> cache) {
+        ((PhotoRealmProxyInterface) realmObject).realmSet$secret(((PhotoRealmProxyInterface) newObject).realmGet$secret());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$server(((PhotoRealmProxyInterface) newObject).realmGet$server());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$farm(((PhotoRealmProxyInterface) newObject).realmGet$farm());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$owner(((PhotoRealmProxyInterface) newObject).realmGet$owner());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$username(((PhotoRealmProxyInterface) newObject).realmGet$username());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$title(((PhotoRealmProxyInterface) newObject).realmGet$title());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$ispublic(((PhotoRealmProxyInterface) newObject).realmGet$ispublic());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$isfriend(((PhotoRealmProxyInterface) newObject).realmGet$isfriend());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$isfamily(((PhotoRealmProxyInterface) newObject).realmGet$isfamily());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$datetaken(((PhotoRealmProxyInterface) newObject).realmGet$datetaken());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$datetakengranularity(((PhotoRealmProxyInterface) newObject).realmGet$datetakengranularity());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$datetakenunknown(((PhotoRealmProxyInterface) newObject).realmGet$datetakenunknown());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$ownername(((PhotoRealmProxyInterface) newObject).realmGet$ownername());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$tags(((PhotoRealmProxyInterface) newObject).realmGet$tags());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$url_s(((PhotoRealmProxyInterface) newObject).realmGet$url_s());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$height(((PhotoRealmProxyInterface) newObject).realmGet$height());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$width(((PhotoRealmProxyInterface) newObject).realmGet$width());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$isCommon(((PhotoRealmProxyInterface) newObject).realmGet$isCommon());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$isInteresting(((PhotoRealmProxyInterface) newObject).realmGet$isInteresting());
+        ((PhotoRealmProxyInterface) realmObject).realmSet$url(((PhotoRealmProxyInterface) newObject).realmGet$url());
+        return realmObject;
     }
 
     @Override
