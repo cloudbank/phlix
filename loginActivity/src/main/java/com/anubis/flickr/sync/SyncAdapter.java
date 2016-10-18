@@ -53,6 +53,7 @@ import rx.schedulers.Schedulers;
 
 import static com.anubis.flickr.FlickrClientApp.getJacksonService;
 
+
 /**
  * Handle the transfer of data between a server and an
  * app, using the Android sync adapter framework.
@@ -67,6 +68,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     Realm realm;
     Subscription loginSubscription, friendsSubscription, interestingSubscription;
 
+
     /**
      * Set up the sync adapter
      */
@@ -77,6 +79,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
          * from the incoming Context
          */
         mContentResolver = context.getContentResolver();
+
     }
 
     /*
@@ -225,7 +228,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
          * Finally, let's do a sync to get things started--
          * NOT NEEDED @todo
          */
-        syncImmediately(context);
+        //syncImmediately(context);
     }
 
     public static void initializeSyncAdapter(Context context) {
@@ -318,14 +321,24 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                 .concatMap(new Func1<User, Observable<UserInfo>>() {
                     @Override
                     public Observable<UserInfo> call(User user) {
+
+                        SharedPreferences.Editor editor = Util.getUserPrefs().edit();
+                        editor.putString(FlickrClientApp.getAppContext().getResources().getString(R.string.user_id), user.getUser().getUserId());
                         String username = user.getUser().getUsername().getContent();
                         String prevUser = Util.getCurrentUser();
-                        SharedPreferences.Editor editor = Util.getUserPrefs().edit();
-
                         editor.putString(FlickrClientApp.getAppContext().getResources().getString(R.string.previous_user), prevUser);
                         editor.putString(FlickrClientApp.getAppContext().getString(R.string.current_user), username);
-                        editor.putString(FlickrClientApp.getAppContext().getString(R.string.user_id), user.getUser().getUserId());
                         editor.commit();
+                        realm = Realm.getDefaultInstance();
+                        realm.beginTransaction();
+                        UserModel u = realm.where(UserModel.class).equalTo("userId", user.getUser().getUserId()).findFirst();
+                        if (null == u) {
+                            u = realm.createObject(UserModel.class, user.getUser().getUserId());
+                        }
+                        realm.copyToRealmOrUpdate(u);  //deep copy
+                        realm.commitTransaction();
+
+                        realm.close();
                         Observable<Who> tagsObservable = FlickrClientApp.getJacksonService().getTags(user.getUser().getUserId());
                         return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getUserId()).zipWith(tagsObservable, new Func2<Photos, Who, UserInfo>() {
 
@@ -336,7 +349,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                         });
                     }
-                }).subscribeOn(Schedulers.immediate()) // no thread pool; bg
+                }).subscribeOn(Schedulers.immediate()) // thread pool; bg + bg
                 .observeOn(Schedulers.immediate())
                 .subscribe(new Subscriber<UserInfo>() {
                     @Override
@@ -380,20 +393,16 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                         Photos photos = userInfo.getFriends();
                         Who w = userInfo.getWho();
-                        Log.d("SYNC&&&", "who id" + w.getWho().getId());
-                        //f.user.username.content =
                         List<Tag> tags = w.getWho().getTags().getTag();
                         // }
                         realm = Realm.getDefaultInstance();
                         realm.beginTransaction();
-                        String id = w.getWho().getId();
+                        String user_id = Util.getUserId();
 
                         UserModel u = null;
-                        u = realm.where(UserModel.class).equalTo("id", id).findFirst();
-                        Log.d("SYNC&&&^^", "user in realm" + u);
-                        if (null == u) {
-                            u = realm.createObject(UserModel.class, id);
-                        }
+                        u = realm.where(UserModel.class).equalTo("userId", user_id).findFirst();
+
+
                         //f.user = username;  cannot reset primary key even if same
                         RealmList flist = u.getFriendsList();  //managed
                         for (Photo p : photos.getPhotos().getPhotoList()) {
@@ -403,15 +412,15 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         for (Tag t : tags) {
                             tagsList.add(t);
                         }
-                        Log.d("SYNC&&&", "flist.size" + flist.size());
-                        Log.d("SYNC&&&**", "u" + u);
                         //f.user.username.content =
                         u.name = Util.getCurrentUser();
                         u.timestamp = Calendar.getInstance().getTime();
                         realm.copyToRealmOrUpdate(u);  //deep copy
                         realm.commitTransaction();
+                        Log.d("DEBUG", "end get userinfo: " + u);
                         realm.close();
-                        Log.d("DEBUG", "end get userinfo: " + photos);
+
+
                     }
 
                 });

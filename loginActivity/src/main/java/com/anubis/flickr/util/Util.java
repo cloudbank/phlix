@@ -39,6 +39,11 @@ public class Util {
         return prefs.getString(FlickrClientApp.getAppContext().getResources().getString(R.string.current_user), "");
     }
 
+    public static String getUserId() {
+        SharedPreferences prefs = Util.getUserPrefs();
+        return prefs.getString(FlickrClientApp.getAppContext().getResources().getString(R.string.user_id), "");
+    }
+
     public static SharedPreferences getUserPrefs() {
         return  FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
     }

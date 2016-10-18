@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.realm.RealmList;
+import io.realm.RealmModel;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
@@ -22,7 +23,7 @@ import io.realm.annotations.PrimaryKey;
     "id",
     "username"
 })
-public class UserModel extends RealmObject {
+public class UserModel extends RealmObject  implements RealmModel {
 
     @JsonProperty("id")
     @PrimaryKey

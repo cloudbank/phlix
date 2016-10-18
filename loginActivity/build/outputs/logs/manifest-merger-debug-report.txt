@@ -163,9 +163,9 @@ ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main
 	android:name
 		ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:70:25-77
 meta-data#android.accounts.AccountAuthenticator
-ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:72:13-74:57
+ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:72:13-74:61
 	android:resource
-		ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:74:17-54
+		ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:74:21-58
 	android:name
 		ADDED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml:73:17-69
 service#com.anubis.flickr.service.SyncService
