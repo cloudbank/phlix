@@ -17,7 +17,7 @@ import io.realm.annotations.Ignore;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "id",
+        "userId",
         "secret",
         "server",
         "farm",
@@ -39,7 +39,7 @@ import io.realm.annotations.Ignore;
 
 public class Photo extends RealmObject implements Serializable {
 
-    @JsonProperty("id")
+    @JsonProperty("userId")
     private String id;
     @JsonProperty("secret")
     private String secret;
@@ -131,17 +131,17 @@ public class Photo extends RealmObject implements Serializable {
     }
 
     /**
-     * @return The id
+     * @return The userId
      */
-    @JsonProperty("id")
+    @JsonProperty("userId")
     public String getId() {
         return id;
     }
 
     /**
-     * @param id The id
+     * @param id The userId
      */
-    @JsonProperty("id")
+    @JsonProperty("userId")
     public void setId(String id) {
         this.id = id;
     }

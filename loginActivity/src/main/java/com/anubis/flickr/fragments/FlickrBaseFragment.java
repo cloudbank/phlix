@@ -186,7 +186,7 @@ public abstract class FlickrBaseFragment extends Fragment {
                 //PhotosActivity activity = ((PhotosActivity) getActivity());
                 // @todo if api changes update this
                // Photo photo = new Photo();
-               // photo.setId(data.getStringExtra("id"));
+               // photo.setUserId(data.getStringExtra("userId"));
                 mCallback.onPhotoPosted();
 
 

@@ -28,13 +28,17 @@ import android.widget.Toast;
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
-import com.anubis.flickr.models.Friends;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
+import com.anubis.flickr.models.Tag;
 import com.anubis.flickr.models.User;
+import com.anubis.flickr.models.UserInfo;
+import com.anubis.flickr.models.UserModel;
+import com.anubis.flickr.models.Who;
 import com.anubis.flickr.util.Util;
 
 import java.util.Calendar;
+import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -44,7 +48,10 @@ import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
+import rx.functions.Func2;
 import rx.schedulers.Schedulers;
+
+import static com.anubis.flickr.FlickrClientApp.getJacksonService;
 
 /**
  * Handle the transfer of data between a server and an
@@ -269,13 +276,13 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         // NotificationCompatBuilder is a very convenient way to build backward-compatible
         // notifications.  Just throw in some data.
         Context context = FlickrClientApp.getAppContext();
-        int iconId = R.drawable.ic_snow;
+        int iconId = R.drawable.ic_launcher;
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setColor(context.getResources().getColor(R.color.SkyBlue))
                         .setSmallIcon(iconId)
-                        .setContentTitle("SNOW")
-                        .setContentText("there is now snow");
+                        .setContentTitle("photos")
+                        .setContentText("photo data has been updated");
 
         // Make something interesting happen when the user clicks on the notification.
         // In this case, opening the app is sufficient.
@@ -308,23 +315,30 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
     private void getLoginAndFriends() {
         loginSubscription = FlickrClientApp.getJacksonService().testLogin()
-                .concatMap(new Func1<User, Observable<Photos>>() {
+                .concatMap(new Func1<User, Observable<UserInfo>>() {
                     @Override
-                    public Observable<Photos> call(User user) {
+                    public Observable<UserInfo> call(User user) {
                         String username = user.getUser().getUsername().getContent();
                         String prevUser = Util.getCurrentUser();
                         SharedPreferences.Editor editor = Util.getUserPrefs().edit();
 
                         editor.putString(FlickrClientApp.getAppContext().getResources().getString(R.string.previous_user), prevUser);
                         editor.putString(FlickrClientApp.getAppContext().getString(R.string.current_user), username);
-                        editor.putString(FlickrClientApp.getAppContext().getString(R.string.user_id), user.getUser().getId());
+                        editor.putString(FlickrClientApp.getAppContext().getString(R.string.user_id), user.getUser().getUserId());
                         editor.commit();
-                        return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getId());
+                        Observable<Who> tagsObservable = FlickrClientApp.getJacksonService().getTags(user.getUser().getUserId());
+                        return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getUserId()).zipWith(tagsObservable, new Func2<Photos, Who, UserInfo>() {
 
+                            @Override
+                            public UserInfo call(Photos p, Who w) {
+                                return new UserInfo(w, p);
+                            }
+
+                        });
                     }
-                }).subscribeOn(Schedulers.immediate()) // thread pool
+                }).subscribeOn(Schedulers.immediate()) // no thread pool; bg
                 .observeOn(Schedulers.immediate())
-                .subscribe(new Subscriber<Photos>() {
+                .subscribe(new Subscriber<UserInfo>() {
                     @Override
                     public void onCompleted() {
                         Handler handler = new Handler(Looper.getMainLooper());
@@ -355,36 +369,49 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                     }
 
                     @Override
-                    public void onNext(Photos photos) {
+                    public void onNext(UserInfo userInfo) {
 
                         //add photos to real
-                        String username = Util.getCurrentUser();
+
                         //if (username.length() == 0) {
-                            //throw new Exception("username is not set")
-                            //stop the sync adapter and remove account
-                            //try to sign out gracefully
+                        //throw new Exception("username is not set")
+                        //stop the sync adapter and remove account
+                        //try to sign out gracefully
 
-
-                       // }
+                        Photos photos = userInfo.getFriends();
+                        Who w = userInfo.getWho();
+                        Log.d("SYNC&&&", "who id" + w.getWho().getId());
+                        //f.user.username.content =
+                        List<Tag> tags = w.getWho().getTags().getTag();
+                        // }
                         realm = Realm.getDefaultInstance();
                         realm.beginTransaction();
-                        Friends f = null;
-                        f = realm.where(Friends.class).equalTo("user", username).findFirst();
-                        if (null == f) {
-                            f = realm.createObject(Friends.class, username);
+                        String id = w.getWho().getId();
+
+                        UserModel u = null;
+                        u = realm.where(UserModel.class).equalTo("id", id).findFirst();
+                        Log.d("SYNC&&&^^", "user in realm" + u);
+                        if (null == u) {
+                            u = realm.createObject(UserModel.class, id);
                         }
                         //f.user = username;  cannot reset primary key even if same
-                        RealmList flist = f.getFriends();  //managed
-                        for (Photo p :photos.getPhotos().getPhotoList() ) {
+                        RealmList flist = u.getFriendsList();  //managed
+                        for (Photo p : photos.getPhotos().getPhotoList()) {
                             flist.add(p);
                         }
-                        Log.d("SYNC&&&","flist.size" + flist.size());
+                        RealmList tagsList = u.getTagsList();
+                        for (Tag t : tags) {
+                            tagsList.add(t);
+                        }
+                        Log.d("SYNC&&&", "flist.size" + flist.size());
+                        Log.d("SYNC&&&**", "u" + u);
                         //f.user.username.content =
-                        f.timestamp = Calendar.getInstance().getTime();
-                        realm.copyToRealmOrUpdate(f);  //deep copy
+                        u.name = Util.getCurrentUser();
+                        u.timestamp = Calendar.getInstance().getTime();
+                        realm.copyToRealmOrUpdate(u);  //deep copy
                         realm.commitTransaction();
                         realm.close();
-                        Log.d("DEBUG", "mlogin: " + photos);
+                        Log.d("DEBUG", "end get userinfo: " + photos);
                     }
 
                 });
@@ -396,7 +423,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     public void getInterestingPhotos() {
         //@todo offline mode
         //@TODO need iterableFLATMAP TO GET ALL PAGES
-        interestingSubscription = FlickrClientApp.getJacksonService().getInterestingPhotos("1")
+        interestingSubscription = getJacksonService().getInterestingPhotos("1")
 
                 .subscribeOn(AndroidSchedulers.mainThread()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())

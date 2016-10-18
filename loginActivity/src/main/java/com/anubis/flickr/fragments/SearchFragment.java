@@ -69,11 +69,11 @@ public class SearchFragment extends FlickrBaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-       /* group = (RadioGroup) view.findViewById(R.id.radioGroup1);
-        rbTagOr = (RadioButton) view.findViewById(R.id.radio0);
-        rbTagAnd = (RadioButton) view.findViewById(R.id.radio1);
-        rbText = (RadioButton) view.findViewById(R.id.radio2);
-        info = (TextView) view.findViewById(R.id.textView1);
+       /* group = (RadioGroup) view.findViewById(R.userId.radioGroup1);
+        rbTagOr = (RadioButton) view.findViewById(R.userId.radio0);
+        rbTagAnd = (RadioButton) view.findViewById(R.userId.radio1);
+        rbText = (RadioButton) view.findViewById(R.userId.radio2);
+        info = (TextView) view.findViewById(R.userId.textView1);
 
         group.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -122,8 +122,8 @@ public class SearchFragment extends FlickrBaseFragment {
                 //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }
         });
-        //etQuery = (EditText) view.findViewById(R.id.etQuery);
-        //btnQuery = (Button) view.findViewById(R.id.btnQuery);
+        //etQuery = (EditText) view.findViewById(R.userId.etQuery);
+        //btnQuery = (Button) view.findViewById(R.userId.btnQuery);
         /*btnQuery.setOnClickListener(new View.OnClickListener() {
 
             @Override

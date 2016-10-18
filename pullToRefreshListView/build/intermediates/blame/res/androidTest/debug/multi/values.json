@@ -148,7 +148,7 @@
                     "startOffset": 1159,
                     "endLine": 30,
                     "endColumn": 12,
-                    "endOffset": 1529
+                    "endOffset": 1533
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/pullToRefreshListView/build/intermediates/bundles/debug/res/values/values.xml",
@@ -158,7 +158,7 @@
                         "startOffset": 1159,
                         "endLine": 30,
                         "endColumn": 12,
-                        "endOffset": 1529
+                        "endOffset": 1533
                     }
                 }
             },
@@ -166,20 +166,20 @@
                 "to": {
                     "startLine": 31,
                     "startColumn": 4,
-                    "startOffset": 1534,
+                    "startOffset": 1538,
                     "endLine": 37,
                     "endColumn": 12,
-                    "endOffset": 1924
+                    "endOffset": 1928
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/pullToRefreshListView/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 31,
                         "startColumn": 4,
-                        "startOffset": 1534,
+                        "startOffset": 1538,
                         "endLine": 37,
                         "endColumn": 12,
-                        "endOffset": 1924
+                        "endOffset": 1928
                     }
                 }
             },
@@ -187,20 +187,20 @@
                 "to": {
                     "startLine": 38,
                     "startColumn": 4,
-                    "startOffset": 1929,
+                    "startOffset": 1933,
                     "endLine": 46,
                     "endColumn": 12,
-                    "endOffset": 2396
+                    "endOffset": 2400
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/pullToRefreshListView/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 38,
                         "startColumn": 4,
-                        "startOffset": 1929,
+                        "startOffset": 1933,
                         "endLine": 46,
                         "endColumn": 12,
-                        "endOffset": 2396
+                        "endOffset": 2400
                     }
                 }
             },
@@ -208,20 +208,20 @@
                 "to": {
                     "startLine": 47,
                     "startColumn": 4,
-                    "startOffset": 2401,
+                    "startOffset": 2405,
                     "endLine": 53,
                     "endColumn": 12,
-                    "endOffset": 2750
+                    "endOffset": 2754
                 },
                 "from": {
                     "file": "/Users/sabine/github/myfriendflickr2016/flockr/pullToRefreshListView/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 47,
                         "startColumn": 4,
-                        "startOffset": 2401,
+                        "startOffset": 2405,
                         "endLine": 53,
                         "endColumn": 12,
-                        "endOffset": 2750
+                        "endOffset": 2754
                     }
                 }
             }

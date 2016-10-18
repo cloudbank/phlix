@@ -15,7 +15,7 @@ import io.realm.annotations.Ignore;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "id",
+        "userId",
         "author",
         "authorname",
         "raw",
@@ -24,7 +24,7 @@ import io.realm.annotations.Ignore;
 })
 public class Tag extends RealmObject {
 
-    @JsonProperty("id")
+    @JsonProperty("userId")
     private String id;
     @JsonProperty("author")
     private String author;
@@ -44,9 +44,9 @@ public class Tag extends RealmObject {
     /**
      *
      * @return
-     * The id
+     * The userId
      */
-    @JsonProperty("id")
+    @JsonProperty("userId")
     public String getId() {
         return id;
     }
@@ -54,9 +54,9 @@ public class Tag extends RealmObject {
     /**
      *
      * @param id
-     * The id
+     * The userId
      */
-    @JsonProperty("id")
+    @JsonProperty("userId")
     public void setId(String id) {
         this.id = id;
     }

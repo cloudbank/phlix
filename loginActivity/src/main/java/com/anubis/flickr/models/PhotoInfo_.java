@@ -13,7 +13,7 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "id",
+    "userId",
     "secret",
     "server",
     "farm",
@@ -43,7 +43,7 @@ import java.util.Map;
 })
 public class PhotoInfo_ {
 
-    @JsonProperty("id")
+    @JsonProperty("userId")
     private String id;
     @JsonProperty("secret")
     private String secret;
@@ -103,9 +103,9 @@ public class PhotoInfo_ {
     /**
      * 
      * @return
-     *     The id
+     *     The userId
      */
-    @JsonProperty("id")
+    @JsonProperty("userId")
     public String getId() {
         return id;
     }
@@ -113,9 +113,9 @@ public class PhotoInfo_ {
     /**
      * 
      * @param id
-     *     The id
+     *     The userId
      */
-    @JsonProperty("id")
+    @JsonProperty("userId")
     public void setId(String id) {
         this.id = id;
     }

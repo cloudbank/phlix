@@ -163,7 +163,7 @@ public class PreviewPhotoActivity extends AppCompatActivity {
                         try {
                             Log.d("DEBUG", "post photo: " + x.string());
                             String id = parseId(x.string());
-                            data.putExtra("id", id);
+                            data.putExtra("userId", id);
                             setResult(RESULT_OK, data);
                             ringProgressDialog.dismiss();
 
@@ -195,10 +195,10 @@ public class PreviewPhotoActivity extends AppCompatActivity {
 /*
         client.createPhotoPost(processedBitmap, filename, new AsyncHttpResponseHandler() {
             @Override
-            public void onSuccess(int arg0, String id) {
+            public void onSuccess(int arg0, String userId) {
                 Intent data = new Intent();
                 try {
-                    data.putExtra("id", parseId(id));
+                    data.putExtra("userId", parseId(userId));
                 } catch (ArrayIndexOutOfBoundsException e) {
                     Log.e("ERROR", "createPhotoPost upload response error");
                     //todo
@@ -208,9 +208,9 @@ public class PreviewPhotoActivity extends AppCompatActivity {
                 PreviewPhotoActivity.this.finish();
             }
 
-            private String parseId(String id) {
-                return id.substring((id.indexOf(PHOTOID_BEGINTAG)) + 9,
-                        id.indexOf(PHOTOID_ENDTAG));
+            private String parseId(String userId) {
+                return userId.substring((userId.indexOf(PHOTOID_BEGINTAG)) + 9,
+                        userId.indexOf(PHOTOID_ENDTAG));
             }
 
             @Override

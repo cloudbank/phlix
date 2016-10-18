@@ -746,7 +746,7 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="tags">Hot Tags  &amp; Recent Photos</string>
     <string name="text_search"> title, description, or tags entered</string>
-    <string name="user_id">userId</string>
+    <string name="user_id">id</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
@@ -2361,7 +2361,7 @@
         <item name="android:visibility">gone</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
-        <item name="android:layout_below">@+id/ptr_id_text</item>
+        <item name="android:layout_below">@+userId/ptr_id_text</item>
     </style>
     <style name="ptr_spinner" parent="@android:style/Widget.ProgressBar.Small">
         <item name="android:layout_width">wrap_content</item>

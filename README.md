@@ -26,7 +26,7 @@ In addition you can:
 
 
 
- soon on the [Google Play Store](https://play.google.com/store/apps/details?id=com.anubis.flickr)
+ soon on the [Google Play Store](https://play.google.com/store/apps/details?userId=com.anubis.flickr)
 
 
 

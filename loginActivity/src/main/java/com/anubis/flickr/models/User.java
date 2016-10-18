@@ -20,7 +20,7 @@ public class User {
 
     //foreignkey
     @JsonProperty("user")
-    private User_ user;
+    private UserModel user;
     @JsonProperty("stat")
     private String stat;
     @JsonIgnore
@@ -33,7 +33,7 @@ public class User {
      *     The user
      */
     @JsonProperty("user")
-    public User_ getUser() {
+    public UserModel getUser() {
         return user;
     }
 
@@ -43,7 +43,7 @@ public class User {
      *     The user
      */
     @JsonProperty("user")
-    public void setUser(User_ user) {
+    public void setUser(UserModel user) {
         this.user = user;
     }
 

@@ -13,12 +13,12 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "id",
+    "userId",
     "tags"
 })
 public class Who_ {
 
-    @JsonProperty("id")
+    @JsonProperty("userId")
     private String id;
     @JsonProperty("tags")
     private Tags tags;
@@ -28,9 +28,9 @@ public class Who_ {
     /**
      * 
      * @return
-     *     The id
+     *     The userId
      */
-    @JsonProperty("id")
+    @JsonProperty("userId")
     public String getId() {
         return id;
     }
@@ -38,9 +38,9 @@ public class Who_ {
     /**
      * 
      * @param id
-     *     The id
+     *     The userId
      */
-    @JsonProperty("id")
+    @JsonProperty("userId")
     public void setId(String id) {
         this.id = id;
     }
