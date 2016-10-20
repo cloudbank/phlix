@@ -194,6 +194,7 @@ public class FriendsFragment extends FlickrBaseFragment {
 
     private  void updateDisplay(UserModel u) {
         displayTags(u.getTagsList());
+        mPhotos.clear();
         mPhotos.addAll(u.getFriendsList());
         fAdapter.notifyDataSetChanged();
 
@@ -203,6 +204,7 @@ public class FriendsFragment extends FlickrBaseFragment {
     private  void updateDisplay() {
         UserModel u  = userRealm.where(UserModel.class).equalTo("userId",Util.getUserId()).findFirst();
         displayTags(u.getTagsList());
+        mPhotos.clear();
         mPhotos.addAll(u.getFriendsList());
         fAdapter.notifyDataSetChanged();
 

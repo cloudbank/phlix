@@ -18,7 +18,7 @@ import io.realm.annotations.Ignore;
     "hottags",
     "stat"
 })
-public class Hottags   {
+public class Hottags {
 
 
     @JsonProperty("hottags")

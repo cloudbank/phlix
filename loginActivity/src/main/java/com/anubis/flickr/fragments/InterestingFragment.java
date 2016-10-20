@@ -100,6 +100,7 @@ public class InterestingFragment extends FlickrBaseFragment {
     private void updateDisplay() {
         Date maxDate = interestingRealm.where(Interesting.class).maximumDate("timestamp");
         Interesting i = interestingRealm.where(Interesting.class).equalTo("timestamp", maxDate).findFirst();
+        mInteresting.clear();
         mInteresting.addAll(i.getInterestingPhotos());
         rAdapter.notifyDataSetChanged();
 
@@ -146,8 +147,9 @@ public class InterestingFragment extends FlickrBaseFragment {
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(getActivity(),
                         ImageDisplayActivity.class);
-                Photo result = mInteresting.get(position);
-                intent.putExtra(RESULT, result);
+                Photo photo = mInteresting.get(position);
+
+                intent.putExtra(RESULT, photo.getId());
                 startActivity(intent);
                 //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }
@@ -207,6 +209,7 @@ public class InterestingFragment extends FlickrBaseFragment {
     }
 
     public void updateDisplay(Interesting i) {
+        mInteresting.clear();
         mInteresting.addAll(i.getInterestingPhotos());
         rAdapter.notifyDataSetChanged();
     }

@@ -18,62 +18,113 @@ import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.adapter.TagsAdapter;
-import com.anubis.flickr.models.Hottags;
 import com.anubis.flickr.models.Photo;
-import com.anubis.flickr.models.Photos;
+import com.anubis.flickr.models.Recent;
 import com.anubis.flickr.models.Tag;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import co.hkm.soltag.TagContainerLayout;
 import co.hkm.soltag.TagView;
-import retrofit2.adapter.rxjava.HttpException;
-import rx.Subscriber;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.realm.Realm;
+import io.realm.RealmChangeListener;
 
 public class TagsFragment extends FlickrBaseFragment {
 
     List mTags;
     TagContainerLayout mTagsView;
-    private Subscription subscription, subscription2;
     private String username;
     private List<Photo> mPhotos;
+
     protected PhotoArrayAdapter getAdapter() {
         return mAdapter;
     }
+
+
     ProgressDialog ringProgressDialog;
     TagsAdapter tAdapter;
     RecyclerView rvPhotos;
     protected SharedPreferences prefs;
     protected SharedPreferences.Editor editor;
+    RealmChangeListener changeListener;
+    Realm tagsRealm, r;
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        //this gets called along w lifecycle when vp recycles fragment ie  commons tab
+
+
+        changeListener = new RealmChangeListener<Recent>()
+
+        {
+            @Override
+            public void onChange(Recent r) {
+                // This is called anytime the Realm database changes on any thread.
+                // Please note, change listeners only work on Looper threads.
+                // For non-looper threads, you manually have to use Realm.waitForChange() instead.
+                updateDisplay(r);
+            }
+        };
+
+
+        tagsRealm = Realm.getDefaultInstance();
+
+        ringProgressDialog.setTitle("Please wait");
+        ringProgressDialog.setMessage("Retrieving tags/recent photos");
+        ringProgressDialog.setCancelable(true);
+        ringProgressDialog.show();
+        Date maxDate = tagsRealm.where(Recent.class).maximumDate("timestamp");
+        Recent recent = tagsRealm.where(Recent.class).equalTo("timestamp", maxDate).findFirst();
+        if (null == recent) {
+            r = Realm.getDefaultInstance();
+            RealmChangeListener realmListener = new RealmChangeListener<Realm>() {
+                @Override
+                public void onChange(Realm r) {
+                    updateDisplay();
+                }
+            };
+            r.addChangeListener(realmListener);
+
+        } else {
+            //init is running slow
+            //@todo add separate realms for rest
+
+
+            Log.d("TAGS PRESENT", "list: " + recent);
+            recent.addChangeListener(changeListener);
+            r.removeAllChangeListeners();
+            r.close();
+
+            //updateDisplay(interesting);
+
+        }
+        ringProgressDialog.dismiss();
 
     }
+
 
     // Store instance variables based on arguments passed
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPhotos = new ArrayList<Photo>();
+        ringProgressDialog = new ProgressDialog(getActivity(), R.style.MyDialogTheme);
         tAdapter = new TagsAdapter(getActivity(), mPhotos, false);
         //ringProgressDialog= new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
         this.prefs = FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
         this.editor = this.prefs.edit();
         mTags = new ArrayList<Tag>();
 
-        getTags();
-        getPhotos();
+        //getTags();
+        //getPhotos();
         setRetainInstance(true);
 
 
     }
-
 
 
     void customLoadMoreDataFromApi(int page) {
@@ -81,80 +132,32 @@ public class TagsFragment extends FlickrBaseFragment {
 
     }
 
-    private void getTags() {
 
-        subscription =  FlickrClientApp.getJacksonService().getHotTags()
-             .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Hottags>() {
-                    @Override
-                    public void onCompleted() {
+    private void updateDisplay() {
+        Date maxDate = tagsRealm.where(Recent.class).maximumDate("timestamp");
+        Recent r = tagsRealm.where(Recent.class).equalTo("timestamp", maxDate).findFirst();
+        displayHotTags(r.getHotTagList());
+        mPhotos.clear();
+        mPhotos.addAll(r.getRecentPhotos());
+        tAdapter.notifyDataSetChanged();
+    }
 
 
-                        //Log.d("DEBUG","oncompleted");
+    private void updateDisplay(Recent r) {
 
-                    }
-                    @Override
-                    public void onError(Throwable e) {
-                        // cast to retrofit.HttpException to get the response code
-                        if (e instanceof HttpException) {
-                            HttpException response = (HttpException)e;
-                            int code = response.code();
-                            Log.e("ERROR",  String.valueOf(code));
-                        }
-                        Log.e("ERROR",  "error getting tags" + e);
-                    }
+        displayHotTags(r.getHotTagList());
+        mPhotos.clear();
+        mPhotos.addAll(r.getRecentPhotos());
+        tAdapter.notifyDataSetChanged();
 
-                    @Override
-                    public void onNext(Hottags h ) {
-                        Log.d("DEBUG","hottags: "+ h);
-                        //pass photos to fragment
-                        mTags.addAll(h.getHottags().getTag());
-                        displayPhotoInfo(mTags);
-                    }
-                });
 
     }
 
 
-    private void getPhotos() {
-
-        subscription2 =  FlickrClientApp.getJacksonService().getRecentPhotos()
-               .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Photos>() {
-                    @Override
-                    public void onCompleted() {
-
-
-                        //Log.d("DEBUG","oncompleted");
-
-                    }
-                    @Override
-                    public void onError(Throwable e) {
-                        // cast to retrofit.HttpException to get the response code
-                        if (e instanceof HttpException) {
-                            HttpException response = (HttpException)e;
-                            int code = response.code();
-                            Log.e("ERROR",  String.valueOf(code));
-                        }
-                        Log.e("ERROR",  "error getting tags/photos" + e);
-                    }
-
-                    @Override
-                    public void onNext(Photos p ) {
-                        Log.d("DEBUG","tags photos: "+ p);
-                        //pass photos to fragment
-                        mPhotos.addAll(p.getPhotos().getPhotoList());
-                        tAdapter.notifyDataSetChanged();
-                    }
-                });
-
-    }
-
-    public void displayPhotoInfo(List<Tag> tags) {
+    public void displayHotTags(List<Tag> tags) {
         //tags.stream().map(it -> it.getContent()).collect(Collectors.toCollection())
         //when android catches up to 1.8
+        mTagsView.removeAllTags();
         for (Tag t : tags) {
             mTagsView.addTag(t.getContent());
         }
@@ -163,19 +166,17 @@ public class TagsFragment extends FlickrBaseFragment {
     }
 
     protected void loadPhotos() {
-       // clearAdapter();
+        // clearAdapter();
 
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.subscription.unsubscribe();
-        this.subscription2.unsubscribe();
+        tagsRealm.close();
 
 
     }
-
 
 
     @Override
@@ -188,7 +189,7 @@ public class TagsFragment extends FlickrBaseFragment {
 
             @Override
             public void onTagClick(int position, String text) {
-                Toast.makeText(FlickrClientApp.getAppContext(),"Tag "+text,Toast.LENGTH_SHORT).show();
+                Toast.makeText(FlickrClientApp.getAppContext(), "Tag " + text, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -198,11 +199,11 @@ public class TagsFragment extends FlickrBaseFragment {
         });
         rvPhotos = (RecyclerView) view.findViewById(R.id.rvPhotos);
         rvPhotos.setAdapter(tAdapter);
-       // StaggeredGridLayoutManager gridLayoutManager =
+        // StaggeredGridLayoutManager gridLayoutManager =
         //new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         // Attach the layout manager to the recycler view
         //rvPhotos.setLayoutManager(gridLayoutManager);
-        rvPhotos.setLayoutManager(new GridLayoutManager(FlickrClientApp.getAppContext(),3));
+        rvPhotos.setLayoutManager(new GridLayoutManager(FlickrClientApp.getAppContext(), 3));
         //SpacesItemDecoration decoration = new SpacesItemDecoration(2);
         //rvPhotos.addItemDecoration(decoration);
 
@@ -214,8 +215,8 @@ public class TagsFragment extends FlickrBaseFragment {
                 // String title = mTags.get(position).getTitle();
                 Intent intent = new Intent(getActivity(),
                         ImageDisplayActivity.class);
-                Photo result = mPhotos.get(position);
-                intent.putExtra(RESULT, result);
+                Photo photo = mPhotos.get(position);
+                intent.putExtra(RESULT, photo.getId());
                 startActivity(intent);
                 //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }
@@ -223,7 +224,6 @@ public class TagsFragment extends FlickrBaseFragment {
         setHasOptionsMenu(true);
         return view;
     }
-
 
 
 }

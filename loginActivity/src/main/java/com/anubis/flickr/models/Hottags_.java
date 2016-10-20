@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 import io.realm.RealmList;
-import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -23,7 +22,7 @@ import io.realm.annotations.Ignore;
     "count",
     "tag"
 })
-public class Hottags_  extends RealmObject{
+public class Hottags_  {
 
     @JsonProperty("period")
     private String period;

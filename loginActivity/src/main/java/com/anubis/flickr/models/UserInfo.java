@@ -4,7 +4,7 @@ package com.anubis.flickr.models;
  * Created by sabine on 10/17/16.
  */
 public class UserInfo   {
-    //hybrid wrapper for rxjava zip call
+    //hybrid wrapper for rxjava zip call to get login and friends, tab 0
 
     private Who who;
     private Photos friends;

@@ -28,10 +28,13 @@ import android.widget.Toast;
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
+import com.anubis.flickr.models.Hottags;
 import com.anubis.flickr.models.Interesting;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
+import com.anubis.flickr.models.Recent;
 import com.anubis.flickr.models.Tag;
+import com.anubis.flickr.models.TagAndRecent;
 import com.anubis.flickr.models.User;
 import com.anubis.flickr.models.UserInfo;
 import com.anubis.flickr.models.UserModel;
@@ -64,11 +67,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     // Global variables
     // Define a variable to contain a content resolver instance
     ContentResolver mContentResolver;
-    public static final int SYNC_INTERVAL = 60;    //60 * 3;  //@todo change to 23 hrs
+    public static final int SYNC_INTERVAL = 60 * 5;    //60 * 180;  //@todo change to 23 hrs
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
     Realm realm;
-    Subscription loginSubscription, friendsSubscription, interestingSubscription;
+    Subscription loginSubscription, recentSubscription, interestingSubscription;
 
 
     /**
@@ -115,12 +118,21 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         Log.d("SYNC", "starting onPerformSync");
         getLoginAndFriends();
         getInterestingPhotos();
-        //getRecent and Hotags
-        //get Commons --> this should not need update
+        getRecentAndHotags();
+        //get Commons -->  1 time this should not need update
         notifyWeather();
         Log.d("SYNC", "onPeformSync");
 
     }
+
+
+
+
+
+
+
+
+
 /*
 
     */
@@ -335,6 +347,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         editor.putString(FlickrClientApp.getAppContext().getResources().getString(R.string.previous_user), prevUser);
                         editor.putString(FlickrClientApp.getAppContext().getString(R.string.current_user), username);
                         editor.commit();
+
                         realm = Realm.getDefaultInstance();
                         realm.beginTransaction();
                         UserModel u = realm.where(UserModel.class).equalTo("userId", user.getUser().getUserId()).findFirst();
@@ -343,12 +356,17 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         }
                         realm.copyToRealmOrUpdate(u);  //deep copy
                         Date d = Calendar.getInstance().getTime();
-                        Interesting i = realm.createObject(Interesting.class,d.toString());
+                        Interesting i = realm.createObject(Interesting.class, d.toString());
                         i.setTimestamp(d);
                         realm.copyToRealmOrUpdate(i);
-                        realm.commitTransaction();
+                        Recent r = realm.createObject(Recent.class, d.toString());
+                        r.setTimestamp(d);
+                        realm.copyToRealmOrUpdate(r);
 
+
+                        realm.commitTransaction();
                         realm.close();
+
                         Observable<Who> tagsObservable = FlickrClientApp.getJacksonService().getTags(user.getUser().getUserId());
                         return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getUserId()).zipWith(tagsObservable, new Func2<Photos, Who, UserInfo>() {
 
@@ -480,7 +498,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                         Date maxDate = realm.where(Interesting.class).maximumDate("timestamp");
                         Interesting interesting = realm.where(Interesting.class).equalTo("timestamp", maxDate).findFirst();
-Log.d("SYNC","interesting"+interesting);
+                        Log.d("SYNC", "interesting" + interesting);
 
                         RealmList<Photo> interestingList = interesting.getInterestingPhotos(); //managed
                         for (Photo photo : p.getPhotos().getPhotoList()) {
@@ -498,6 +516,68 @@ Log.d("SYNC","interesting"+interesting);
                 });
 
     }
+
+
+    private void getRecentAndHotags() {
+        Observable<Photos> recentObservable = FlickrClientApp.getJacksonService().getRecentPhotos();
+        recentSubscription = FlickrClientApp.getJacksonService().getHotTags().zipWith(recentObservable, new Func2<Hottags, Photos, TagAndRecent>() {
+            @Override
+            public TagAndRecent call(Hottags h, Photos p) {
+                return new TagAndRecent(p, h);
+            }
+
+        }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .observeOn(Schedulers.immediate())
+                .subscribe(new Subscriber<TagAndRecent>() {
+                    @Override
+                    public void onCompleted() {
+
+
+                        Log.d("DEBUG", "oncompleted recent");
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // cast to retrofit.HttpException to get the response code
+                        if (e instanceof HttpException) {
+                            HttpException response = (HttpException) e;
+                            int code = response.code();
+                            Log.e("ERROR", String.valueOf(code));
+                        }
+                        Log.e("ERROR", "error getting tags/photos" + e);
+                    }
+
+                    @Override
+                    public void onNext(TagAndRecent t) {
+                        realm = Realm.getDefaultInstance();
+                        realm.beginTransaction();
+
+                        Date maxDate = realm.where(Recent.class).maximumDate("timestamp");
+                        Recent recent = realm.where(Recent.class).equalTo("timestamp", maxDate).findFirst();
+                        RealmList<Photo> recentList = recent.getRecentPhotos();
+                        for (Photo p: t.getRecent().getPhotos().getPhotoList()) {
+                            recentList.add(p);
+                            //set not interesting @todo
+                        }
+                        recent.timestamp = maxDate;
+
+
+
+                        RealmList<Tag> tags = recent.getHotTagList();
+                        for (Tag tag: t.getHottags().getHottags().getTag()) {
+                            tags.add(tag);
+                        }
+                        realm.copyToRealmOrUpdate(recent);  //deep copy
+
+                        realm.commitTransaction();
+                        Log.d("DEBUG", "end recent/tag");
+
+                    }
+                });
+
+    }
+
 }
 
 
