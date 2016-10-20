@@ -24,9 +24,9 @@ public class FlickrClientApp extends Application {
     // The authority for the sync adapter's content provider
     public static final String AUTHORITY = "com.anubis.flickr.provider";
     // An account type, in the form of a domain name
-    public static final String ACCOUNT_TYPE = "com.example";
+    public static final String ACCOUNT_TYPE = "com.anubis.flickr";
     // The account name
-    public static final String ACCOUNT = "flickraccount";
+    public static final String ACCOUNT = "Flickr_Data_Fetcher";
     // Instance fields
     Account mAccount;
 
@@ -68,6 +68,9 @@ public class FlickrClientApp extends Application {
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder().build();
         Realm.setDefaultConfiguration(config);
+
+
+
 
         FlickrClientApp.context = getApplicationContext();
         Stetho.initializeWithDefaults(this);

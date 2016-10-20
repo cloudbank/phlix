@@ -3,6 +3,7 @@ package com.anubis.flickr.fragments;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -15,12 +16,16 @@ import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.adapter.InterestingAdapter;
 import com.anubis.flickr.listener.EndlessRecyclerViewScrollListener;
+import com.anubis.flickr.models.Interesting;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmChangeListener;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
 import rx.Subscription;
@@ -34,6 +39,71 @@ public class InterestingFragment extends FlickrBaseFragment {
     private Subscription subscription;
     //@todo move up
     List<Photo> mInteresting = new ArrayList<Photo>();
+    RealmChangeListener changeListener;
+    Realm interestingRealm, r;
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        //this gets called along w lifecycle when vp recycles fragment ie  commons tab
+
+
+        changeListener = new RealmChangeListener<Interesting>()
+
+        {
+            @Override
+            public void onChange(Interesting i) {
+                // This is called anytime the Realm database changes on any thread.
+                // Please note, change listeners only work on Looper threads.
+                // For non-looper threads, you manually have to use Realm.waitForChange() instead.
+                updateDisplay(i);
+            }
+        };
+
+
+        interestingRealm = Realm.getDefaultInstance();
+
+        ringProgressDialog.setTitle("Please wait");
+        ringProgressDialog.setMessage("Retrieving friend photos");
+        ringProgressDialog.setCancelable(true);
+        ringProgressDialog.show();
+        Date maxDate = interestingRealm.where(Interesting.class).maximumDate("timestamp");
+        Interesting interesting = interestingRealm.where(Interesting.class).equalTo("timestamp", maxDate).findFirst();
+        if (null == interesting) {
+            r = Realm.getDefaultInstance();
+            RealmChangeListener realmListener = new RealmChangeListener<Realm>() {
+                @Override
+                public void onChange(Realm r) {
+                    updateDisplay();
+                }
+            };
+            r.addChangeListener(realmListener);
+
+        } else {
+            //init is running slow
+            //@todo add separate realms for rest
+
+
+            Log.d("INTERESTING PRESENT", "list: " + interesting);
+            interesting.addChangeListener(changeListener);
+            r.removeAllChangeListeners();
+            r.close();
+
+            //updateDisplay(interesting);
+
+        }
+        ringProgressDialog.dismiss();
+
+    }
+
+
+    private void updateDisplay() {
+        Date maxDate = interestingRealm.where(Interesting.class).maximumDate("timestamp");
+        Interesting i = interestingRealm.where(Interesting.class).equalTo("timestamp", maxDate).findFirst();
+        mInteresting.addAll(i.getInterestingPhotos());
+        rAdapter.notifyDataSetChanged();
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +112,7 @@ public class InterestingFragment extends FlickrBaseFragment {
         ringProgressDialog = new ProgressDialog(getActivity(), R.style.MyDialogTheme);
 
         rAdapter = new InterestingAdapter(FlickrClientApp.getAppContext(), mInteresting, true);
-        loadPhotos(1, true);
+        //loadPhotos(1, true);
     }
 
     @Override
@@ -90,6 +160,7 @@ public class InterestingFragment extends FlickrBaseFragment {
         mInteresting.clear();
         rAdapter.notifyDataSetChanged();
     }
+
     void customLoadMoreDataFromApi(int page) {
         loadPhotos(page, false);
     }
@@ -135,14 +206,20 @@ public class InterestingFragment extends FlickrBaseFragment {
 
     }
 
+    public void updateDisplay(Interesting i) {
+        mInteresting.addAll(i.getInterestingPhotos());
+        rAdapter.notifyDataSetChanged();
+    }
+
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if ( null != ringProgressDialog ) {
+        if (null != ringProgressDialog) {
             ringProgressDialog = null;
         }
-       subscription.unsubscribe();
+        subscription.unsubscribe();
+        interestingRealm.close();
     }
 }
 

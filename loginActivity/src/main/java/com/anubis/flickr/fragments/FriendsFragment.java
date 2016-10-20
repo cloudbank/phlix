@@ -4,8 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -23,7 +21,6 @@ import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Tag;
 import com.anubis.flickr.models.UserModel;
-import com.anubis.flickr.models.Who;
 import com.anubis.flickr.util.Util;
 
 import java.util.ArrayList;
@@ -34,11 +31,7 @@ import java.util.List;
 import co.hkm.soltag.TagContainerLayout;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
-import retrofit2.adapter.rxjava.HttpException;
-import rx.Subscriber;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 public class FriendsFragment extends FlickrBaseFragment {
 
@@ -85,9 +78,7 @@ public class FriendsFragment extends FlickrBaseFragment {
 
         userRealm = Realm.getDefaultInstance();
 
-        final HandlerThread handlerThread = new HandlerThread("BackgroundHandler");
-        handlerThread.start();
-        final Handler backgroundHandler = new Handler(handlerThread.getLooper());
+
         ringProgressDialog.setTitle("Please wait");
         ringProgressDialog.setMessage("Retrieving friend photos");
         ringProgressDialog.setCancelable(true);
@@ -227,56 +218,20 @@ public class FriendsFragment extends FlickrBaseFragment {
     }
 
 
-    private void getTags() {
-        String uid = prefs.getString(FlickrClientApp.getAppContext().getResources().getString(R.string.user_id), "");
-        subscription = FlickrClientApp.getJacksonService().getTags(uid)
-                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Who>() {
-                    @Override
-                    public void onCompleted() {
-
-
-                        //Log.d("DEBUG","oncompleted");
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        // cast to retrofit.HttpException to get the response code
-                        if (e instanceof HttpException) {
-                            HttpException response = (HttpException) e;
-                            int code = response.code();
-                            Log.e("ERROR", String.valueOf(code));
-                        }
-                        Log.e("ERROR", "error getting tags" + e);
-                    }
-
-                    @Override
-                    public void onNext(Who w) {
-                        Log.d("DEBUG", "tags for user: " + w);
-                        //pass photos to fragment
-                        mTags.addAll(w.getWho().getTags().getTag());
-                        displayTags(mTags);
-                    }
-                });
-
-    }
 
     public void displayTags(List<Tag> tags) {
         //tags.stream().map(it -> it.getContent()).collect(Collectors.toCollection())
         //when android catches up to 1.8
+        mTagView.removeAllTags();
         for (Tag t : tags) {
+
             mTagView.addTag(t.getContent());
         }
 
 
     }
 
-    protected void loadPhotos() {
-        // clearAdapter();
 
-    }
 
     @Override
     public void onDestroy() {

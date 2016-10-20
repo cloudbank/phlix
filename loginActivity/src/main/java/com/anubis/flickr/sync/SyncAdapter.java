@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
+import com.anubis.flickr.models.Interesting;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.Tag;
@@ -38,6 +39,7 @@ import com.anubis.flickr.models.Who;
 import com.anubis.flickr.util.Util;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import io.realm.Realm;
@@ -46,12 +48,12 @@ import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
 import static com.anubis.flickr.FlickrClientApp.getJacksonService;
+import static com.anubis.flickr.R.string.user_id;
 
 
 /**
@@ -62,7 +64,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     // Global variables
     // Define a variable to contain a content resolver instance
     ContentResolver mContentResolver;
-    public static final int SYNC_INTERVAL = 60 * 180;  //@todo change to 23 hrs
+    public static final int SYNC_INTERVAL = 60;    //60 * 3;  //@todo change to 23 hrs
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
     Realm realm;
@@ -112,7 +114,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         //getFriendsPhotos();//add tags
         Log.d("SYNC", "starting onPerformSync");
         getLoginAndFriends();
-        //getInterestingPhotos();
+        getInterestingPhotos();
         //getRecent and Hotags
         //get Commons --> this should not need update
         notifyWeather();
@@ -279,7 +281,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         // NotificationCompatBuilder is a very convenient way to build backward-compatible
         // notifications.  Just throw in some data.
         Context context = FlickrClientApp.getAppContext();
-        int iconId = R.drawable.ic_launcher;
+        int iconId = R.drawable.ic_snow;
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setColor(context.getResources().getColor(R.color.SkyBlue))
@@ -317,13 +319,17 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
 
     private void getLoginAndFriends() {
+        //@todo will return error if logged out
+        //cancel adapter or change method
+        //flickr.auth.oauth.checkToken with auth token
+        //check for new user and cancel for certain
         loginSubscription = FlickrClientApp.getJacksonService().testLogin()
                 .concatMap(new Func1<User, Observable<UserInfo>>() {
                     @Override
                     public Observable<UserInfo> call(User user) {
 
                         SharedPreferences.Editor editor = Util.getUserPrefs().edit();
-                        editor.putString(FlickrClientApp.getAppContext().getResources().getString(R.string.user_id), user.getUser().getUserId());
+                        editor.putString(FlickrClientApp.getAppContext().getResources().getString(user_id), user.getUser().getUserId());
                         String username = user.getUser().getUsername().getContent();
                         String prevUser = Util.getCurrentUser();
                         editor.putString(FlickrClientApp.getAppContext().getResources().getString(R.string.previous_user), prevUser);
@@ -336,6 +342,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                             u = realm.createObject(UserModel.class, user.getUser().getUserId());
                         }
                         realm.copyToRealmOrUpdate(u);  //deep copy
+                        Date d = Calendar.getInstance().getTime();
+                        Interesting i = realm.createObject(Interesting.class,d.toString());
+                        i.setTimestamp(d);
+                        realm.copyToRealmOrUpdate(i);
                         realm.commitTransaction();
 
                         realm.close();
@@ -409,9 +419,13 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                             flist.add(p);
                         }
                         RealmList tagsList = u.getTagsList();
-                        for (Tag t : tags) {
-                            t.setAuthorname(Util.getCurrentUser());
-                            tagsList.add(t);
+                        if (tagsList.size() < tags.size()) {
+                            for (Tag t : tags) {
+                                if (!tagsList.contains(t)) {
+                                    t.setAuthorname(Util.getCurrentUser());
+                                    tagsList.add(t);
+                                }
+                            }
                         }
                         //f.user.username.content =
                         u.name = Util.getCurrentUser();
@@ -435,8 +449,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         //@TODO need iterableFLATMAP TO GET ALL PAGES
         interestingSubscription = getJacksonService().getInterestingPhotos("1")
 
-                .subscribeOn(AndroidSchedulers.mainThread()) // optional if you do not wish to override the default behavior
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .observeOn(Schedulers.immediate())
                 .subscribe(new Subscriber<Photos>() {
                     @Override
                     public void onCompleted() {
@@ -459,8 +473,27 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                     @Override
                     public void onNext(Photos p) {
-                        Log.d("DEBUG", "onNext interesting: " + p);
+                        //og.d("DEBUG", "onNext interesting: " + p.getPhotos().getPhotoList());
                         //pass photos to fragment
+                        realm = Realm.getDefaultInstance();
+                        realm.beginTransaction();
+
+                        Date maxDate = realm.where(Interesting.class).maximumDate("timestamp");
+                        Interesting interesting = realm.where(Interesting.class).equalTo("timestamp", maxDate).findFirst();
+Log.d("SYNC","interesting"+interesting);
+
+                        RealmList<Photo> interestingList = interesting.getInterestingPhotos(); //managed
+                        for (Photo photo : p.getPhotos().getPhotoList()) {
+                            photo.isInteresting = true;
+                            interestingList.add(photo);
+
+                        }
+
+                        interesting.timestamp = interesting.getTimestamp();
+                        realm.copyToRealmOrUpdate(interesting);  //deep copy
+                        realm.commitTransaction();
+                        Log.d("DEBUG", "end get interesting: " + interesting);
+                        realm.close();
                     }
                 });
 
