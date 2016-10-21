@@ -86,8 +86,11 @@ public class InterestingFragment extends FlickrBaseFragment {
 
             Log.d("INTERESTING PRESENT", "list: " + interesting);
             interesting.addChangeListener(changeListener);
-            r.removeAllChangeListeners();
-            r.close();
+            if ( null != r) {
+                r.removeAllChangeListeners();
+                r.close();
+            }
+
 
             //updateDisplay(interesting);
 

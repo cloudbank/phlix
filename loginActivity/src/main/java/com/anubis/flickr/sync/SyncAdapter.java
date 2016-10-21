@@ -46,7 +46,6 @@ import java.util.Date;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmList;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
 import rx.Subscriber;
@@ -119,7 +118,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         getLoginAndFriends();
         getInterestingPhotos();
         getRecentAndHotags();
-        //get Commons -->  1 time this should not need update
+        //getCommonsPage1
+        //getCommonsAll 1 time this should not need update
         notifyWeather();
         Log.d("SYNC", "onPeformSync");
 
@@ -432,16 +432,15 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
 
                         //f.user = username;  cannot reset primary key even if same
-                        RealmList flist = u.getFriendsList();  //managed
+
                         for (Photo p : photos.getPhotos().getPhotoList()) {
-                            flist.add(p);
+                            u.friendsList.add(p);
                         }
-                        RealmList tagsList = u.getTagsList();
-                        if (tagsList.size() < tags.size()) {
+                        if (u.tagsList.size() < tags.size()) {
                             for (Tag t : tags) {
-                                if (!tagsList.contains(t)) {
+                                if (!u.tagsList.contains(t)) {
                                     t.setAuthorname(Util.getCurrentUser());
-                                    tagsList.add(t);
+                                    u.tagsList.add(t);
                                 }
                             }
                         }
@@ -500,10 +499,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         Interesting interesting = realm.where(Interesting.class).equalTo("timestamp", maxDate).findFirst();
                         Log.d("SYNC", "interesting" + interesting);
 
-                        RealmList<Photo> interestingList = interesting.getInterestingPhotos(); //managed
+
                         for (Photo photo : p.getPhotos().getPhotoList()) {
                             photo.isInteresting = true;
-                            interestingList.add(photo);
+                            interesting.interestingPhotos.add(photo);
 
                         }
 
@@ -555,24 +554,24 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                         Date maxDate = realm.where(Recent.class).maximumDate("timestamp");
                         Recent recent = realm.where(Recent.class).equalTo("timestamp", maxDate).findFirst();
-                        RealmList<Photo> recentList = recent.getRecentPhotos();
+
                         for (Photo p: t.getRecent().getPhotos().getPhotoList()) {
-                            recentList.add(p);
+                            recent.recentPhotos.add(p);
                             //set not interesting @todo
                         }
                         recent.timestamp = maxDate;
 
 
 
-                        RealmList<Tag> tags = recent.getHotTagList();
+
                         for (Tag tag: t.getHottags().getHottags().getTag()) {
-                            tags.add(tag);
+                            recent.hotTagList.add(tag);
                         }
                         realm.copyToRealmOrUpdate(recent);  //deep copy
 
                         realm.commitTransaction();
                         Log.d("DEBUG", "end recent/tag");
-
+                        realm.close();
                     }
                 });
 

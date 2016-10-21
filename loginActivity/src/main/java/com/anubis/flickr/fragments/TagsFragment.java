@@ -96,8 +96,10 @@ public class TagsFragment extends FlickrBaseFragment {
 
             Log.d("TAGS PRESENT", "list: " + recent);
             recent.addChangeListener(changeListener);
-            r.removeAllChangeListeners();
-            r.close();
+            if ( null != r) {
+                r.removeAllChangeListeners();
+                r.close();
+            }
 
             //updateDisplay(interesting);
 

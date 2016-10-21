@@ -24,22 +24,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
         android:layout_centerInParent="true"
-        android:padding="2dp"
+        android:padding="1dp"
         app:container_background_color="@color/AliceBlue"
         app:container_border_color="@color/AliceBlue"
         app:container_enable_drag="false"
-        app:horizontal_interval="5dp"
+        app:horizontal_interval="3dp"
         app:tag_border_color="@color/RoyalBlue"
-        app:tag_horizontal_padding="5dp"
-        app:tag_text_size="12sp"
+        app:tag_horizontal_padding="3dp"
+        app:tag_text_size="10sp"
         app:tag_text_color="@color/white"
         app:tag_theme="random"
-        app:tag_corner_radius="5dp"
-        app:tag_vertical_padding="5dp"
-        app:vertical_interval="5dp" />
+        app:tag_corner_radius="3dp"
+        app:tag_vertical_padding="3dp"
+        app:vertical_interval="3dp" />
 
 
     <TextView

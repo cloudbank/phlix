@@ -34,7 +34,7 @@ public interface FlickrService {
     @GET(API_BASE_URL + "?method=flickr.test.login&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0")
     Observable<User> testLogin();
 
-    @GET(API_BASE_URL + "?method=flickr.photos.getContactsPublicPhotos&per_page=500&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&just_friends=1&extras=date_taken,owner_name,url_s&count=50&include_self=1")
+    @GET(API_BASE_URL + "?method=flickr.photos.getContactsPublicPhotos&per_page=500&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&just_friends=1&extras=date_taken,owner_name,url_s,tags&count=50&include_self=1")
     Observable<Photos> getFriendsPhotos(@Query("user_id") String userId);
 
     @GET(API_BASE_URL + "?method=flickr.people.getPhotos&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&extras=date_taken,owner_name&count=50")

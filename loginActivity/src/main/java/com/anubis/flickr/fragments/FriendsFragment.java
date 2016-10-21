@@ -12,6 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
@@ -38,7 +41,7 @@ public class FriendsFragment extends FlickrBaseFragment {
     private Subscription subscription;
     private String mUsername, mUserId, mPreviousUser;
 
-    private List<Photo> mPhotos;
+    private List<Photo> mPhotos, cPhotos;
 
     protected PhotoArrayAdapter getAdapter() {
         return mAdapter;
@@ -54,13 +57,14 @@ public class FriendsFragment extends FlickrBaseFragment {
     Realm userRealm, r;
     public UserModel mUser;
     RealmChangeListener changeListener;
+    RadioGroup rg;
+    RadioButton rb1, rb5;
 
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //this gets called along w lifecycle when vp recycles fragment ie  commons tab
-
 
 
         changeListener = new RealmChangeListener<UserModel>()
@@ -71,6 +75,8 @@ public class FriendsFragment extends FlickrBaseFragment {
                 // This is called anytime the Realm database changes on any thread.
                 // Please note, change listeners only work on Looper threads.
                 // For non-looper threads, you manually have to use Realm.waitForChange() instead.
+                rb1.setChecked(true);
+                rb5.setChecked(false);
                 updateDisplay(u);
             }
         };
@@ -88,26 +94,48 @@ public class FriendsFragment extends FlickrBaseFragment {
         mUser = userRealm.where(UserModel.class).equalTo("userId", mUserId).findFirst();
         //init is running slow
         //@todo add separate realms for rest
-        r  = Realm.getDefaultInstance();
+        r = Realm.getDefaultInstance();
         if (null == mUser) {
 
             RealmChangeListener realmListener = new RealmChangeListener<Realm>() {
                 @Override
                 public void onChange(Realm r) {
-                   updateDisplay();
-                }};
+                    updateDisplay();
+                }
+            };
             r.addChangeListener(realmListener);
 
         } else {
             Log.d("USER PRESENT", "user: " + mUser);
             mUser.addChangeListener(changeListener);
             updateDisplay(mUser);
-            r.removeAllChangeListeners();
-            r.close();
+            if (null != r) {
+                r.removeAllChangeListeners();
+                r.close();
+            }
 
 
         }
         ringProgressDialog.dismiss();
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.radio1) {
+                    //some code
+
+                    makeSingle(cPhotos);
+                    fAdapter.notifyDataSetChanged();
+                    Toast.makeText(FlickrClientApp.getAppContext(), "Howza1", Toast.LENGTH_SHORT).show();
+
+                } else if (checkedId == R.id.radio5) {
+                    //some code
+                    Toast.makeText(FlickrClientApp.getAppContext(), "Howza5", Toast.LENGTH_SHORT).show();
+                   updateDisplay();
+
+                }
+
+            }
+        });
 
     }
 
@@ -118,6 +146,7 @@ public class FriendsFragment extends FlickrBaseFragment {
 
 
         mPhotos = new ArrayList<Photo>();
+        cPhotos = new ArrayList<Photo>();
         mTags = new ArrayList<Tag>();
         fAdapter = new FriendsAdapter(getActivity(), mPhotos, false);
         ringProgressDialog = new ProgressDialog(getActivity(), R.style.CustomProgessBarStyle);
@@ -192,19 +221,26 @@ public class FriendsFragment extends FlickrBaseFragment {
     }
 
 
-    private  void updateDisplay(UserModel u) {
-        displayTags(u.getTagsList());
+    private void updateDisplay(UserModel u) {
         mPhotos.clear();
+        cPhotos.clear();
+        displayTags(u.getTagsList());
+
+        cPhotos.addAll(u.getFriendsList());
         mPhotos.addAll(u.getFriendsList());
         fAdapter.notifyDataSetChanged();
 
 
     }
 
-    private  void updateDisplay() {
-        UserModel u  = userRealm.where(UserModel.class).equalTo("userId",Util.getUserId()).findFirst();
-        displayTags(u.getTagsList());
+    private void updateDisplay() {
+        cPhotos.clear();
         mPhotos.clear();
+        UserModel u = userRealm.where(UserModel.class).equalTo("userId", Util.getUserId()).findFirst();
+        displayTags(u.getTagsList());
+
+        cPhotos.addAll(u.getFriendsList());
+
         mPhotos.addAll(u.getFriendsList());
         fAdapter.notifyDataSetChanged();
 
@@ -220,7 +256,6 @@ public class FriendsFragment extends FlickrBaseFragment {
     }
 
 
-
     public void displayTags(List<Tag> tags) {
         //tags.stream().map(it -> it.getContent()).collect(Collectors.toCollection())
         //when android catches up to 1.8
@@ -232,7 +267,6 @@ public class FriendsFragment extends FlickrBaseFragment {
 
 
     }
-
 
 
     @Override
@@ -276,7 +310,7 @@ public class FriendsFragment extends FlickrBaseFragment {
             public void onItemClick(View view, int position) {
 
                 // String title = mTags.get(position).getTitle();
-               Intent intent = new Intent(getActivity(),
+                Intent intent = new Intent(getActivity(),
                         ImageDisplayActivity.class);
                 Photo photo = mPhotos.get(position);
                 intent.putExtra(RESULT, photo.getId());
@@ -285,8 +319,29 @@ public class FriendsFragment extends FlickrBaseFragment {
             }
         });
         mTagView = (TagContainerLayout) view.findViewById(R.id.my_tag_group);
+
+        rg = (RadioGroup) view.findViewById(R.id.radioGroup1);
+        rb1 = (RadioButton) view.findViewById(R.id.radio1);
+        rb5 = (RadioButton) view.findViewById(R.id.radio5);
+
         setHasOptionsMenu(true);
         return view;
+    }
+
+
+    private void makeSingle(List<Photo> p) {
+        mPhotos.clear();
+        String current = "";
+
+        for (int i = 0; i < p.size(); i++) {
+            if (!current.equals(p.get(i).getOwnername())) {
+                mPhotos.add(p.get(i));
+                current = p.get(i).getOwnername();
+
+            }
+        }
+
+
     }
 
 

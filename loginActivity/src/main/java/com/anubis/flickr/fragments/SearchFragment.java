@@ -116,8 +116,8 @@ public class SearchFragment extends FlickrBaseFragment {
                 // String title = mTags.get(position).getTitle();
                 Intent intent = new Intent(getActivity(),
                         ImageDisplayActivity.class);
-                Photo result = sPhotos.get(position);
-                intent.putExtra(RESULT, result);
+                Photo photo = sPhotos.get(position);
+                intent.putExtra(RESULT, photo.getId());
                 startActivity(intent);
                 //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }

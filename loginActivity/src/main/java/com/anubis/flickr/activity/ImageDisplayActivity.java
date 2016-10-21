@@ -109,6 +109,10 @@ public class ImageDisplayActivity extends AppCompatActivity {
         mTags = (TagContainerLayout) findViewById(R.id.tag_group);
         //@todo
         //getPhotoFromRealm
+        //if the photo comments and tags are in the realm already
+
+       // else go get that info
+
         getPhotoAndComments(mUid);
         // get focus off edittext, hide kb
         // WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -124,6 +128,8 @@ public class ImageDisplayActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 
     private void getPhotoAndComments(final String uid) {
         Observable<PhotoInfo> photoInfo = FlickrClientApp.getJacksonService().getPhotoInfo(uid);
