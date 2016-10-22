@@ -41,6 +41,7 @@ import com.anubis.flickr.models.UserModel;
 import com.anubis.flickr.models.Who;
 import com.anubis.flickr.util.Util;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -55,6 +56,7 @@ import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
 import static com.anubis.flickr.FlickrClientApp.getJacksonService;
+import static com.anubis.flickr.R.menu.photos;
 import static com.anubis.flickr.R.string.user_id;
 
 
@@ -70,7 +72,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
     Realm realm;
-    Subscription loginSubscription, recentSubscription, interestingSubscription;
+    Subscription loginSubscription, recentSubscription, interestingSubscription, commonsSubscription;
 
 
     /**
@@ -118,7 +120,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         getLoginAndFriends();
         getInterestingPhotos();
         getRecentAndHotags();
-        //getCommonsPage1
+        getCommonsPage1();
         //getCommonsAll 1 time this should not need update
         notifyWeather();
         Log.d("SYNC", "onPeformSync");
@@ -430,9 +432,13 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         UserModel u = null;
                         u = realm.where(UserModel.class).equalTo("userId", user_id).findFirst();
 
+                        //is data stale?
+                        //for 'friends' list, since it is small, fixed size list and data could
+                        //change, just clobber it
 
-                        //f.user = username;  cannot reset primary key even if same
-
+                        if (u.friendsList.size() > 0) {
+                            u.friendsList = null;
+                        }
                         for (Photo p : photos.getPhotos().getPhotoList()) {
                             u.friendsList.add(p);
                         }
@@ -555,16 +561,14 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         Date maxDate = realm.where(Recent.class).maximumDate("timestamp");
                         Recent recent = realm.where(Recent.class).equalTo("timestamp", maxDate).findFirst();
 
-                        for (Photo p: t.getRecent().getPhotos().getPhotoList()) {
+                        for (Photo p : t.getRecent().getPhotos().getPhotoList()) {
                             recent.recentPhotos.add(p);
                             //set not interesting @todo
                         }
                         recent.timestamp = maxDate;
 
 
-
-
-                        for (Tag tag: t.getHottags().getHottags().getTag()) {
+                        for (Tag tag : t.getHottags().getHottags().getTag()) {
                             recent.hotTagList.add(tag);
                         }
                         realm.copyToRealmOrUpdate(recent);  //deep copy
@@ -572,6 +576,57 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         realm.commitTransaction();
                         Log.d("DEBUG", "end recent/tag");
                         realm.close();
+                    }
+                });
+
+    }
+
+
+    private void getCommonsPage1() {
+
+        //check for page total if not then process with page 1
+        //while realm total is less than total increment page else stop
+        commonsSubscription = FlickrClientApp.getJacksonService().commons("1'")
+                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+                .observeOn(Schedulers.immediate())
+                .subscribe(new Subscriber<Photos>() {
+                    @Override
+                    public void onCompleted() {
+                        //update total/page for next sync
+
+                        //Log.d("DEBUG","oncompleted");
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // cast to retrofit.HttpException to get the response code
+                        if (e instanceof HttpException) {
+                            HttpException response = (HttpException) e;
+                            int code = response.code();
+                            Log.e("ERROR", String.valueOf(code));
+                        }
+                        Log.e("ERROR", "error getting commons1/photos" + e);
+                    }
+
+                    @Override
+                    public void onNext(Photos p) {
+                        realm = Realm.getDefaultInstance();
+                        realm.beginTransaction();
+                       //create a common object
+                        //I don't know why arraylist created here cannot be dunked
+                        for (Photo photo: p.getPhotos().getPhotoList()) {
+                            photo.isCommon = true;
+                            photos.add(photo);
+                        }
+                        realm.copyToRealmOrUpdate(photos);
+
+
+
+                        realm.commitTransaction();
+                        Log.d("DEBUG", "end commons");
+                        realm.close();
+
                     }
                 });
 

@@ -34,11 +34,9 @@ import java.util.List;
 import co.hkm.soltag.TagContainerLayout;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
-import rx.Subscription;
 
 public class FriendsFragment extends FlickrBaseFragment {
 
-    private Subscription subscription;
     private String mUsername, mUserId, mPreviousUser;
 
     private List<Photo> mPhotos, cPhotos;
@@ -59,6 +57,7 @@ public class FriendsFragment extends FlickrBaseFragment {
     RealmChangeListener changeListener;
     RadioGroup rg;
     RadioButton rb1, rb5;
+    View view;
 
 
     @Override
@@ -77,6 +76,8 @@ public class FriendsFragment extends FlickrBaseFragment {
                 // For non-looper threads, you manually have to use Realm.waitForChange() instead.
                 rb1.setChecked(true);
                 rb5.setChecked(false);
+                //have to redraw the view
+                view.invalidate();
                 updateDisplay(u);
             }
         };
@@ -275,9 +276,7 @@ public class FriendsFragment extends FlickrBaseFragment {
         if (!userRealm.isClosed()) {
             userRealm.close();
         }
-        if (null != this.subscription) {
-            this.subscription.unsubscribe();
-        }
+
         if (null != this.ringProgressDialog) {
             this.ringProgressDialog = null;
         }
@@ -289,7 +288,7 @@ public class FriendsFragment extends FlickrBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_friends, container,
+        view = inflater.inflate(R.layout.fragment_friends, container,
                 false);
 
         rvPhotos = (RecyclerView) view.findViewById(R.id.rvPhotos);

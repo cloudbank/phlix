@@ -18,7 +18,6 @@ import com.anubis.flickr.adapter.InterestingAdapter;
 import com.anubis.flickr.listener.EndlessRecyclerViewScrollListener;
 import com.anubis.flickr.models.Interesting;
 import com.anubis.flickr.models.Photo;
-import com.anubis.flickr.models.Photos;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,17 +25,12 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
-import retrofit2.adapter.rxjava.HttpException;
-import rx.Subscriber;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 public class InterestingFragment extends FlickrBaseFragment {
     InterestingAdapter rAdapter;
     RecyclerView rvPhotos;
     ProgressDialog ringProgressDialog;
-    private Subscription subscription;
+   // private Subscription subscription;
     //@todo move up
     List<Photo> mInteresting = new ArrayList<Photo>();
     RealmChangeListener changeListener;
@@ -167,49 +161,10 @@ public class InterestingFragment extends FlickrBaseFragment {
     }
 
     void customLoadMoreDataFromApi(int page) {
-        loadPhotos(page, false);
+        /*loadPhotos(page, false); */
     }
 
-    public void loadPhotos(int page, boolean clear) {
-        //@todo offline mode
-        if (clear) {
-            clearAdapter();
-        }
 
-        subscription = FlickrClientApp.getJacksonService().getInterestingPhotos(String.valueOf(page))
-
-                .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Photos>() {
-                    @Override
-                    public void onCompleted() {
-
-
-                        //Log.d("DEBUG","oncompleted");
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        // cast to retrofit.HttpException to get the response code
-                        if (e instanceof HttpException) {
-                            HttpException response = (HttpException) e;
-                            int code = response.code();
-                            Log.e("ERROR", String.valueOf(code));
-                        }
-                        Log.e("ERROR", "error getting interesting photos" + e);
-                    }
-
-                    @Override
-                    public void onNext(Photos p) {
-                        Log.d("DEBUG", "interesting: " + p);
-                        //pass photos to fragment
-                        mInteresting.addAll(p.getPhotos().getPhotoList());
-                        rAdapter.notifyDataSetChanged();
-                    }
-                });
-
-    }
 
     public void updateDisplay(Interesting i) {
         mInteresting.clear();
@@ -224,7 +179,6 @@ public class InterestingFragment extends FlickrBaseFragment {
         if (null != ringProgressDialog) {
             ringProgressDialog = null;
         }
-        subscription.unsubscribe();
         interestingRealm.close();
     }
 }

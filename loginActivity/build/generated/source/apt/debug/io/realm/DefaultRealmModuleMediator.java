@@ -28,12 +28,12 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
     static {
         Set<Class<? extends RealmModel>> modelClasses = new HashSet<Class<? extends RealmModel>>();
         modelClasses.add(com.anubis.flickr.models.Interesting.class);
-        modelClasses.add(com.anubis.flickr.models.Photo.class);
+        modelClasses.add(com.anubis.flickr.models.Tag.class);
         modelClasses.add(com.anubis.flickr.models.Comment.class);
         modelClasses.add(com.anubis.flickr.models.Recent.class);
-        modelClasses.add(com.anubis.flickr.models.Comments_.class);
-        modelClasses.add(com.anubis.flickr.models.Tag.class);
         modelClasses.add(com.anubis.flickr.models.UserModel.class);
+        modelClasses.add(com.anubis.flickr.models.Comments_.class);
+        modelClasses.add(com.anubis.flickr.models.Photo.class);
         MODEL_CLASSES = Collections.unmodifiableSet(modelClasses);
     }
 
@@ -43,18 +43,18 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
             return io.realm.InterestingRealmProxy.initTable(sharedRealm);
-        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-            return io.realm.PhotoRealmProxy.initTable(sharedRealm);
+        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+            return io.realm.TagRealmProxy.initTable(sharedRealm);
         } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
             return io.realm.CommentRealmProxy.initTable(sharedRealm);
         } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
             return io.realm.RecentRealmProxy.initTable(sharedRealm);
-        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-            return io.realm.Comments_RealmProxy.initTable(sharedRealm);
-        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-            return io.realm.TagRealmProxy.initTable(sharedRealm);
         } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
             return io.realm.UserModelRealmProxy.initTable(sharedRealm);
+        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+            return io.realm.Comments_RealmProxy.initTable(sharedRealm);
+        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+            return io.realm.PhotoRealmProxy.initTable(sharedRealm);
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -66,18 +66,18 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
             return io.realm.InterestingRealmProxy.createRealmObjectSchema(realmSchema);
-        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-            return io.realm.PhotoRealmProxy.createRealmObjectSchema(realmSchema);
+        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+            return io.realm.TagRealmProxy.createRealmObjectSchema(realmSchema);
         } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
             return io.realm.CommentRealmProxy.createRealmObjectSchema(realmSchema);
         } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
             return io.realm.RecentRealmProxy.createRealmObjectSchema(realmSchema);
-        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-            return io.realm.Comments_RealmProxy.createRealmObjectSchema(realmSchema);
-        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-            return io.realm.TagRealmProxy.createRealmObjectSchema(realmSchema);
         } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
             return io.realm.UserModelRealmProxy.createRealmObjectSchema(realmSchema);
+        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+            return io.realm.Comments_RealmProxy.createRealmObjectSchema(realmSchema);
+        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+            return io.realm.PhotoRealmProxy.createRealmObjectSchema(realmSchema);
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -89,18 +89,18 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
             return io.realm.InterestingRealmProxy.validateTable(sharedRealm, allowExtraColumns);
-        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-            return io.realm.PhotoRealmProxy.validateTable(sharedRealm, allowExtraColumns);
+        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+            return io.realm.TagRealmProxy.validateTable(sharedRealm, allowExtraColumns);
         } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
             return io.realm.CommentRealmProxy.validateTable(sharedRealm, allowExtraColumns);
         } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
             return io.realm.RecentRealmProxy.validateTable(sharedRealm, allowExtraColumns);
-        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-            return io.realm.Comments_RealmProxy.validateTable(sharedRealm, allowExtraColumns);
-        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-            return io.realm.TagRealmProxy.validateTable(sharedRealm, allowExtraColumns);
         } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
             return io.realm.UserModelRealmProxy.validateTable(sharedRealm, allowExtraColumns);
+        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+            return io.realm.Comments_RealmProxy.validateTable(sharedRealm, allowExtraColumns);
+        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+            return io.realm.PhotoRealmProxy.validateTable(sharedRealm, allowExtraColumns);
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -112,18 +112,18 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
             return io.realm.InterestingRealmProxy.getFieldNames();
-        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-            return io.realm.PhotoRealmProxy.getFieldNames();
+        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+            return io.realm.TagRealmProxy.getFieldNames();
         } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
             return io.realm.CommentRealmProxy.getFieldNames();
         } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
             return io.realm.RecentRealmProxy.getFieldNames();
-        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-            return io.realm.Comments_RealmProxy.getFieldNames();
-        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-            return io.realm.TagRealmProxy.getFieldNames();
         } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
             return io.realm.UserModelRealmProxy.getFieldNames();
+        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+            return io.realm.Comments_RealmProxy.getFieldNames();
+        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+            return io.realm.PhotoRealmProxy.getFieldNames();
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -135,18 +135,18 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
             return io.realm.InterestingRealmProxy.getTableName();
-        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-            return io.realm.PhotoRealmProxy.getTableName();
+        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+            return io.realm.TagRealmProxy.getTableName();
         } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
             return io.realm.CommentRealmProxy.getTableName();
         } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
             return io.realm.RecentRealmProxy.getTableName();
-        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-            return io.realm.Comments_RealmProxy.getTableName();
-        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-            return io.realm.TagRealmProxy.getTableName();
         } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
             return io.realm.UserModelRealmProxy.getTableName();
+        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+            return io.realm.Comments_RealmProxy.getTableName();
+        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+            return io.realm.PhotoRealmProxy.getTableName();
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -161,18 +161,18 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
             if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
                 return clazz.cast(new io.realm.InterestingRealmProxy());
-            } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-                return clazz.cast(new io.realm.PhotoRealmProxy());
+            } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+                return clazz.cast(new io.realm.TagRealmProxy());
             } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
                 return clazz.cast(new io.realm.CommentRealmProxy());
             } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
                 return clazz.cast(new io.realm.RecentRealmProxy());
-            } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-                return clazz.cast(new io.realm.Comments_RealmProxy());
-            } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-                return clazz.cast(new io.realm.TagRealmProxy());
             } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
                 return clazz.cast(new io.realm.UserModelRealmProxy());
+            } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+                return clazz.cast(new io.realm.Comments_RealmProxy());
+            } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+                return clazz.cast(new io.realm.PhotoRealmProxy());
             } else {
                 throw getMissingProxyClassException(clazz);
             }
@@ -194,18 +194,18 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
             return clazz.cast(io.realm.InterestingRealmProxy.copyOrUpdate(realm, (com.anubis.flickr.models.Interesting) obj, update, cache));
-        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-            return clazz.cast(io.realm.PhotoRealmProxy.copyOrUpdate(realm, (com.anubis.flickr.models.Photo) obj, update, cache));
+        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+            return clazz.cast(io.realm.TagRealmProxy.copyOrUpdate(realm, (com.anubis.flickr.models.Tag) obj, update, cache));
         } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
             return clazz.cast(io.realm.CommentRealmProxy.copyOrUpdate(realm, (com.anubis.flickr.models.Comment) obj, update, cache));
         } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
             return clazz.cast(io.realm.RecentRealmProxy.copyOrUpdate(realm, (com.anubis.flickr.models.Recent) obj, update, cache));
-        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-            return clazz.cast(io.realm.Comments_RealmProxy.copyOrUpdate(realm, (com.anubis.flickr.models.Comments_) obj, update, cache));
-        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-            return clazz.cast(io.realm.TagRealmProxy.copyOrUpdate(realm, (com.anubis.flickr.models.Tag) obj, update, cache));
         } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
             return clazz.cast(io.realm.UserModelRealmProxy.copyOrUpdate(realm, (com.anubis.flickr.models.UserModel) obj, update, cache));
+        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+            return clazz.cast(io.realm.Comments_RealmProxy.copyOrUpdate(realm, (com.anubis.flickr.models.Comments_) obj, update, cache));
+        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+            return clazz.cast(io.realm.PhotoRealmProxy.copyOrUpdate(realm, (com.anubis.flickr.models.Photo) obj, update, cache));
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -219,18 +219,18 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
             io.realm.InterestingRealmProxy.insert(realm, (com.anubis.flickr.models.Interesting) object, cache);
-        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-            io.realm.PhotoRealmProxy.insert(realm, (com.anubis.flickr.models.Photo) object, cache);
+        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+            io.realm.TagRealmProxy.insert(realm, (com.anubis.flickr.models.Tag) object, cache);
         } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
             io.realm.CommentRealmProxy.insert(realm, (com.anubis.flickr.models.Comment) object, cache);
         } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
             io.realm.RecentRealmProxy.insert(realm, (com.anubis.flickr.models.Recent) object, cache);
-        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-            io.realm.Comments_RealmProxy.insert(realm, (com.anubis.flickr.models.Comments_) object, cache);
-        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-            io.realm.TagRealmProxy.insert(realm, (com.anubis.flickr.models.Tag) object, cache);
         } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
             io.realm.UserModelRealmProxy.insert(realm, (com.anubis.flickr.models.UserModel) object, cache);
+        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+            io.realm.Comments_RealmProxy.insert(realm, (com.anubis.flickr.models.Comments_) object, cache);
+        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+            io.realm.PhotoRealmProxy.insert(realm, (com.anubis.flickr.models.Photo) object, cache);
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -250,36 +250,36 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
             if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
                 io.realm.InterestingRealmProxy.insert(realm, (com.anubis.flickr.models.Interesting) object, cache);
-            } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-                io.realm.PhotoRealmProxy.insert(realm, (com.anubis.flickr.models.Photo) object, cache);
+            } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+                io.realm.TagRealmProxy.insert(realm, (com.anubis.flickr.models.Tag) object, cache);
             } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
                 io.realm.CommentRealmProxy.insert(realm, (com.anubis.flickr.models.Comment) object, cache);
             } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
                 io.realm.RecentRealmProxy.insert(realm, (com.anubis.flickr.models.Recent) object, cache);
-            } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-                io.realm.Comments_RealmProxy.insert(realm, (com.anubis.flickr.models.Comments_) object, cache);
-            } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-                io.realm.TagRealmProxy.insert(realm, (com.anubis.flickr.models.Tag) object, cache);
             } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
                 io.realm.UserModelRealmProxy.insert(realm, (com.anubis.flickr.models.UserModel) object, cache);
+            } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+                io.realm.Comments_RealmProxy.insert(realm, (com.anubis.flickr.models.Comments_) object, cache);
+            } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+                io.realm.PhotoRealmProxy.insert(realm, (com.anubis.flickr.models.Photo) object, cache);
             } else {
                 throw getMissingProxyClassException(clazz);
             }
             if (iterator.hasNext()) {
                 if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
                     io.realm.InterestingRealmProxy.insert(realm, iterator, cache);
-                } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-                    io.realm.PhotoRealmProxy.insert(realm, iterator, cache);
+                } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+                    io.realm.TagRealmProxy.insert(realm, iterator, cache);
                 } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
                     io.realm.CommentRealmProxy.insert(realm, iterator, cache);
                 } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
                     io.realm.RecentRealmProxy.insert(realm, iterator, cache);
-                } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-                    io.realm.Comments_RealmProxy.insert(realm, iterator, cache);
-                } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-                    io.realm.TagRealmProxy.insert(realm, iterator, cache);
                 } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
                     io.realm.UserModelRealmProxy.insert(realm, iterator, cache);
+                } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+                    io.realm.Comments_RealmProxy.insert(realm, iterator, cache);
+                } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+                    io.realm.PhotoRealmProxy.insert(realm, iterator, cache);
                 } else {
                     throw getMissingProxyClassException(clazz);
                 }
@@ -295,18 +295,18 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
             io.realm.InterestingRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Interesting) obj, cache);
-        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-            io.realm.PhotoRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Photo) obj, cache);
+        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+            io.realm.TagRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Tag) obj, cache);
         } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
             io.realm.CommentRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Comment) obj, cache);
         } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
             io.realm.RecentRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Recent) obj, cache);
-        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-            io.realm.Comments_RealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Comments_) obj, cache);
-        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-            io.realm.TagRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Tag) obj, cache);
         } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
             io.realm.UserModelRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.UserModel) obj, cache);
+        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+            io.realm.Comments_RealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Comments_) obj, cache);
+        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+            io.realm.PhotoRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Photo) obj, cache);
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -326,36 +326,36 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
             if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
                 io.realm.InterestingRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Interesting) object, cache);
-            } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-                io.realm.PhotoRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Photo) object, cache);
+            } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+                io.realm.TagRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Tag) object, cache);
             } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
                 io.realm.CommentRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Comment) object, cache);
             } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
                 io.realm.RecentRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Recent) object, cache);
-            } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-                io.realm.Comments_RealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Comments_) object, cache);
-            } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-                io.realm.TagRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Tag) object, cache);
             } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
                 io.realm.UserModelRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.UserModel) object, cache);
+            } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+                io.realm.Comments_RealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Comments_) object, cache);
+            } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+                io.realm.PhotoRealmProxy.insertOrUpdate(realm, (com.anubis.flickr.models.Photo) object, cache);
             } else {
                 throw getMissingProxyClassException(clazz);
             }
             if (iterator.hasNext()) {
                 if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
                     io.realm.InterestingRealmProxy.insertOrUpdate(realm, iterator, cache);
-                } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-                    io.realm.PhotoRealmProxy.insertOrUpdate(realm, iterator, cache);
+                } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+                    io.realm.TagRealmProxy.insertOrUpdate(realm, iterator, cache);
                 } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
                     io.realm.CommentRealmProxy.insertOrUpdate(realm, iterator, cache);
                 } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
                     io.realm.RecentRealmProxy.insertOrUpdate(realm, iterator, cache);
-                } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-                    io.realm.Comments_RealmProxy.insertOrUpdate(realm, iterator, cache);
-                } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-                    io.realm.TagRealmProxy.insertOrUpdate(realm, iterator, cache);
                 } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
                     io.realm.UserModelRealmProxy.insertOrUpdate(realm, iterator, cache);
+                } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+                    io.realm.Comments_RealmProxy.insertOrUpdate(realm, iterator, cache);
+                } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+                    io.realm.PhotoRealmProxy.insertOrUpdate(realm, iterator, cache);
                 } else {
                     throw getMissingProxyClassException(clazz);
                 }
@@ -370,18 +370,18 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
             return clazz.cast(io.realm.InterestingRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
-        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-            return clazz.cast(io.realm.PhotoRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
+        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+            return clazz.cast(io.realm.TagRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
         } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
             return clazz.cast(io.realm.CommentRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
         } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
             return clazz.cast(io.realm.RecentRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
-        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-            return clazz.cast(io.realm.Comments_RealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
-        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-            return clazz.cast(io.realm.TagRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
         } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
             return clazz.cast(io.realm.UserModelRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
+        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+            return clazz.cast(io.realm.Comments_RealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
+        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+            return clazz.cast(io.realm.PhotoRealmProxy.createOrUpdateUsingJsonObject(realm, json, update));
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -394,18 +394,18 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
             return clazz.cast(io.realm.InterestingRealmProxy.createUsingJsonStream(realm, reader));
-        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-            return clazz.cast(io.realm.PhotoRealmProxy.createUsingJsonStream(realm, reader));
+        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+            return clazz.cast(io.realm.TagRealmProxy.createUsingJsonStream(realm, reader));
         } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
             return clazz.cast(io.realm.CommentRealmProxy.createUsingJsonStream(realm, reader));
         } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
             return clazz.cast(io.realm.RecentRealmProxy.createUsingJsonStream(realm, reader));
-        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-            return clazz.cast(io.realm.Comments_RealmProxy.createUsingJsonStream(realm, reader));
-        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-            return clazz.cast(io.realm.TagRealmProxy.createUsingJsonStream(realm, reader));
         } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
             return clazz.cast(io.realm.UserModelRealmProxy.createUsingJsonStream(realm, reader));
+        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+            return clazz.cast(io.realm.Comments_RealmProxy.createUsingJsonStream(realm, reader));
+        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+            return clazz.cast(io.realm.PhotoRealmProxy.createUsingJsonStream(realm, reader));
         } else {
             throw getMissingProxyClassException(clazz);
         }
@@ -419,18 +419,18 @@ class DefaultRealmModuleMediator extends RealmProxyMediator {
 
         if (clazz.equals(com.anubis.flickr.models.Interesting.class)) {
             return clazz.cast(io.realm.InterestingRealmProxy.createDetachedCopy((com.anubis.flickr.models.Interesting) realmObject, 0, maxDepth, cache));
-        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
-            return clazz.cast(io.realm.PhotoRealmProxy.createDetachedCopy((com.anubis.flickr.models.Photo) realmObject, 0, maxDepth, cache));
+        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
+            return clazz.cast(io.realm.TagRealmProxy.createDetachedCopy((com.anubis.flickr.models.Tag) realmObject, 0, maxDepth, cache));
         } else if (clazz.equals(com.anubis.flickr.models.Comment.class)) {
             return clazz.cast(io.realm.CommentRealmProxy.createDetachedCopy((com.anubis.flickr.models.Comment) realmObject, 0, maxDepth, cache));
         } else if (clazz.equals(com.anubis.flickr.models.Recent.class)) {
             return clazz.cast(io.realm.RecentRealmProxy.createDetachedCopy((com.anubis.flickr.models.Recent) realmObject, 0, maxDepth, cache));
-        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
-            return clazz.cast(io.realm.Comments_RealmProxy.createDetachedCopy((com.anubis.flickr.models.Comments_) realmObject, 0, maxDepth, cache));
-        } else if (clazz.equals(com.anubis.flickr.models.Tag.class)) {
-            return clazz.cast(io.realm.TagRealmProxy.createDetachedCopy((com.anubis.flickr.models.Tag) realmObject, 0, maxDepth, cache));
         } else if (clazz.equals(com.anubis.flickr.models.UserModel.class)) {
             return clazz.cast(io.realm.UserModelRealmProxy.createDetachedCopy((com.anubis.flickr.models.UserModel) realmObject, 0, maxDepth, cache));
+        } else if (clazz.equals(com.anubis.flickr.models.Comments_.class)) {
+            return clazz.cast(io.realm.Comments_RealmProxy.createDetachedCopy((com.anubis.flickr.models.Comments_) realmObject, 0, maxDepth, cache));
+        } else if (clazz.equals(com.anubis.flickr.models.Photo.class)) {
+            return clazz.cast(io.realm.PhotoRealmProxy.createDetachedCopy((com.anubis.flickr.models.Photo) realmObject, 0, maxDepth, cache));
         } else {
             throw getMissingProxyClassException(clazz);
         }

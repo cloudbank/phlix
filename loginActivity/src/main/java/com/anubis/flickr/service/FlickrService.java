@@ -60,7 +60,7 @@ public interface FlickrService {
     Observable<Photos> search(@QueryMap Map<String, String> options);
 
     @GET(API_BASE_URL + "?method=flickr.photos.search&per_page=500&extras=date_taken,owner_name,tags,description,url_s&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&is_commons=true&view_all=1")
-    Observable<Photos> commons(@QueryMap Map<String, String> options);
+    Observable<Photos> commons(@Query("page") String page);
 
     @GET(API_BASE_URL + "?method=flickr.photos.getRecent&format=json&nojsoncallback=1&api_key=3b9d2687f93eb4b4835a112b41d28db0&extras=date_taken,owner_name,tags&per_page=500")
     Observable<Photos> getRecentPhotos();
