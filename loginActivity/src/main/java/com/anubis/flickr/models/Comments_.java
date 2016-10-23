@@ -16,14 +16,15 @@ import java.util.Map;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "photo_id",
-    "comments"
+        "photo_id",
+        "comments"
 })
-public class Comments_  extends RealmObject{
-
+public class Comments_ extends RealmObject {
+    @PrimaryKey
     @JsonProperty("photo_id")
     private String photoId;
     @JsonProperty("comment")
@@ -37,9 +38,7 @@ public class Comments_  extends RealmObject{
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
-     * @return
-     *     The photoId
+     * @return The photoId
      */
     @JsonProperty("photo_id")
     public String getPhotoId() {
@@ -47,9 +46,7 @@ public class Comments_  extends RealmObject{
     }
 
     /**
-     * 
-     * @param photoId
-     *     The photo_id
+     * @param photoId The photo_id
      */
     @JsonProperty("photo_id")
     public void setPhotoId(String photoId) {
@@ -57,9 +54,7 @@ public class Comments_  extends RealmObject{
     }
 
     /**
-     * 
-     * @return
-     *     The comments
+     * @return The comments
      */
     @JsonProperty("comment")
     public List<Comment> getComments() {
@@ -67,9 +62,7 @@ public class Comments_  extends RealmObject{
     }
 
     /**
-     * 
-     * @param comments
-     *     The comments
+     * @param comments The comments
      */
     @JsonProperty("comment")
     public void setComments(List<Comment> comments) {
