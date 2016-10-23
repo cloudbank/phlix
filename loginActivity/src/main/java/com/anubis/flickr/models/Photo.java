@@ -127,6 +127,8 @@ public class Photo extends RealmObject implements Serializable {
 
     }
 
+
+
     public String getPhotoPage() {
         return "https://www.flickr.com/photos/" + this.getOwner() + "/" + this.getId();
 
@@ -348,11 +350,11 @@ public class Photo extends RealmObject implements Serializable {
         return tags;
     }
 
+    @JsonProperty("tags")
     /**
      * @param
      */
-    @JsonProperty("tags")
-    public void settags(String ownername) {
+    public void setTags(String tags) {
         this.tags = tags;
     }
 

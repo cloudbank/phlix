@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Oct 23 12:16:44 PDT 2016
+#Sun Oct 23 12:47:22 PDT 2016
 20.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_
 143.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_
 493.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_

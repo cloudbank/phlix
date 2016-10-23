@@ -51,7 +51,7 @@ import static com.anubis.flickr.R.id.username;
 public class ImageDisplayActivity extends AppCompatActivity {
 
     WebView wvComments;
-    List<Tag> mTagsList = new ArrayList<Tag>();
+    List<String> mTagsList = new ArrayList<String>();
     TagContainerLayout mTags;
     EditText etComments;
     String mUid = "";
@@ -114,6 +114,11 @@ public class ImageDisplayActivity extends AppCompatActivity {
        // else go get that info
 
         getPhotoAndComments(mUid);
+        mTagsList.clear();
+        mTagsList = mPhoto.getTags();
+        //save tags
+
+        displayPhotoInfo(mTagsList);
         // get focus off edittext, hide kb
         // WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
@@ -130,19 +135,22 @@ public class ImageDisplayActivity extends AppCompatActivity {
     }
 
 
-
+  //now we have the tags;
     private void getPhotoAndComments(final String uid) {
-        Observable<PhotoInfo> photoInfo = FlickrClientApp.getJacksonService().getPhotoInfo(uid);
-        subscription = FlickrClientApp.getJacksonService().getComments(uid).zipWith(photoInfo, new Func2<Comments, PhotoInfo, ImageDisplay>() {
+        //Observable<PhotoInfo> photoInfo = FlickrClientApp.getJacksonService().getPhotoInfo(uid);
+        subscription = FlickrClientApp.getJacksonService().getComments(uid)
+                /*.zipWith(photoInfo, new Func2<Comments, PhotoInfo, ImageDisplay>() {
             @Override
             public ImageDisplay call(Comments c, PhotoInfo p) {
                 return new ImageDisplay(p, c);
             }
 
 
-        }).subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
+        })*/
+
+        .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ImageDisplay>() {
+                .subscribe(new Subscriber<Comments>() {
                     @Override
                     public void onCompleted() {
 
@@ -164,7 +172,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onNext(ImageDisplay imageDisplay) {
+                    public void onNext(Comments comments) {
                         Log.d("DEBUG", "imageDisplay: " + imageDisplay);
                         //pass comments to webview
                         List<Comment> comments = imageDisplay.getComments().getComments().getComments();
@@ -174,11 +182,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
                         mComments.addAll(comments);
                         displayComments(wvComments, mComments, false);
                         //@todo w save this will change
-                        mTagsList.clear();
-                        mTagsList = imageDisplay.getPhoto().getPhoto().getTags().getTag();
-                        //save tags
 
-                        displayPhotoInfo(mTagsList);
                     }
                 });
 

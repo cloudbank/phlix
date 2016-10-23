@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Oct 23 12:16:05 PDT 2016
+#Sun Oct 23 12:46:55 PDT 2016
 20.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_
 143.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_
 340.file=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_/res/drawable-hdpi-v4/flickr_textfield_default_holo_light.9.png
