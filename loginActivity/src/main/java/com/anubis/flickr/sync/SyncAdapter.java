@@ -354,8 +354,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         UserModel u = realm.where(UserModel.class).equalTo("userId", user.getUser().getUserId()).findFirst();
                         if (null == u) {
                             u = realm.createObject(UserModel.class, user.getUser().getUserId());
+                            realm.copyToRealmOrUpdate(u);  //deep copy
                         }
-                        realm.copyToRealmOrUpdate(u);  //deep copy
+
                         Date d = Calendar.getInstance().getTime();
                         Interesting i = realm.createObject(Interesting.class, d.toString());
                         i.setTimestamp(d);
@@ -363,6 +364,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         Recent r = realm.createObject(Recent.class, d.toString());
                         r.setTimestamp(d);
                         realm.copyToRealmOrUpdate(r);
+                        //@todo probably can change this w algo
                         Common c = realm.createObject(Common.class, d.toString());
                         c.setTimestamp(d);
                         realm.copyToRealmOrUpdate(c);

@@ -106,7 +106,7 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
 
         vpPager = (ViewPager) findViewById(R.id.vpPager);
 
-        vpPager.setOffscreenPageLimit(2);
+        vpPager.setOffscreenPageLimit(3);
         vpPager.setAdapter(adapterViewPager);
 
         vpPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -119,6 +119,7 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
         return new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
                 pager.setCurrentItem(tab.getPosition());
             }
 

@@ -53,11 +53,18 @@ public class TagsFragment extends FlickrBaseFragment {
 
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("TABS","tags onresume");
+    }
+
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //this gets called along w lifecycle when vp recycles fragment ie  commons tab
 
-
+        Log.d("TABS","tags activcreated");
         changeListener = new RealmChangeListener<Recent>()
 
         {
@@ -95,6 +102,7 @@ public class TagsFragment extends FlickrBaseFragment {
 
 
             Log.d("TAGS PRESENT", "list: " + recent);
+            updateDisplay(recent);
             recent.addChangeListener(changeListener);
             if ( null != r) {
                 r.removeAllChangeListeners();
@@ -120,7 +128,7 @@ public class TagsFragment extends FlickrBaseFragment {
         this.prefs = FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
         this.editor = this.prefs.edit();
         mTags = new ArrayList<Tag>();
-
+        Log.d("TABS","tags oncreate");
         //getTags();
         //getPhotos();
         setRetainInstance(true);

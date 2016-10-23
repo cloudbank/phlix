@@ -36,12 +36,20 @@ public class InterestingFragment extends FlickrBaseFragment {
     RealmChangeListener changeListener;
     Realm interestingRealm, r;
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("TABS","interesting onresume");
+    }
+
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //this gets called along w lifecycle when vp recycles fragment ie  commons tab
 
-
+        Log.d("TABS","interesting activcreated");
         changeListener = new RealmChangeListener<Interesting>()
 
         {
@@ -79,6 +87,7 @@ public class InterestingFragment extends FlickrBaseFragment {
 
 
             Log.d("INTERESTING PRESENT", "list: " + interesting);
+            updateDisplay(interesting);
             interesting.addChangeListener(changeListener);
             if ( null != r) {
                 r.removeAllChangeListeners();
@@ -107,6 +116,7 @@ public class InterestingFragment extends FlickrBaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+        Log.d("TABS","interesting oncreate");
         ringProgressDialog = new ProgressDialog(getActivity(), R.style.MyDialogTheme);
 
         rAdapter = new InterestingAdapter(FlickrClientApp.getAppContext(), mInteresting, true);

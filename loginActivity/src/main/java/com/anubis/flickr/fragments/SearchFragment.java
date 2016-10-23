@@ -42,13 +42,20 @@ public class SearchFragment extends FlickrBaseFragment {
         commonsRealm.close();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("TABS","search onresume");
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //this gets called along w lifecycle when vp recycles fragment ie  commons tab
         //get from realm in random order
+        Log.d("TABS","search activcreated");
         changeListener = new RealmChangeListener<Common>()
+
 
         {
             @Override
@@ -85,6 +92,7 @@ public class SearchFragment extends FlickrBaseFragment {
 
 
             Log.d("COMMON PRESENT", "list: " + c);
+            updateDisplay(c);
             c.addChangeListener(changeListener);
             if (null != r) {
                 r.removeAllChangeListeners();
@@ -104,6 +112,7 @@ public class SearchFragment extends FlickrBaseFragment {
         super.onCreate(savedInstanceState);
         searchAdapter = new SearchAdapter(FlickrClientApp.getAppContext(), sPhotos, true);
         //loadPhotos(1, true);
+        Log.d("TABS","search oncreate");
         ringProgressDialog = new ProgressDialog(getActivity(), R.style.MyDialogTheme);
         setRetainInstance(true);
     }
