@@ -4,86 +4,6 @@
     android:layout_height="wrap_content"
     android:background="@color/AliceBlue"
     android:layout_marginLeft="10dp">
-    <!--
-        <RadioGroup
-            android:id="@+id/radioGroup1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-
-            android:orientation='horizontal'>
-
-            <RadioButton
-                android:id="@+id/radio0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:theme="@style/MyRadioButton"
-                android:textStyle="bold"
-                android:textColor="@color/RoyalBlue"
-                android:text="Tag OR" />
-
-            <RadioButton
-                android:id="@+id/radio1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="@color/RoyalBlue"
-                android:theme="@style/MyRadioButton"
-                android:text="Tag AND" />
-
-            <RadioButton
-                android:id="@+id/radio2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="@color/RoyalBlue"
-                android:theme="@style/MyRadioButton"
-                android:text="Text" />
-        </RadioGroup>
-
-
-
-        <EditText
-            android:id="@+id/etQuery"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/radioGroup1"
-            android:layout_alignLeft="@+id/radioGroup1"
-            android:layout_marginTop="23dp"
-            android:layout_weight="1"
-            android:textColorHint="@color/RoyalBlue"
-            android:textColor="@color/RoyalBlue"
-            android:theme="@style/MyEditText"
-            android:hint="Enter search term">
-
-            <requestFocus />
-        </EditText>
-
-         <Button
-            android:id="@+id/btnQuery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/search"
-            android:textColor="@color/AliceBlue"
-            android:textSize="14sp"
-            android:theme="@style/MyButton"
-            android:layout_alignBottom="@+id/etQuery"
-            android:layout_toRightOf="@+id/etQuery"
-            android:layout_toEndOf="@+id/etQuery" />
-
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/radioGroup1"
-            android:textColor="@color/DeepPink"
-            android:layout_alignLeft="@+id/radioGroup1"
-            android:text="@string/search_by" />
-
-        -->
 
     <TextView
         android:id="@+id/tvCommons2"
@@ -93,7 +13,7 @@
         android:textSize="10sp"
         android:layout_below="@+id/ivCommons"
         android:text="@string/commons_under"
-        android:textAlignment="viewEnd"
+        android:textAlignment="center"
         android:gravity="clip_horizontal"
         android:padding="3dp"
         android:layout_centerInParent="true" />

@@ -1,5 +1,6 @@
 package com.anubis.flickr.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,7 +16,7 @@ import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.adapter.SearchAdapter;
 import com.anubis.flickr.adapter.SpacesItemDecoration;
-import com.anubis.flickr.listener.EndlessRecyclerViewScrollListener;
+import com.anubis.flickr.models.Common;
 import com.anubis.flickr.models.Photo;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
-import io.realm.RealmResults;
+
 
 public class SearchFragment extends FlickrBaseFragment {
 
@@ -31,8 +32,9 @@ public class SearchFragment extends FlickrBaseFragment {
     RecyclerView rvPhotos;
     SearchAdapter searchAdapter;
     List<Photo> sPhotos = new ArrayList<Photo>();
-    Realm commonsRealm;
+    Realm commonsRealm, r;
     RealmChangeListener changeListener;
+    ProgressDialog ringProgressDialog;
 
     @Override
     public void onDestroy() {
@@ -46,23 +48,54 @@ public class SearchFragment extends FlickrBaseFragment {
         super.onActivityCreated(savedInstanceState);
         //this gets called along w lifecycle when vp recycles fragment ie  commons tab
         //get from realm in random order
-        commonsRealm = Realm.getDefaultInstance();
-        RealmResults<Photo> commons = commonsRealm.where(Photo.class).equalTo("isCommon", true).findAll();
-Log.d("COMMONS","commons"+commons);
-        changeListener = new RealmChangeListener<RealmResults<Photo> >() {
+        changeListener = new RealmChangeListener<Common>()
 
+        {
             @Override
-            public void onChange(RealmResults<Photo> commons) {
+            public void onChange(Common c) {
                 // This is called anytime the Realm database changes on any thread.
                 // Please note, change listeners only work on Looper threads.
                 // For non-looper threads, you manually have to use Realm.waitForChange() instead.
-                sPhotos.addAll(commons);
-                searchAdapter.notifyDataSetChanged();
+                updateDisplay(c);
+            }
+        };
 
+
+        commonsRealm = Realm.getDefaultInstance();
+
+        ringProgressDialog.setTitle("Please wait");
+        ringProgressDialog.setMessage("Retrieving tags/recent photos");
+        ringProgressDialog.setCancelable(true);
+        ringProgressDialog.show();
+        Common c = commonsRealm.where(Common.class).findFirst();
+        Log.d("DEBUG", "commonsFragment" + c);
+        if (null == c) {
+            r = Realm.getDefaultInstance();
+            RealmChangeListener realmListener = new RealmChangeListener<Realm>() {
+                @Override
+                public void onChange(Realm r) {
+                    updateDisplay();
+                }
+            };
+            r.addChangeListener(realmListener);
+
+        } else {
+            //init is running slow
+            //@todo add separate realms for rest
+
+
+            Log.d("COMMON PRESENT", "list: " + c);
+            c.addChangeListener(changeListener);
+            if (null != r) {
+                r.removeAllChangeListeners();
+                r.close();
             }
 
+            //updateDisplay(interesting);
 
-        };
+        }
+        ringProgressDialog.dismiss();
+
 
     }
 
@@ -71,8 +104,24 @@ Log.d("COMMONS","commons"+commons);
         super.onCreate(savedInstanceState);
         searchAdapter = new SearchAdapter(FlickrClientApp.getAppContext(), sPhotos, true);
         //loadPhotos(1, true);
-
+        ringProgressDialog = new ProgressDialog(getActivity(), R.style.MyDialogTheme);
         setRetainInstance(true);
+    }
+
+    private void updateDisplay() {
+        Common c = commonsRealm.where(Common.class).findFirst();
+        sPhotos.clear();
+        sPhotos.addAll(c.getCommonPhotos());
+        searchAdapter.notifyDataSetChanged();
+    }
+
+    private void updateDisplay(Common c) {
+
+        sPhotos.clear();
+        sPhotos.addAll(c.getCommonPhotos());
+        searchAdapter.notifyDataSetChanged();
+
+
     }
 
     @Override
@@ -90,14 +139,14 @@ Log.d("COMMONS","commons"+commons);
         rvPhotos.setLayoutManager(gridLayoutManager);
         SpacesItemDecoration decoration = new SpacesItemDecoration(15);
         rvPhotos.addItemDecoration(decoration);
-        rvPhotos.addOnScrollListener(new EndlessRecyclerViewScrollListener(gridLayoutManager) {
+       /* rvPhotos.addOnScrollListener(new EndlessRecyclerViewScrollListener(gridLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to the bottom of the list
                 customLoadMoreDataFromApi(page);
             }
-        });
+        });*/
         //rvPhotos.setOnItemClickListener(mListener);
         //rvPhotos.setOnScrollListener(mScrollListener);
         searchAdapter.setOnItemClickListener(new SearchAdapter.OnItemClickListener() {
@@ -120,8 +169,6 @@ Log.d("COMMONS","commons"+commons);
     }
 
 
-
-
     void customLoadMoreDataFromApi(int page) {
         /*loadPhotos(page, false);*/
     }
@@ -130,7 +177,6 @@ Log.d("COMMONS","commons"+commons);
         sPhotos.clear();
         searchAdapter.notifyDataSetChanged();
     }
-
 
 
 }

@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
+import com.anubis.flickr.models.Common;
 import com.anubis.flickr.models.Hottags;
 import com.anubis.flickr.models.Interesting;
 import com.anubis.flickr.models.Photo;
@@ -41,7 +42,6 @@ import com.anubis.flickr.models.UserModel;
 import com.anubis.flickr.models.Who;
 import com.anubis.flickr.util.Util;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -56,7 +56,6 @@ import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
 import static com.anubis.flickr.FlickrClientApp.getJacksonService;
-import static com.anubis.flickr.R.menu.photos;
 import static com.anubis.flickr.R.string.user_id;
 
 
@@ -71,7 +70,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     public static final int SYNC_INTERVAL = 60 * 5;    //60 * 180;  //@todo change to 23 hrs
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
-    Realm realm;
+    Realm realm, realm2, realm3, realm4, realm5;
     Subscription loginSubscription, recentSubscription, interestingSubscription, commonsSubscription;
 
 
@@ -364,7 +363,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         Recent r = realm.createObject(Recent.class, d.toString());
                         r.setTimestamp(d);
                         realm.copyToRealmOrUpdate(r);
-
+                        Common c = realm.createObject(Common.class, d.toString());
+                        c.setTimestamp(d);
+                        realm.copyToRealmOrUpdate(c);
 
                         realm.commitTransaction();
                         realm.close();
@@ -425,12 +426,12 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         Who w = userInfo.getWho();
                         List<Tag> tags = w.getWho().getTags().getTag();
                         // }
-                        realm = Realm.getDefaultInstance();
-                        realm.beginTransaction();
+                        realm2 = Realm.getDefaultInstance();
+                        realm2.beginTransaction();
                         String user_id = Util.getUserId();
 
                         UserModel u = null;
-                        u = realm.where(UserModel.class).equalTo("userId", user_id).findFirst();
+                        u = realm2.where(UserModel.class).equalTo("userId", user_id).findFirst();
 
                         //is data stale?
                         //for 'friends' list, since it is small, fixed size list and data could
@@ -453,10 +454,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         //f.user.username.content =
                         u.name = Util.getCurrentUser();
                         u.timestamp = Calendar.getInstance().getTime();
-                        realm.copyToRealmOrUpdate(u);  //deep copy
-                        realm.commitTransaction();
+                        realm2.copyToRealmOrUpdate(u);  //deep copy
+                        realm2.commitTransaction();
                         Log.d("DEBUG", "end get userinfo: " + u);
-                        realm.close();
+                        realm2.close();
 
 
                     }
@@ -498,11 +499,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                     public void onNext(Photos p) {
                         //og.d("DEBUG", "onNext interesting: " + p.getPhotos().getPhotoList());
                         //pass photos to fragment
-                        realm = Realm.getDefaultInstance();
-                        realm.beginTransaction();
+                        realm3 = Realm.getDefaultInstance();
+                        realm3.beginTransaction();
 
-                        Date maxDate = realm.where(Interesting.class).maximumDate("timestamp");
-                        Interesting interesting = realm.where(Interesting.class).equalTo("timestamp", maxDate).findFirst();
+                        Date maxDate = realm3.where(Interesting.class).maximumDate("timestamp");
+                        Interesting interesting = realm3.where(Interesting.class).equalTo("timestamp", maxDate).findFirst();
                         Log.d("SYNC", "interesting" + interesting);
 
 
@@ -513,10 +514,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         }
 
                         interesting.timestamp = interesting.getTimestamp();
-                        realm.copyToRealmOrUpdate(interesting);  //deep copy
-                        realm.commitTransaction();
+                        realm3.copyToRealmOrUpdate(interesting);  //deep copy
+                        realm3.commitTransaction();
                         Log.d("DEBUG", "end get interesting: " + interesting);
-                        realm.close();
+                        realm3.close();
                     }
                 });
 
@@ -555,11 +556,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                     @Override
                     public void onNext(TagAndRecent t) {
-                        realm = Realm.getDefaultInstance();
-                        realm.beginTransaction();
+                        realm4 = Realm.getDefaultInstance();
+                        realm4.beginTransaction();
 
-                        Date maxDate = realm.where(Recent.class).maximumDate("timestamp");
-                        Recent recent = realm.where(Recent.class).equalTo("timestamp", maxDate).findFirst();
+                        Date maxDate = realm4.where(Recent.class).maximumDate("timestamp");
+                        Recent recent = realm4.where(Recent.class).equalTo("timestamp", maxDate).findFirst();
 
                         for (Photo p : t.getRecent().getPhotos().getPhotoList()) {
                             recent.recentPhotos.add(p);
@@ -571,11 +572,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         for (Tag tag : t.getHottags().getHottags().getTag()) {
                             recent.hotTagList.add(tag);
                         }
-                        realm.copyToRealmOrUpdate(recent);  //deep copy
+                        realm4.copyToRealmOrUpdate(recent);  //deep copy
 
-                        realm.commitTransaction();
+                        realm4.commitTransaction();
                         Log.d("DEBUG", "end recent/tag");
-                        realm.close();
+                        realm4.close();
                     }
                 });
 
@@ -584,8 +585,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
     private void getCommonsPage1() {
 
-        //check for page total if not then process with page 1
-        //while realm total is less than total increment page else stop
+        //@todo check for page total if not then process with page 1
+        //@todo while realm total is less than total increment page else stop
         commonsSubscription = FlickrClientApp.getJacksonService().commons("1'")
                 .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(Schedulers.immediate())
@@ -611,26 +612,27 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                     @Override
                     public void onNext(Photos p) {
-                        realm = Realm.getDefaultInstance();
-                        realm.beginTransaction();
-                       //create a common object
-                        //I don't know why arraylist created here cannot be dunked
-                        for (Photo photo: p.getPhotos().getPhotoList()) {
+                        realm5 = Realm.getDefaultInstance();
+                        realm5.beginTransaction();
+                        Common c = realm5.where(Common.class).findFirst();
+                        Log.d("DEBUG", "commons" + c);
+                        for (Photo photo : p.getPhotos().getPhotoList()) {
                             photo.isCommon = true;
-                            photos.add(photo);
+                            c.commonPhotos.add(photo);
+
                         }
-                        realm.copyToRealmOrUpdate(photos);
-
-
-
-                        realm.commitTransaction();
+                        realm5.copyToRealmOrUpdate(c);
+                        realm5.commitTransaction();
                         Log.d("DEBUG", "end commons");
-                        realm.close();
+                        realm5.close();
 
                     }
                 });
 
     }
+
+
+
 
 }
 
