@@ -13,10 +13,11 @@ import java.util.Map;
 
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "userId",
+    "id",
     "author",
     "author_is_deleted",
     "authorname",
@@ -29,7 +30,7 @@ import io.realm.annotations.Ignore;
     "_content"
 })
 public class Comment extends RealmObject {
-
+    @PrimaryKey
     @JsonProperty("id")
     private String id;
     @JsonProperty("author")
@@ -50,6 +51,7 @@ public class Comment extends RealmObject {
     private String pathAlias;
     @JsonProperty("realname")
     private String realname;
+
     @JsonProperty("_content")
     private String content;
     @JsonIgnore
@@ -59,7 +61,7 @@ public class Comment extends RealmObject {
     /**
      * 
      * @return
-     *     The userId
+     *     The id
      */
     @JsonProperty("id")
     public String getId() {
@@ -69,7 +71,7 @@ public class Comment extends RealmObject {
     /**
      * 
      * @param id
-     *     The userId
+     *     The id
      */
     @JsonProperty("id")
     public void setId(String id) {

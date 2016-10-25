@@ -29,7 +29,15 @@ public class Comments_ extends RealmObject {
     private String photoId;
     @JsonProperty("comment")
 
-    private RealmList<Comment> commentsList;
+    public RealmList<Comment> commentsList;
+
+    public RealmList<Comment> getCommentsList() {
+        return commentsList;
+    }
+
+    public void setCommentsList(RealmList<Comment> commentsList) {
+        this.commentsList = commentsList;
+    }
 
     @Ignore
     private List<Comment> comments = new ArrayList<Comment>();

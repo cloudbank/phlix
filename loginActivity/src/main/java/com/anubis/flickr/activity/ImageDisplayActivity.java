@@ -1,5 +1,6 @@
 package com.anubis.flickr.activity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -59,6 +60,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
     Map<String, String> data = new HashMap<>();
     Photo mPhoto;
     Realm pRealm;
+    HandlerThread handlerThread, handlerThread2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
         String pid = getIntent().getStringExtra(FlickrBaseFragment.RESULT);
         pRealm = Realm.getDefaultInstance();
         mPhoto = pRealm.where(Photo.class).equalTo("id", pid).findFirst();
+        pRealm.close();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 // ...
@@ -110,10 +113,11 @@ public class ImageDisplayActivity extends AppCompatActivity {
         Realm cRealm = Realm.getDefaultInstance();
         Comments_ c = cRealm.where(Comments_.class).equalTo("photoId", mUid).findFirst();
         // else go get that info
+        //comments change a lot; should we cache &  wait for them for 24 hrs
         if (null == c) {
             getComments(mUid);
         } else {
-            displayComments(wvComments, c.getComments());
+            displayComments(wvComments, c.commentsList);
         }
         cRealm.close();
         //mTagsList.clear();
@@ -173,14 +177,14 @@ public class ImageDisplayActivity extends AppCompatActivity {
                     @Override
                     public void onNext(Comments c) {
                         Log.d("DEBUG", "comments: " + comments);
-                        //pass comments to webview
+                        //right now this is only called once if null obj in realm
                         List<Comment> comments = c.getComments().getComments();
-
-                        saveComments(comments, mUid);
-                        //save to realm as list under photoid w HandlerThread
-                        displayComments(wvComments, comments);
-                        //@todo w save this will change
-
+                        if (saveComments(comments, mUid)) {
+                            displayComments(wvComments, comments);
+                        } else {
+                            //@todo throw exception
+                            Log.e("ERROR", "comments not saved: " + c);
+                        }
                     }
                 });
 
@@ -196,29 +200,43 @@ public class ImageDisplayActivity extends AppCompatActivity {
 
     }
 
-    public void saveComments(final List<Comment> commentsList, final String uid) {
-        final HandlerThread handlerThread = new HandlerThread("BackgroundHandler");
+    public boolean saveComments(final List<Comment> cList, final String uid) {
+        Log.d("SAVE COMMENT", String.valueOf(cList.get(0).getContent()) + ":" + uid);
+        handlerThread = new HandlerThread("BackgroundHandler");
         handlerThread.start();
         final Handler backgroundHandler = new Handler(handlerThread.getLooper());
-        backgroundHandler.post(new Runnable() {
+        return backgroundHandler.post(new Runnable() {
+
             @Override
             public void run() {
-                Realm cRealm = Realm.getDefaultInstance();
-                cRealm.beginTransaction();
-                Comments_ c = cRealm.createObject(Comments_.class, uid);
-                if ( null == c) {
-                    c = cRealm.where(Comments_.class).equalTo("photoId", uid).findFirst();
-                }
+                Realm realm = null;
+                try {
+                    realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
+                    Comments_ c = realm.where(Comments_.class).equalTo("photoId", uid).findFirst();
+                    if (null == c) {
+                        c = realm.createObject(Comments_.class, uid);
+                    }
 
-                c.setComments(commentsList);
-                cRealm.copyToRealmOrUpdate(c);
-                cRealm.commitTransaction();
-                cRealm.close();
+                    for (Comment comment : cList) {
+                        // Comment cm = cRealm.copyFromRealm(comment);
+                        if (!c.commentsList.contains(comment)) {
+                            c.commentsList.add(comment);
+                        }
+                    }
+                    realm.copyToRealmOrUpdate(c);
+                    realm.commitTransaction();
+                } finally {
+                    if (realm != null) {
+                        realm.close();
+                    }
+                }
             }
         });
 
 
     }
+
 
     //@todo check for idempotence only once put, and in reverse w date
     public void addComment(View v) {
@@ -256,21 +274,34 @@ public class ImageDisplayActivity extends AppCompatActivity {
 
                         @Override
                         public void onNext(Comment c) {
-                            Log.d("DEBUG", "comment: " + c.getId());
+                            //@todo maybe we should let this be a network call to have fresh data?
+                            List<Comment> displayList = new ArrayList<Comment>();
+                            //@todo  workaround realm slow to add w bg thread
                             Realm cRealm = Realm.getDefaultInstance();
-                            Comments_ comments = cRealm.where(Comments_.class).equalTo("photoId", c.getId()).findFirst();
-                            List<Comment> commentsList;
-                            if (null == comments) {
-                                commentsList = new ArrayList<Comment>();
-                            } else {
-                                commentsList = comments.getComments();
+                            Comments_ comments = cRealm.where(Comments_.class).equalTo("photoId", mUid).findFirst();
+                            if (comments.getCommentsList().size() > 0) {
+                                displayList.addAll(comments.getCommentsList());
                             }
 
-                            commentsList.add(c);
-                            saveComments(commentsList, c.getId());
-                            displayComments(wvComments, commentsList);
-                            //mComments.add(c);
-                            //displayComments(wvComments,mComments, false);
+
+                            List<Comment> commentsList = new ArrayList<Comment>();
+                            Comment comment = new Comment();
+                            //@todo  workaroundthe json maps anon obj { comment: {
+                            Map comObj = (Map) c.getAdditionalProperties().get("comment");
+                            comment.setAuthor((String) comObj.get("author"));
+                            comment.setId((String)comObj.get("id"));
+                            comment.setAuthorname((String)comObj.get("authorname"));
+                            comment.setDatecreate((String)comObj.get("datecreate"));
+                            comment.setContent((String)comObj.get("_content"));
+                            commentsList.add(comment);
+                            if (saveComments(commentsList, mUid)) {
+                                displayList.add(comment);
+                                displayComments(wvComments, displayList);
+                            } else {
+                                //@todo comment not added
+                                Log.e("ERROR", "comment not added: " + c);
+                            }
+                            cRealm.close();
                         }
                     });
 
@@ -284,26 +315,29 @@ public class ImageDisplayActivity extends AppCompatActivity {
         mBuilder.append("<html><head>  <style> body {color: #4169E1;  font-size: 12px;}</style></head><br>");
         for (int i = comments.size() - 1; i >= 0; i--) {
             Comment c = comments.get(i);
-            mContent = c.getContent();
-            String htmlString = mContent;
+            if (null != c && null != c.getContent()) {
+                mContent = c.getContent();
+                String htmlString = mContent;
 
-            if (mContent.contains("[http") && !mContent.contains("src")) {
-                //make the link work but leave images
-                htmlString = mContent.replaceAll("\\[(\\s*http\\S+\\s*)\\]", "<a href=\"" + "$1" + "\">$1</a><br>");
-                //@todo look for other corner cases
-                // } else if (mContent.contains("http") && !added) {
-                //     htmlString = mContent.replaceAll("http\\S+", "<a href=\"" + "$0" + "\">$0</a>");
-                // }
+                if (mContent.contains("[http") && !mContent.contains("src")) {
+                    //make the link work but leave images
+                    htmlString = mContent.replaceAll("\\[(\\s*http\\S+\\s*)\\]", "<a href=\"" + "$1" + "\">$1</a><br>");
+                    //@todo look for other corner cases
+                    // } else if (mContent.contains("http") && !added) {
+                    //     htmlString = mContent.replaceAll("http\\S+", "<a href=\"" + "$0" + "\">$0</a>");
+                    // }
+                }
+                String time = new PrettyTime().format(new Date(Long.parseLong(c.getDatecreate()) * 1000L));
+                mBuilder.append("<b>");
+                mBuilder.append(c.getAuthorname());
+                mBuilder.append(":</b> (");
+                mBuilder.append(time);
+                mBuilder.append(")<br>");
+                mBuilder.append(htmlString);
+                mBuilder.append("<br><br>");
             }
-            String time = new PrettyTime().format(new Date(Long.parseLong(c.getDatecreate()) * 1000L));
-            mBuilder.append("<b>");
-            mBuilder.append(c.getAuthorname());
-            mBuilder.append(":</b> (");
-            mBuilder.append(time);
-            mBuilder.append(")<br>");
-            mBuilder.append(htmlString);
-            mBuilder.append("<br><br>");
         }
+
         mBuilder.append("</body></html>");
         commentsView.loadUrl("about:blank");
         commentsView.loadData(mBuilder.toString(), "text/html", "utf-8");
@@ -319,6 +353,16 @@ public class ImageDisplayActivity extends AppCompatActivity {
         if (null != subscription2) {
             subscription2.unsubscribe();
         }
+        if (null != handlerThread) {
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                if (null != handlerThread.getLooper()) {
+                    handlerThread.getLooper().quitSafely();
+                }
+            } else {
+                handlerThread.quit();
+            }
+        }
+
     }
 
 }
