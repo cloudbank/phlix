@@ -178,12 +178,15 @@ public class ImageDisplayActivity extends AppCompatActivity {
                     public void onNext(Comments c) {
                         Log.d("DEBUG", "comments: " + comments);
                         //right now this is only called once if null obj in realm
+
                         List<Comment> comments = c.getComments().getComments();
-                        if (saveComments(comments, mUid)) {
-                            displayComments(wvComments, comments);
-                        } else {
-                            //@todo throw exception
-                            Log.e("ERROR", "comments not saved: " + c);
+                        if (comments.size() > 0) {
+                            if (saveComments(comments, mUid)) {
+                                displayComments(wvComments, comments);
+                            } else {
+                                //@todo throw exception
+                                Log.e("ERROR", "comments not saved: " + c);
+                            }
                         }
                     }
                 });
@@ -241,6 +244,8 @@ public class ImageDisplayActivity extends AppCompatActivity {
     //@todo check for idempotence only once put, and in reverse w date
     public void addComment(View v) {
         String commentString = etComments.getText().toString();
+        etComments.setText("");
+        etComments.clearFocus();
         /*try {
            // commentString = URLEncoder.encode(commentString, "UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -279,7 +284,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
                             //@todo  workaround realm slow to add w bg thread
                             Realm cRealm = Realm.getDefaultInstance();
                             Comments_ comments = cRealm.where(Comments_.class).equalTo("photoId", mUid).findFirst();
-                            if (comments.getCommentsList().size() > 0) {
+                            if (null != comments && comments.getCommentsList().size() > 0) {
                                 displayList.addAll(comments.getCommentsList());
                             }
 
@@ -289,10 +294,10 @@ public class ImageDisplayActivity extends AppCompatActivity {
                             //@todo  workaroundthe json maps anon obj { comment: {
                             Map comObj = (Map) c.getAdditionalProperties().get("comment");
                             comment.setAuthor((String) comObj.get("author"));
-                            comment.setId((String)comObj.get("id"));
-                            comment.setAuthorname((String)comObj.get("authorname"));
-                            comment.setDatecreate((String)comObj.get("datecreate"));
-                            comment.setContent((String)comObj.get("_content"));
+                            comment.setId((String) comObj.get("id"));
+                            comment.setAuthorname((String) comObj.get("authorname"));
+                            comment.setDatecreate((String) comObj.get("datecreate"));
+                            comment.setContent((String) comObj.get("_content"));
                             commentsList.add(comment);
                             if (saveComments(commentsList, mUid)) {
                                 displayList.add(comment);
