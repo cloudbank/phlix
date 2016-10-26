@@ -4,29 +4,29 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.0"
-    timestamp="551732374471669"
+    timestamp="555947242000192"
     token="2872332265169310905"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="8212" />
+        duration="3361" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="4989" />
+        duration="969" />
     <task
         name="verifier"
-        duration="452" />
+        duration="142" />
 
     <artifact
         location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/outputs/apk/loginActivity-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="551732374471669"
+        timestamp="555947242000192"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/outputs/apk/loginActivity-debug.apk"

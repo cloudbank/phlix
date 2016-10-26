@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FlickrBaseFragment;
@@ -46,9 +47,10 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
         // and put it in the cache manually and then refresh the viewpager
         //just call friends and get it all in one shot w updates to friend photos as bonus
         //
-        FriendsFragment f = (FriendsFragment)adapterViewPager.getItem(0);
+        //FriendsFragment f = (FriendsFragment)adapterViewPager.getItem(0);
        // @todo
         //getFriendsList()
+        Log.d("POST", "callback");
         vpPager.setCurrentItem(0);
     }
 

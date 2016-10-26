@@ -123,7 +123,7 @@ public class PreviewPhotoActivity extends AppCompatActivity {
         }
 
 
-
+//@todo can put this into realm or create its url
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         processedBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         final byte[] bytes = stream.toByteArray();
@@ -154,16 +154,18 @@ public class PreviewPhotoActivity extends AppCompatActivity {
                             int code = response.code();
                             Log.e("ERROR", String.valueOf(code));
                         }
-                        Log.e("ERROR", "error getting tags" + e);
+                        Log.e("ERROR", "error posting photo" + e);
                     }
 
                     @Override
-                    public void onNext(ResponseBody x) {
+                    public void onNext(ResponseBody res) {
                         Intent data = new Intent();
                         try {
-                            Log.d("DEBUG", "post photo: " + x.string());
-                            String id = parseId(x.string());
-                            data.putExtra("userId", id);
+                            String resp = res.string();
+                            Log.d("DEBUG", "post photo: " + resp);
+                            String photoId = parseId(resp);
+                            data.putExtra("photoId", photoId);
+                            //network call to refresh friends?
                             setResult(RESULT_OK, data);
                             ringProgressDialog.dismiss();
 
@@ -188,9 +190,9 @@ public class PreviewPhotoActivity extends AppCompatActivity {
         }
     }
 
-    private String parseId(String id) {
-        return id.substring((id.indexOf(PHOTOID_BEGINTAG)) + 9,
-                id.indexOf(PHOTOID_ENDTAG));
+    private String parseId(String xmlString) {
+        return xmlString.substring((xmlString.indexOf(PHOTOID_BEGINTAG)) + 9,
+                xmlString.indexOf(PHOTOID_ENDTAG));
     }
 /*
         client.createPhotoPost(processedBitmap, filename, new AsyncHttpResponseHandler() {

@@ -18,6 +18,7 @@ import android.widget.AbsListView;
 
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
+import com.anubis.flickr.activity.PhotosActivity;
 import com.anubis.flickr.activity.PreviewPhotoActivity;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.listener.EndlessScrollListener;
@@ -183,8 +184,9 @@ public abstract class FlickrBaseFragment extends Fragment {
                 photoBitmap = BitmapFactory.decodeFile(path);
                 startPreviewPhotoActivity();
             } else if (requestCode == POST_PHOTO_CODE) {
-                //PhotosActivity activity = ((PhotosActivity) getActivity());
+                PhotosActivity activity = ((PhotosActivity) getActivity());
                 // @todo if api changes update this
+                Log.d("POST", "in activity result");
                // Photo photo = new Photo();
                // photo.setUserId(data.getStringExtra("userId"));
                 mCallback.onPhotoPosted();
