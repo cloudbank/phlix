@@ -6,13 +6,20 @@
 
     tools:context=".LoginActivity" >
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/flicki17" />
+
+
+
+
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="20dp"
         android:theme="@style/MyLoginButton"
         android:onClick="loginToRest"
         android:shadowColor="#2B2351"
@@ -21,34 +28,10 @@
         android:shadowRadius="5"
         android:text="Log In"
         android:textColor="@color/AliceBlue"
-        android:textSize="25sp" />
-
-    <TextView
-        android:text="My Friend Flickr."
-        android:textSize="30dp"
-        android:textStyle="italic|bold"
-        android:textColor="@color/AliceBlue"
-        android:textColorHighlight="@color/AliceBlue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/loginTvLogo"
-        android:fontFamily="monospace"
-        android:typeface="monospace"
-        android:layout_above="@+id/loginBtn"
-        android:layout_alignLeft="@+id/loginBtn"
-        android:layout_alignStart="@+id/loginBtn"
-        android:layout_alignRight="@+id/loginBtn"
-        android:layout_alignEnd="@+id/loginBtn"
-        android:gravity="center" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/flickr_launcher"
-        android:layout_below="@+id/loginBtn"/>
-
-
+        android:layout_marginTop="18dp" />
 
 
 </RelativeLayout>

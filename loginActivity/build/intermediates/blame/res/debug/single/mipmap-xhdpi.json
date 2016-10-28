@@ -1,5 +1,17 @@
 [
     {
+        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_flicki.png",
+        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-xhdpi/ic_flicki.png"
+    },
+    {
+        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-xhdpi/flicki.png",
+        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-xhdpi/flicki.png"
+    },
+    {
+        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-xhdpi/flicki_logo.png",
+        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-xhdpi/flicki_logo.png"
+    },
+    {
         "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_camera.png",
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-xhdpi/ic_camera.png"
     },

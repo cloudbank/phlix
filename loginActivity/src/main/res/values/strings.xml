@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="http://schemas.android.com/tools">
 
-    <string name="app_name">My Friend Flickr</string>
+    <string name="app_name">Flicki</string>
     <string name="search">Search</string>
     <string name="image_detail">Image Detail</string>
     <string name="enter_comment">Enter Comment</string>

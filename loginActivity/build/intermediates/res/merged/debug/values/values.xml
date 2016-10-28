@@ -715,7 +715,7 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="add">Add</string>
     <string name="and_search"> all of the tags entered</string>
-    <string name="app_name">My Friend Flickr</string>
+    <string name="app_name">Flicki</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="bye">Bye...</string>

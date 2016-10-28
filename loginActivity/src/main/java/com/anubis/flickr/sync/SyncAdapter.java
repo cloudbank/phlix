@@ -294,7 +294,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         // NotificationCompatBuilder is a very convenient way to build backward-compatible
         // notifications.  Just throw in some data.
         Context context = FlickrClientApp.getAppContext();
-        int iconId = R.drawable.ic_snow;
+        int iconId = R.drawable.flicki_logo;
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setColor(context.getResources().getColor(R.color.SkyBlue))
