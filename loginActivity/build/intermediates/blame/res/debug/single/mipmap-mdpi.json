@@ -1,38 +1,6 @@
 [
     {
-        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/ic_lotus.png",
-        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-mdpi/ic_lotus.png"
-    },
-    {
-        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/ic_flicki.png",
-        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-mdpi/ic_flicki.png"
-    },
-    {
-        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/flicki_logo.png",
-        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-mdpi/flicki_logo.png"
-    },
-    {
-        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/ic_camera.png",
-        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-mdpi/ic_camera.png"
-    },
-    {
-        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/lotus.png",
-        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-mdpi/lotus.png"
-    },
-    {
-        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/ic_flick.png",
-        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-mdpi/ic_flick.png"
-    },
-    {
         "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/ic_rocket.png",
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-mdpi/ic_rocket.png"
-    },
-    {
-        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
-        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-mdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/flicki.png",
-        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-mdpi/flicki.png"
     }
 ]
