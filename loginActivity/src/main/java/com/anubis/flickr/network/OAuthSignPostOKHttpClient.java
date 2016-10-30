@@ -107,6 +107,7 @@ public class OAuthSignPostOKHttpClient {    //
                         throw new Exception("No verifier code was returned with uri \'" + uri + "\' " + "and access token cannot be retrieved");
                     }
                     provider.retrieveAccessToken(getConsumer(), oauth_verifier);
+                    //setReponseParameters
                     setUserIdAndName(provider.getResponseParameters());
 
 
@@ -144,8 +145,10 @@ public class OAuthSignPostOKHttpClient {    //
 
     public void setUserIdAndName(HttpParameters params) {
         SharedPreferences.Editor editor = this.prefs.edit();
-        editor.putString("username", params.get("username").first());
-        editor.putString("userId",params.get("user_nsid").first() );
+        for (String k : params.keySet()) {
+            editor.putString(k, params.get(k).first());
+        }
+
         editor.commit();
 
 

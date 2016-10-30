@@ -73,7 +73,7 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
         super.onCreate(savedInstanceState);
         SharedPreferences authPrefs = getApplicationContext().getSharedPreferences("OAuthKit_Prefs", 0);
         Toast.makeText(getApplicationContext(),"Username"+authPrefs.getString("username",""),Toast.LENGTH_SHORT).show();
-//if diff user, stop adapter and restart
+        //if diff user, stop adapter and restart////@todo remove testlogin call in adapter
         SyncAdapter.initializeSyncAdapter(this);
 
         setContentView(R.layout.activity_photos);

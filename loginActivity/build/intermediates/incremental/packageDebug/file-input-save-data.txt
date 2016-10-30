@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Oct 30 15:55:06 PDT 2016
+#Sun Oct 30 16:11:22 PDT 2016
 20.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/assets/debug
 143.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1
 439.set=DEX

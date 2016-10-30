@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Oct 30 15:54:49 PDT 2016
+#Sun Oct 30 16:10:56 PDT 2016
 20.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_
 143.base=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_
 340.file=/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/resources-debug.ap_/res/color-v23/abc_tint_switch_track.xml
