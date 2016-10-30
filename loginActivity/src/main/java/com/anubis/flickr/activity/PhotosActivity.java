@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FlickrBaseFragment;
@@ -70,7 +71,9 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        SharedPreferences authPrefs = getApplicationContext().getSharedPreferences("OAuthKit_Prefs", 0);
+        Toast.makeText(getApplicationContext(),"Username"+authPrefs.getString("username",""),Toast.LENGTH_SHORT).show();
+//if diff user, stop adapter and restart
         SyncAdapter.initializeSyncAdapter(this);
 
         setContentView(R.layout.activity_photos);

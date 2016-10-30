@@ -1,12 +1,14 @@
 package com.anubis.flickr.network;
 
 
+import android.content.SharedPreferences;
 import android.net.Uri;
 
 import com.anubis.flickr.util.AsyncSimpleTask;
 
 import java.util.Properties;
 
+import oauth.signpost.http.HttpParameters;
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthProvider;
 
@@ -26,10 +28,12 @@ public class OAuthSignPostOKHttpClient {    //
     private String callbackUrl;
     private OAuthSignPostOKHttpClient.OAuthTokenHandler handler;
     private String accessToken;
+    private SharedPreferences prefs;
 
 
-    public OAuthSignPostOKHttpClient(Properties prop, OAuthSignPostOKHttpClient.OAuthTokenHandler handler) {
+    public OAuthSignPostOKHttpClient(Properties prop, OAuthSignPostOKHttpClient.OAuthTokenHandler handler, SharedPreferences prefs) {
         this.handler = handler;
+        this.prefs = prefs;
         callbackUrl = prop.getProperty("callbackUrl");
         if (callbackUrl == null) {
             callbackUrl = "oob";
@@ -85,11 +89,6 @@ public class OAuthSignPostOKHttpClient {    //
     }
 
 
-
-
-
-
-
     public void fetchAccessToken(final Uri uri) {
         new AsyncSimpleTask(new AsyncSimpleTask.AsyncSimpleTaskHandler() {
             Exception e = null;
@@ -108,6 +107,8 @@ public class OAuthSignPostOKHttpClient {    //
                         throw new Exception("No verifier code was returned with uri \'" + uri + "\' " + "and access token cannot be retrieved");
                     }
                     provider.retrieveAccessToken(getConsumer(), oauth_verifier);
+                    setUserIdAndName(provider.getResponseParameters());
+
 
                 } catch (Exception var4) {
                     this.e = var4;
@@ -131,6 +132,7 @@ public class OAuthSignPostOKHttpClient {    //
         return this.accessToken;
     }
 
+
     public void setAccessToken(com.anubis.flickr.models.Token token) {
         if (accessToken == null) {
             this.accessToken = null;
@@ -139,6 +141,16 @@ public class OAuthSignPostOKHttpClient {    //
         }
 
     }
+
+    public void setUserIdAndName(HttpParameters params) {
+        SharedPreferences.Editor editor = this.prefs.edit();
+        editor.putString("username", params.get("username").first());
+        editor.putString("userId",params.get("user_nsid").first() );
+        editor.commit();
+
+
+    }
+
 
     public interface OAuthTokenHandler {
         void onReceivedRequestToken(OkHttpOAuthConsumer consumer, String authorizeUrl);

@@ -93,7 +93,7 @@ public class FriendsFragment extends FlickrBaseFragment {
         mUserId = Util.getUserId();
         Log.d("USER ID", "id: " + mUserId);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(Util.getCurrentUser());
+
         mUser = userRealm.where(UserModel.class).equalTo("userId", mUserId).findFirst();
         //init is running slow
         //@todo add separate realms for rest
@@ -232,6 +232,7 @@ public class FriendsFragment extends FlickrBaseFragment {
         cPhotos.addAll(u.getFriendsList());
         mPhotos.addAll(u.getFriendsList());
         fAdapter.notifyDataSetChanged();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(Util.getCurrentUser());
 
 
     }
@@ -246,6 +247,7 @@ public class FriendsFragment extends FlickrBaseFragment {
 
         mPhotos.addAll(u.getFriendsList());
         fAdapter.notifyDataSetChanged();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(Util.getCurrentUser());
 
 
     }

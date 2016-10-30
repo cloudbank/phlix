@@ -3,6 +3,7 @@ package com.anubis.flickr.fragments;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -15,7 +16,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.AbsListView;
+import android.widget.Toast;
 
+import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
 import com.anubis.flickr.activity.PhotosActivity;
@@ -113,8 +116,8 @@ public abstract class FlickrBaseFragment extends Fragment {
 
         page = getArguments().getInt(PAGE, 0);
         title = getArguments().getString(TITLE);
-       // mTags = new ArrayList<Photo>();
-       // mAdapter = new PhotoArrayAdapter(getActivity(), mTags);
+        // mTags = new ArrayList<Photo>();
+        // mAdapter = new PhotoArrayAdapter(getActivity(), mTags);
 
 
         // Get safe storage directory for photos
@@ -150,17 +153,21 @@ public abstract class FlickrBaseFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.action_take_photo) {
-           // new MaterialCamera(this).stillShot()
-             //       .start(CAMERA_RQ);
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, getPhotoFileUri(photoFileName));
-            try {
-                startActivityForResult(intent, TAKE_PHOTO_CODE);
-            } catch (ActivityNotFoundException e) {
-                e.printStackTrace();
-                Log.e("ERROR", "cannot take picture", e);
-            }
+            //  new MaterialCamera(this).stillShot().saveDir(mediaStorageDir)
+            //         .start(CAMERA_RQ);
+            if (FlickrClientApp.getAppContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, getPhotoFileUri(photoFileName));
+                try {
+                    startActivityForResult(intent, TAKE_PHOTO_CODE);
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
+                    Log.e("ERROR", "cannot take picture", e);
+                }
+            } else {
+                Toast.makeText(FlickrClientApp.getAppContext(),"No camera available",Toast.LENGTH_SHORT).show();
 
+            }
 
 
         } else if (itemId == R.id.action_logout) {
@@ -173,8 +180,10 @@ public abstract class FlickrBaseFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == TAKE_PHOTO_CODE) {
+                //if (requestCode == CAMERA_RQ) {
                 Uri takenPhotoUri = getPhotoFileUri(photoFileName);
                 cropPhoto(takenPhotoUri);
+                //cropPhoto(data.getData());
             } else if (requestCode == CROP_PHOTO_CODE) {
                 String path = data.getStringExtra(CropImage.IMAGE_PATH);
                 // cropped bitmap
@@ -187,12 +196,14 @@ public abstract class FlickrBaseFragment extends Fragment {
                 PhotosActivity activity = ((PhotosActivity) getActivity());
                 // @todo if api changes update this
                 Log.d("POST", "in activity result");
-               // Photo photo = new Photo();
-               // photo.setUserId(data.getStringExtra("userId"));
+                // Photo photo = new Photo();
+                // photo.setUserId(data.getStringExtra("userId"));
                 mCallback.onPhotoPosted();
 
 
             }
+        } else {
+            Log.e("ERROR", "error taking photo");
         }
     }
 
@@ -222,8 +233,8 @@ public abstract class FlickrBaseFragment extends Fragment {
     public void signOut() {
 
         OAuthBaseClient.getInstance(getActivity().getApplicationContext(), null).clearTokens();
-      // @todo usereditor.clear()
-       // Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.bye), Toast.LENGTH_LONG).show();
+        // @todo usereditor.clear()
+        // Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.bye), Toast.LENGTH_LONG).show();
         Intent bye = new Intent(getActivity(), LoginActivity.class);
 
         startActivity(bye);

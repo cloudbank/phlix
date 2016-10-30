@@ -66,6 +66,9 @@ public class OAuthBaseClient {
 
         this.baseUrl = prop.getProperty("baseUrl");
         this.callbackUrl = prop.getProperty("callbackUrl");
+        this.context = context;
+        this.prefs = this.context.getSharedPreferences("OAuthKit_Prefs", 0);
+        this.editor = this.prefs.edit();
         this.client = new OAuthSignPostOKHttpClient(prop, new OAuthSignPostOKHttpClient.OAuthTokenHandler() {
 
             //@todo implement interface and ovverride here
@@ -102,10 +105,8 @@ public class OAuthBaseClient {
             public void onFailure(Exception e) {
                 OAuthBaseClient.this.accessHandler.onLoginFailure(e);
             }
-        });
-        this.context = context;
-        this.prefs = this.context.getSharedPreferences("OAuth_" + this.getClass().getSimpleName() + "_Prefs", 0);
-        this.editor = this.prefs.edit();
+        }, this.prefs);
+
         if (this.checkAccessToken() != null) {
             this.client.setAccessToken(this.checkAccessToken());
         }
