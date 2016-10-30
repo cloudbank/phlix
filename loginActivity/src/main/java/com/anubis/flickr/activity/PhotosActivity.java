@@ -83,10 +83,10 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
 // ...
 // Display icon in the toolbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.flickr_launcher);
+        getSupportActionBar().setLogo(R.mipmap.ic_rocket);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         //getSupportActionBar().setElevation(3);
-        getSupportActionBar().setTitle(R.string.app_name);
+        //getSupportActionBar().setTitle(R.string.app_name);
         toolbar.setTitleTextColor(getResources().getColor(R.color.Seashell));
         getSupportActionBar().setSubtitle("");
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.Azure));

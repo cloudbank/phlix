@@ -104,7 +104,7 @@
 
     <style name="MyLoginButton" parent="Theme.AppCompat.Light">
         <item name="colorControlHighlight">@color/PaleVioletRed</item>
-        <item name="colorButtonNormal">@color/RoyalBlue</item>
+        <item name="colorButtonNormal">#E00065</item>
 
     </style>
     <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">

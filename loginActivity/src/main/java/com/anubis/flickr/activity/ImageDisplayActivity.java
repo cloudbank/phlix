@@ -76,7 +76,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
 // ...
 // Display icon in the toolbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.flickr_launcher);
+        getSupportActionBar().setLogo(R.mipmap.ic_rocket);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         // getSupportActionBar().setElevation(3);
         getSupportActionBar().setTitle(R.string.app_name);

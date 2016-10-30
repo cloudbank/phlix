@@ -26,7 +26,7 @@ public class FlickrClientApp extends Application {
     // An account type, in the form of a domain name
     public static final String ACCOUNT_TYPE = "com.anubis.flickr";
     // The account name
-    public static final String ACCOUNT = "Flickr_Data_Fetcher";
+    public static final String ACCOUNT = "Flicki Data Sync";
     // Instance fields
     Account mAccount;
 

@@ -37,7 +37,7 @@ import io.realm.RealmChangeListener;
 
 public class FriendsFragment extends FlickrBaseFragment {
 
-    private String mUsername, mUserId, mPreviousUser;
+    private String  mUserId, mPreviousUser;
 
     private List<Photo> mPhotos, cPhotos;
 
@@ -92,6 +92,8 @@ public class FriendsFragment extends FlickrBaseFragment {
         ringProgressDialog.show();
         mUserId = Util.getUserId();
         Log.d("USER ID", "id: " + mUserId);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(Util.getCurrentUser());
         mUser = userRealm.where(UserModel.class).equalTo("userId", mUserId).findFirst();
         //init is running slow
         //@todo add separate realms for rest
@@ -157,7 +159,7 @@ public class FriendsFragment extends FlickrBaseFragment {
         //@todo move shared prefs code to User
         //until hack the oauth to get full response w mUsername and userId
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(mUsername);
+
         // getLoginAndId();
 
 

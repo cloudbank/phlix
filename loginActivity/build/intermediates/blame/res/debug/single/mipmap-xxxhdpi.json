@@ -8,6 +8,10 @@
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-xxxhdpi/ic_lotus.png"
     },
     {
+        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_rocket.png",
+        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-xxxhdpi/ic_rocket.png"
+    },
+    {
         "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png",
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
@@ -22,6 +26,10 @@
     {
         "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-xxxhdpi/lotus.png",
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-xxxhdpi/lotus.png"
+    },
+    {
+        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_flick.png",
+        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/mipmap-xxxhdpi/ic_flick.png"
     },
     {
         "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_flicki.png",

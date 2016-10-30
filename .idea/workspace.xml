@@ -25,26 +25,76 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f80aa30-297e-4c7f-9a2e-a543f5abd3ab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/flicki-web.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/ic_flicki-web.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki_logo.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/src/main/res/drawable-hdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/src/main/res/drawable-xhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/src/main/res/drawable-xxhdpi/ic_launcher.png" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/ic_rocket-web.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/drawable/camera.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/drawable/heart.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/ic_flick.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/ic_rocket.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/mipmap-mdpi/ic_flick.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/mipmap-mdpi/ic_rocket.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/mipmap-xhdpi/ic_flick.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/mipmap-xhdpi/ic_rocket.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/mipmap-xxhdpi/ic_flick.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/mipmap-xxhdpi/ic_rocket.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/mipmap-xxxhdpi/ic_flick.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/mipmap-xxxhdpi/ic_rocket.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/adapter_rxjava_2_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/androidjhlabs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/animated_vector_drawable_24_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_24_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/cardview_v7_24_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/commons_cli_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/commons_codec_1_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/converter_jackson_2_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/converter_simplexml_2_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/design_24_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/jackson_annotations_2_8_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/jackson_core_2_8_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/jackson_databind_2_8_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/jsr305_2_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/okhttp_3_4_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/okhttp_signpost_1_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/okio_1_9_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/picasso2_okhttp3_downloader_1_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/picasso_2_5_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/prettytime_4_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/realm_android_library_2_0_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/realm_annotations_2_0_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_24_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/relinker_1_2_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/retrofit_2_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/rxandroid_1_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/rxjava_1_1_6.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/signpost_core_1_2_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/simple_xml_2_7_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/stetho_1_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/stetho_okhttp3_1_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_24_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_compat_24_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_core_ui_24_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_core_utils_24_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_fragment_24_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_media_compat_24_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v13_24_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_24_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_vector_drawable_24_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/tag_1_6_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable/flicki17.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable/flicki23.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable/flicki_logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/src/main/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/src/main/flicki-web.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/src/main/ic_flicki-web.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki17.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki23.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki_logo.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_pullToRefreshListView_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_pullToRefreshListView_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_pullToRefreshListView_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_pullToRefreshListView_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_pullToRefreshListView_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_pullToRefreshListView_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_pullToRefreshListView_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_pullToRefreshListView_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_simplecropimagelib_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_simplecropimagelib_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_simplecropimagelib_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_simplecropimagelib_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_simplecropimagelib_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_simplecropimagelib_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_simplecropimagelib_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_simplecropimagelib_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/android/support/design/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/android/support/design/R$drawable.class" />
@@ -53,6 +103,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/android/support/v7/appcompat/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/android/support/v7/appcompat/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/co/hkm/soltag/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/co/hkm/soltag/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/co/hkm/soltag/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/co/hkm/soltag/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/FlickrClientApp.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/FlickrClientApp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/R$integer.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/R$integer.class" />
@@ -65,10 +116,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/R$xml.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/R$xml.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/ImageDisplayActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/ImageDisplayActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/LoginActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/LoginActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/PhotosActivity$1.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/PhotosActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/PhotosActivity$MyPagerAdapter.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/PhotosActivity$MyPagerAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/PhotosActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/PhotosActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/PreviewPhotoActivity$1.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/PreviewPhotoActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/PreviewPhotoActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/activity/PreviewPhotoActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/adapter/FriendsAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/adapter/FriendsAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/adapter/ImageDisplayAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/adapter/ImageDisplayAdapter$ViewHolder.class" />
@@ -77,7 +125,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/adapter/SearchAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/adapter/SearchAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/adapter/TagsAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/adapter/TagsAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/FlickrBaseFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/FlickrBaseFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/FriendsFragment$2.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/FriendsFragment$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/FriendsFragment$3.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/FriendsFragment$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/FriendsFragment$4.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/FriendsFragment$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/FriendsFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/FriendsFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/InterestingFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/InterestingFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/SearchFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/classes/debug/com/anubis/flickr/fragments/SearchFragment.class" />
@@ -96,6 +146,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/co/hkm/soltag/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/co/hkm/soltag/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/co/hkm/soltag/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/co/hkm/soltag/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/FlickrClientApp.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/FlickrClientApp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/R$integer.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/R$integer.class" />
@@ -108,10 +159,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/R$xml.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/R$xml.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/ImageDisplayActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/ImageDisplayActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/LoginActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/LoginActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/PhotosActivity$1.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/PhotosActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/PhotosActivity$MyPagerAdapter.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/PhotosActivity$MyPagerAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/PhotosActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/PhotosActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/PreviewPhotoActivity$1.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/PreviewPhotoActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/PreviewPhotoActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/activity/PreviewPhotoActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/adapter/FriendsAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/adapter/FriendsAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/adapter/ImageDisplayAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/adapter/ImageDisplayAdapter$ViewHolder.class" />
@@ -120,7 +168,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/adapter/SearchAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/adapter/SearchAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/adapter/TagsAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/adapter/TagsAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/FlickrBaseFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/FlickrBaseFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/FriendsFragment$2.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/FriendsFragment$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/FriendsFragment$3.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/FriendsFragment$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/FriendsFragment$4.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/FriendsFragment$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/FriendsFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/FriendsFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/InterestingFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/InterestingFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/SearchFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental-verifier/debug/com/anubis/flickr/fragments/SearchFragment.class" />
@@ -139,64 +189,48 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_check_to_on_mtrl_015.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_check_to_on_mtrl_015.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_radio_to_on_mtrl_000.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_radio_to_on_mtrl_000.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_star_black_36dp.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_star_black_36dp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/ic_action_name.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/ic_action_name.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/ic_camera.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/ic_camera.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/ic_commons.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/ic_commons.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/flickr_launcher.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/flickr_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/ic_camera_white.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-hdpi/ic_camera_white.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17/abc_ic_menu_cut_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17/abc_ic_menu_cut_mtrl_alpha.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-ldrtl-xhdpi-v17/abc_ic_menu_cut_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-ldrtl-xhdpi-v17/abc_ic_menu_cut_mtrl_alpha.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-ldrtl-xxhdpi-v17/abc_ic_menu_cut_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-ldrtl-xxhdpi-v17/abc_ic_menu_cut_mtrl_alpha.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-ldrtl-xxxhdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-ldrtl-xxxhdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-ldrtl-xxxhdpi-v17/abc_ic_menu_cut_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-ldrtl-xxxhdpi-v17/abc_ic_menu_cut_mtrl_alpha.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_000.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_btn_check_to_on_mtrl_000.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_ic_menu_share_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_ic_menu_share_mtrl_alpha.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_ic_star_black_48dp.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_ic_star_black_48dp.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_text_select_handle_left_mtrl_dark.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_text_select_handle_left_mtrl_dark.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_text_select_handle_right_mtrl_light.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi-v4/abc_text_select_handle_right_mtrl_light.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi/ic_action_name.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi/ic_action_name.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi/ic_camera_white.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi/ic_camera_white.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi/ic_logout.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi/ic_logout.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_000.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_000.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_radio_to_on_mtrl_015.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_black_36dp.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_black_36dp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi/ic_lotus.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-mdpi/ic_lotus.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_menu_share_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_menu_share_mtrl_alpha.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_black_48dp.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_black_48dp.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_half_black_16dp.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_ic_star_half_black_16dp.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_text_select_handle_left_mtrl_dark.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_text_select_handle_left_mtrl_dark.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_text_select_handle_left_mtrl_light.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_text_select_handle_left_mtrl_light.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_text_select_handle_middle_mtrl_light.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_text_select_handle_middle_mtrl_light.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_text_select_handle_right_mtrl_light.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_text_select_handle_right_mtrl_light.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/camera_crop_height.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/camera_crop_height.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/camera_crop_width.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi-v4/camera_crop_width.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi/ic_commons.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi/ic_commons.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi/ic_logout.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xhdpi/ic_logout.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_000.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_000.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_text_select_handle_left_mtrl_dark.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_text_select_handle_left_mtrl_dark.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_text_select_handle_middle_mtrl_light.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_text_select_handle_middle_mtrl_light.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_text_select_handle_right_mtrl_light.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_text_select_handle_right_mtrl_light.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_camera.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_camera.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_commons.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_commons.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_logout.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_logout.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_000.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_000.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_star_black_48dp.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_star_black_48dp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_text_select_handle_middle_mtrl_dark.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_text_select_handle_middle_mtrl_dark.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_015.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_015.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_cut_mtrl_alpha.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_star_black_16dp.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_star_black_16dp.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_star_black_36dp.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_star_black_36dp.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_text_select_handle_left_mtrl_light.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_text_select_handle_left_mtrl_light.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_text_select_handle_right_mtrl_dark.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_text_select_handle_right_mtrl_dark.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_star_black_48dp.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_star_black_48dp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_text_select_handle_left_mtrl_dark.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_text_select_handle_left_mtrl_dark.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-hdpi/flicki_logo.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-hdpi/flicki_logo.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-hdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/flicki_logo.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/flicki_logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/ic_camera.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/ic_camera.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xhdpi/flicki.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xhdpi/flicki.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_flicki.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_flicki.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_flicki.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_flicki.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xxhdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_flicki.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_flicki.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/android/support/design/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/android/support/design/R$drawable.class" />
@@ -205,6 +239,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/android/support/v7/appcompat/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/android/support/v7/appcompat/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/co/hkm/soltag/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/co/hkm/soltag/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/co/hkm/soltag/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/co/hkm/soltag/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/FlickrClientApp.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/FlickrClientApp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/R$integer.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/R$integer.class" />
@@ -217,10 +252,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/R$xml.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/R$xml.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/ImageDisplayActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/ImageDisplayActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/LoginActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/LoginActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/PhotosActivity$1.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/PhotosActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/PhotosActivity$MyPagerAdapter.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/PhotosActivity$MyPagerAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/PhotosActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/PhotosActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/PreviewPhotoActivity$1.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/PreviewPhotoActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/PreviewPhotoActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/activity/PreviewPhotoActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/adapter/FriendsAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/adapter/FriendsAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/adapter/ImageDisplayAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/adapter/ImageDisplayAdapter$ViewHolder.class" />
@@ -229,7 +261,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/adapter/SearchAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/adapter/SearchAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/adapter/TagsAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/adapter/TagsAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/FlickrBaseFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/FlickrBaseFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/FriendsFragment$2.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/FriendsFragment$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/FriendsFragment$3.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/FriendsFragment$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/FriendsFragment$4.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/FriendsFragment$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/FriendsFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/FriendsFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/InterestingFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/InterestingFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/SearchFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/RealmTransformer/debug/folders/1/1/realm/com/anubis/flickr/fragments/SearchFragment.class" />
@@ -252,6 +286,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/co/hkm/soltag/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/co/hkm/soltag/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/co/hkm/soltag/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/co/hkm/soltag/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/FlickrClientApp.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/FlickrClientApp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/R$integer.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/R$integer.class" />
@@ -264,10 +299,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/R$xml.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/R$xml.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/ImageDisplayActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/ImageDisplayActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/LoginActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/LoginActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/PhotosActivity$1.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/PhotosActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/PhotosActivity$MyPagerAdapter.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/PhotosActivity$MyPagerAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/PhotosActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/PhotosActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/PreviewPhotoActivity$1.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/PreviewPhotoActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/PreviewPhotoActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/activity/PreviewPhotoActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/adapter/FriendsAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/adapter/FriendsAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/adapter/ImageDisplayAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/adapter/ImageDisplayAdapter$ViewHolder.class" />
@@ -276,7 +308,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/adapter/SearchAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/adapter/SearchAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/adapter/TagsAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/adapter/TagsAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/FlickrBaseFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/FlickrBaseFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/FriendsFragment$2.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/FriendsFragment$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/FriendsFragment$3.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/FriendsFragment$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/FriendsFragment$4.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/FriendsFragment$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/FriendsFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/FriendsFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/InterestingFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/InterestingFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/SearchFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/anubis/flickr/fragments/SearchFragment.class" />
@@ -301,10 +335,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/eu/janmuller/android/simplecropimage/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/eu/janmuller/android/simplecropimage/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/ImageDisplayActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/ImageDisplayActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/LoginActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/LoginActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/PhotosActivity$1.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/PhotosActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/PhotosActivity$MyPagerAdapter.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/PhotosActivity$MyPagerAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/PhotosActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/PhotosActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/PreviewPhotoActivity$1.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/PreviewPhotoActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/PreviewPhotoActivity.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/activity/PreviewPhotoActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/sync/SyncAdapter.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_5/com/anubis/flickr/sync/SyncAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_7/android/support/design/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_7/android/support/design/R$drawable.class" />
@@ -312,6 +343,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_7/io/realm/DefaultRealmModuleMediator.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_7/io/realm/DefaultRealmModuleMediator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/co/hkm/soltag/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/co/hkm/soltag/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/co/hkm/soltag/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/co/hkm/soltag/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/FlickrClientApp.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/FlickrClientApp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/R$drawable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/R$id.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/R$integer.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/R$integer.class" />
@@ -323,7 +355,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/R$styleable.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/R$styleable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/R$xml.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/R$xml.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/FlickrBaseFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/FlickrBaseFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/FriendsFragment$2.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/FriendsFragment$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/FriendsFragment$3.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/FriendsFragment$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/FriendsFragment$4.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/FriendsFragment$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/FriendsFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/FriendsFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/InterestingFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/InterestingFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/SearchFragment.class" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_9/com/anubis/flickr/fragments/SearchFragment.class" />
@@ -352,8 +386,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/generated/source/r/debug/eu/janmuller/android/simplecropimage/R.java" afterPath="$PROJECT_DIR$/loginActivity/build/generated/source/r/debug/eu/janmuller/android/simplecropimage/R.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/multi/values.json" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/multi/values.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/single/drawable-hdpi.json" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/single/drawable-hdpi.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/single/drawable-xhdpi.json" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/single/drawable-xhdpi.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/single/drawable-xxhdpi.json" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/single/drawable-xxhdpi.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/single/drawable.json" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/single/drawable.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/single/mipmap-hdpi.json" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/single/mipmap-hdpi.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/single/mipmap-mdpi.json" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/blame/res/debug/single/mipmap-mdpi.json" />
@@ -369,21 +401,28 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental/packageInstantRunResourcesDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental/packageInstantRunResourcesDebug/dex-renamer-state.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental/packageInstantRunResourcesDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/incremental/packageInstantRunResourcesDebug/file-input-save-data.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/instant-run-support/debug/manifest.crc" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/instant-run-support/debug/manifest.crc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/instant-run-support/debug/manifest.xml" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/instant-run-support/debug/manifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/layout/activity_login.xml" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/layout/activity_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/layout/photo_item_friends.xml" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/layout/photo_item_friends.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/values/values.xml" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/values/values.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/xml/authenticator.xml" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/xml/authenticator.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/restart-dex/debug/build-info.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/intermediates/symbols/debug/R.txt" afterPath="$PROJECT_DIR$/loginActivity/build/intermediates/symbols/debug/R.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/loginActivity.iml" afterPath="$PROJECT_DIR$/loginActivity/loginActivity.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/loginActivity/build/outputs/logs/manifest-merger-debug-report.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/FlickrClientApp.java" afterPath="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/FlickrClientApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/ImageDisplayActivity.java" afterPath="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/ImageDisplayActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/PhotosActivity.java" afterPath="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/PhotosActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/fragments/FriendsFragment.java" afterPath="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/fragments/FriendsFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/sync/SyncAdapter.java" afterPath="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/sync/SyncAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/src/main/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/layout/activity_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/src/main/res/layout/photo_item_friends.xml" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/layout/photo_item_friends.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/values/styles.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/loginActivity/src/main/res/xml/authenticator.xml" afterPath="$PROJECT_DIR$/loginActivity/src/main/res/xml/authenticator.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pullToRefreshListView/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/pullToRefreshListView/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pullToRefreshListView/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/pullToRefreshListView/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pullToRefreshListView/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/pullToRefreshListView/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pullToRefreshListView/pullToRefreshListView.iml" afterPath="$PROJECT_DIR$/pullToRefreshListView/pullToRefreshListView.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/simplecropimagelib/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/simplecropimagelib/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/simplecropimagelib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/simplecropimagelib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/simplecropimagelib/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/simplecropimagelib/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
@@ -419,48 +458,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="activity_login.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/layout/activity_login.xml">
-          <provider selected="true" editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toolbar_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/layout/toolbar_main.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PhotosActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/PhotosActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-739">
-              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlickrBaseFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/fragments/FlickrBaseFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-840">
-              <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-              <folding />
+            <state relative-caret-position="32">
+              <caret line="95" column="48" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="48" />
+              <folding>
+                <element signature="e#4788#4798#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -468,52 +473,84 @@
       <file leaf-file-name="SyncAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/sync/SyncAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="296" column="44" selection-start-line="296" selection-start-column="44" selection-end-line="296" selection-end-column="44" />
+            <state relative-caret-position="267">
+              <caret line="303" column="0" selection-start-line="303" selection-start-column="0" selection-end-line="303" selection-end-column="0" />
               <folding>
-                <marker date="1477613086000" expanded="true" signature="18677:18730" ph="//..." />
+                <marker date="1477786240000" expanded="true" signature="18670:18723" ph="//..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="authenticator.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/xml/authenticator.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+      <file leaf-file-name="phlix.png" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/phlix.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_login.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/layout/activity_login.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="flicki23.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki23.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="flicki_logo.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki_logo.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+            <state relative-caret-position="30">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ic_flicki-web.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/ic_flicki-web.png">
+      <file leaf-file-name="ic_rocket.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/ic_rocket.png">
           <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ic_star.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable-hdpi/ic_star.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rocket_transparent.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/rocket_transparent.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ic_rocket.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-xxxhdpi/ic_rocket.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loginActivity/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+              <folding>
+                <element signature="e#912#930#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="android-manifest">
             <state />
           </provider>
         </entry>
@@ -3775,8 +3812,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/network/OAuthBaseClient.java" />
-        <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/network/OAuthSignPostOKHttpClient.java" />
         <option value="$PROJECT_DIR$/loginActivity/build.gradle" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/network/NetworkUtil.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/User.java" />
@@ -3793,11 +3828,9 @@
         <option value="$PROJECT_DIR$/loginActivity/src/main/res/drawable/flickr_progress_horizontal_holo_light.xml" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/Username.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/Who_.java" />
-        <option value="$PROJECT_DIR$/loginActivity/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/UserModel.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/util/Util.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/res/xml/syncadapter.xml" />
-        <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/FlickrClientApp.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/UserInfo.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/Hottags.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/TagAndRecent.java" />
@@ -3807,7 +3840,6 @@
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/Recent.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/res/layout/fragment_tags.xml" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/res/layout/fragment_friends.xml" />
-        <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/fragments/FriendsFragment.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/Common.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/res/layout/fragment_search.xml" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/fragments/InterestingFragment.java" />
@@ -3817,19 +3849,25 @@
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/Comments_.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/Comment.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/service/FlickrService.java" />
-        <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/ImageDisplayActivity.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/fragments/FlickrBaseFragment.java" />
-        <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/PhotosActivity.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/PreviewPhotoActivity.java" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/res/layout/photo_item_friends.xml" />
+        <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/FlickrClientApp.java" />
+        <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/fragments/FriendsFragment.java" />
+        <option value="$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/xml/authenticator.xml" />
+        <option value="$PROJECT_DIR$/loginActivity/src/main/res/xml/authenticator.xml" />
+        <option value="$PROJECT_DIR$/loginActivity/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/ImageDisplayActivity.java" />
+        <option value="$PROJECT_DIR$/loginActivity/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/PhotosActivity.java" />
+        <option value="$PROJECT_DIR$/loginActivity/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/sync/SyncAdapter.java" />
-        <option value="$PROJECT_DIR$/loginActivity/src/main/res/xml/authenticator.xml" />
-        <option value="$PROJECT_DIR$/loginActivity/src/main/res/layout/activity_login.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="33" />
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="751" />
@@ -3859,6 +3897,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -4181,96 +4223,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flockr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flockr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="loginActivity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable-hdpi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flockr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flockr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="loginActivity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flockr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flockr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="loginActivity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -4343,49 +4295,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="fragments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flockr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flockr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="loginActivity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flickr" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="activity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane">
-        <subPane />
       </pane>
       <pane id="Scope" />
     </panes>
@@ -4414,6 +4328,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/loginActivity/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/loginActivity/src/main/res" />
       <recent name="$PROJECT_DIR$/loginActivity/src/main/res/drawable-mdpi" />
       <recent name="$PROJECT_DIR$/loginActivity/src/main/res/drawable-ldpi" />
     </key>
@@ -4421,10 +4336,10 @@
       <recent name="com.anubis.flickr.util" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/loginActivity/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/loginActivity/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models" />
       <recent name="$PROJECT_DIR$/loginActivity/src/main/res/drawable-hdpi" />
-      <recent name="$PROJECT_DIR$/loginActivity/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/loginActivity/src/main/res/drawable-mdpi" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -4751,12 +4666,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="751" extended-state="6" />
-    <editor active="true" />
+    <frame x="33" y="23" width="1280" height="751" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31663975" sideWeight="0.5175644" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32283464" sideWeight="0.6276252" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32125986" sideWeight="0.63974154" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32440946" sideWeight="0.4305331" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -4765,18 +4680,18 @@
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32440946" sideWeight="0.7924071" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32755905" sideWeight="0.49353796" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32125986" sideWeight="0.36995155" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5905512" sideWeight="0.34329563" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32755905" sideWeight="0.49676898" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32283464" sideWeight="0.3723748" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861635" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5748032" sideWeight="0.36752826" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.023622047" sideWeight="0.49676898" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32283464" sideWeight="0.62277865" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14488189" sideWeight="0.63247174" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32148626" sideWeight="0.48243558" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32125986" sideWeight="0.4628433" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07401575" sideWeight="0.38772213" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -4794,7 +4709,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31663975" sideWeight="0.5175644" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32125986" sideWeight="0.62520194" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32125986" sideWeight="0.63974154" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32440946" sideWeight="0.4305331" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -4806,19 +4721,19 @@
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32440946" sideWeight="0.7924071" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32755905" sideWeight="0.49353796" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32125986" sideWeight="0.37479806" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5905512" sideWeight="0.34329563" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39937106" sideWeight="0.49676898" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32283464" sideWeight="0.37722132" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32755905" sideWeight="0.49676898" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861635" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14488189" sideWeight="0.36752826" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.023622047" sideWeight="0.49676898" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32283464" sideWeight="0.62277865" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14488189" sideWeight="0.63247174" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32148626" sideWeight="0.48243558" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32125986" sideWeight="0.4628433" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07401575" sideWeight="0.38772213" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -4961,228 +4876,152 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.1.6/c068e3a2613eed2aa99a30478efd6794301f0975/rxjava-1.1.6-sources.jar!/rx/observers/SafeSubscriber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/Comments_.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/android-sdk-macosx-3/sources/android-24/java/util/List.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3195">
-          <caret line="236" column="12" selection-start-line="236" selection-start-column="12" selection-end-line="236" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.realm/realm-android-library/2.0.2/f9ccbbb792dc3e9fb68fc79cb4e5c8014d3d1ef9/realm-android-library-2.0.2-sources.jar!/io/realm/Realm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="1173" column="36" selection-start-line="1173" selection-start-column="36" selection-end-line="1173" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/UserModel.java">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/util/Util.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
-          <caret line="54" column="27" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
+          <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/fragments/SearchFragment.java">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="143" column="53" selection-start-line="143" selection-start-column="10" selection-end-line="143" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/android-sdk-macosx-3/sources/android-24/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="711" column="29" selection-start-line="711" selection-start-column="29" selection-end-line="711" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="46" column="30" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/service/FlickrService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/android-sdk-macosx-3/sources/android-24/android/os/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="335" column="25" selection-start-line="335" selection-start-column="25" selection-end-line="335" selection-end-column="25" />
-          <folding>
-            <element signature="e#13251#13252#0" expanded="false" />
-            <element signature="e#13314#13315#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.realm/realm-android-library/2.0.2/f9ccbbb792dc3e9fb68fc79cb4e5c8014d3d1ef9/realm-android-library-2.0.2-sources.jar!/io/realm/RealmList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="666" column="19" selection-start-line="666" selection-start-column="19" selection-end-line="666" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/Comments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/android-sdk-macosx-3/sources/android-24/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="6036" column="16" selection-start-line="6036" selection-start-column="16" selection-end-line="6036" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/android-sdk-macosx-3/sources/android-24/android/widget/TextView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="4314" column="6" selection-start-line="4314" selection-start-column="6" selection-end-line="4314" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/android-sdk-macosx-3/sources/android-24/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="1594" column="15" selection-start-line="1594" selection-start-column="15" selection-end-line="1594" selection-end-column="15" />
-          <folding>
-            <element signature="e#65018#65019#0" expanded="false" />
-            <element signature="e#65056#65057#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.4.1/70fca5cd856d0cc740e43affeb6f661204fdb2cc/okhttp-3.4.1-sources.jar!/okhttp3/ResponseBody.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="152" column="22" selection-start-line="152" selection-start-column="22" selection-end-line="152" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Downloads/android-sdk-macosx-3/extras/android/m2repository/com/android/support/support-fragment/24.2.1/support-fragment-24.2.1-sources.jar!/android/support/v4/app/Fragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="938" column="16" selection-start-line="938" selection-start-column="16" selection-end-line="938" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/android-sdk-macosx-3/sources/android-24/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="4983" column="22" selection-start-line="4983" selection-start-column="22" selection-end-line="4983" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/ImageDisplayActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-707">
-          <caret line="117" column="19" selection-start-line="117" selection-start-column="19" selection-end-line="117" selection-end-column="19" />
-          <folding>
-            <element signature="e#1626#1634#0" expanded="false" />
-            <element signature="e#2766#2783#0" expanded="false" />
-            <element signature="e#2828#2849#0" expanded="false" />
-            <element signature="e#8388#9411#0" expanded="false" />
-            <element signature="e#9410#9411#0" expanded="false" />
-            <element signature="e#11294#11303#0" expanded="false" />
-            <element signature="e#11848#11857#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/PreviewPhotoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="169" column="53" selection-start-line="169" selection-start-column="53" selection-end-line="169" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/layout/fragment_tags.xml">
-      <provider editor-type-id="android-designer2">
+      <provider editor-type-id="android-manifest">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/fragments/FriendsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-687">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="313">
+          <caret line="103" column="25" selection-start-line="102" selection-start-column="33" selection-end-line="103" selection-end-column="25" />
+          <folding>
+            <element signature="e#1360#1361#0" expanded="true" />
+            <element signature="e#1391#1392#0" expanded="true" />
+            <element signature="e#2037#2627#0" expanded="true" />
+            <element signature="e#2626#2627#0" expanded="true" />
+            <element signature="e#3525#3526#0" expanded="true" />
+            <element signature="e#3938#4633#0" expanded="true" />
+            <element signature="e#4632#4633#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/adapter/TagsAdapter.java">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/models/Recent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="118" column="60" selection-start-line="118" selection-start-column="60" selection-end-line="118" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/layout/photo_item_friends.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-          <folding />
+        <state relative-caret-position="219">
+          <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+          <folding>
+            <element signature="e#915#916#0" expanded="true" />
+            <element signature="e#948#949#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/fragments/TagsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2550">
-          <caret line="180" column="5" selection-start-line="180" selection-start-column="5" selection-end-line="180" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="502">
+          <caret line="239" column="0" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/ic_camera.png">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki15_small.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/ic_lotus.png">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki15.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-mdpi/flicki.png">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hkm.taglib/tag/1.6.0/b493a77e57a72a839fc1b69af816e26753c0fd83/tag-1.6.0-sources.jar!/co/hkm/soltag/TagContainerLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="849" column="16" selection-start-line="849" selection-start-column="16" selection-end-line="849" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flickr_151.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/flicki.png">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki_small.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/fbevel2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/Entypo_d83d(0)_48.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/rocket.ico">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/ic_camera.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/ic_flick.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flickr_small.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flick.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flick_small.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/ic_flick-web.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/build/intermediates/res/merged/debug/xml/authenticator.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/xml/authenticator.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="60" selection-start-line="2" selection-start-column="60" selection-end-line="2" selection-end-column="60" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-mdpi/ic_launcher.png">
@@ -5190,7 +5029,12 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/ic_launcher.png">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-mdpi/ic_flicki.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-mdpi/ic_flick.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -5205,76 +5049,136 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable-hdpi/flicki_logo.png" />
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable-mdpi/flicki_logo.png" />
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki-web.png" />
-    <entry file="file://$USER_HOME$/flicki2.png">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/flicki.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/flicki-web.png">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/ic_camera.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/flicki.png">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/flicki_logo.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable-xhdpi/ic_launcher.png">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/ic_flick.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki17.png">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/ic_flicki.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable-hdpi/ic_launcher.png">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/ic_lotus.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/ic_flicki-web.png">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/lotus.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/ImageDisplayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+        <state relative-caret-position="128">
+          <caret line="82" column="65" selection-start-line="82" selection-start-column="65" selection-end-line="82" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/sync/SyncAdapter.java">
+    <entry file="file://$PROJECT_DIR$/loginActivity/build/intermediates/exploded-aar/com.hkm.taglib/tag/1.6.0/res/values/values.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="296" column="44" selection-start-line="296" selection-start-column="44" selection-end-line="296" selection-end-column="44" />
+        <state relative-caret-position="60">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/android-sdk-macosx-3/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1-sources.jar!/android/support/annotation/ColorInt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
           <folding>
-            <marker date="1477613086000" expanded="true" signature="18677:18730" ph="//..." />
+            <element signature="e#0#1408#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/xml/authenticator.xml">
+    <entry file="jar://$USER_HOME$/Downloads/android-sdk-macosx-3/extras/android/m2repository/com/android/support/support-compat/24.2.1/support-compat-24.2.1-sources.jar!/android/support/v4/app/NotificationCompat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="216">
+          <caret line="1636" column="35" selection-start-line="1636" selection-start-column="35" selection-end-line="1636" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki_logo.png">
+    <entry file="jar://$USER_HOME$/Downloads/android-sdk-macosx-3/platforms/android-24/android.jar!/android/R.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="2369" column="32" selection-start-line="2369" selection-start-column="32" selection-end-line="2369" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="105" column="63" selection-start-line="105" selection-start-column="50" selection-end-line="105" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-xxxhdpi/ic_rocket.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/flicki23.png">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+          <folding>
+            <element signature="e#912#930#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/rocket_transparent.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/PhotosActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="95" column="48" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="48" />
+          <folding>
+            <element signature="e#4788#4798#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable-hdpi/ic_star.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/mipmap-hdpi/ic_rocket.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -5284,37 +5188,33 @@
         <state />
       </provider>
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="354">
+          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/layout/toolbar_main.xml">
-      <provider editor-type-id="android-designer2">
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/sync/SyncAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="303" column="0" selection-start-line="303" selection-start-column="0" selection-end-line="303" selection-end-column="0" />
+          <folding>
+            <marker date="1477786240000" expanded="true" signature="18670:18723" ph="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/res/drawable/phlix.png">
+      <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/activity/PhotosActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-739">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/loginActivity/src/main/java/com/anubis/flickr/fragments/FlickrBaseFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-840">
-          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-          <folding />
-        </state>
       </provider>
     </entry>
   </component>
