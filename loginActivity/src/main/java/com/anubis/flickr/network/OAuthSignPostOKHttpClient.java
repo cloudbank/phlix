@@ -14,13 +14,11 @@ import se.akerfeldt.okhttp.signpost.OkHttpOAuthProvider;
 
 
 /**
- * Created by sabine on 9/18/16.
+ * Created by sabine on 9/18/16
  */
 
 public class OAuthSignPostOKHttpClient {    //
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
+
 
 
     private OkHttpOAuthConsumer consumer;
@@ -108,7 +106,7 @@ public class OAuthSignPostOKHttpClient {    //
                     }
                     provider.retrieveAccessToken(getConsumer(), oauth_verifier);
                     //setReponseParameters
-                    setUserIdAndName(provider.getResponseParameters());
+                    setHttpResponseParams(provider.getResponseParameters());
 
 
                 } catch (Exception var4) {
@@ -143,7 +141,7 @@ public class OAuthSignPostOKHttpClient {    //
 
     }
 
-    public void setUserIdAndName(HttpParameters params) {
+    private void setHttpResponseParams(HttpParameters params) {
         SharedPreferences.Editor editor = this.prefs.edit();
         for (String k : params.keySet()) {
             editor.putString(k, params.get(k).first());

@@ -40,6 +40,7 @@ public class LoginActivity extends OAuthLoginActivity {
     protected void onDestroy() {
         super.onDestroy();
         //prevent leaking activity
+        //@todo clean up of async tasks for fetching tokens
         if (null != this.client && null != this.client.getAccessHandler() ) {
             OAuthBaseClient.OAuthAccessHandler handler = this.client.getAccessHandler();
             handler = null;

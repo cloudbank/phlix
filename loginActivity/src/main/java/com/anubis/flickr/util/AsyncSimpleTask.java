@@ -1,7 +1,7 @@
 package com.anubis.flickr.util;
 
 /**
- * Created by sabine on 9/26/16.
+ * copied from codepath by sabine on 9/26/16 as a wrapper for no args asynctask
  */
 
 import android.os.AsyncTask;

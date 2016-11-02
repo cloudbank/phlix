@@ -55,6 +55,7 @@ public class OAuthBaseClient {
     private OAuthBaseClient(Context context, OAuthBaseClient.OAuthAccessHandler handler) {
         this.context = context;
         this.accessHandler = handler;
+       // @todo change to build config
         final Properties prop = new Properties();
         try {
             prop.load(this.context.getAssets().open("app.properties"));
