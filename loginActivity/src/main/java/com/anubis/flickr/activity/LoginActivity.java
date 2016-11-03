@@ -13,7 +13,8 @@ import android.widget.Toast;
 
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
-import com.anubis.flickr.network.OAuthBaseClient;
+import com.anubis.oauthkit.OAuthBaseClient;
+import com.anubis.oauthkit.OAuthLoginActivity;
 
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
 

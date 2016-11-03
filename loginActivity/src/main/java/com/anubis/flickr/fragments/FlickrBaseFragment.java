@@ -25,7 +25,7 @@ import com.anubis.flickr.activity.PhotosActivity;
 import com.anubis.flickr.activity.PreviewPhotoActivity;
 import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.listener.EndlessScrollListener;
-import com.anubis.flickr.network.OAuthBaseClient;
+import com.anubis.oauthkit.OAuthBaseClient;
 
 import java.io.File;
 

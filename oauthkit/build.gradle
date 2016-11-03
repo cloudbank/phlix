@@ -9,15 +9,17 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
-
+        def propsFile = rootProject.file('local.properties')
+        def props = new Properties()
+        props.load(new FileInputStream(propsFile))
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "baseUrl", "\"${baseUrl}\""
-        buildConfigField "String", "callbackUrl", "\"${callbackUrl}\""
-        buildConfigField "String", "consumerKey", "\"${consumerKey}\""
-        buildConfigField "String", "consumerSecret", "\"${consumerSecret}\""
-        buildConfigField "String", "requestTokenEndpoint", "\"${requestTokenEndpoint}\""
-        buildConfigField "String", "accessTokenEndpoint", "\"${accessTokenEndpoint}\""
-        buildConfigField "String", "authorizationEndpoint", "\"${authorizationEndpoint}\""
+        buildConfigField "String", "baseUrl",  props['baseUrl']
+        buildConfigField "String", "callbackUrl", props['callbackUrl']
+        buildConfigField "String", "consumerKey", props['consumerKey']
+        buildConfigField "String", "consumerSecret", props['consumerSecret']
+        buildConfigField "String", "requestTokenEndpoint", props['requestTokenEndpoint']
+        buildConfigField "String", "accessTokenEndpoint", props['accessTokenEndpoint']
+        buildConfigField "String", "authorizationEndpoint", props['authorizationEndpoint']
     }
     buildTypes {
         release {
