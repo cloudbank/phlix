@@ -21,6 +21,7 @@ import com.anubis.flickr.adapter.TagsAdapter;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Recent;
 import com.anubis.flickr.models.Tag;
+import com.anubis.flickr.util.Util;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -125,7 +126,7 @@ public class TagsFragment extends FlickrBaseFragment {
         ringProgressDialog = new ProgressDialog(getActivity(), R.style.MyDialogTheme);
         tAdapter = new TagsAdapter(getActivity(), mPhotos, false);
         //ringProgressDialog= new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
-        this.prefs = FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
+        this.prefs = Util.getUserPrefs();
         this.editor = this.prefs.edit();
         mTags = new ArrayList<Tag>();
         Log.d("TABS","tags oncreate");

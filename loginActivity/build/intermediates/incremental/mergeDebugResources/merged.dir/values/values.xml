@@ -682,6 +682,8 @@
     <integer name="cancel_button_image_alpha">127</integer>
     <integer name="design_snackbar_text_max_lines">2</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="OAuthKit_Prefs">OAuthKit_Prefs</string>
+    <string name="Phlix_User_Prefs">Phlix_User_Prefs</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -713,15 +715,18 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="account_type">com.anubis.flickr</string>
     <string name="add">Add</string>
     <string name="and_search"> all of the tags entered</string>
     <string name="app_name">phlix</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="authority">com.anubis.flickr.provider</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="bye">Bye...</string>
     <string name="cancel">Cancel</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="commons"><b>The Commons</b>\n <i>Help catalog the world’s public photo archives.</i></string>
+    <string name="commons_search">The Commons</string>
     <string name="commons_under"><u>The key goal of The Commons is to share hidden treasures\n from the world\'s public photography archives.</u> </string>
     <string name="current_user">currentUser</string>
     <string name="enter_comment">Enter Comment</string>
@@ -741,12 +746,14 @@
     <string name="saving_image">Saving image</string>
     <string name="search">Search</string>
     <string name="search_by">Search by any tags entered </string>
-    <string name="search_by_tag_text">The Commons</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="tags">Hot Tags  &amp; Recent Photos</string>
     <string name="text_search"> title, description, or tags entered</string>
+    <string name="title">title</string>
     <string name="user_id">userId</string>
+    <string name="user_nsid">user_nsid</string>
+    <string name="username">username</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

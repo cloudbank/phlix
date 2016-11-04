@@ -25,7 +25,8 @@
     <string name="title">title</string>
     <string name="username">username</string>
     <string name="user_nsid">user_nsid</string>
-
+    <string name="account_type">com.anubis.flickr</string>
+    <string name="authority">com.anubis.flickr.provider</string>
 
 
 </resources>

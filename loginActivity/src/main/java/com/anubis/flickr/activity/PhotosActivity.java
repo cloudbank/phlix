@@ -1,8 +1,9 @@
 package com.anubis.flickr.activity;
 
+import android.accounts.Account;
+import android.content.ContentResolver;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -20,19 +21,12 @@ import com.anubis.flickr.fragments.FriendsFragment;
 import com.anubis.flickr.fragments.InterestingFragment;
 import com.anubis.flickr.fragments.SearchFragment;
 import com.anubis.flickr.fragments.TagsFragment;
-import com.anubis.flickr.models.Common;
-import com.anubis.flickr.models.Interesting;
 import com.anubis.flickr.models.Photos;
-import com.anubis.flickr.models.Recent;
-import com.anubis.flickr.models.UserModel;
 import com.anubis.flickr.sync.SyncAdapter;
 import com.anubis.flickr.util.Util;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
-import io.realm.Realm;
 import rx.Subscription;
 
 public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragment.OnPhotoPostedListener {
@@ -89,13 +83,12 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
         if (!Util.getCurrentUser().equals(authPrefs.getString(getString(R.string.username), ""))) {
             //@todo stop the sync adapter and restart
             //find out how to properly stop before restart
-            //getContentResolver().cancelSync();
+            ContentResolver.cancelSync(new Account(authPrefs.getString(getString(R.string.username),""), getApplication().getString(R.string.account_type)), getApplication().getString(R.string.authority));
+            // could also cancelSync(null);
             updateUserInfo(authPrefs);
-            realmUserAndInit();
         }
-        //@todo test if remove account that it starts again
-        // @todo remove testlogin call in adapter
-
+        //@todo check that sync adapter is running as planned for repeat login
+        //this only runs the sync if no account account exists; else it should be running
         SyncAdapter.initializeSyncAdapter(this);
 
 
@@ -140,46 +133,7 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
 
     }
 
-    private void realmUserAndInit() {
-        handlerThread = new HandlerThread("BackgroundHandler");
-        handlerThread.start();
-        final Handler backgroundHandler = new Handler(handlerThread.getLooper());
-        return backgroundHandler.post(new Runnable() {
 
-            @Override
-            public void run() {
-                Realm realm = null;
-                try {
-                    realm = Realm.getDefaultInstance();
-                    realm.beginTransaction();
-                    UserModel u = realm.where(UserModel.class).equalTo("userId", user.getUser().getUserId()).findFirst();
-                    if (null == u) {
-                        u = realm.createObject(UserModel.class, user.getUser().getUserId());
-                        realm.copyToRealmOrUpdate(u);  //deep copy
-                    }
-                    Date d = Calendar.getInstance().getTime();
-                    Interesting i = realm.createObject(Interesting.class, d.toString());
-                    i.setTimestamp(d);
-                    realm.copyToRealmOrUpdate(i);
-                    Recent r = realm.createObject(Recent.class, d.toString());
-                    r.setTimestamp(d);
-                    realm.copyToRealmOrUpdate(r);
-                    //@todo probably can change this w algo
-                    Common c = realm.createObject(Common.class, d.toString());
-                    c.setTimestamp(d);
-                    realm.copyToRealmOrUpdate(c);
-
-                    realm.commitTransaction();
-                } finally {
-                    if (realm != null) {
-                        realm.close();
-                    }
-                }
-            }
-        });
-
-
-    }
 
     private TabLayout.OnTabSelectedListener onTabSelectedListener(final ViewPager pager) {
         return new TabLayout.OnTabSelectedListener() {

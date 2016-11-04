@@ -74,10 +74,11 @@ public class FriendsFragment extends FlickrBaseFragment {
                 // This is called anytime the Realm database changes on any thread.
                 // Please note, change listeners only work on Looper threads.
                 // For non-looper threads, you manually have to use Realm.waitForChange() instead.
-                rb1.setChecked(true);
-                rb5.setChecked(false);
+
                 //have to redraw the view
                 view.invalidate();
+                rb1.setChecked(false);
+                rb5.setChecked(true);
                 updateDisplay(u);
             }
         };

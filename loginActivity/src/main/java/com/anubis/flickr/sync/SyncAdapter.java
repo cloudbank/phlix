@@ -30,15 +30,19 @@ import com.anubis.flickr.activity.LoginActivity;
 import com.anubis.flickr.models.Common;
 import com.anubis.flickr.models.Hottags;
 import com.anubis.flickr.models.Interesting;
+import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.Recent;
+import com.anubis.flickr.models.Tag;
 import com.anubis.flickr.models.TagAndRecent;
 import com.anubis.flickr.models.UserInfo;
 import com.anubis.flickr.models.UserModel;
 import com.anubis.flickr.models.Who;
 import com.anubis.flickr.util.Util;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import io.realm.Realm;
 import retrofit2.adapter.rxjava.HttpException;
@@ -47,6 +51,8 @@ import rx.Subscriber;
 import rx.Subscription;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
+
+import static com.anubis.flickr.FlickrClientApp.getJacksonService;
 
 
 /**
@@ -57,10 +63,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     // Global variables
     // Define a variable to contain a content resolver instance
     ContentResolver mContentResolver;
-    public static final int SYNC_INTERVAL = 60 * 5;    //60 * 180;  //@todo change to 23 hrs
+    public static final int SYNC_INTERVAL = 60 * 3;    //60 * 180;  //@todo change to 23 hrs
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
-    Realm realm, realm2, realm3, realm4, realm5;
+    Realm  realm2, realm3, realm4, realm5;
     Subscription friendSubscription, recentSubscription, interestingSubscription, commonsSubscription;
 
 
@@ -104,9 +110,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
             }
         });
         */
-        //getFriendsPhotos();//add tags
         Log.d("SYNC", "starting onPerformSync");
-        getLoginAndFriends();
+        getFriends();
         getInterestingPhotos();
         getRecentAndHotags();
         getCommonsPage1();
@@ -151,7 +156,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
      */
     public static void configurePeriodicSync(Context context, int syncInterval, int flexTime) {
         Account account = getSyncAccount(context);
-        String authority = FlickrClientApp.AUTHORITY;
+        String authority = FlickrClientApp.getAppContext().getString(R.string.authority);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             // we can enable inexact timers in our periodic sync
             SyncRequest request = new SyncRequest.Builder().
@@ -175,7 +180,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
         ContentResolver.requestSync(getSyncAccount(context),
-                FlickrClientApp.AUTHORITY, bundle);
+                FlickrClientApp.getAppContext().getString(R.string.authority), bundle);
         Log.d("SYNC", "sync request");
     }
 
@@ -194,7 +199,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         // Create the account type and default account
         Account newAccount = new Account(
-                FlickrClientApp.ACCOUNT, FlickrClientApp.ACCOUNT_TYPE);
+                Util.getCurrentUser(), FlickrClientApp.getAppContext().getString(R.string.account_type));
 
         // If the password doesn't exist, the account doesn't exist
         if (null == accountManager.getPassword(newAccount)) {
@@ -203,7 +208,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
          * Add the account and account type, empty password or user data
          * If successful, return the Account object, otherwise report an error.
          */
-            if (!accountManager.addAccountExplicitly(newAccount, "", null)) {
+            if (!accountManager.addAccountExplicitly(newAccount, "password", null)) {
                 return null;
             }
             /*
@@ -227,7 +232,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         /*
          * Without calling setSyncAutomatically, our periodic sync will not be enabled.
          */
-        ContentResolver.setSyncAutomatically(newAccount, FlickrClientApp.AUTHORITY, true);
+        ContentResolver.setSyncAutomatically(newAccount, FlickrClientApp.getAppContext().getString(R.string.authority), true);
 
         /*
          * Finally, let's do a sync to get things started--
@@ -321,14 +326,14 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
 
-    private void getLoginAndFriends() {
+    private void getFriends() {
         //@todo will return error if logged out
         //cancel adapter or change method
         //flickr.auth.oauth.checkToken with auth token
         //check for new user and cancel for certain\\
 
-        Observable<Who> tagsObservable = FlickrClientApp.getJacksonService().getTags(Util.getUserId());
-        friendSubscription = FlickrClientApp.getJacksonService().getFriendsPhotos(Util.getUserId())
+        Observable<Who> tagsObservable = getJacksonService().getTags(Util.getUserId());
+        friendSubscription = getJacksonService().getFriendsPhotos(Util.getUserId())
                   .zipWith(tagsObservable, new Func2<Photos, Who, UserInfo>() {
 
                             @Override
@@ -366,7 +371,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                             int code = response.code();
                             Log.e("ERROR", String.valueOf(code));
                         }
-                        Log.e("ERROR", "error getting login" + e);
+                        Log.e("ERROR", "error getting friends" + e);
                         //signout
                     }
 
@@ -384,38 +389,60 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         Who w = userInfo.getWho();
                         List<Tag> tags = w.getWho().getTags().getTag();
                         // }
-                        realm2 = Realm.getDefaultInstance();
-                        realm2.beginTransaction();
-                        String user_id = Util.getUserId();
+                        try {
+                            realm2 = Realm.getDefaultInstance();
+                            realm2.beginTransaction();
 
-                        UserModel u = null;
-                        u = realm2.where(UserModel.class).equalTo("userId", user_id).findFirst();
 
-                        //is data stale?
-                        //for 'friends' list, since it is small, fixed size list and data could
-                        //change, just clobber it
+                            String user_id = Util.getUserId();
 
-                        if (u.friendsList.size() > 0) {
-                            u.friendsList = null;
-                        }
-                        for (Photo p : photos.getPhotos().getPhotoList()) {
-                            u.friendsList.add(p);
-                        }
-                        if (u.tagsList.size() < tags.size()) {
-                            for (Tag t : tags) {
-                                if (!u.tagsList.contains(t)) {
-                                    t.setAuthorname(Util.getCurrentUser());
-                                    u.tagsList.add(t);
+                            UserModel u = null;
+                            u = realm2.where(UserModel.class).equalTo("userId", user_id).findFirst();
+
+                            if (null == u) {
+                                u = realm2.createObject(UserModel.class, Util.getUserId());
+                                realm2.copyToRealmOrUpdate(u);  //deep copy
+                            }
+                            Date d = Calendar.getInstance().getTime();
+                            Interesting i = realm2.createObject(Interesting.class, d.toString());
+                            i.setTimestamp(d);
+                            realm2.copyToRealmOrUpdate(i);
+                            Recent r = realm2.createObject(Recent.class, d.toString());
+                            r.setTimestamp(d);
+                            realm2.copyToRealmOrUpdate(r);
+                            //@todo probably can change this w algo
+                            Common c = realm2.createObject(Common.class, d.toString());
+                            c.setTimestamp(d);
+                            realm2.copyToRealmOrUpdate(c);
+
+                            //is data stale?
+                            //for 'friends' list, since it is small, fixed size list and data could
+                            //change, just clobber it
+
+                            if (u.friendsList.size() > 0) {
+                                u.friendsList = null;
+                            }
+                            for (Photo p : photos.getPhotos().getPhotoList()) {
+                                u.friendsList.add(p);
+                            }
+                            if (u.tagsList.size() < tags.size()) {
+                                for (Tag t : tags) {
+                                    if (!u.tagsList.contains(t)) {
+                                        t.setAuthorname(Util.getCurrentUser());
+                                        u.tagsList.add(t);
+                                    }
                                 }
                             }
+                            //f.user.username.content =
+                            u.name = Util.getCurrentUser();
+                            u.timestamp = Calendar.getInstance().getTime();
+                            realm2.copyToRealmOrUpdate(u);  //deep copy
+                            realm2.commitTransaction();
+                            Log.d("DEBUG", "end get userinfo: " + u);
+                        } finally {
+                            realm2.close();
                         }
-                        //f.user.username.content =
-                        u.name = Util.getCurrentUser();
-                        u.timestamp = Calendar.getInstance().getTime();
-                        realm2.copyToRealmOrUpdate(u);  //deep copy
-                        realm2.commitTransaction();
-                        Log.d("DEBUG", "end get userinfo: " + u);
-                        realm2.close();
+
 
 
                     }
@@ -483,8 +510,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
 
     private void getRecentAndHotags() {
-        Observable<Photos> recentObservable = FlickrClientApp.getJacksonService().getRecentPhotos();
-        recentSubscription = FlickrClientApp.getJacksonService().getHotTags().zipWith(recentObservable, new Func2<Hottags, Photos, TagAndRecent>() {
+        Observable<Photos> recentObservable = getJacksonService().getRecentPhotos();
+        recentSubscription = getJacksonService().getHotTags().zipWith(recentObservable, new Func2<Hottags, Photos, TagAndRecent>() {
             @Override
             public TagAndRecent call(Hottags h, Photos p) {
                 return new TagAndRecent(p, h);
@@ -545,7 +572,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         //@todo check for page total if not then process with page 1
         //@todo while realm total is less than total increment page else stop
-        commonsSubscription = FlickrClientApp.getJacksonService().commons("1'")
+        commonsSubscription = getJacksonService().commons("1'")
                 .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(Schedulers.immediate())
                 .subscribe(new Subscriber<Photos>() {

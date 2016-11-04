@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.models.Comment;
+import com.anubis.flickr.util.Util;
 
 import java.util.List;
 
@@ -88,7 +88,7 @@ public class ImageDisplayAdapter extends RecyclerView.Adapter<ImageDisplayAdapte
         mStaggered = staggered;
         mComments = comments;
         mContext = context;
-        this.prefs = FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
+        this.prefs = Util.getUserPrefs();
         this.editor = this.prefs.edit();
 
     }

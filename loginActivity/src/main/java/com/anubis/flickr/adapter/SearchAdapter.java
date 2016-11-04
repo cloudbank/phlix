@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.anubis.flickr.R;
 import com.anubis.flickr.models.Photo;
+import com.anubis.flickr.util.Util;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -99,7 +100,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         mStaggered = staggered;
         mPhotos = photos;
         mContext = context;
-        this.prefs = context.getSharedPreferences("Flickr_User_Prefs", 0);
+        this.prefs = Util.getUserPrefs();
         this.editor = this.prefs.edit();
 
     }

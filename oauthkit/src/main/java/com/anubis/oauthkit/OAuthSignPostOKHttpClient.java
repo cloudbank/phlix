@@ -4,8 +4,6 @@ package com.anubis.oauthkit;
 import android.content.SharedPreferences;
 import android.net.Uri;
 
-import java.util.Properties;
-
 import oauth.signpost.http.HttpParameters;
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthProvider;
