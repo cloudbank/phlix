@@ -10,11 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.util.Log;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.Properties;
 
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
 
@@ -85,6 +82,9 @@ public class OAuthBaseClient {
                 OAuthBaseClient.this.client.setAccessToken(new Token(consumer.getToken(), consumer.getTokenSecret()));
                 OAuthBaseClient.this.editor.putString("oauth_token", consumer.getToken());
                 OAuthBaseClient.this.editor.putString("oauth_token_secret", consumer.getTokenSecret());
+                //@todo remove the request token, so we do not keep calling authorize in onresuem
+                OAuthBaseClient.this.editor.remove("request_token");
+
                 OAuthBaseClient.this.editor.commit();
 
 

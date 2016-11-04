@@ -37,7 +37,7 @@ import io.realm.RealmChangeListener;
 
 public class FriendsFragment extends FlickrBaseFragment {
 
-    private String  mUserId, mPreviousUser;
+    private String mUserId, mPreviousUser;
 
     private List<Photo> mPhotos, cPhotos;
 
@@ -76,10 +76,16 @@ public class FriendsFragment extends FlickrBaseFragment {
                 // For non-looper threads, you manually have to use Realm.waitForChange() instead.
 
                 //have to redraw the view
-                view.invalidate();
-                rb1.setChecked(false);
-                rb5.setChecked(true);
+                //view.invalidate();
+
                 updateDisplay(u);
+                if (rb1.isChecked()) {
+                    //some code
+
+                    makeSingle(cPhotos);
+                    fAdapter.notifyDataSetChanged();
+                    Toast.makeText(FlickrClientApp.getAppContext(), "Howza1", Toast.LENGTH_SHORT).show();
+                }
             }
         };
 
@@ -105,6 +111,12 @@ public class FriendsFragment extends FlickrBaseFragment {
                 @Override
                 public void onChange(Realm r) {
                     updateDisplay();
+                    if (rb1.isChecked()) {
+                        //some code
+
+                        makeSingle(cPhotos);
+                        fAdapter.notifyDataSetChanged();
+                    }
                 }
             };
             r.addChangeListener(realmListener);
@@ -134,7 +146,7 @@ public class FriendsFragment extends FlickrBaseFragment {
                 } else if (checkedId == R.id.radio5) {
                     //some code
                     Toast.makeText(FlickrClientApp.getAppContext(), "Howza5", Toast.LENGTH_SHORT).show();
-                   updateDisplay();
+                    updateDisplay();
 
                 }
 

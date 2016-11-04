@@ -50,7 +50,9 @@ public abstract class OAuthLoginActivity extends FragmentActivity
         super.onResume();
         //Class<T> clientClass = getClientClass();
         // Extracts the authenticated url data after the user
-        // authorizes the OAuth app in the browser
+        // authorizes the OAuth app in the browse
+
+        //@todo only need to check this when authing; remove request token when receive access toekn
         if (this.client.getPrefs().contains("request_token")) {
             Uri uri = getIntent().getData();
             try {
