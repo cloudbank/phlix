@@ -7,7 +7,7 @@
     <string name="enter_comment">Enter Comment</string>
     <string name="friends_and_you">Friends  &amp; I</string>
     <string name="interesting_today">Explore</string>
-    <string name="search_by_tag_text">The Commons</string>
+    <string name="commons_search">The Commons</string>
     <string name="tags">Hot Tags  &amp; Recent Photos</string>
     <string name="bye">Bye...</string>
     <string name="commons"><b>The Commons</b>\n <i>Help catalog the world’s public photo archives.</i></string>
@@ -20,16 +20,11 @@
     <string name="previous_user">previousUser</string>
     <string name="current_user">currentUser</string>
     <string name="user_id">userId</string>
-
-
-
-
-
-
-
-
-
-
+    <string name="OAuthKit_Prefs">OAuthKit_Prefs</string>
+    <string name="Phlix_User_Prefs">Phlix_User_Prefs</string>
+    <string name="title">title</string>
+    <string name="username">username</string>
+    <string name="user_nsid">user_nsid</string>
 
 
 

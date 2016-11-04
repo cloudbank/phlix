@@ -1,7 +1,6 @@
 package com.anubis.flickr.adapter;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,9 +11,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.models.Photo;
+import com.anubis.flickr.util.Util;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -31,8 +30,6 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
 
     // Define listener member variable
     private OnItemClickListener listener;
-    protected SharedPreferences prefs;
-    protected SharedPreferences.Editor editor;
 
 
     public OnItemClickListener getListener(){
@@ -98,8 +95,6 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
         mStaggered = staggered;
         mPhotos = photos;
         mContext = context;
-        this.prefs = FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
-        this.editor = this.prefs.edit();
 
     }
 
@@ -134,7 +129,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
                 .getLayoutParams();
 
         TextView tags = viewHolder.tags;
-        String username = prefs.getString("username","");
+        String username = Util.getCurrentUser();
         //
         boolean isMe = photo.getOwnername().equals(username);
         tags.setText("~"+ (isMe ? "Me": photo.getOwnername()));

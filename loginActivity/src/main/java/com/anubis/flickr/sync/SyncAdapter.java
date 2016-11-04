@@ -13,7 +13,6 @@ import android.content.ContentProviderClient;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.SyncRequest;
 import android.content.SyncResult;
 import android.os.Build;
@@ -31,32 +30,23 @@ import com.anubis.flickr.activity.LoginActivity;
 import com.anubis.flickr.models.Common;
 import com.anubis.flickr.models.Hottags;
 import com.anubis.flickr.models.Interesting;
-import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Photos;
 import com.anubis.flickr.models.Recent;
-import com.anubis.flickr.models.Tag;
 import com.anubis.flickr.models.TagAndRecent;
-import com.anubis.flickr.models.User;
 import com.anubis.flickr.models.UserInfo;
 import com.anubis.flickr.models.UserModel;
 import com.anubis.flickr.models.Who;
 import com.anubis.flickr.util.Util;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import io.realm.Realm;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
-import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
-
-import static com.anubis.flickr.FlickrClientApp.getJacksonService;
-import static com.anubis.flickr.R.string.user_id;
 
 
 /**
@@ -71,7 +61,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
     Realm realm, realm2, realm3, realm4, realm5;
-    Subscription loginSubscription, recentSubscription, interestingSubscription, commonsSubscription;
+    Subscription friendSubscription, recentSubscription, interestingSubscription, commonsSubscription;
 
 
     /**
@@ -335,54 +325,20 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         //@todo will return error if logged out
         //cancel adapter or change method
         //flickr.auth.oauth.checkToken with auth token
-        //check for new user and cancel for certain
-        loginSubscription = FlickrClientApp.getJacksonService().testLogin()
-                .concatMap(new Func1<User, Observable<UserInfo>>() {
-                    @Override
-                    public Observable<UserInfo> call(User user) {
+        //check for new user and cancel for certain\\
 
-                        SharedPreferences.Editor editor = Util.getUserPrefs().edit();
-                        editor.putString(FlickrClientApp.getAppContext().getResources().getString(user_id), user.getUser().getUserId());
-                        String username = user.getUser().getUsername().getContent();
-                        String prevUser = Util.getCurrentUser();
-                        editor.putString(FlickrClientApp.getAppContext().getResources().getString(R.string.previous_user), prevUser);
-                        editor.putString(FlickrClientApp.getAppContext().getString(R.string.current_user), username);
-                        editor.commit();
-
-                        realm = Realm.getDefaultInstance();
-                        realm.beginTransaction();
-                        UserModel u = realm.where(UserModel.class).equalTo("userId", user.getUser().getUserId()).findFirst();
-                        if (null == u) {
-                            u = realm.createObject(UserModel.class, user.getUser().getUserId());
-                            realm.copyToRealmOrUpdate(u);  //deep copy
-                        }
-
-                        Date d = Calendar.getInstance().getTime();
-                        Interesting i = realm.createObject(Interesting.class, d.toString());
-                        i.setTimestamp(d);
-                        realm.copyToRealmOrUpdate(i);
-                        Recent r = realm.createObject(Recent.class, d.toString());
-                        r.setTimestamp(d);
-                        realm.copyToRealmOrUpdate(r);
-                        //@todo probably can change this w algo
-                        Common c = realm.createObject(Common.class, d.toString());
-                        c.setTimestamp(d);
-                        realm.copyToRealmOrUpdate(c);
-
-                        realm.commitTransaction();
-                        realm.close();
-
-                        Observable<Who> tagsObservable = FlickrClientApp.getJacksonService().getTags(user.getUser().getUserId());
-                        return FlickrClientApp.getJacksonService().getFriendsPhotos(user.getUser().getUserId()).zipWith(tagsObservable, new Func2<Photos, Who, UserInfo>() {
+        Observable<Who> tagsObservable = FlickrClientApp.getJacksonService().getTags(Util.getUserId());
+        friendSubscription = FlickrClientApp.getJacksonService().getFriendsPhotos(Util.getUserId())
+                  .zipWith(tagsObservable, new Func2<Photos, Who, UserInfo>() {
 
                             @Override
                             public UserInfo call(Photos p, Who w) {
                                 return new UserInfo(w, p);
                             }
 
-                        });
-                    }
-                }).subscribeOn(Schedulers.io()) // thread pool; bg + bg
+                        })
+
+                .subscribeOn(Schedulers.io()) // thread pool; bg + bg
                 .observeOn(Schedulers.immediate())
                 .subscribe(new Subscriber<UserInfo>() {
                     @Override

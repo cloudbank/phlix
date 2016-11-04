@@ -27,11 +27,11 @@ public class Util {
     }
 
     public static  boolean isInit() {
-        return !(FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0).contains(FlickrClientApp.getAppContext().getResources().getString(R.string.current_user)));
+        return !(getUserPrefs().contains(FlickrClientApp.getAppContext().getResources().getString(R.string.current_user)));
     }
 
     public static  boolean isNewUser(String username) {
-        return !FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0).getString(FlickrClientApp.getAppContext().getResources().getString(R.string.current_user),"").equals(username);
+        return !getUserPrefs().getString(FlickrClientApp.getAppContext().getResources().getString(R.string.current_user),"").equals(username);
     }
 
     public static String getCurrentUser() {
@@ -45,6 +45,6 @@ public class Util {
     }
 
     public static SharedPreferences getUserPrefs() {
-        return  FlickrClientApp.getAppContext().getSharedPreferences("Flickr_User_Prefs", 0);
+        return  FlickrClientApp.getAppContext().getSharedPreferences(FlickrClientApp.getAppContext().getResources().getString(R.string.Phlix_User_Prefs), 0);
     }
 }

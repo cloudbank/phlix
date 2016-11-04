@@ -2,6 +2,8 @@ package com.anubis.flickr.activity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,19 +12,27 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.widget.Toast;
 
+import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FlickrBaseFragment;
 import com.anubis.flickr.fragments.FriendsFragment;
 import com.anubis.flickr.fragments.InterestingFragment;
 import com.anubis.flickr.fragments.SearchFragment;
 import com.anubis.flickr.fragments.TagsFragment;
+import com.anubis.flickr.models.Common;
+import com.anubis.flickr.models.Interesting;
 import com.anubis.flickr.models.Photos;
+import com.anubis.flickr.models.Recent;
+import com.anubis.flickr.models.UserModel;
 import com.anubis.flickr.sync.SyncAdapter;
+import com.anubis.flickr.util.Util;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
+import io.realm.Realm;
 import rx.Subscription;
 
 public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragment.OnPhotoPostedListener {
@@ -34,6 +44,8 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
     protected SharedPreferences.Editor editor;
     private Subscription subscription;
     private Photos mPhotos;
+    HandlerThread handlerThread;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -44,12 +56,12 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
     public void onPhotoPosted() {
         //==there are 50 max in friends call
         // ==you cannot get the url from the post
-        // ==you have to build the url from a network call to e.g. getphotoInfo anyway
-        // and put it in the cache manually and then refresh the viewpager
+        // ==you have to build the url from a network call to e.g. to getphotoInfo anyway
+        // and put it in the photo cache manually and then refresh the viewpager
         //just call friends and get it all in one shot w updates to friend photos as bonus
         //
         //FriendsFragment f = (FriendsFragment)adapterViewPager.getItem(0);
-       // @todo
+        // @todo
         //getFriendsList()
         Log.d("POST", "callback");
         vpPager.setCurrentItem(0);
@@ -71,51 +83,100 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences authPrefs = getApplicationContext().getSharedPreferences("OAuthKit_Prefs", 0);
-        Toast.makeText(getApplicationContext(),"Username"+authPrefs.getString("username",""),Toast.LENGTH_SHORT).show();
-        //if diff user, stop adapter and restart////@todo remove testlogin call in adapter
+        setContentView(R.layout.activity_photos);
+        //oauthkit shared prefs
+        SharedPreferences authPrefs = getApplicationContext().getSharedPreferences(getString(R.string.OAuthKit_Prefs), 0);
+        if (!Util.getCurrentUser().equals(authPrefs.getString(getString(R.string.username), ""))) {
+            //@todo stop the sync adapter and restart
+            //find out how to properly stop before restart
+            //getContentResolver().cancelSync();
+            updateUserInfo(authPrefs);
+            realmUserAndInit();
+        }
+        //@todo test if remove account that it starts again
+        // @todo remove testlogin call in adapter
+
         SyncAdapter.initializeSyncAdapter(this);
 
-        setContentView(R.layout.activity_photos);
-        this.prefs = this.getBaseContext().getSharedPreferences("user_prefs", 0);
-        this.editor = this.prefs.edit();
 
-        //getLogin();
+        setContentView(R.layout.activity_photos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-// ...
-// Display icon in the toolbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_rocket);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         //getSupportActionBar().setElevation(3);
         //getSupportActionBar().setTitle(R.string.app_name);
         toolbar.setTitleTextColor(getResources().getColor(R.color.Seashell));
-        getSupportActionBar().setSubtitle("");
+        getSupportActionBar().setSubtitle(Util.getCurrentUser());
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.Azure));
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-
-
-        tabLayout.addTab(tabLayout.newTab().setText( R.string.friends_and_you));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.friends_and_you));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.interesting_today));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tags));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.search_by_tag_text));
-
-
-
-        //set gravity for tab bar
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.commons_search));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager(), intializeItems());
-
-
         vpPager = (ViewPager) findViewById(R.id.vpPager);
-
         vpPager.setOffscreenPageLimit(3);
         vpPager.setAdapter(adapterViewPager);
-
         vpPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(onTabSelectedListener(vpPager));
+
+
+    }
+
+    private void updateUserInfo(SharedPreferences authPrefs) {
+
+        this.prefs = Util.getUserPrefs();
+        this.editor = this.prefs.edit();
+
+        editor.putString(getApplicationContext().getString(R.string.current_user), authPrefs.getString(getApplicationContext().getString(R.string.username), ""));
+        editor.putString(getApplicationContext().getString(R.string.user_id), authPrefs.getString(getApplicationContext().getString(R.string.user_nsid), ""));
+
+        editor.commit();
+        // in a bg thread
+
+
+    }
+
+    private void realmUserAndInit() {
+        handlerThread = new HandlerThread("BackgroundHandler");
+        handlerThread.start();
+        final Handler backgroundHandler = new Handler(handlerThread.getLooper());
+        return backgroundHandler.post(new Runnable() {
+
+            @Override
+            public void run() {
+                Realm realm = null;
+                try {
+                    realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
+                    UserModel u = realm.where(UserModel.class).equalTo("userId", user.getUser().getUserId()).findFirst();
+                    if (null == u) {
+                        u = realm.createObject(UserModel.class, user.getUser().getUserId());
+                        realm.copyToRealmOrUpdate(u);  //deep copy
+                    }
+                    Date d = Calendar.getInstance().getTime();
+                    Interesting i = realm.createObject(Interesting.class, d.toString());
+                    i.setTimestamp(d);
+                    realm.copyToRealmOrUpdate(i);
+                    Recent r = realm.createObject(Recent.class, d.toString());
+                    r.setTimestamp(d);
+                    realm.copyToRealmOrUpdate(r);
+                    //@todo probably can change this w algo
+                    Common c = realm.createObject(Common.class, d.toString());
+                    c.setTimestamp(d);
+                    realm.copyToRealmOrUpdate(c);
+
+                    realm.commitTransaction();
+                } finally {
+                    if (realm != null) {
+                        realm.close();
+                    }
+                }
+            }
+        });
 
 
     }
@@ -145,11 +206,10 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
         ArrayList<Fragment> a = new ArrayList<Fragment>();
         a.add(FriendsFragment.newInstance(0, getResources().getString(R.string.friends_and_you), new FriendsFragment()));
         a.add(InterestingFragment.newInstance(1, getResources().getString(R.string.interesting_today), new InterestingFragment()));
-        a.add(SearchFragment.newInstance(2, "TAGS", new TagsFragment()));
-        a.add(SearchFragment.newInstance(3, getResources().getString(R.string.search_by_tag_text), new SearchFragment()));
+        a.add(SearchFragment.newInstance(2, getResources().getString(R.string.tags), new TagsFragment()));
+        a.add(SearchFragment.newInstance(3, getResources().getString(R.string.commons_search), new SearchFragment()));
         return a;
     }
-
 
 
     @Override
@@ -212,7 +272,7 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
         // Returns the page title for the top indicator
         @Override
         public CharSequence getPageTitle(int position) {
-            return getItem(position).getArguments().getString("title");
+            return getItem(position).getArguments().getString(FlickrClientApp.getAppContext().getString(R.string.title));
         }
 
         // Returns total number of pages

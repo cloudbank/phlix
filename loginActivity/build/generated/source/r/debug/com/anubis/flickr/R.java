@@ -3536,7 +3536,7 @@ containing a value of this type.
         public static final int saving_image=0x7f07001a;
         public static final int search=0x7f07003b;
         public static final int search_by=0x7f07003c;
-        public static final int search_by_tag_text=0x7f07003d;
+        public static final int commons_search =0x7f07003d;
         public static final int search_menu_title=0x7f070013;
         public static final int status_bar_notification_info_overflow=0x7f070014;
         public static final int tags=0x7f07003e;
