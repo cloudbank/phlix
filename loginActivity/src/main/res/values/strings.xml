@@ -27,6 +27,8 @@
     <string name="user_nsid">user_nsid</string>
     <string name="account_type">com.anubis.flickr</string>
     <string name="authority">com.anubis.flickr.provider</string>
+    <string name="timestamp">timestamp</string>
+    <string name="photo.jpg">photo.jpg</string>
 
 
 </resources>

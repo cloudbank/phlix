@@ -203,7 +203,6 @@ uses-sdk
 INJECTED from /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [io.realm:realm-android-library:2.0.2] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/io.realm/realm-android-library/2.0.2/AndroidManifest.xml:5:5-7:41
 MERGED from [com.getkeepsafe.relinker:relinker:1.2.2] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.getkeepsafe.relinker/relinker/1.2.2/AndroidManifest.xml:7:5-43
-MERGED from [flockr:pullToRefreshListView:unspecified] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/flockr/pullToRefreshListView/unspecified/AndroidManifest.xml:7:5-9:40
 MERGED from [flockr:oauthkit:unspecified] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/flockr/oauthkit/unspecified/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:24.2.1] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:support-v4:24.2.1] /Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/AndroidManifest.xml:21:5-23:54

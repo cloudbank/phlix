@@ -36,7 +36,6 @@ public class TagsFragment extends FlickrBaseFragment {
 
     List mTags;
     TagContainerLayout mTagsView;
-    private String username;
     private List<Photo> mPhotos;
 
     protected PhotoArrayAdapter getAdapter() {
@@ -56,37 +55,32 @@ public class TagsFragment extends FlickrBaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("TABS","tags onresume");
+        Log.d("TABS", "tags onresume");
     }
 
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //this gets called along w lifecycle when vp recycles fragment ie  commons tab
 
-        Log.d("TABS","tags activcreated");
+        Log.d("TABS", "tags activcreated");
         changeListener = new RealmChangeListener<Recent>()
 
         {
             @Override
             public void onChange(Recent r) {
-                // This is called anytime the Realm database changes on any thread.
-                // Please note, change listeners only work on Looper threads.
-                // For non-looper threads, you manually have to use Realm.waitForChange() instead.
                 updateDisplay(r);
             }
         };
 
 
         tagsRealm = Realm.getDefaultInstance();
-
         ringProgressDialog.setTitle("Please wait");
         ringProgressDialog.setMessage("Retrieving tags/recent photos");
         ringProgressDialog.setCancelable(true);
         ringProgressDialog.show();
-        Date maxDate = tagsRealm.where(Recent.class).maximumDate("timestamp");
-        Recent recent = tagsRealm.where(Recent.class).equalTo("timestamp", maxDate).findFirst();
+        Date maxDate = tagsRealm.where(Recent.class).maximumDate(getString(R.string.timestamp));
+        Recent recent = tagsRealm.where(Recent.class).equalTo(getString(R.string.timestamp), maxDate).findFirst();
         if (null == recent) {
             r = Realm.getDefaultInstance();
             RealmChangeListener realmListener = new RealmChangeListener<Realm>() {
@@ -98,55 +92,40 @@ public class TagsFragment extends FlickrBaseFragment {
             r.addChangeListener(realmListener);
 
         } else {
-            //init is running slow
-            //@todo add separate realms for rest
-
-
             Log.d("TAGS PRESENT", "list: " + recent);
             updateDisplay(recent);
             recent.addChangeListener(changeListener);
-            if ( null != r) {
+            if (null != r) {
                 r.removeAllChangeListeners();
                 r.close();
             }
-
-            //updateDisplay(interesting);
-
         }
         ringProgressDialog.dismiss();
 
     }
 
 
-    // Store instance variables based on arguments passed
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPhotos = new ArrayList<Photo>();
         ringProgressDialog = new ProgressDialog(getActivity(), R.style.MyDialogTheme);
         tAdapter = new TagsAdapter(getActivity(), mPhotos, false);
-        //ringProgressDialog= new ProgressDialog(getContext(), R.style.CustomProgessBarStyle);
         this.prefs = Util.getUserPrefs();
         this.editor = this.prefs.edit();
         mTags = new ArrayList<Tag>();
-        Log.d("TABS","tags oncreate");
-        //getTags();
-        //getPhotos();
+        Log.d("TABS", "tags oncreate");
         setRetainInstance(true);
-
-
     }
 
 
     void customLoadMoreDataFromApi(int page) {
-        //@todo add the endless scroll
-
     }
 
 
     private void updateDisplay() {
-        Date maxDate = tagsRealm.where(Recent.class).maximumDate("timestamp");
-        Recent r = tagsRealm.where(Recent.class).equalTo("timestamp", maxDate).findFirst();
+        Date maxDate = tagsRealm.where(Recent.class).maximumDate(getString(R.string.timestamp));
+        Recent r = tagsRealm.where(Recent.class).equalTo(getString(R.string.timestamp), maxDate).findFirst();
         displayHotTags(r.getHotTagList());
         mPhotos.clear();
         mPhotos.addAll(r.getRecentPhotos());
@@ -155,7 +134,6 @@ public class TagsFragment extends FlickrBaseFragment {
 
 
     private void updateDisplay(Recent r) {
-
         displayHotTags(r.getHotTagList());
         mPhotos.clear();
         mPhotos.addAll(r.getRecentPhotos());
@@ -176,17 +154,11 @@ public class TagsFragment extends FlickrBaseFragment {
 
     }
 
-    protected void loadPhotos() {
-        // clearAdapter();
-
-    }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         tagsRealm.close();
-
-
     }
 
 
@@ -205,31 +177,19 @@ public class TagsFragment extends FlickrBaseFragment {
 
             @Override
             public void onTagLongClick(final int position, String text) {
-                // ...
             }
         });
         rvPhotos = (RecyclerView) view.findViewById(R.id.rvPhotos);
         rvPhotos.setAdapter(tAdapter);
-        // StaggeredGridLayoutManager gridLayoutManager =
-        //new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        // Attach the layout manager to the recycler view
-        //rvPhotos.setLayoutManager(gridLayoutManager);
         rvPhotos.setLayoutManager(new GridLayoutManager(FlickrClientApp.getAppContext(), 3));
-        //SpacesItemDecoration decoration = new SpacesItemDecoration(2);
-        //rvPhotos.addItemDecoration(decoration);
-
-        //rvPhotos.setOnItemClickListener(mListener);
-        //rvPhotos.setOnScrollListener(mScrollListener);
         tAdapter.setOnItemClickListener(new TagsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                // String title = mTags.get(position).getTitle();
                 Intent intent = new Intent(getActivity(),
                         ImageDisplayActivity.class);
                 Photo photo = mPhotos.get(position);
                 intent.putExtra(RESULT, photo.getId());
                 startActivity(intent);
-                //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }
         });
         setHasOptionsMenu(true);

@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/flockr.iml" filepath="$PROJECT_DIR$/flockr.iml" />
       <module fileurl="file://$PROJECT_DIR$/loginActivity/loginActivity.iml" filepath="$PROJECT_DIR$/loginActivity/loginActivity.iml" />
       <module fileurl="file://$PROJECT_DIR$/oauthkit/oauthkit.iml" filepath="$PROJECT_DIR$/oauthkit/oauthkit.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pullToRefreshListView/pullToRefreshListView.iml" filepath="$PROJECT_DIR$/pullToRefreshListView/pullToRefreshListView.iml" />
       <module fileurl="file://$PROJECT_DIR$/simplecropimagelib/simplecropimagelib.iml" filepath="$PROJECT_DIR$/simplecropimagelib/simplecropimagelib.iml" />
     </modules>
   </component>

@@ -6,9 +6,5 @@
     {
         "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable-ldpi-v4/sakura.jpg",
         "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/src/main/res/drawable-ldpi/sakura.jpg"
-    },
-    {
-        "merged": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/res/merged/debug/drawable-ldpi-v4/ptr_pulltorefresh_arrow.png",
-        "source": "/Users/sabine/github/myfriendflickr2016/flockr/loginActivity/build/intermediates/exploded-aar/flockr/pullToRefreshListView/unspecified/res/drawable-ldpi-v4/ptr_pulltorefresh_arrow.png"
     }
 ]

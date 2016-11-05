@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
@@ -27,8 +26,6 @@ import com.anubis.flickr.models.UserModel;
 import com.anubis.flickr.util.Util;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import co.hkm.soltag.TagContainerLayout;
@@ -37,7 +34,7 @@ import io.realm.RealmChangeListener;
 
 public class FriendsFragment extends FlickrBaseFragment {
 
-    private String mUserId, mPreviousUser;
+    private String mUserId;
 
     private List<Photo> mPhotos, cPhotos;
 
@@ -63,9 +60,6 @@ public class FriendsFragment extends FlickrBaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //this gets called along w lifecycle when vp recycles fragment ie  commons tab
-
-
         changeListener = new RealmChangeListener<UserModel>()
 
         {
@@ -84,15 +78,12 @@ public class FriendsFragment extends FlickrBaseFragment {
 
                     makeSingle(cPhotos);
                     fAdapter.notifyDataSetChanged();
-                    Toast.makeText(FlickrClientApp.getAppContext(), "Howza1", Toast.LENGTH_SHORT).show();
                 }
             }
         };
 
 
         userRealm = Realm.getDefaultInstance();
-
-
         ringProgressDialog.setTitle("Please wait");
         ringProgressDialog.setMessage("Retrieving friend photos");
         ringProgressDialog.setCancelable(true);
@@ -102,18 +93,13 @@ public class FriendsFragment extends FlickrBaseFragment {
 
 
         mUser = userRealm.where(UserModel.class).equalTo("userId", mUserId).findFirst();
-        //init is running slow
-        //@todo add separate realms for rest
         r = Realm.getDefaultInstance();
         if (null == mUser) {
-
             RealmChangeListener realmListener = new RealmChangeListener<Realm>() {
                 @Override
                 public void onChange(Realm r) {
                     updateDisplay();
                     if (rb1.isChecked()) {
-                        //some code
-
                         makeSingle(cPhotos);
                         fAdapter.notifyDataSetChanged();
                     }
@@ -137,17 +123,11 @@ public class FriendsFragment extends FlickrBaseFragment {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.radio1) {
-                    //some code
-
                     makeSingle(cPhotos);
                     fAdapter.notifyDataSetChanged();
-                    Toast.makeText(FlickrClientApp.getAppContext(), "Howza1", Toast.LENGTH_SHORT).show();
 
                 } else if (checkedId == R.id.radio5) {
-                    //some code
-                    Toast.makeText(FlickrClientApp.getAppContext(), "Howza5", Toast.LENGTH_SHORT).show();
                     updateDisplay();
-
                 }
 
             }
@@ -159,8 +139,6 @@ public class FriendsFragment extends FlickrBaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         mPhotos = new ArrayList<Photo>();
         cPhotos = new ArrayList<Photo>();
         mTags = new ArrayList<Tag>();
@@ -168,72 +146,11 @@ public class FriendsFragment extends FlickrBaseFragment {
         ringProgressDialog = new ProgressDialog(getActivity(), R.style.CustomProgessBarStyle);
         this.prefs = Util.getUserPrefs();
         this.editor = this.prefs.edit();
-        //slow right now--get it to work
-        //@todo move shared prefs code to User
-        //until hack the oauth to get full response w mUsername and userId
-
-
-        // getLoginAndId();
-
-
-        //getTags();
-
-
         setRetainInstance(true);
-
-
     }
 
 
     void customLoadMoreDataFromApi(int page) {
-        //@todo add the endless scroll or take it out
-
-    }
-
-    void getFriends(String username) {
-
-        if (null == mUser) {
-            //first login for app or user
-
-            //@todo if !isInit cancel sync
-            // ContentResolver.cancelSync();
-            //need to get mUser getPhotos
-
-            try {
-                //getPhotos();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-
-            if (Util.isNewUser(mPreviousUser)) {
-                //new user  w previous login  but current list
-                //ContentResolver.cancelSync();
-                //@todo don't need to get photos,
-
-                //there is no change to userRealm
-                updateDisplay(mUser);
-
-                //((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(username);
-
-            } else if (checkTime(mUser.timestamp)) {  //24 hrs
-                //stale but logged in mUser @todo need to get mUser getPhotos 24 hrs
-
-                try {
-                    // getPhotos();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            } else {
-                // same user good w/in 24 hrs
-                //((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(username);
-                // not stale isLoggedin don't need to get mUser or update anything except toolbar
-            }
-
-        }
-
-
     }
 
 
@@ -241,13 +158,10 @@ public class FriendsFragment extends FlickrBaseFragment {
         mPhotos.clear();
         cPhotos.clear();
         displayTags(u.getTagsList());
-
         cPhotos.addAll(u.getFriendsList());
         mPhotos.addAll(u.getFriendsList());
         fAdapter.notifyDataSetChanged();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(Util.getCurrentUser());
-
-
     }
 
     private void updateDisplay() {
@@ -255,22 +169,10 @@ public class FriendsFragment extends FlickrBaseFragment {
         mPhotos.clear();
         UserModel u = userRealm.where(UserModel.class).equalTo("userId", Util.getUserId()).findFirst();
         displayTags(u.getTagsList());
-
         cPhotos.addAll(u.getFriendsList());
-
         mPhotos.addAll(u.getFriendsList());
         fAdapter.notifyDataSetChanged();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(Util.getCurrentUser());
-
-
-    }
-
-
-    private boolean checkTime(Date timestamp) {
-        Calendar cachedTime = Calendar.getInstance();
-        cachedTime.setTime(timestamp);
-        cachedTime.add(Calendar.HOUR, 23);
-        return (Calendar.getInstance().getTime()).after(cachedTime.getTime());
     }
 
 
@@ -279,11 +181,8 @@ public class FriendsFragment extends FlickrBaseFragment {
         //when android catches up to 1.8
         mTagView.removeAllTags();
         for (Tag t : tags) {
-
             mTagView.addTag(t.getContent());
         }
-
-
     }
 
 
@@ -293,12 +192,9 @@ public class FriendsFragment extends FlickrBaseFragment {
         if (!userRealm.isClosed()) {
             userRealm.close();
         }
-
         if (null != this.ringProgressDialog) {
             this.ringProgressDialog = null;
         }
-
-
     }
 
 
@@ -309,37 +205,22 @@ public class FriendsFragment extends FlickrBaseFragment {
                 false);
 
         rvPhotos = (RecyclerView) view.findViewById(R.id.rvPhotos);
-
         rvPhotos.setAdapter(fAdapter);
-        // StaggeredGridLayoutManager gridLayoutManager =
-        //new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        // Attach the layout manager to the recycler view
-        //rvPhotos.setLayoutManager(gridLayoutManager);
         rvPhotos.setLayoutManager(new GridLayoutManager(FlickrClientApp.getAppContext(), 3));
-        //SpacesItemDecoration decoration = new SpacesItemDecoration(2);
-        //rvPhotos.addItemDecoration(decoration);
-
-        // vPhotos.setOnItemClickListener(mListener);
-        // vPhotos.setOnScrollListener(mScrollListener);
         fAdapter.setOnItemClickListener(new FriendsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-
-                // String title = mTags.get(position).getTitle();
                 Intent intent = new Intent(getActivity(),
                         ImageDisplayActivity.class);
                 Photo photo = mPhotos.get(position);
                 intent.putExtra(RESULT, photo.getId());
                 startActivity(intent);
-                //Toast.makeText(getActivity(), title + " was clicked!", Toast.LENGTH_SHORT).show();
             }
         });
         mTagView = (TagContainerLayout) view.findViewById(R.id.my_tag_group);
-
         rg = (RadioGroup) view.findViewById(R.id.radioGroup1);
         rb1 = (RadioButton) view.findViewById(R.id.radio1);
         rb5 = (RadioButton) view.findViewById(R.id.radio5);
-
         setHasOptionsMenu(true);
         return view;
     }
@@ -348,12 +229,10 @@ public class FriendsFragment extends FlickrBaseFragment {
     private void makeSingle(List<Photo> p) {
         mPhotos.clear();
         String current = "";
-
         for (int i = 0; i < p.size(); i++) {
             if (!current.equals(p.get(i).getOwnername())) {
                 mPhotos.add(p.get(i));
                 current = p.get(i).getOwnername();
-
             }
         }
 

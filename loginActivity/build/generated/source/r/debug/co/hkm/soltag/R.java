@@ -519,14 +519,14 @@ public final class R {
 		public static final int abc_textfield_search_activated_mtrl_alpha = 0x7f020059;
 		public static final int abc_textfield_search_default_mtrl_alpha = 0x7f02005a;
 		public static final int abc_textfield_search_material = 0x7f02005b;
-		public static final int notification_template_icon_bg = 0x7f0200bb;
-		public static final int tag_bar_red = 0x7f0200b4;
-		public static final int tag_fc_blue = 0x7f0200b5;
-		public static final int tag_fc_brightblue = 0x7f0200b6;
-		public static final int tag_fc_enable = 0x7f0200b7;
-		public static final int tag_fc_green = 0x7f0200b8;
-		public static final int tag_fc_green_bb = 0x7f0200b9;
-		public static final int tag_view_box_shadow = 0x7f0200ba;
+		public static final int notification_template_icon_bg = 0x7f0200ba;
+		public static final int tag_bar_red = 0x7f0200b3;
+		public static final int tag_fc_blue = 0x7f0200b4;
+		public static final int tag_fc_brightblue = 0x7f0200b5;
+		public static final int tag_fc_enable = 0x7f0200b6;
+		public static final int tag_fc_green = 0x7f0200b7;
+		public static final int tag_fc_green_bb = 0x7f0200b8;
+		public static final int tag_view_box_shadow = 0x7f0200b9;
 	}
 	public static final class id {
 		public static final int action0 = 0x7f0d009f;
@@ -676,10 +676,10 @@ public final class R {
 		public static final int notification_template_media = 0x7f040038;
 		public static final int notification_template_part_chronometer = 0x7f040039;
 		public static final int notification_template_part_time = 0x7f04003a;
-		public static final int select_dialog_item_material = 0x7f04003f;
-		public static final int select_dialog_multichoice_material = 0x7f040040;
-		public static final int select_dialog_singlechoice_material = 0x7f040041;
-		public static final int support_simple_spinner_dropdown_item = 0x7f040042;
+		public static final int select_dialog_item_material = 0x7f04003e;
+		public static final int select_dialog_multichoice_material = 0x7f04003f;
+		public static final int select_dialog_singlechoice_material = 0x7f040040;
+		public static final int support_simple_spinner_dropdown_item = 0x7f040041;
 	}
 	public static final class string {
 		public static final int abc_action_bar_home_description = 0x7f070000;
