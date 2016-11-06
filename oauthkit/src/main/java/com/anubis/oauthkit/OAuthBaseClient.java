@@ -47,11 +47,6 @@ public class OAuthBaseClient {
     private OAuthBaseClient(Context context, OAuthBaseClient.OAuthAccessHandler handler) {
         this.context = context;
         this.accessHandler = handler;
-
-
-
-
-
         this.context = context;
         this.prefs = this.context.getSharedPreferences("OAuthKit_Prefs", 0);
         this.editor = this.prefs.edit();
@@ -72,17 +67,14 @@ public class OAuthBaseClient {
                     intent.setFlags(OAuthBaseClient.this.requestIntentFlags);
 
                 }
-                //OAuthBaseClient.this.client.setConsumer(consumer);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 OAuthBaseClient.this.context.startActivity(intent);
             }
 
             public void onReceivedAccessToken(OkHttpOAuthConsumer consumer) {
 
-                OAuthBaseClient.this.client.setAccessToken(new Token(consumer.getToken(), consumer.getTokenSecret()));
                 OAuthBaseClient.this.editor.putString("oauth_token", consumer.getToken());
                 OAuthBaseClient.this.editor.putString("oauth_token_secret", consumer.getTokenSecret());
-                //@todo remove the request token, so we do not keep calling authorize in onresuem
                 OAuthBaseClient.this.editor.remove("request_token");
 
                 OAuthBaseClient.this.editor.commit();
@@ -96,9 +88,7 @@ public class OAuthBaseClient {
             }
         }, this.prefs);
 
-        if (this.checkAccessToken() != null) {
-            this.client.setAccessToken(this.checkAccessToken());
-        }
+
 
     }
 
@@ -107,7 +97,6 @@ public class OAuthBaseClient {
     }
 
     public void authorize(Uri uri) {
-        // this.accessHandler = handler;
         if (this.checkAccessToken() == null && uri != null) {
             String uriServiceCallback = uri.getScheme() + "://" + uri.getHost();
             if (uriServiceCallback.equals(this.callbackUrl)) {
@@ -128,17 +117,8 @@ public class OAuthBaseClient {
         return this.client;
     }
 
-    protected Token getRequestToken() {
-        return (new Token(this.prefs.getString("request_token", ""), this.prefs.getString("request_token_secret", "")));
-    }
-
-
-
-
-
 
     public void clearTokens() {
-        this.client.setAccessToken((Token) null);
         this.editor.remove("oauth_token");
         this.editor.remove("oauth_token_secret");
         this.editor.remove("request_token");
@@ -147,13 +127,7 @@ public class OAuthBaseClient {
         this.editor.commit();
     }
 
-    public boolean isAuthenticated() {
-        return this.client.getAccessToken() != null;
-    }
 
-    public void setRequestIntentFlags(int flags) {
-        this.requestIntentFlags = flags;
-    }
 
     public interface OAuthAccessHandler {
         void onLoginSuccess(OkHttpOAuthConsumer consumer, String baseUrl);

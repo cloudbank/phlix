@@ -39,6 +39,10 @@ public class SearchFragment extends FlickrBaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (null != r && !r.isClosed()) {
+            r.close();
+        }
+        if (null != commonsRealm && !commonsRealm.isClosed())
         commonsRealm.close();
     }
 

@@ -21,8 +21,6 @@ import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.LoginActivity;
 import com.anubis.flickr.activity.PreviewPhotoActivity;
-import com.anubis.flickr.adapter.PhotoArrayAdapter;
-import com.anubis.flickr.listener.EndlessScrollListener;
 import com.anubis.oauthkit.OAuthBaseClient;
 
 import java.io.File;
@@ -39,10 +37,9 @@ public abstract class FlickrBaseFragment extends Fragment {
     private static final int CROP_PHOTO_CODE = 3;
     private static final int POST_PHOTO_CODE = 4;
 
-    public final String APP_TAG = getString(R.string.app_name);
-    public String photoFileName = getString(R.string.photo_jpg);
+    public final String APP_TAG = "Phlix";
+    public String photoFileName = "photo.jpg";
     File mediaStorageDir;
-    PhotoArrayAdapter mAdapter;
     OnPhotoPostedListener mCallback;
 
 
@@ -66,16 +63,7 @@ public abstract class FlickrBaseFragment extends Fragment {
     }
 
 
-    EndlessScrollListener mScrollListener = new EndlessScrollListener() {
-        @Override
-        public void onLoadMore(int page, int totalItemsCount) {
-            // there is some bug in scroll after I added the pull down
-            // refresh library
-            // if (totalItemsCount > 1) {
-            customLoadMoreDataFromApi(page);
-            // }
-        }
-    };
+
 
     private Bitmap photoBitmap;
 

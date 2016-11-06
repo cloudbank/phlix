@@ -19,7 +19,6 @@ import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
 import com.anubis.flickr.adapter.FriendsAdapter;
-import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Tag;
 import com.anubis.flickr.models.UserModel;
@@ -38,9 +37,6 @@ public class FriendsFragment extends FlickrBaseFragment {
 
     private List<Photo> mPhotos, cPhotos;
 
-    protected PhotoArrayAdapter getAdapter() {
-        return mAdapter;
-    }
 
     ProgressDialog ringProgressDialog;
     FriendsAdapter fAdapter;
@@ -189,8 +185,11 @@ public class FriendsFragment extends FlickrBaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (!userRealm.isClosed()) {
+        if (null != userRealm && !userRealm.isClosed()) {
             userRealm.close();
+        }
+        if (null != r && !r.isClosed()) {
+            r.close();
         }
         if (null != this.ringProgressDialog) {
             this.ringProgressDialog = null;

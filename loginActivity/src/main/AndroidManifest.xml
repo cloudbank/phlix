@@ -29,7 +29,8 @@
 
         <activity
             android:name="com.anubis.flickr.activity.LoginActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,6 +45,7 @@
                     android:host="cprest"
                     android:scheme="oauth" />
             </intent-filter>
+
         </activity>
         <activity
             android:name="com.anubis.flickr.activity.PhotosActivity"
@@ -57,7 +59,7 @@
             android:label="@string/app_name"></activity>
         <activity android:name="eu.janmuller.android.simplecropimage.CropImage" />
 
-        <activity android:name="com.anubis.oauthkit.OAuthLoginActivity" />
+
 
 
 

@@ -11,12 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.activity.ImageDisplayActivity;
-import com.anubis.flickr.adapter.PhotoArrayAdapter;
 import com.anubis.flickr.adapter.TagsAdapter;
 import com.anubis.flickr.models.Photo;
 import com.anubis.flickr.models.Recent;
@@ -37,10 +35,6 @@ public class TagsFragment extends FlickrBaseFragment {
     List mTags;
     TagContainerLayout mTagsView;
     private List<Photo> mPhotos;
-
-    protected PhotoArrayAdapter getAdapter() {
-        return mAdapter;
-    }
 
 
     ProgressDialog ringProgressDialog;
@@ -158,7 +152,12 @@ public class TagsFragment extends FlickrBaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        tagsRealm.close();
+        if (null != r && !r.isClosed()) {
+            r.close();
+        }
+        if (null != tagsRealm && !tagsRealm.isClosed()) {
+            tagsRealm.close();
+        }
     }
 
 
@@ -172,7 +171,7 @@ public class TagsFragment extends FlickrBaseFragment {
 
             @Override
             public void onTagClick(int position, String text) {
-                Toast.makeText(FlickrClientApp.getAppContext(), "Tag " + text, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(FlickrClientApp.getAppContext(), "Tag " + text, Toast.LENGTH_SHORT).show();
             }
 
             @Override

@@ -45,12 +45,10 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 import static com.anubis.flickr.R.id.comments;
-import static com.anubis.flickr.R.id.username;
 
 public class ImageDisplayActivity extends AppCompatActivity {
 
     WebView wvComments;
-    List<String> mTagsList = new ArrayList<String>();
     TagContainerLayout mTags;
     EditText etComments;
     String mUid = "";
@@ -60,44 +58,26 @@ public class ImageDisplayActivity extends AppCompatActivity {
     Map<String, String> data = new HashMap<>();
     Photo mPhoto;
     Realm pRealm;
-    HandlerThread handlerThread, handlerThread2;
+    HandlerThread handlerThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_display);
 
-        String pid = getIntent().getStringExtra(FlickrBaseFragment.RESULT);
-        pRealm = Realm.getDefaultInstance();
-        mPhoto = pRealm.where(Photo.class).equalTo("id", pid).findFirst();
-        pRealm.close();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-// ...
-// Display icon in the toolbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_rocket);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-        // getSupportActionBar().setElevation(3);
         getSupportActionBar().setTitle(R.string.app_name);
         getSupportActionBar().setSubtitle(R.string.image_detail);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ImageView imageView = (ImageView) findViewById(R.id.ivResult);
-        Picasso.with(getBaseContext()).load(mPhoto.getUrl()).transform(new ImageRoundedTransformation(5, 5)).resize(300, 300).centerCrop().into(imageView);
-        //ImageLoader imageLoader = ImageLoader.getInstance();
-        //imageLoader.getComments(mPhoto.getUrl(), image);
-        TextView tvUsername = (TextView) findViewById(username);
-        tvUsername.setText("By: " + mPhoto.getOwnername());
-        TextView tvTimestamp = (TextView) findViewById(R.id.timestamp);
-        tvTimestamp.setText(DateUtility.relativeTime(mPhoto.getDatetaken(), this));
-        TextView tvTitle = (TextView) findViewById(R.id.title);
-        tvTitle.setText(mPhoto.getTitle());
-        etComments = (EditText) findViewById(R.id.etComments);
-        etComments.setScroller(new Scroller(this));
-        etComments.setMaxLines(1);
-        etComments.setVerticalScrollBarEnabled(true);
-        etComments.setMovementMethod(new ScrollingMovementMethod());
+
+        String pid = getIntent().getStringExtra(FlickrBaseFragment.RESULT);
+        pRealm = Realm.getDefaultInstance();
+        mPhoto = pRealm.where(Photo.class).equalTo("id", pid).findFirst();
+
         wvComments = (WebView) findViewById(comments);
         wvComments.setBackgroundColor(getResources().getColor(R.color.AliceBlue));
         wvComments.setVerticalScrollBarEnabled(true);
@@ -105,26 +85,42 @@ public class ImageDisplayActivity extends AppCompatActivity {
         wvComments.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         wvComments.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         wvComments.getSettings().setJavaScriptEnabled(true);
+
         mUid = mPhoto.getId();
-        mTags = (TagContainerLayout) findViewById(R.id.tag_group);
-        //@todo
-        //getPhotoFromRealm
-        //if the photo comments and tags are in the realm already
-        Realm cRealm = Realm.getDefaultInstance();
-        Comments_ c = cRealm.where(Comments_.class).equalTo("photoId", mUid).findFirst();
-        // else go get that info
-        //comments change a lot; should we cache &  wait for them for 24 hrs
+
+        Comments_ c = pRealm.where(Comments_.class).equalTo("photoId", mUid).findFirst();
         if (null == c) {
             getComments(mUid);
         } else {
             displayComments(wvComments, c.commentsList);
         }
-        cRealm.close();
-        //mTagsList.clear();
-        displayTags(mPhoto.getTags());
-        // get focus off edittext, hide kb
-        // WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-    }
+
+
+        ImageView imageView = (ImageView) findViewById(R.id.ivResult);
+        Picasso.with(getBaseContext()).load(mPhoto.getUrl()).transform(new ImageRoundedTransformation(5, 5)).resize(300, 300).centerCrop().into(imageView);
+
+        TextView tvUsername = (TextView) findViewById(R.id.tvUser);
+        tvUsername.setText("By: " + mPhoto.getOwnername());
+        TextView tvTimestamp = (TextView) findViewById(R.id.timestamp);
+        //@todo relative Time pretty time
+        tvTimestamp.setText(DateUtility.relativeTime(mPhoto.getDatetaken(), this));
+
+        TextView tvTitle = (TextView) findViewById(R.id.title);
+        tvTitle.setText(mPhoto.getTitle());
+
+        etComments = (EditText) findViewById(R.id.etComments);
+        etComments.setScroller(new Scroller(this));
+        etComments.setMaxLines(1);
+        etComments.setVerticalScrollBarEnabled(true);
+        etComments.setMovementMethod(new ScrollingMovementMethod());
+
+
+
+        mTags = (TagContainerLayout) findViewById(R.id.tag_group);
+        displayTags(mPhoto.getTags()
+
+    );
+}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -138,7 +134,6 @@ public class ImageDisplayActivity extends AppCompatActivity {
     }
 
 
-    //now we have the tags;
     private void getComments(final String uid) {
         //Observable<PhotoInfo> photoInfo = FlickrClientApp.getJacksonService().getPhotoInfo(uid);
         subscription = FlickrClientApp.getJacksonService().getComments(uid)
@@ -157,15 +152,10 @@ public class ImageDisplayActivity extends AppCompatActivity {
                     @Override
                     public void onCompleted() {
 
-
-                        //ringProgressDialog.dismiss();
-                        //Log.d("DEBUG","oncompleted");
-
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        // cast to retrofit.HttpException to get the response code
                         if (e instanceof HttpException) {
                             HttpException response = (HttpException) e;
                             int code = response.code();
@@ -177,14 +167,11 @@ public class ImageDisplayActivity extends AppCompatActivity {
                     @Override
                     public void onNext(Comments c) {
                         Log.d("DEBUG", "comments: " + comments);
-                        //right now this is only called once if null obj in realm
-
                         List<Comment> comments = c.getComments().getComments();
                         if (comments.size() > 0) {
                             if (saveComments(comments, mUid)) {
                                 displayComments(wvComments, comments);
                             } else {
-                                //@todo throw exception
                                 Log.e("ERROR", "comments not saved: " + c);
                             }
                         }
@@ -202,6 +189,8 @@ public class ImageDisplayActivity extends AppCompatActivity {
 
 
     }
+
+
 
     public boolean saveComments(final List<Comment> cList, final String uid) {
         Log.d("SAVE COMMENT", String.valueOf(cList.get(0).getContent()) + ":" + uid);
@@ -222,7 +211,6 @@ public class ImageDisplayActivity extends AppCompatActivity {
                     }
 
                     for (Comment comment : cList) {
-                        // Comment cm = cRealm.copyFromRealm(comment);
                         if (!c.commentsList.contains(comment)) {
                             c.commentsList.add(comment);
                         }
@@ -246,18 +234,12 @@ public class ImageDisplayActivity extends AppCompatActivity {
         String commentString = etComments.getText().toString();
         etComments.setText("");
         etComments.clearFocus();
-        /*try {
-           // commentString = URLEncoder.encode(commentString, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            Log.e("ERROR","Encoding not supported in comment");
-        }*/
         if (commentString.length() > 0) {
 
             data.put("comment_text", commentString);
             data.put("photo_id", mPhoto.getId());
             subscription2 = FlickrClientApp.getJacksonService().addComment(data)
-                    .subscribeOn(Schedulers.io())  // can be optional if not overriding
+                    .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Subscriber<Comment>() {
                         @Override
@@ -268,7 +250,6 @@ public class ImageDisplayActivity extends AppCompatActivity {
 
                         @Override
                         public void onError(Throwable e) {
-                            // cast to retrofit.HttpException to get the response code
                             if (e instanceof HttpException) {
                                 HttpException response = (HttpException) e;
                                 int code = response.code();
@@ -281,7 +262,6 @@ public class ImageDisplayActivity extends AppCompatActivity {
                         public void onNext(Comment c) {
                             //@todo maybe we should let this be a network call to have fresh data?
                             List<Comment> displayList = new ArrayList<Comment>();
-                            //@todo  workaround realm slow to add w bg thread
                             Realm cRealm = Realm.getDefaultInstance();
                             Comments_ comments = cRealm.where(Comments_.class).equalTo("photoId", mUid).findFirst();
                             if (null != comments && comments.getCommentsList().size() > 0) {
@@ -325,12 +305,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
                 String htmlString = mContent;
 
                 if (mContent.contains("[http") && !mContent.contains("src")) {
-                    //make the link work but leave images
                     htmlString = mContent.replaceAll("\\[(\\s*http\\S+\\s*)\\]", "<a href=\"" + "$1" + "\">$1</a><br>");
-                    //@todo look for other corner cases
-                    // } else if (mContent.contains("http") && !added) {
-                    //     htmlString = mContent.replaceAll("http\\S+", "<a href=\"" + "$0" + "\">$0</a>");
-                    // }
                 }
                 String time = new PrettyTime().format(new Date(Long.parseLong(c.getDatecreate()) * 1000L));
                 mBuilder.append("<b>");
@@ -352,6 +327,10 @@ public class ImageDisplayActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        if (null != pRealm && !pRealm.isClosed()) {
+            pRealm.close();
+        }
         if (null != subscription) {
             subscription.unsubscribe();
         }

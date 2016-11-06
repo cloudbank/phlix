@@ -682,6 +682,7 @@
     <integer name="cancel_button_image_alpha">127</integer>
     <integer name="design_snackbar_text_max_lines">2</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="Me">Me</string>
     <string name="OAuthKit_Prefs">OAuthKit_Prefs</string>
     <string name="Phlix_User_Prefs">Phlix_User_Prefs</string>
     <string name="abc_action_bar_home_description">Navigate home</string>

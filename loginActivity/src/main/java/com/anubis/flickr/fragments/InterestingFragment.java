@@ -148,11 +148,17 @@ public class InterestingFragment extends FlickrBaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (null != r && !r.isClosed()) {
+            r.close();
+        }
         if (null != ringProgressDialog) {
             ringProgressDialog = null;
         }
-        interestingRealm.close();
+        if (null != interestingRealm && !interestingRealm.isClosed()) {
+            interestingRealm.close();
+        }
     }
+
 }
 
 

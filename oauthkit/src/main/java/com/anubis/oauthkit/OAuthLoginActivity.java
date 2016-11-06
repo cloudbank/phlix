@@ -48,15 +48,12 @@ public abstract class OAuthLoginActivity extends FragmentActivity
     @Override
     protected void onResume() {
         super.onResume();
-        //Class<T> clientClass = getClientClass();
-        // Extracts the authenticated url data after the user
-        // authorizes the OAuth app in the browse
 
-        //@todo only need to check this when authing; remove request token when receive access toekn
+
+        //@todo only need to check this when authing; remove request token when receive acccess token
         if (this.client.getPrefs().contains("request_token")) {
             Uri uri = getIntent().getData();
             try {
-                //client = (T) com.anubis.flickr.network.OAuthBaseClient.getInstance(client.getClass(), this);
                 client.authorize(uri); // fetch access token (if needed)
             } catch (Exception e) {
                 e.printStackTrace();
@@ -69,16 +66,3 @@ public abstract class OAuthLoginActivity extends FragmentActivity
 
 }
 
-/*
- *1) set props in app.properties
- * 2) Subclass OAuthLoginActivity
- * 3) Invoke .login
- * 4) Optionally override
- *   a) onLoginSuccess
- *   b) onLoginFailure(Exception e)
- * 5) In other activities that need the client
- *   a) c = TwitterClient.getSharedClient()
-*    b) c.getTimeline(...)
- * 6) Modify AndroidManifest.xml to add an IntentFilter w/ the callback URL
- * defined in the OAuthBaseClient.
- */

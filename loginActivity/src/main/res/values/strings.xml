@@ -29,6 +29,7 @@
     <string name="authority">com.anubis.flickr.provider</string>
     <string name="timestamp">timestamp</string>
     <string name="photo.jpg">photo.jpg</string>
+    <string name="Me">Me</string>
 
 
 </resources>

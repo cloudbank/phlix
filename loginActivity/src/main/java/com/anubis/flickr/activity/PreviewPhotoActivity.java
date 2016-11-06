@@ -19,8 +19,6 @@ import com.anubis.flickr.util.ImageFilterProcessor;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -39,13 +37,11 @@ public class PreviewPhotoActivity extends AppCompatActivity {
     public static final String PHOTOID_BEGINTAG = "<photoid>";
     public static final String PHOTOID_ENDTAG = "</photoid>";
     String filename;
-    ProgressDialog dialog;
     private Bitmap photoBitmap;
     private Bitmap processedBitmap;
     private EditText etFilename;
     private ImageView ivPreview;
     private ImageFilterProcessor filterProcessor;
-    Map<String, Object> data = new HashMap<>();
     private Subscription subscription;
     ProgressDialog ringProgressDialog;
 
@@ -58,15 +54,11 @@ public class PreviewPhotoActivity extends AppCompatActivity {
         photoBitmap = getIntent().getParcelableExtra(FlickrBaseFragment.PHOTO_BITMAP);
         filterProcessor = new ImageFilterProcessor(photoBitmap);
         redisplayPreview(ImageFilterProcessor.NONE);
-        //getLogin();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-// ...
-// Display icon in the toolbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_rocket);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-        // getSupportActionBar().setElevation(3);
         getSupportActionBar().setTitle(R.string.app_name);
         getSupportActionBar().setSubtitle("Picture Preview");
     }
@@ -78,7 +70,6 @@ public class PreviewPhotoActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.preview_photo, menu);
         return true;
     }
@@ -133,8 +124,6 @@ public class PreviewPhotoActivity extends AppCompatActivity {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         processedBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         final byte[] bytes = stream.toByteArray();
-        // data.put("photo", bytes);
-        // data.put("filename", filename);
 
 
 
@@ -146,9 +135,6 @@ public class PreviewPhotoActivity extends AppCompatActivity {
                 .subscribe(new Subscriber<ResponseBody>() {
                     @Override
                     public void onCompleted() {
-
-
-                        //Log.d("DEBUG","oncompleted");
 
                     }
 
@@ -200,35 +186,7 @@ public class PreviewPhotoActivity extends AppCompatActivity {
         return xmlString.substring((xmlString.indexOf(PHOTOID_BEGINTAG)) + 9,
                 xmlString.indexOf(PHOTOID_ENDTAG));
     }
-/*
-        client.createPhotoPost(processedBitmap, filename, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int arg0, String userId) {
-                Intent data = new Intent();
-                try {
-                    data.putExtra("userId", parseId(userId));
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    Log.e("ERROR", "createPhotoPost upload response error");
-                    //todo
-                }
-                setResult(RESULT_OK, data);
-                ringProgressDialog.dismiss();
-                PreviewPhotoActivity.this.finish();
-            }
 
-            private String parseId(String userId) {
-                return userId.substring((userId.indexOf(PHOTOID_BEGINTAG)) + 9,
-                        userId.indexOf(PHOTOID_ENDTAG));
-            }
-
-            @Override
-            public void onFailure(Throwable arg0, String arg1) {
-                Log.e("ERROR", "onFailure in createPhotoPost" + arg0 + arg1);
-                ringProgressDialog.dismiss();
-            }
-        });
-    }
-    */
 }
 
 

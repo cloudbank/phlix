@@ -66,7 +66,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     public static final int SYNC_INTERVAL = 60 * 3;    //60 * 180;  //@todo change to 23 hrs
     public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
     private static final int WEATHER_NOTIFICATION_ID = 3004;
-    Realm  realm2, realm3, realm4, realm5;
+    Realm realm2, realm3, realm4, realm5;
     Subscription friendSubscription, recentSubscription, interestingSubscription, commonsSubscription;
 
 
@@ -116,7 +116,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         getRecentAndHotags();
         getCommonsPage1();
         //getCommonsAll 1 time this should not need update
-        notifyWeather();
+        notifyMe();
         Log.d("SYNC", "onPeformSync");
 
     }
@@ -245,49 +245,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         getSyncAccount(context);
     }
 
-    private void notifyWeather() {
-        /*
-        //Context context = getContext();
-        //checking the last update and notify if it' the first of the day
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String displayNotificationsKey = context.getString(R.string.pref_enable_notifications_key);
-        boolean displayNotifications = prefs.getBoolean(displayNotificationsKey,
-                Boolean.parseBoolean(context.getString(R.string.pref_enable_notifications_default)));
+    private void notifyMe() {
 
-        if ( displayNotifications ) {
-
-            String lastNotificationKey = context.getString(R.string.pref_last_notification);
-            long lastSync = prefs.getLong(lastNotificationKey, 0);
-
-            if (System.currentTimeMillis() - lastSync >= DAY_IN_MILLIS) {
-                // Last sync was more than 1 day ago, let's send a notification with the weather.
-                String locationQuery = Utility.getPreferredLocation(context);
-
-                Uri weatherUri = WeatherContract.WeatherEntry.buildWeatherLocationWithDate(locationQuery, System.currentTimeMillis());
-
-                // we'll query our contentProvider, as always
-                Cursor cursor = context.getContentResolver().query(weatherUri, NOTIFY_WEATHER_PROJECTION, null, null, null);
-
-                if (cursor.moveToFirst()) {
-                    int weatherId = cursor.getInt(INDEX_WEATHER_ID);
-                    double high = cursor.getDouble(INDEX_MAX_TEMP);
-                    double low = cursor.getDouble(INDEX_MIN_TEMP);
-                    String desc = cursor.getString(INDEX_SHORT_DESC);
-
-                    int iconId = Utility.getIconResourceForWeatherCondition(weatherId);
-                    Resources resources = context.getResources();
-                    Bitmap largeIcon = BitmapFactory.decodeResource(resources,
-                            Utility.getArtResourceForWeatherCondition(weatherId));
-                    String title = context.getString(R.string.app_name);
-
-                    // Define the text of the forecast.
-                    String contentText = String.format(context.getString(R.string.format_notification),
-                            desc,
-                            Utility.formatTemperature(context, high),
-                            Utility.formatTemperature(context, low));
-*/
-        // NotificationCompatBuilder is a very convenient way to build backward-compatible
-        // notifications.  Just throw in some data.
         Context context = FlickrClientApp.getAppContext();
         int iconId = R.drawable.ic_star;
         NotificationCompat.Builder mBuilder =
@@ -297,14 +256,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         .setContentTitle("Phlix Data")
                         .setContentText("Photos updated");
 
-        // Make something interesting happen when the user clicks on the notification.
-        // In this case, opening the app is sufficient.
+
         Intent resultIntent = new Intent(context, LoginActivity.class);
 
-        // The stack builder object will contain an artificial back stack for the
-        // started Activity.
-        // This ensures that navigating backward from the Activity leads out of
-        // your application to the Home screen.
+
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addNextIntent(resultIntent);
         PendingIntent resultPendingIntent =
@@ -316,13 +271,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         NotificationManager mNotificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        // WEATHER_NOTIFICATION_ID allows you to update the notification later on.
         mNotificationManager.notify(WEATHER_NOTIFICATION_ID, mBuilder.build());
 
-        //refreshing last sync
-        // SharedPreferences.Editor editor = prefs.edit();
-        // editor.putLong(lastNotificationKey, System.currentTimeMillis());
-        //editor.commit();
+
     }
 
 
@@ -334,14 +285,14 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         Observable<Who> tagsObservable = getJacksonService().getTags(Util.getUserId());
         friendSubscription = getJacksonService().getFriendsPhotos(Util.getUserId())
-                  .zipWith(tagsObservable, new Func2<Photos, Who, UserInfo>() {
+                .zipWith(tagsObservable, new Func2<Photos, Who, UserInfo>() {
 
-                            @Override
-                            public UserInfo call(Photos p, Who w) {
-                                return new UserInfo(w, p);
-                            }
+                    @Override
+                    public UserInfo call(Photos p, Who w) {
+                        return new UserInfo(w, p);
+                    }
 
-                        })
+                })
 
                 .subscribeOn(Schedulers.io()) // thread pool; bg + bg
                 .observeOn(Schedulers.immediate())
@@ -440,9 +391,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                             realm2.commitTransaction();
                             Log.d("DEBUG", "end get userinfo: " + u);
                         } finally {
-                            realm2.close();
+                            if (realm2 != null) {
+                                realm2.close();
+                            }
                         }
-
 
 
                     }
@@ -484,25 +436,31 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                     public void onNext(Photos p) {
                         //og.d("DEBUG", "onNext interesting: " + p.getPhotos().getPhotoList());
                         //pass photos to fragment
-                        realm3 = Realm.getDefaultInstance();
-                        realm3.beginTransaction();
+                        try {
+                            realm3 = Realm.getDefaultInstance();
+                            realm3.beginTransaction();
 
-                        Date maxDate = realm3.where(Interesting.class).maximumDate("timestamp");
-                        Interesting interesting = realm3.where(Interesting.class).equalTo("timestamp", maxDate).findFirst();
-                        Log.d("SYNC", "interesting" + interesting);
+                            Date maxDate = realm3.where(Interesting.class).maximumDate("timestamp");
+                            Interesting interesting = realm3.where(Interesting.class).equalTo("timestamp", maxDate).findFirst();
+                            Log.d("SYNC", "interesting" + interesting);
 
 
-                        for (Photo photo : p.getPhotos().getPhotoList()) {
-                            photo.isInteresting = true;
-                            interesting.interestingPhotos.add(photo);
+                            for (Photo photo : p.getPhotos().getPhotoList()) {
+                                photo.isInteresting = true;
+                                interesting.interestingPhotos.add(photo);
 
+                            }
+
+                            interesting.timestamp = interesting.getTimestamp();
+                            realm3.copyToRealmOrUpdate(interesting);  //deep copy
+                            realm3.commitTransaction();
+                            Log.d("DEBUG", "end get interesting: " + interesting);
+                        } finally {
+                            if (null != realm3) {
+                                realm3.close();
+                            }
                         }
 
-                        interesting.timestamp = interesting.getTimestamp();
-                        realm3.copyToRealmOrUpdate(interesting);  //deep copy
-                        realm3.commitTransaction();
-                        Log.d("DEBUG", "end get interesting: " + interesting);
-                        realm3.close();
                     }
                 });
 
@@ -541,28 +499,34 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                     @Override
                     public void onNext(TagAndRecent t) {
-                        realm4 = Realm.getDefaultInstance();
-                        realm4.beginTransaction();
+                        try {
+                            realm4 = Realm.getDefaultInstance();
+                            realm4.beginTransaction();
 
-                        Date maxDate = realm4.where(Recent.class).maximumDate("timestamp");
-                        Recent recent = realm4.where(Recent.class).equalTo("timestamp", maxDate).findFirst();
+                            Date maxDate = realm4.where(Recent.class).maximumDate("timestamp");
+                            Recent recent = realm4.where(Recent.class).equalTo("timestamp", maxDate).findFirst();
 
-                        for (Photo p : t.getRecent().getPhotos().getPhotoList()) {
-                            recent.recentPhotos.add(p);
-                            //set not interesting @todo
+                            for (Photo p : t.getRecent().getPhotos().getPhotoList()) {
+                                recent.recentPhotos.add(p);
+                                //set not interesting @todo
+                            }
+                            recent.timestamp = maxDate;
+
+
+                            for (Tag tag : t.getHottags().getHottags().getTag()) {
+                                recent.hotTagList.add(tag);
+                            }
+                            realm4.copyToRealmOrUpdate(recent);  //deep copy
+
+                            realm4.commitTransaction();
+                            Log.d("DEBUG", "end recent/tag");
+                        } finally {
+                            if (null != realm4) {
+                                realm4.close();
+                            }
                         }
-                        recent.timestamp = maxDate;
-
-
-                        for (Tag tag : t.getHottags().getHottags().getTag()) {
-                            recent.hotTagList.add(tag);
-                        }
-                        realm4.copyToRealmOrUpdate(recent);  //deep copy
-
-                        realm4.commitTransaction();
-                        Log.d("DEBUG", "end recent/tag");
-                        realm4.close();
                     }
+
                 });
 
     }
@@ -597,26 +561,30 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                     @Override
                     public void onNext(Photos p) {
-                        realm5 = Realm.getDefaultInstance();
-                        realm5.beginTransaction();
-                        Common c = realm5.where(Common.class).findFirst();
-                        Log.d("DEBUG", "commons" + c);
-                        for (Photo photo : p.getPhotos().getPhotoList()) {
-                            photo.isCommon = true;
-                            c.commonPhotos.add(photo);
+                        try {
+                            realm5 = Realm.getDefaultInstance();
+                            realm5.beginTransaction();
+                            Common c = realm5.where(Common.class).findFirst();
+                            Log.d("DEBUG", "commons" + c);
+                            for (Photo photo : p.getPhotos().getPhotoList()) {
+                                photo.isCommon = true;
+                                c.commonPhotos.add(photo);
 
+                            }
+                            realm5.copyToRealmOrUpdate(c);
+                            realm5.commitTransaction();
+                            Log.d("DEBUG", "end commons");
+                        } finally {
+                            if (null != realm5) {
+                                realm5.close();
+                            }
                         }
-                        realm5.copyToRealmOrUpdate(c);
-                        realm5.commitTransaction();
-                        Log.d("DEBUG", "end commons");
-                        realm5.close();
+
 
                     }
                 });
 
     }
-
-
 
 
 }

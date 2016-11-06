@@ -20,7 +20,6 @@ public class OAuthSignPostOKHttpClient {    //
     private OkHttpOAuthConsumer consumer;
     private OkHttpOAuthProvider provider;
     private OAuthSignPostOKHttpClient.OAuthTokenHandler handler;
-    private String accessToken;
     private SharedPreferences prefs;
 
     private static String callbackUrl = BuildConfig.callbackUrl;
@@ -46,9 +45,6 @@ public class OAuthSignPostOKHttpClient {    //
         return this.consumer;
     }
 
-    public void setConsumer(OkHttpOAuthConsumer consumer) {
-        this.consumer = consumer;
-    }
 
     public OkHttpOAuthProvider getProvider() {
         return this.provider;
@@ -59,7 +55,6 @@ public class OAuthSignPostOKHttpClient {    //
     }
 
     public void fetchRequestToken() {
-        //replace w retrofit
         new AsyncSimpleTask(new AsyncSimpleTask.AsyncSimpleTaskHandler() {
             Exception e = null;
 
@@ -106,7 +101,6 @@ public class OAuthSignPostOKHttpClient {    //
                         throw new Exception("No verifier code was returned with uri \'" + uri + "\' " + "and access token cannot be retrieved");
                     }
                     provider.retrieveAccessToken(getConsumer(), oauth_verifier);
-                    //setReponseParameters
                     setHttpResponseParams(provider.getResponseParameters());
 
 
@@ -128,19 +122,9 @@ public class OAuthSignPostOKHttpClient {    //
         });
     }
 
-    public String getAccessToken() {
-        return this.accessToken;
-    }
 
 
-    public void setAccessToken(Token token) {
-        if (accessToken == null) {
-            this.accessToken = null;
-        } else {
-            this.accessToken = accessToken;
-        }
 
-    }
 
     private void setHttpResponseParams(HttpParameters params) {
         SharedPreferences.Editor editor = this.prefs.edit();
