@@ -120,7 +120,7 @@ public class PreviewPhotoActivity extends AppCompatActivity {
         }
 
 
-//@todo can put this into realm or create its url
+//@todo can put bitmap into realm or create its url
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         processedBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         final byte[] bytes = stream.toByteArray();

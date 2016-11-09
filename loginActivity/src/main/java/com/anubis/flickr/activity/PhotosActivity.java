@@ -80,6 +80,7 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
         setContentView(R.layout.activity_photos);
         //oauthkit shared prefs
         SharedPreferences authPrefs = getApplicationContext().getSharedPreferences(getString(R.string.OAuthKit_Prefs), 0);
+
         if (!Util.getCurrentUser().equals(authPrefs.getString(getString(R.string.username), ""))) {
             //@todo stop the sync adapter and restart
             //find out how to properly stop before restart

@@ -87,9 +87,11 @@ public class ImageDisplayActivity extends AppCompatActivity {
         wvComments.getSettings().setJavaScriptEnabled(true);
 
         mUid = mPhoto.getId();
-
+        //@todo comments do not get refreshed w sync adapter
+        //@todo this needs to check if 24 hr has passed
         Comments_ c = pRealm.where(Comments_.class).equalTo("photoId", mUid).findFirst();
-        if (null == c) {
+        if (null == c || (null != c && !withinADay(c.getTimestamp()))) {
+            //network call
             getComments(mUid);
         } else {
             displayComments(wvComments, c.commentsList);
@@ -122,6 +124,16 @@ public class ImageDisplayActivity extends AppCompatActivity {
     );
 }
 
+    private boolean withinADay(Date timestamp) {
+        long diff = (new Date().getTime() - timestamp.getTime());
+        if (diff > 86400000) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -137,14 +149,6 @@ public class ImageDisplayActivity extends AppCompatActivity {
     private void getComments(final String uid) {
         //Observable<PhotoInfo> photoInfo = FlickrClientApp.getJacksonService().getPhotoInfo(uid);
         subscription = FlickrClientApp.getJacksonService().getComments(uid)
-                /*.zipWith(photoInfo, new Func2<Comments, PhotoInfo, ImageDisplay>() {
-            @Override
-            public ImageDisplay call(Comments c, PhotoInfo p) {
-                return new ImageDisplay(p, c);
-            }
-
-
-        })*/
 
                 .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())
@@ -215,6 +219,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
                             c.commentsList.add(comment);
                         }
                     }
+                    c.setTimestamp(new Date());
                     realm.copyToRealmOrUpdate(c);
                     realm.commitTransaction();
                 } finally {
@@ -271,7 +276,7 @@ public class ImageDisplayActivity extends AppCompatActivity {
 
                             List<Comment> commentsList = new ArrayList<Comment>();
                             Comment comment = new Comment();
-                            //@todo  workaroundthe json maps anon obj { comment: {
+                            //@todo  workaround the json maps anon obj { comment: {
                             Map comObj = (Map) c.getAdditionalProperties().get("comment");
                             comment.setAuthor((String) comObj.get("author"));
                             comment.setId((String) comObj.get("id"));
