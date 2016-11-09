@@ -98,18 +98,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     /*
      * Put the data transfer code here.
      */
-        /*
-        Handler handler = new Handler(Looper.getMainLooper());
 
-        handler.post(new Runnable() {
-
-            @Override
-            public void run() {
-                //Your UI code here
-                Toast.makeText(FlickrClientApp.getAppContext(), "Hiney, hiney, hiney", Toast.LENGTH_SHORT).show();
-            }
-        });
-        */
         Log.d("SYNC", "starting onPerformSync");
         getFriends();
         getInterestingPhotos();

@@ -110,7 +110,6 @@ public class Photo extends RealmObject implements Serializable {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 
-    //@todo set before save
     void setUrl(Photo p) {
 
         this.url = "http://farm" + p.getFarm()

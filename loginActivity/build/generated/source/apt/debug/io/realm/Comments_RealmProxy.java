@@ -36,12 +36,15 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
         implements Cloneable {
 
         public long photoIdIndex;
+        public long timestampIndex;
         public long commentsListIndex;
 
         Comments_ColumnInfo(String path, Table table) {
-            final Map<String, Long> indicesMap = new HashMap<String, Long>(2);
+            final Map<String, Long> indicesMap = new HashMap<String, Long>(3);
             this.photoIdIndex = getValidColumnIndex(path, table, "Comments_", "photoId");
             indicesMap.put("photoId", this.photoIdIndex);
+            this.timestampIndex = getValidColumnIndex(path, table, "Comments_", "timestamp");
+            indicesMap.put("timestamp", this.timestampIndex);
             this.commentsListIndex = getValidColumnIndex(path, table, "Comments_", "commentsList");
             indicesMap.put("commentsList", this.commentsListIndex);
 
@@ -52,6 +55,7 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
         public final void copyColumnInfoFrom(ColumnInfo other) {
             final Comments_ColumnInfo otherInfo = (Comments_ColumnInfo) other;
             this.photoIdIndex = otherInfo.photoIdIndex;
+            this.timestampIndex = otherInfo.timestampIndex;
             this.commentsListIndex = otherInfo.commentsListIndex;
 
             setIndicesMap(otherInfo.getIndicesMap());
@@ -70,6 +74,7 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
     static {
         List<String> fieldNames = new ArrayList<String>();
         fieldNames.add("photoId");
+        fieldNames.add("timestamp");
         fieldNames.add("commentsList");
         FIELD_NAMES = Collections.unmodifiableList(fieldNames);
     }
@@ -115,6 +120,47 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
 
         proxyState.getRealm$realm().checkIfValid();
         throw new io.realm.exceptions.RealmException("Primary key field 'photoId' cannot be changed after object was created.");
+    }
+
+    @SuppressWarnings("cast")
+    public Date realmGet$timestamp() {
+        if (proxyState == null) {
+            // Called from model's constructor. Inject context.
+            injectObjectContext();
+        }
+
+        proxyState.getRealm$realm().checkIfValid();
+        if (proxyState.getRow$realm().isNull(columnInfo.timestampIndex)) {
+            return null;
+        }
+        return (java.util.Date) proxyState.getRow$realm().getDate(columnInfo.timestampIndex);
+    }
+
+    public void realmSet$timestamp(Date value) {
+        if (proxyState == null) {
+            // Called from model's constructor. Inject context.
+            injectObjectContext();
+        }
+
+        if (proxyState.isUnderConstruction()) {
+            if (!proxyState.getAcceptDefaultValue$realm()) {
+                return;
+            }
+            final Row row = proxyState.getRow$realm();
+            if (value == null) {
+                row.getTable().setNull(columnInfo.timestampIndex, row.getIndex(), true);
+                return;
+            }
+            row.getTable().setDate(columnInfo.timestampIndex, row.getIndex(), value, true);
+            return;
+        }
+
+        proxyState.getRealm$realm().checkIfValid();
+        if (value == null) {
+            proxyState.getRow$realm().setNull(columnInfo.timestampIndex);
+            return;
+        }
+        proxyState.getRow$realm().setDate(columnInfo.timestampIndex, value);
     }
 
     public RealmList<com.anubis.flickr.models.Comment> realmGet$commentsList() {
@@ -182,6 +228,7 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
         if (!realmSchema.contains("Comments_")) {
             RealmObjectSchema realmObjectSchema = realmSchema.create("Comments_");
             realmObjectSchema.add(new Property("photoId", RealmFieldType.STRING, Property.PRIMARY_KEY, Property.INDEXED, !Property.REQUIRED));
+            realmObjectSchema.add(new Property("timestamp", RealmFieldType.DATE, !Property.PRIMARY_KEY, !Property.INDEXED, !Property.REQUIRED));
             if (!realmSchema.contains("Comment")) {
                 CommentRealmProxy.createRealmObjectSchema(realmSchema);
             }
@@ -195,6 +242,7 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
         if (!sharedRealm.hasTable("class_Comments_")) {
             Table table = sharedRealm.getTable("class_Comments_");
             table.addColumn(RealmFieldType.STRING, "photoId", Table.NULLABLE);
+            table.addColumn(RealmFieldType.DATE, "timestamp", Table.NULLABLE);
             if (!sharedRealm.hasTable("class_Comment")) {
                 CommentRealmProxy.initTable(sharedRealm);
             }
@@ -210,18 +258,18 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
         if (sharedRealm.hasTable("class_Comments_")) {
             Table table = sharedRealm.getTable("class_Comments_");
             final long columnCount = table.getColumnCount();
-            if (columnCount != 2) {
-                if (columnCount < 2) {
-                    throw new RealmMigrationNeededException(sharedRealm.getPath(), "Field count is less than expected - expected 2 but was " + columnCount);
+            if (columnCount != 3) {
+                if (columnCount < 3) {
+                    throw new RealmMigrationNeededException(sharedRealm.getPath(), "Field count is less than expected - expected 3 but was " + columnCount);
                 }
                 if (allowExtraColumns) {
-                    RealmLog.debug("Field count is more than expected - expected 2 but was %1$d", columnCount);
+                    RealmLog.debug("Field count is more than expected - expected 3 but was %1$d", columnCount);
                 } else {
-                    throw new RealmMigrationNeededException(sharedRealm.getPath(), "Field count is more than expected - expected 2 but was " + columnCount);
+                    throw new RealmMigrationNeededException(sharedRealm.getPath(), "Field count is more than expected - expected 3 but was " + columnCount);
                 }
             }
             Map<String, RealmFieldType> columnTypes = new HashMap<String, RealmFieldType>();
-            for (long i = 0; i < 2; i++) {
+            for (long i = 0; i < 3; i++) {
                 columnTypes.put(table.getColumnName(i), table.getColumnType(i));
             }
 
@@ -242,6 +290,15 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
             if (!table.hasSearchIndex(table.getColumnIndex("photoId"))) {
                 throw new RealmMigrationNeededException(sharedRealm.getPath(), "Index not defined for field 'photoId' in existing Realm file. Either set @Index or migrate using io.realm.internal.Table.removeSearchIndex().");
             }
+            if (!columnTypes.containsKey("timestamp")) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Missing field 'timestamp' in existing Realm file. Either remove field or migrate using io.realm.internal.Table.addColumn().");
+            }
+            if (columnTypes.get("timestamp") != RealmFieldType.DATE) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Invalid type 'Date' for field 'timestamp' in existing Realm file.");
+            }
+            if (!table.isColumnNullable(columnInfo.timestampIndex)) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Field 'timestamp' is required. Either set @Required to field 'timestamp' or migrate using RealmObjectSchema.setNullable().");
+            }
             if (!columnTypes.containsKey("commentsList")) {
                 throw new RealmMigrationNeededException(sharedRealm.getPath(), "Missing field 'commentsList'");
             }
@@ -251,9 +308,9 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
             if (!sharedRealm.hasTable("class_Comment")) {
                 throw new RealmMigrationNeededException(sharedRealm.getPath(), "Missing class 'class_Comment' for field 'commentsList'");
             }
-            Table table_1 = sharedRealm.getTable("class_Comment");
-            if (!table.getLinkTarget(columnInfo.commentsListIndex).hasSameSchema(table_1)) {
-                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Invalid RealmList type for field 'commentsList': '" + table.getLinkTarget(columnInfo.commentsListIndex).getName() + "' expected - was '" + table_1.getName() + "'");
+            Table table_2 = sharedRealm.getTable("class_Comment");
+            if (!table.getLinkTarget(columnInfo.commentsListIndex).hasSameSchema(table_2)) {
+                throw new RealmMigrationNeededException(sharedRealm.getPath(), "Invalid RealmList type for field 'commentsList': '" + table.getLinkTarget(columnInfo.commentsListIndex).getName() + "' expected - was '" + table_2.getName() + "'");
             }
             return columnInfo;
         } else {
@@ -307,6 +364,18 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
                 throw new IllegalArgumentException("JSON object doesn't have the primary key field 'photoId'.");
             }
         }
+        if (json.has("timestamp")) {
+            if (json.isNull("timestamp")) {
+                ((Comments_RealmProxyInterface) obj).realmSet$timestamp(null);
+            } else {
+                Object timestamp = json.get("timestamp");
+                if (timestamp instanceof String) {
+                    ((Comments_RealmProxyInterface) obj).realmSet$timestamp(JsonUtils.stringToDate((String) timestamp));
+                } else {
+                    ((Comments_RealmProxyInterface) obj).realmSet$timestamp(new Date(json.getLong("timestamp")));
+                }
+            }
+        }
         if (json.has("commentsList")) {
             if (json.isNull("commentsList")) {
                 ((Comments_RealmProxyInterface) obj).realmSet$commentsList(null);
@@ -339,6 +408,18 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
                     ((Comments_RealmProxyInterface) obj).realmSet$photoId((String) reader.nextString());
                 }
                 jsonHasPrimaryKey = true;
+            } else if (name.equals("timestamp")) {
+                if (reader.peek() == JsonToken.NULL) {
+                    reader.skipValue();
+                    ((Comments_RealmProxyInterface) obj).realmSet$timestamp(null);
+                } else if (reader.peek() == JsonToken.NUMBER) {
+                    long timestamp = reader.nextLong();
+                    if (timestamp > -1) {
+                        ((Comments_RealmProxyInterface) obj).realmSet$timestamp(new Date(timestamp));
+                    }
+                } else {
+                    ((Comments_RealmProxyInterface) obj).realmSet$timestamp(JsonUtils.stringToDate(reader.nextString()));
+                }
             } else if (name.equals("commentsList")) {
                 if (reader.peek() == JsonToken.NULL) {
                     reader.skipValue();
@@ -417,6 +498,7 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
             // rejecting default values to avoid creating unexpected objects from RealmModel/RealmList fields.
             com.anubis.flickr.models.Comments_ realmObject = realm.createObjectInternal(com.anubis.flickr.models.Comments_.class, ((Comments_RealmProxyInterface) newObject).realmGet$photoId(), false, Collections.<String>emptyList());
             cache.put(newObject, (RealmObjectProxy) realmObject);
+            ((Comments_RealmProxyInterface) realmObject).realmSet$timestamp(((Comments_RealmProxyInterface) newObject).realmGet$timestamp());
 
             RealmList<com.anubis.flickr.models.Comment> commentsListList = ((Comments_RealmProxyInterface) newObject).realmGet$commentsList();
             if (commentsListList != null) {
@@ -457,6 +539,10 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
             Table.throwDuplicatePrimaryKeyException(primaryKeyValue);
         }
         cache.put(object, rowIndex);
+        java.util.Date realmGet$timestamp = ((Comments_RealmProxyInterface)object).realmGet$timestamp();
+        if (realmGet$timestamp != null) {
+            Table.nativeSetTimestamp(tableNativePtr, columnInfo.timestampIndex, rowIndex, realmGet$timestamp.getTime(), false);
+        }
 
         RealmList<com.anubis.flickr.models.Comment> commentsListList = ((Comments_RealmProxyInterface) object).realmGet$commentsList();
         if (commentsListList != null) {
@@ -500,6 +586,10 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
                     Table.throwDuplicatePrimaryKeyException(primaryKeyValue);
                 }
                 cache.put(object, rowIndex);
+                java.util.Date realmGet$timestamp = ((Comments_RealmProxyInterface)object).realmGet$timestamp();
+                if (realmGet$timestamp != null) {
+                    Table.nativeSetTimestamp(tableNativePtr, columnInfo.timestampIndex, rowIndex, realmGet$timestamp.getTime(), false);
+                }
 
                 RealmList<com.anubis.flickr.models.Comment> commentsListList = ((Comments_RealmProxyInterface) object).realmGet$commentsList();
                 if (commentsListList != null) {
@@ -537,6 +627,12 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
             rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
         }
         cache.put(object, rowIndex);
+        java.util.Date realmGet$timestamp = ((Comments_RealmProxyInterface)object).realmGet$timestamp();
+        if (realmGet$timestamp != null) {
+            Table.nativeSetTimestamp(tableNativePtr, columnInfo.timestampIndex, rowIndex, realmGet$timestamp.getTime(), false);
+        } else {
+            Table.nativeSetNull(tableNativePtr, columnInfo.timestampIndex, rowIndex, false);
+        }
 
         long commentsListNativeLinkViewPtr = Table.nativeGetLinkView(tableNativePtr, columnInfo.commentsListIndex, rowIndex);
         LinkView.nativeClear(commentsListNativeLinkViewPtr);
@@ -579,6 +675,12 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
                     rowIndex = table.addEmptyRowWithPrimaryKey(primaryKeyValue, false);
                 }
                 cache.put(object, rowIndex);
+                java.util.Date realmGet$timestamp = ((Comments_RealmProxyInterface)object).realmGet$timestamp();
+                if (realmGet$timestamp != null) {
+                    Table.nativeSetTimestamp(tableNativePtr, columnInfo.timestampIndex, rowIndex, realmGet$timestamp.getTime(), false);
+                } else {
+                    Table.nativeSetNull(tableNativePtr, columnInfo.timestampIndex, rowIndex, false);
+                }
 
                 long commentsListNativeLinkViewPtr = Table.nativeGetLinkView(tableNativePtr, columnInfo.commentsListIndex, rowIndex);
                 LinkView.nativeClear(commentsListNativeLinkViewPtr);
@@ -617,6 +719,7 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
             cache.put(realmObject, new RealmObjectProxy.CacheData(currentDepth, unmanagedObject));
         }
         ((Comments_RealmProxyInterface) unmanagedObject).realmSet$photoId(((Comments_RealmProxyInterface) realmObject).realmGet$photoId());
+        ((Comments_RealmProxyInterface) unmanagedObject).realmSet$timestamp(((Comments_RealmProxyInterface) realmObject).realmGet$timestamp());
 
         // Deep copy of commentsList
         if (currentDepth == maxDepth) {
@@ -636,6 +739,7 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
     }
 
     static com.anubis.flickr.models.Comments_ update(Realm realm, com.anubis.flickr.models.Comments_ realmObject, com.anubis.flickr.models.Comments_ newObject, Map<RealmModel, RealmObjectProxy> cache) {
+        ((Comments_RealmProxyInterface) realmObject).realmSet$timestamp(((Comments_RealmProxyInterface) newObject).realmGet$timestamp());
         RealmList<com.anubis.flickr.models.Comment> commentsListList = ((Comments_RealmProxyInterface) newObject).realmGet$commentsList();
         RealmList<com.anubis.flickr.models.Comment> commentsListRealmList = ((Comments_RealmProxyInterface) realmObject).realmGet$commentsList();
         commentsListRealmList.clear();
@@ -661,6 +765,10 @@ public class Comments_RealmProxy extends com.anubis.flickr.models.Comments_
         StringBuilder stringBuilder = new StringBuilder("Comments_ = [");
         stringBuilder.append("{photoId:");
         stringBuilder.append(realmGet$photoId() != null ? realmGet$photoId() : "null");
+        stringBuilder.append("}");
+        stringBuilder.append(",");
+        stringBuilder.append("{timestamp:");
+        stringBuilder.append(realmGet$timestamp() != null ? realmGet$timestamp() : "null");
         stringBuilder.append("}");
         stringBuilder.append(",");
         stringBuilder.append("{commentsList:");

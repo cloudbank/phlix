@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -15,19 +17,27 @@ import android.widget.ImageView;
 import com.anubis.flickr.FlickrClientApp;
 import com.anubis.flickr.R;
 import com.anubis.flickr.fragments.FlickrBaseFragment;
+import com.anubis.flickr.models.Photo;
+import com.anubis.flickr.models.Photos;
+import com.anubis.flickr.models.UserModel;
 import com.anubis.flickr.util.ImageFilterProcessor;
+import com.anubis.flickr.util.Util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 
+import io.realm.Realm;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.adapter.rxjava.HttpException;
+import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 public class PreviewPhotoActivity extends AppCompatActivity {
@@ -102,7 +112,7 @@ public class PreviewPhotoActivity extends AppCompatActivity {
     }
 
     public void onCancelButton(MenuItem menuItem) {
-            this.finish();
+        this.finish();
 
 
     }
@@ -126,13 +136,32 @@ public class PreviewPhotoActivity extends AppCompatActivity {
         final byte[] bytes = stream.toByteArray();
 
 
-
         MultipartBody.Part filePart = MultipartBody.Part.createFormData("photo", filename, RequestBody.create(MediaType.parse("image/*"), bytes));
 
         subscription = FlickrClientApp.getDefaultService().postPhoto(filePart)
+                .concatMap(new Func1<ResponseBody, Observable<Photos>>() {
+                    @Override
+                    public Observable<Photos> call(ResponseBody res) {
+                        try {
+                            Intent data = new Intent();
+                            String resp = res.string();
+                            Log.d("DEBUG", "post photo: " + resp);
+                            String photoId = parseId(resp);
+                            data.putExtra("photoId", photoId);
+                            setResult(RESULT_OK, data);
+
+
+                        } catch (IOException | ArrayIndexOutOfBoundsException e) {
+                            Log.e("ERROR", "exception while posting photo");
+                        } finally {
+
+                        }
+                        return FlickrClientApp.getJacksonService().getFriendsPhotos(Util.getUserId());
+                    }
+                })
                 .subscribeOn(Schedulers.io()) // optional if you do not wish to override the default behavior
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ResponseBody>() {
+                .subscribe(new Subscriber<Photos>() {
                     @Override
                     public void onCompleted() {
 
@@ -150,24 +179,56 @@ public class PreviewPhotoActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onNext(ResponseBody res) {
-                        Intent data = new Intent();
-                        try {
-                            String resp = res.string();
-                            Log.d("DEBUG", "post photo: " + resp);
-                            String photoId = parseId(resp);
-                            data.putExtra("photoId", photoId);
-                            //network call to refresh friends?
-                            setResult(RESULT_OK, data);
-                            ringProgressDialog.dismiss();
+                    public void onNext(Photos photos) {
+                        //@todo do I want to return the boolean here
+                        saveFriends(photos);
 
-                            PreviewPhotoActivity.this.finish();
+                        ringProgressDialog.dismiss();
 
-                        } catch (IOException|ArrayIndexOutOfBoundsException e) {
+                        PreviewPhotoActivity.this.finish();
 
-                        }
+
                     }
+
                 });
+
+
+    }
+
+    private void saveFriends(final Photos photos) {
+        HandlerThread handlerThread = new HandlerThread("BackgroundHandler");
+        handlerThread.start();
+        final Handler backgroundHandler = new Handler(handlerThread.getLooper());
+        backgroundHandler.post(new Runnable() {
+
+            @Override
+            public void run() {
+                Realm realm = null;
+                try {
+                    realm = Realm.getDefaultInstance();
+                    realm.beginTransaction();
+
+
+                    UserModel u = realm.where(UserModel.class).equalTo("userId", Util.getUserId()).findFirst();
+                    if (u.friendsList.size() > 0) {
+                        u.friendsList = null;
+                    }
+                    for (Photo p : photos.getPhotos().getPhotoList()) {
+                        u.friendsList.add(p);
+                    }
+                    u.name = Util.getCurrentUser();
+                    u.timestamp = Calendar.getInstance().getTime();
+                    u.tagsList = u.getTagsList();
+                    realm.copyToRealmOrUpdate(u);  //deep copy
+                    realm.commitTransaction();
+                } finally {
+                    if (realm != null) {
+                        realm.close();
+                    }
+                }
+            }
+        });
+
 
     }
 
@@ -178,7 +239,7 @@ public class PreviewPhotoActivity extends AppCompatActivity {
             subscription.unsubscribe();
         }
         if (null != ringProgressDialog) {
-            ringProgressDialog =  null;
+            ringProgressDialog = null;
         }
     }
 

@@ -48,15 +48,7 @@ public class PhotosActivity extends AppCompatActivity implements FlickrBaseFragm
 
     @Override
     public void onPhotoPosted() {
-        //==there are 50 max in friends call
-        // ==you cannot get the url from the post
-        // ==you have to build the url from a network call to e.g. to getphotoInfo anyway
-        // and put it in the photo cache manually and then refresh the viewpager
-        //just call friends and get it all in one shot w updates to friend photos as bonus
-        //
-        //FriendsFragment f = (FriendsFragment)adapterViewPager.getItem(0);
-        // @todo
-        //getFriendsList()
+        //just add the photo bitmap to realm
         Log.d("POST", "callback");
         vpPager.setCurrentItem(0);
     }
