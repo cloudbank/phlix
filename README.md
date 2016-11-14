@@ -3,20 +3,23 @@
 
 <img src="http://i.imgur.com/iePBsAf.png" height="300"/>
 <img src="http://i.imgur.com/nguN38p.png" height="300" />
-<img src="http://i.imgur.com/ObJP1fz.png" height="300" />
-<img src="http://i.imgur.com/VAxLK7w.png" height="300" />
 
 * *Friends' & your photostreams*
 * *The 'Interesting' collection*
+
+<img src="http://i.imgur.com/ObJP1fz.png" height="300" />
+<img src="http://i.imgur.com/VAxLK7w.png" height="300" />
+
 * *Hot tags and Recent Uploads*
 * *The Commons collection--rare pictures from around the world curated by you!*
 
 <img src="http://i.imgur.com/dMZfxer.png" height="300"/>
 <img src="http://i.imgur.com/7RUXx9k.png" height="300" />
-<img src="http://i.imgur.com/qS0bmHD.png" height="300" />
-<img src="http://i.imgur.com/TSQyMcP.png" height="300" />
 
 ### Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
+
+<img src="http://i.imgur.com/qS0bmHD.png" height="300" />
+<img src="http://i.imgur.com/TSQyMcP.png" height="300" />
 
 ### In addition you can:
 
