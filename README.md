@@ -1,4 +1,8 @@
 # Phlix v 1.0
+<img src="http://i.imgur.com/iePBsAf.png" height="300"/>
+<img src="http://i.imgur.com/nguN38p.png" height="300" />
+<img src="http://i.imgur.com/ObJP1fz.png" height="300" />
+<img src="http://i.imgur.com/VAxLK7w.png" height="300" />
 
 An android client for logging in to Flickr which allows you to view photos from:
 
@@ -8,14 +12,6 @@ An android client for logging in to Flickr which allows you to view photos from:
 * The Commons collection--rare pictures from around the world curated by you!
 
 Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
-
-<img src="http://i.imgur.com/iePBsAf.png" height="300"/>
-&nbsp;&nbsp;
-<img src="http://i.imgur.com/nguN38p.png" height="300" />
-&nbsp;&nbsp;
-<img src="http://i.imgur.com/ObJP1fz.png" height="300" />
-&nbsp;&nbsp;
-<img src="http://i.imgur.com/VAxLK7w.png" height="300" />
 
 In addition you can:
 
