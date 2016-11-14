@@ -6,8 +6,6 @@
 <img src="http://i.imgur.com/ObJP1fz.png" height="300" />
 <img src="http://i.imgur.com/VAxLK7w.png" height="300" />
 
-### View
-
 * *Friends' & your photostreams*
 * *The 'Interesting' collection*
 * *Hot tags and Recent Uploads*
@@ -17,10 +15,6 @@
 <img src="http://i.imgur.com/7RUXx9k.png" height="300" />
 <img src="http://i.imgur.com/qS0bmHD.png" height="300" />
 <img src="http://i.imgur.com/TSQyMcP.png" height="300" />
-
-
-
-
 
 ### Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
 
