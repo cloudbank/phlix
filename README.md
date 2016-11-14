@@ -6,29 +6,22 @@
 * *Hot tags and Recent Uploads*
 * *The Commons collection--rare pictures from around the world curated by you!*
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/iePBsAf.png" height="500"/>    
-
-
 >>>>VIEW   
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/nguN38p.png" height="500" />  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/iePBsAf.png" height="500"/> <img src="http://i.imgur.com/nguN38p.png" height="500" />     
 
 >>>>COMMENT
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/ObJP1fz.png" height="500" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/ObJP1fz.png" height="500" /><img src="http://i.imgur.com/7RUXx9k.png" height="500" />
 
 >>>>CURATE
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/VAxLK7w.png" height="500" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/VAxLK7w.png" height="500" /><img src="http://i.imgur.com/qS0bmHD.png" height="500" />
 
 >>>>CREATE
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/dMZfxer.png" height="500"/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/dMZfxer.png" height="500"/><img src="http://i.imgur.com/TSQyMcP.png" height="500" />
 
-
-<img src="http://i.imgur.com/7RUXx9k.png" height="300" />
-<img src="http://i.imgur.com/qS0bmHD.png" height="300" />
-<img src="http://i.imgur.com/TSQyMcP.png" height="300" />
 
 ### Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
 ### In addition you can:
