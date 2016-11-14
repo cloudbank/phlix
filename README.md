@@ -1,4 +1,4 @@
- #Phlix v 1.0   
+ # Phlix v 1.0   
  <img src="http://i.imgur.com/PG50tzr.jpg" height="100"/> 
 
 
@@ -7,12 +7,12 @@
 <img src="http://i.imgur.com/ObJP1fz.png" height="300" />
 <img src="http://i.imgur.com/VAxLK7w.png" height="300" />
 
-An android client for logging in to Flickr which allows you to view photos from:
+# An android client for logging in to Flickr which allows you to view photos from:
 
 * Friends' & your photostreams
 * The 'Interesting' collection
 * Hot tags and Recent Uploads
-* The Commons collection--rare pictures from around the world curated by you!
+** ]The Commons collection--rare pictures from around the world curated by you!
 
 Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
 
