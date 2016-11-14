@@ -17,8 +17,8 @@
 
 ### In addition you can:
 
-* Add comments & see tags
-* Take your own pictures with the camera! 
+* *Add comments & see tags*
+* *Take your own pictures with the camera!*
 
 ### --> download from the [Google Play Store](https://play.google.com/store/apps/details?userId=com.anubis.flickr)
 
