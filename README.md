@@ -11,7 +11,7 @@
 
 >>>>VIEW   
 
-<img src="http://i.imgur.com/nguN38p.png" height="500" />  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/nguN38p.png" height="500" />  
 
 >>>>COMMENT
 
