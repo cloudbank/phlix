@@ -2,34 +2,33 @@
 ### An android client for the Flickr photo API
                                                  
 
-<img src="http://i.imgur.com/iePBsAf.png" height="300"/>    
+<img src="http://i.imgur.com/iePBsAf.png" height="400"/>    
 
 
 >>>>VIEW   
 
-<img src="http://i.imgur.com/nguN38p.png" height="300" />  
+<img src="http://i.imgur.com/nguN38p.png" height="400" />  
 
 >>>>COMMENT
 
-<img src="http://i.imgur.com/ObJP1fz.png" height="300" />
+<img src="http://i.imgur.com/ObJP1fz.png" height="400" />
 
 >>>>CURATE
 
-<img src="http://i.imgur.com/VAxLK7w.png" height="300" />
+<img src="http://i.imgur.com/VAxLK7w.png" height="400" />
 
 >>>>CREATE
 
-<img src="http://i.imgur.com/dMZfxer.png" height="300"/>
-
-
-<img src="http://i.imgur.com/7RUXx9k.png" height="300" />
-<img src="http://i.imgur.com/qS0bmHD.png" height="300" />
-<img src="http://i.imgur.com/TSQyMcP.png" height="300" />
+<img src="http://i.imgur.com/dMZfxer.png" height="400"/>
 
 * *Friends' & your photostreams*
 * *The 'Interesting' collection*
 * *Hot tags and Recent Uploads*
 * *The Commons collection--rare pictures from around the world curated by you!*
+
+<img src="http://i.imgur.com/7RUXx9k.png" height="300" />
+<img src="http://i.imgur.com/qS0bmHD.png" height="300" />
+<img src="http://i.imgur.com/TSQyMcP.png" height="300" />
 
 ### Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
 ### In addition you can:
