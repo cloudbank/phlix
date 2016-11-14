@@ -36,7 +36,7 @@ This project uses the [Flickr API] ( https://www.flickr.com/services/api/)
 
 It also uses many other open source libraries such as:
 
- * [OAuthKit]()-- a helper lib for OAuth1.0a/2.0 with okhttp and signpost to easily hook into retrofit
+ * [OAuthKit](https://github.com/cloudbank/oauthkit)-- a helper lib for OAuth1.0a/2.0 with okhttp and signpost to easily hook into retrofit
  * [Retrofit]() Type-safe HTTP client for Android and Java by Square
  * [RxJava]() Observable for easy, reliable threading and beautiful code that works with Retrofit
  * [Realm]() A new db for devices that is faster than naked sqlite!
