@@ -1,17 +1,17 @@
-# My Friend Flickr v 2.0
+# Phlix v 1.0
 
 An android client for logging in to Flickr which allows you to view photos from:
 
-* Your own and your mFriends' photostreams
+* Friends' & your photostreams
 * The 'interestingness for today' collection
 * Hot tags and Recent Uploads
-* The Commons 
+* The Commons collection--rare pictures from around the world curated by you!
 
 Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
 
-<img src="http://i.imgur.com/.png" height="145"/>
+<img src="http://imgur.com/iePBsAf" height="145"/>
 &nbsp;&nbsp;
-<img src="http://i.imgur.com/.png" height="145" />
+<img src="http://imgur.com/nguN38p" height="145" />
 &nbsp;&nbsp;
 
 In addition you can:
@@ -19,9 +19,9 @@ In addition you can:
 * Add comments & tags
 * Take your own pictures with the camera! 
 
-<img src="http://i.imgur.com/.png" height="145" />
+<img src="http://imgur.com/VAxLK7w" height="145" />
 &nbsp;&nbsp;
-<img src="http://i.imgur.com/.png" height="145" />
+<img src="http://imgur.com/ObJP1fz" height="145" />
 
 
 
