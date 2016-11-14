@@ -2,24 +2,24 @@
 ### An android client for the Flickr photo API
                                                  
 
-<img src="http://i.imgur.com/iePBsAf.png" height="400"/>    
+<img src="http://i.imgur.com/iePBsAf.png" height="500"/>    
 
 
 >>>>VIEW   
 
-<img src="http://i.imgur.com/nguN38p.png" height="400" />  
+<img src="http://i.imgur.com/nguN38p.png" height="500" />  
 
 >>>>COMMENT
 
-<img src="http://i.imgur.com/ObJP1fz.png" height="400" />
+<img src="http://i.imgur.com/ObJP1fz.png" height="500" />
 
 >>>>CURATE
 
-<img src="http://i.imgur.com/VAxLK7w.png" height="400" />
+<img src="http://i.imgur.com/VAxLK7w.png" height="500" />
 
 >>>>CREATE
 
-<img src="http://i.imgur.com/dMZfxer.png" height="400"/>
+<img src="http://i.imgur.com/dMZfxer.png" height="500"/>
 
 * *Friends' & your photostreams*
 * *The 'Interesting' collection*
