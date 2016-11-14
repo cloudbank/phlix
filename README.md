@@ -1,12 +1,17 @@
 # Phlix v 1.0   <img src="http://i.imgur.com/PG50tzr.jpg" height="100"/> 
-### An android client for the Flickr photo API
+### An android client for the Flickr photo API 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/iePBsAf.png" height="500"/>    
+* *Friends' & your photostreams*
+* *The 'Interesting' collection*
+* *Hot tags and Recent Uploads*
+* *The Commons collection--rare pictures from around the world curated by you!*
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/iePBsAf.png" height="500"/>    
 
 
 >>>>VIEW   
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/nguN38p.png" height="500" />  
+<img src="http://i.imgur.com/nguN38p.png" height="500" />  
 
 >>>>COMMENT
 
@@ -20,10 +25,6 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/dMZfxer.png" height="500"/>
 
-* *Friends' & your photostreams*
-* *The 'Interesting' collection*
-* *Hot tags and Recent Uploads*
-* *The Commons collection--rare pictures from around the world curated by you!*
 
 <img src="http://i.imgur.com/7RUXx9k.png" height="300" />
 <img src="http://i.imgur.com/qS0bmHD.png" height="300" />
