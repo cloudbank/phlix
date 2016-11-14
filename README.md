@@ -1,32 +1,32 @@
 # Phlix v 1.0   <img src="http://i.imgur.com/PG50tzr.jpg" height="100"/> 
 ### An android client for logging in to Flickr 
 
+>>>>VIEW 
+
 <img src="http://i.imgur.com/iePBsAf.png" height="300"/>
 <img src="http://i.imgur.com/nguN38p.png" height="300" />
 
-* *Friends' & your photostreams*
-* *The 'Interesting' collection*
+>>>>COMMENT
 
 <img src="http://i.imgur.com/ObJP1fz.png" height="300" />
 <img src="http://i.imgur.com/VAxLK7w.png" height="300" />
 
->>>>VIEW 
-
-* *Hot tags and Recent Uploads*
-* *The Commons collection--rare pictures from around the world curated by you!*
-
->>>>COMMENT
+>>>>CURATE
 
 <img src="http://i.imgur.com/dMZfxer.png" height="300"/>
 <img src="http://i.imgur.com/7RUXx9k.png" height="300" />
-
-### Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
 
 >>>>CREATE
 
 <img src="http://i.imgur.com/qS0bmHD.png" height="300" />
 <img src="http://i.imgur.com/TSQyMcP.png" height="300" />
 
+* *Friends' & your photostreams*
+* *The 'Interesting' collection*
+* *Hot tags and Recent Uploads*
+* *The Commons collection--rare pictures from around the world curated by you!*
+
+### Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
 ### In addition you can:
 
 * *Add comments & see tags*
