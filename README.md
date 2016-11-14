@@ -9,9 +9,9 @@ An android client for logging in to Flickr which allows you to view photos from:
 
 Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
 
-<img src="http://imgur.com/iePBsAf" height="145"/>
+<img src="http://i.imgur.com/iePBsAf.png" height="145"/>
 &nbsp;&nbsp;
-<img src="http://imgur.com/nguN38p" height="145" />
+<img src="http://i.imgur.com/nguN38p.png" height="145" />
 &nbsp;&nbsp;
 
 In addition you can:
@@ -19,9 +19,9 @@ In addition you can:
 * Add comments & tags
 * Take your own pictures with the camera! 
 
-<img src="http://imgur.com/VAxLK7w" height="145" />
+<img src="http://i.imgur.com/ObJP1fz.png" height="145" />
 &nbsp;&nbsp;
-<img src="http://imgur.com/ObJP1fz" height="145" />
+<img src="http://i.imgur.com/VAxLK7w.png" height="145" />
 
 
 
