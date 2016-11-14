@@ -6,7 +6,7 @@
 * *Hot tags and Recent Uploads*
 * *The Commons collection--rare pictures from around the world curated by you!*
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/iePBsAf.png" height="500"/>    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i.imgur.com/iePBsAf.png" height="500"/>    
 
 
 >>>>VIEW   
