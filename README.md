@@ -1,7 +1,4 @@
- ## Phlix v 1.0  
- 
- 
- <img src="http://i.imgur.com/PG50tzr.jpg" height="100"/> 
+# Phlix v 1.0   <img src="http://i.imgur.com/PG50tzr.jpg" height="100"/> 
 
 
 <img src="http://i.imgur.com/iePBsAf.png" height="300"/>
@@ -9,21 +6,21 @@
 <img src="http://i.imgur.com/ObJP1fz.png" height="300" />
 <img src="http://i.imgur.com/VAxLK7w.png" height="300" />
 
- *An android client for logging in to Flickr which allows you to view photos from:*
+### An android client for logging in to Flickr which allows you to view photos from:*
 
-* Friends' & your photostreams
-* The 'Interesting' collection
-* Hot tags and Recent Uploads
-** ]The Commons collection--rare pictures from around the world curated by you!
+* *Friends' & your photostreams*
+* *The 'Interesting' collection*
+* *Hot tags and Recent Uploads*
+* *The Commons collection--rare pictures from around the world curated by you!*
 
-Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
+### Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
 
-In addition you can:
+### In addition you can:
 
 * Add comments & see tags
 * Take your own pictures with the camera! 
 
- download from the [Google Play Store](https://play.google.com/store/apps/details?userId=com.anubis.flickr)
+### --> download from the [Google Play Store](https://play.google.com/store/apps/details?userId=com.anubis.flickr)
 
 ## License
 
