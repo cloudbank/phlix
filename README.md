@@ -1,4 +1,7 @@
-# Phlix v 1.0
+ #Phlix v 1.0   
+ <img src="http://i.imgur.com/PG50tzr.jpg" height="100"/> 
+
+
 <img src="http://i.imgur.com/iePBsAf.png" height="300"/>
 <img src="http://i.imgur.com/nguN38p.png" height="300" />
 <img src="http://i.imgur.com/ObJP1fz.png" height="300" />
