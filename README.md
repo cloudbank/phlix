@@ -9,24 +9,20 @@ An android client for logging in to Flickr which allows you to view photos from:
 
 Designed with the Material theme and latest, greatest android libs for best viewing pleasure!
 
-<img src="http://i.imgur.com/iePBsAf.png" height="245"/>
+<img src="http://i.imgur.com/iePBsAf.png" height="265"/>
 &nbsp;&nbsp;
-<img src="http://i.imgur.com/nguN38p.png" height="245" />
+<img src="http://i.imgur.com/nguN38p.png" height="265" />
 &nbsp;&nbsp;
+<img src="http://i.imgur.com/ObJP1fz.png" height="265" />
+&nbsp;&nbsp;
+<img src="http://i.imgur.com/VAxLK7w.png" height="265" />
 
 In addition you can:
 
-* Add comments & tags
+* Add comments & see tags
 * Take your own pictures with the camera! 
 
-<img src="http://i.imgur.com/ObJP1fz.png" height="245" />
-&nbsp;&nbsp;
-<img src="http://i.imgur.com/VAxLK7w.png" height="245" />
-
-
-
-
- soon on the [Google Play Store](https://play.google.com/store/apps/details?userId=com.anubis.flickr)
+ download from the [Google Play Store](https://play.google.com/store/apps/details?userId=com.anubis.flickr)
 
 
 
