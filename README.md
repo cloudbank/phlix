@@ -3,7 +3,7 @@
 An android client for logging in to Flickr which allows you to view photos from:
 
 * Friends' & your photostreams
-* The 'interestingness for today' collection
+* The 'Interesting' collection
 * Hot tags and Recent Uploads
 * The Commons collection--rare pictures from around the world curated by you!
 
@@ -23,9 +23,6 @@ In addition you can:
 * Take your own pictures with the camera! 
 
  download from the [Google Play Store](https://play.google.com/store/apps/details?userId=com.anubis.flickr)
-
-
-
 
 ## License
 
