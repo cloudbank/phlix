@@ -1,5 +1,5 @@
 # Phlix v 1.0   <img src="http://i.imgur.com/PG50tzr.jpg" height="100"/> 
-### An android client for the Flickr photo API 
+### An android client for the Flickr photo API  [SDK 14+, Nougat compatible]
 
 * *Friends' & your photostreams*
 * *The 'Interesting' collection*
